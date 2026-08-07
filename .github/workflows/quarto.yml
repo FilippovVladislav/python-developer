@@ -7,12 +7,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: gh-pages
   cancel-in-progress: false
 
 jobs:
@@ -46,22 +44,24 @@ jobs:
           path: build/*.pdf
           if-no-files-found: error
 
-      - name: Upload GitHub Pages artifact
+      - name: Publish HTML to gh-pages
         if: github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: build
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-  deploy:
-    if: github.event_name == 'push'
-    needs: build
-    runs-on: ubuntu-latest
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git worktree add gh-pages-worktree FETCH_HEAD
+          else
+            git worktree add --orphan gh-pages gh-pages-worktree
+          fi
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+          find gh-pages-worktree -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R build/. gh-pages-worktree/
+          touch gh-pages-worktree/.nojekyll
 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          cd gh-pages-worktree
+          git add --all
+          git commit -m "Publish Quarto book" || exit 0
+          git push origin HEAD:gh-pages
