@@ -1,4 +1,22 @@
-
-/.quarto/
+# Quarto
 build/
+.quarto/
+site_libs/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+/.quarto/
 **/*.quarto_ipynb

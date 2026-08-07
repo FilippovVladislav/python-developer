@@ -1,4 +1,4 @@
-name: Render Quarto book
+name: Build and publish Quarto book
 
 on:
   push:
@@ -6,8 +6,17 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  render:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,8 +39,33 @@ jobs:
         with:
           to: all
 
-      - name: Upload rendered book
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: quarto-book
+          name: quarto-book-pdf
+          path: build/*.pdf
+          if-no-files-found: error
+
+      - name: Configure GitHub Pages
+        if: github.event_name == 'push'
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
           path: build
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
