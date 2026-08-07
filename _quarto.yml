@@ -17,11 +17,16 @@ book:
 
   chapters:
     - index.qmd
-    - book/preface.qmd
-
-    - part: "Том I. Основы Python"
+    - part: book/tom-01-basics.qmd
       chapters:
         - book/chapters/01-thinking-like-computer.qmd
+        - book/chapters/02-why-binary.qmd
+        - book/chapters/03-how-computers-store-data.qmd
+        - book/chapters/04-how-programs-run.qmd
+        - book/chapters/05-why-programming-languages.qmd
+        - book/chapters/06-why-python.qmd
+        - book/chapters/07-python-workspace.qmd
+        - book/chapters/08-first-python-program.qmd
 
 format:
   html:

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Одинаковые биты могут иметь разный смысл</title>
+  <desc id="desc">Последовательность 01000001 интерпретируется по-разному в зависимости от правила чтения.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .center { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 38px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Смысл задаёт правило интерпретации</text>
+
+  <rect class="center" x="405" y="255" width="390" height="115" rx="18"/>
+  <text class="mono blue" x="600" y="326" text-anchor="middle">01000001</text>
+  <text class="text body muted" x="600" y="405" text-anchor="middle">одни и те же биты</text>
+
+  <path class="line" d="M405 300H250v-80"/>
+  <path class="line" d="M795 300h155v-80"/>
+  <path class="line" d="M600 370v105"/>
+  <path class="line" d="M262 232l-12-12-12 12"/>
+  <path class="line" d="M938 232l12-12 12 12"/>
+  <path class="line" d="M588 463l12 12 12-12"/>
+
+  <rect class="card" x="115" y="125" width="270" height="95" rx="16"/>
+  <text class="text body muted" x="250" y="160" text-anchor="middle">как число</text>
+  <text class="mono olive" x="250" y="200" text-anchor="middle">65</text>
+
+  <rect class="card" x="815" y="125" width="270" height="95" rx="16"/>
+  <text class="text body muted" x="950" y="160" text-anchor="middle">как символ ASCII</text>
+  <text class="mono olive" x="950" y="200" text-anchor="middle">A</text>
+
+  <rect class="soft" x="390" y="475" width="420" height="105" rx="16"/>
+  <text class="text label ink" x="600" y="515" text-anchor="middle">правило интерпретации</text>
+  <text class="text body muted" x="600" y="552" text-anchor="middle">программа или формат данных</text>
+
+  <text class="text body muted" x="600" y="640" text-anchor="middle">Компьютер не угадывает смысл: его задаёт тот, кто читает данные</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Любая информация становится данными</title>
+  <desc id="desc">Текст, изображение, музыка и программа превращаются в нули и единицы.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .soft-blue { fill: #eef4f8; }
+      .soft-olive { fill: #f0f3df; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 28px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Для компьютера всё становится последовательностью данных</text>
+
+  <g transform="translate(105 145)">
+    <rect class="card" width="220" height="150" rx="16"/>
+    <text class="text label blue" x="110" y="42" text-anchor="middle">Текст</text>
+    <rect x="55" y="70" width="110" height="54" rx="8" class="soft-blue"/>
+    <text class="text body ink" x="110" y="104" text-anchor="middle">А Б В</text>
+  </g>
+  <g transform="translate(365 145)">
+    <rect class="card" width="220" height="150" rx="16"/>
+    <text class="text label blue" x="110" y="42" text-anchor="middle">Изображение</text>
+    <rect x="55" y="65" width="110" height="70" rx="8" class="soft-olive"/>
+    <circle cx="92" cy="92" r="15" class="olive"/>
+    <path class="line" d="M65 126l38-36 24 24 20-18 18 30"/>
+  </g>
+  <g transform="translate(625 145)">
+    <rect class="card" width="220" height="150" rx="16"/>
+    <text class="text label blue" x="110" y="42" text-anchor="middle">Музыка</text>
+    <path class="line" d="M60 105c18-42 36 42 54 0s36 42 54 0"/>
+  </g>
+  <g transform="translate(885 145)">
+    <rect class="card" width="220" height="150" rx="16"/>
+    <text class="text label blue" x="110" y="42" text-anchor="middle">Программа</text>
+    <rect x="48" y="70" width="124" height="54" rx="8" class="soft-blue"/>
+    <text class="mono blue" x="110" y="106" text-anchor="middle">print()</text>
+  </g>
+
+  <path class="line" d="M215 330v72"/>
+  <path class="line" d="M475 330v72"/>
+  <path class="line" d="M735 330v72"/>
+  <path class="line" d="M995 330v72"/>
+  <path class="line" d="M205 390l10 14 10-14"/>
+  <path class="line" d="M465 390l10 14 10-14"/>
+  <path class="line" d="M725 390l10 14 10-14"/>
+  <path class="line" d="M985 390l10 14 10-14"/>
+
+  <rect x="250" y="430" width="700" height="120" rx="20" fill="#eef4f8" stroke="#2f5f8f" stroke-width="4"/>
+  <text class="text label ink" x="600" y="475" text-anchor="middle">единый вид внутри компьютера</text>
+  <text class="mono blue" x="600" y="525" text-anchor="middle">01000001 11100010 00010110</text>
+
+  <text class="text body muted" x="600" y="620" text-anchor="middle">Смысл зависит от правила, по которому эти биты читаются</text>
+</svg>
