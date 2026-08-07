@@ -6,6 +6,12 @@ Quarto-книга для начинающих Python-разработчиков:
 
 HTML-версия публикуется через GitHub Pages после каждого push в `main` или `master`.
 
+Перед первым запуском включите публикацию через Actions:
+
+1. Откройте **Settings** репозитория.
+2. Перейдите в **Pages**.
+3. В блоке **Build and deployment** выберите **Source: GitHub Actions**.
+
 Откройте страницу проекта:
 
 ```text
