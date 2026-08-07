@@ -8,19 +8,19 @@ HTML-версия публикуется через GitHub Pages после ка
 
 Перед первым запуском включите публикацию через Actions:
 
-1. Откройте **Settings** репозитория.
+1. Откройте **Settings** репозитория: <https://github.com/FilippovVladislav/python-developer/settings/pages>.
 2. Перейдите в **Pages**.
 3. В блоке **Build and deployment** выберите **Source: GitHub Actions**.
 
 Откройте страницу проекта:
 
 ```text
-https://<ваш-github-логин>.github.io/<имя-репозитория>/
+https://filippovvladislav.github.io/python-developer/
 ```
 
 PDF-файл доступен в артефактах последней сборки GitHub Actions:
 
-1. Откройте вкладку **Actions** в репозитории.
+1. Откройте вкладку **Actions** в репозитории: <https://github.com/FilippovVladislav/python-developer/actions>.
 2. Выберите последнюю успешную сборку **Build and publish Quarto book**.
 3. В разделе **Artifacts** скачайте `quarto-book-pdf`.
 
