@@ -1,0 +1,58 @@
+project:
+  type: book
+  output-dir: build
+
+book:
+  title: "Путь Python-разработчика"
+  subtitle: "От полного новичка до первой работы"
+  author: "Владислав"
+  date: today
+  date-format: "D MMMM YYYY"
+  language: ru
+  search: true
+  page-navigation: true
+  reader-mode: true
+  downloads:
+    - pdf
+
+  chapters:
+    - index.qmd
+    - book/preface.qmd
+
+    - part: "Том I. Основы Python"
+      chapters:
+        - book/chapters/01-thinking-like-computer.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - theme/book.scss
+    lang: ru
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    smooth-scroll: true
+    number-sections: true
+    fig-cap-location: bottom
+    link-external-newwindow: true
+
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: lualatex
+    lang: ru
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    papersize: a4
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=28mm
+      - right=23mm
+    include-in-header:
+      - theme/pdf-header.tex
+    colorlinks: true
+    fig-cap-location: bottom
+    code-overflow: wrap

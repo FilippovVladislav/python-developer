@@ -1,0 +1,66 @@
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{fvextra}
+
+\IfFontExistsTF{Noto Serif}
+  {\setmainfont{Noto Serif}}
+  {\setmainfont{Arial}}
+\IfFontExistsTF{Noto Sans}
+  {\setsansfont{Noto Sans}}
+  {\setsansfont{Arial}}
+\IfFontExistsTF{Noto Sans Mono}
+  {\setmonofont{Noto Sans Mono}}
+  {\setmonofont{Consolas}}
+
+\setstretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+
+\definecolor{BookBlue}{HTML}{2F5F8F}
+\definecolor{BookOlive}{HTML}{6F7D2D}
+\definecolor{BookRule}{HTML}{D8DEE8}
+
+\AtBeginDocument{
+  \hypersetup{
+    linkcolor=BookBlue,
+    urlcolor=BookBlue,
+    citecolor=BookOlive
+  }
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\small\thepage}
+\fancyhead[LO]{\small\nouppercase{\rightmark}}
+\fancyhead[RE]{\small\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{BookRule}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\chapter}
+  {\Huge\bfseries\color{BookBlue}}
+  {\thechapter}
+  {1em}
+  {}
+  [\vspace{0.4em}{\color{BookRule}\titlerule[0.8pt]}]
+
+\titleformat{\section}
+  {\Large\bfseries\color{BookBlue}}
+  {\thesection}
+  {0.8em}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{black}}
+  {\thesubsection}
+  {0.7em}
+  {}
+
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  breaklines,
+  commandchars=\\\{\}
+}
