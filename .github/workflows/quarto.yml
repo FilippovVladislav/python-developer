@@ -2,64 +2,44 @@ name: Build and publish Quarto book
 
 on:
   push:
-    branches: [main, master]
-  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: write
-
-concurrency:
-  group: gh-pages
-  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Quarto
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
 
-      - name: Set up TinyTeX
-        uses: r-lib/actions/setup-tinytex@v2
-
-      - name: Install PDF fonts
+      - name: Install fonts
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-noto-core fonts-noto-mono
 
       - name: Render book
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: all
+        run: quarto render
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
-          name: quarto-book-pdf
+          name: python-developer-book
           path: build/*.pdf
           if-no-files-found: error
 
       - name: Publish HTML to gh-pages
         if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          mkdir gh-pages-worktree
-          cp -R build/. gh-pages-worktree/
-          touch gh-pages-worktree/.nojekyll
-
-          cd gh-pages-worktree
-          git init
-          git checkout -b gh-pages
-          git add --all
-          git commit -m "Publish Quarto book" || exit 0
-          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

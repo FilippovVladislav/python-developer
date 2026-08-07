@@ -1,55 +1,90 @@
-# Путь Python-разработчика
+# 📘 Путь Python-разработчика
 
-Quarto-книга для начинающих Python-разработчиков: от базового мышления программиста до первых backend-проектов и подготовки к работе.
+Практическая книга по Python и backend-разработке.
 
-## Читать книгу
+Цель проекта — создать современную бесплатную книгу, которая поможет пройти путь от полного новичка до уровня Junior Python Developer.
 
-HTML-версия публикуется через GitHub Pages после каждого push в `main` или `master`.
+---
 
-Перед первым запуском включите публикацию из ветки `gh-pages`:
+## 📖 Читать книгу
 
-1. Откройте **Settings** репозитория: <https://github.com/FilippovVladislav/python-developer/settings/pages>.
-2. Перейдите в **Pages**.
-3. В блоке **Build and deployment** выберите **Source: Deploy from a branch**.
-4. Выберите ветку **gh-pages** и папку **/(root)**.
+### Онлайн
 
-Откройте страницу проекта:
-
-```text
 https://filippovvladislav.github.io/python-developer/
-```
 
-PDF-файл доступен в артефактах последней сборки GitHub Actions:
+### PDF
 
-1. Откройте вкладку **Actions** в репозитории: <https://github.com/FilippovVladislav/python-developer/actions>.
-2. Выберите последнюю успешную сборку **Build and publish Quarto book**.
-3. В разделе **Artifacts** скачайте `quarto-book-pdf`.
+PDF автоматически собирается GitHub Actions после каждого обновления проекта.
 
-После локальной сборки PDF также появляется в каталоге `build/`.
+---
 
-## Сборка
+## 🚀 Локальный запуск
 
-```bash
-quarto render
-```
-
-HTML и PDF попадают в каталог `build/`:
-
-- `build/index.html` - HTML-версия книги;
-- `build/Путь-Python-разработчика.pdf` - PDF-версия книги.
-
-Для локальной разработки удобно запускать предпросмотр:
+Предпросмотр книги:
 
 ```bash
 quarto preview
 ```
 
-## Структура
+Полная сборка:
 
-- `_quarto.yml` - основной конфиг книги.
-- `index.qmd` - титульная страница.
-- `book/preface.qmd` - предисловие.
-- `book/chapters/` - главы книги.
-- `theme/book.scss` - HTML-тема.
-- `theme/pdf-header.tex` - PDF-типографика.
-- `.github/workflows/quarto.yml` - сборка Quarto, публикация GitHub Pages и загрузка PDF-артефакта.
+```bash
+quarto render
+```
+
+После сборки результат появится в каталоге:
+
+```text
+build/
+```
+
+---
+
+## 📁 Структура проекта
+
+```text
+python-developer/
+
+book/
+    chapters/
+    images/
+    examples/
+
+theme/
+docs/
+projects/
+
+_quarto.yml
+README.md
+```
+
+---
+
+## ⚙️ Используемые технологии
+
+- Python
+- Quarto
+- Markdown
+- Git
+- GitHub
+- GitHub Actions
+- GitHub Pages
+- TinyTeX
+
+---
+
+## 🤝 Как помочь проекту
+
+Если вы нашли ошибку:
+
+- создайте Issue;
+- отправьте Pull Request;
+- предложите идею новой главы.
+
+Любая помощь приветствуется.
+
+---
+
+## 📜 Лицензия
+
+Проект распространяется по лицензии MIT.
