@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Биты объединяются в байт</title>
+  <desc id="desc">Восемь отдельных битов образуют один байт, который может иметь 256 комбинаций.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .cell { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .soft-olive { fill: #f0f3df; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 25px; font-weight: 650; }
+      .body { font-size: 22px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 42px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Байт — это группа из восьми битов</text>
+
+  <rect class="card" x="90" y="140" width="1020" height="330" rx="18"/>
+  <g transform="translate(155 245)">
+    <g><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">1</text></g>
+    <g transform="translate(115 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">0</text></g>
+    <g transform="translate(230 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">1</text></g>
+    <g transform="translate(345 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">0</text></g>
+    <g transform="translate(460 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">0</text></g>
+    <g transform="translate(575 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">1</text></g>
+    <g transform="translate(690 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">1</text></g>
+    <g transform="translate(805 0)"><rect class="cell" width="90" height="90" rx="14"/><text class="mono blue" x="45" y="60" text-anchor="middle">0</text></g>
+  </g>
+
+  <path class="line" d="M150 385h900"/>
+  <path class="line" d="M150 385v-25"/>
+  <path class="line" d="M1050 385v-25"/>
+  <text class="text label blue" x="600" y="430" text-anchor="middle">8 бит = 1 байт</text>
+
+  <rect x="350" y="520" width="500" height="82" rx="16" class="soft-olive" stroke="#d8dee8" stroke-width="3"/>
+  <text class="text body muted" x="600" y="550" text-anchor="middle">возможных вариантов</text>
+  <text class="mono olive" x="600" y="590" text-anchor="middle">2⁸ = 256 комбинаций</text>
+</svg>

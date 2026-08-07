@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Двоичный принцип в истории компьютеров</title>
+  <desc id="desc">Временная линия показывает, что двоичный принцип лежит в основе разных поколений вычислительной техники.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .soft-blue { fill: #eef4f8; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 22px; font-weight: 650; }
+      .body { font-size: 19px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 22px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Двоичный принцип пережил разные поколения компьютеров</text>
+
+  <line class="line" x1="150" y1="350" x2="1050" y2="350"/>
+  <circle cx="190" cy="350" r="14" class="blue"/>
+  <circle cx="440" cy="350" r="14" class="blue"/>
+  <circle cx="690" cy="350" r="14" class="blue"/>
+  <circle cx="940" cy="350" r="14" class="blue"/>
+
+  <g transform="translate(90 160)">
+    <rect class="card" width="220" height="130" rx="16"/>
+    <text class="text label blue" x="110" y="38" text-anchor="middle">Ранние машины</text>
+    <text class="text body muted" x="110" y="75" text-anchor="middle">большие устройства</text>
+    <text class="mono olive" x="110" y="108" text-anchor="middle">0 / 1</text>
+  </g>
+
+  <g transform="translate(340 410)">
+    <rect class="card" width="220" height="130" rx="16"/>
+    <text class="text label blue" x="110" y="38" text-anchor="middle">Транзисторы</text>
+    <text class="text body muted" x="110" y="75" text-anchor="middle">меньше и надежнее</text>
+    <text class="mono olive" x="110" y="108" text-anchor="middle">0 / 1</text>
+  </g>
+
+  <g transform="translate(590 160)">
+    <rect class="card" width="220" height="130" rx="16"/>
+    <text class="text label blue" x="110" y="38" text-anchor="middle">Микросхемы</text>
+    <text class="text body muted" x="110" y="75" text-anchor="middle">миллионы элементов</text>
+    <text class="mono olive" x="110" y="108" text-anchor="middle">0 / 1</text>
+  </g>
+
+  <g transform="translate(840 410)">
+    <rect class="card" width="220" height="130" rx="16"/>
+    <text class="text label blue" x="110" y="38" text-anchor="middle">Современные CPU</text>
+    <text class="text body muted" x="110" y="75" text-anchor="middle">миллиарды переключателей</text>
+    <text class="mono olive" x="110" y="108" text-anchor="middle">0 / 1</text>
+  </g>
+
+  <path class="line" d="M190 350v-60"/>
+  <path class="line" d="M440 350v60"/>
+  <path class="line" d="M690 350v-60"/>
+  <path class="line" d="M940 350v60"/>
+
+  <rect x="330" y="590" width="540" height="56" rx="14" class="soft-blue" stroke="#d8dee8" stroke-width="3"/>
+  <text class="text body ink" x="600" y="626" text-anchor="middle">Меняются технологии, но основа остается двоичной</text>
+</svg>

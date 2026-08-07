@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Изображение хранится как пиксели и RGB-числа</title>
+  <desc id="desc">Сетка пикселей, выбранный красный пиксель и его значения R 255 G 0 B 0.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .pixel { stroke: #ffffff; stroke-width: 4; }
+      .selected { fill: none; stroke: #2f5f8f; stroke-width: 6; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 28px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Цифровое изображение — это сетка пикселей</text>
+
+  <rect class="card" x="90" y="135" width="440" height="410" rx="18"/>
+  <text class="text label blue" x="310" y="185" text-anchor="middle">пиксели</text>
+  <g transform="translate(180 225)">
+    <rect class="pixel" x="0" y="0" width="62" height="62" fill="#d94f45"/>
+    <rect class="pixel" x="62" y="0" width="62" height="62" fill="#6f7d2d"/>
+    <rect class="pixel" x="124" y="0" width="62" height="62" fill="#2f5f8f"/>
+    <rect class="pixel" x="186" y="0" width="62" height="62" fill="#e8c75f"/>
+    <rect class="pixel" x="0" y="62" width="62" height="62" fill="#eef4f8"/>
+    <rect class="pixel" x="62" y="62" width="62" height="62" fill="#d94f45"/>
+    <rect class="pixel" x="124" y="62" width="62" height="62" fill="#f0f3df"/>
+    <rect class="pixel" x="186" y="62" width="62" height="62" fill="#17212b"/>
+    <rect class="pixel" x="0" y="124" width="62" height="62" fill="#2f5f8f"/>
+    <rect class="pixel" x="62" y="124" width="62" height="62" fill="#ffffff"/>
+    <rect class="pixel" x="124" y="124" width="62" height="62" fill="#6f7d2d"/>
+    <rect class="pixel" x="186" y="124" width="62" height="62" fill="#d8dee8"/>
+    <rect class="pixel" x="0" y="186" width="62" height="62" fill="#f0f3df"/>
+    <rect class="pixel" x="62" y="186" width="62" height="62" fill="#2f5f8f"/>
+    <rect class="pixel" x="124" y="186" width="62" height="62" fill="#d94f45"/>
+    <rect class="pixel" x="186" y="186" width="62" height="62" fill="#eef4f8"/>
+    <rect class="selected" x="-5" y="-5" width="72" height="72" rx="8"/>
+  </g>
+
+  <path class="line" d="M540 340h105"/>
+  <path class="line" d="M633 328l12 12-12 12"/>
+
+  <rect class="card" x="660" y="175" width="415" height="330" rx="18"/>
+  <text class="text label blue" x="867" y="225" text-anchor="middle">выбранный пиксель</text>
+  <circle cx="770" cy="300" r="36" fill="#d94f45" stroke="#2f5f8f" stroke-width="4"/>
+  <text class="mono ink" x="875" y="285">R = 255</text>
+  <text class="mono ink" x="875" y="335">G = 0</text>
+  <text class="mono ink" x="875" y="385">B = 0</text>
+
+  <rect x="355" y="585" width="490" height="58" rx="14" fill="#eef4f8" stroke="#d8dee8" stroke-width="3"/>
+  <text class="text label ink" x="600" y="623" text-anchor="middle">цвет → числа → биты</text>
+</svg>

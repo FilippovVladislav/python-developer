@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Текст превращается в коды и биты</title>
+  <desc id="desc">Символы ABC превращаются в числовые коды 65 66 67, затем в двоичное представление.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .soft-blue { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft-olive { fill: #f0f3df; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 34px; font-weight: 700; }
+      .mono-small { font-family: "Cascadia Code", Consolas, monospace; font-size: 25px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Компьютер хранит не буквы, а их коды</text>
+
+  <rect class="soft-olive" x="430" y="115" width="340" height="52" rx="14"/>
+  <text class="text label ink" x="600" y="150" text-anchor="middle">Символ → код → биты</text>
+
+  <rect class="card" x="150" y="215" width="900" height="105" rx="18"/>
+  <text class="text body muted" x="230" y="255">символы</text>
+  <text class="mono blue" x="600" y="285" text-anchor="middle">A        B        C</text>
+
+  <path class="line" d="M600 320v55"/>
+  <path class="line" d="M588 363l12 12 12-12"/>
+
+  <rect class="card" x="150" y="375" width="900" height="105" rx="18"/>
+  <text class="text body muted" x="230" y="415">числовые коды</text>
+  <text class="mono olive" x="600" y="445" text-anchor="middle">65       66       67</text>
+
+  <path class="line" d="M600 480v55"/>
+  <path class="line" d="M588 523l12 12 12-12"/>
+
+  <rect class="soft-blue" x="150" y="535" width="900" height="105" rx="18"/>
+  <text class="text body muted" x="230" y="575">биты</text>
+  <text class="mono-small blue" x="600" y="607" text-anchor="middle">01000001   01000010   01000011</text>
+</svg>

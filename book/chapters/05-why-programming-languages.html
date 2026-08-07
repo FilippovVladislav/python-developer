@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Почему люди не пишут программы напрямую нулями и единицами, и как языки программирования помогают выражать решения.">
 
-<title>2&nbsp; Предисловие – Путь Python-разработчика</title>
+<title>2.5 Зачем нужны языки программирования – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,28 +27,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../book/chapters/01-thinking-like-computer.html" rel="next">
-<link href="../index.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-621a3521207ae6c08960dbf0e9d8aa65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/chapters/06-why-python.html" rel="next">
+<link href="../../book/chapters/04-how-programs-run.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-621a3521207ae6c08960dbf0e9d8aa65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -89,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/preface.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Предисловие</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/05-why-programming-languages.html">2.5 Зачем нужны языки программирования</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -104,9 +140,9 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Путь Python-разработчика</a> 
+      <a href="../../">Путь Python-разработчика</a> 
         <div class="sidebar-tools-main">
-    <a href="../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -124,20 +160,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../book/preface.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Предисловие</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Том I. Основы Python</span></a>
+            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Том I. Основы программирования</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -145,8 +175,50 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Как думает компьютер</span></span></a>
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 Как думает компьютер</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 Как запускаются программы</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Почему Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Рабочее пространство Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.8 Первая Python-программа</span></a>
   </div>
 </li>
       </ul>
@@ -156,15 +228,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#после-этой-главы-вы-сможете" id="toc-после-этой-главы-вы-сможете" class="nav-link active" data-scroll-target="#после-этой-главы-вы-сможете">После этой главы вы сможете</a></li>
+  <li><a href="#язык-как-мост" id="toc-язык-как-мост" class="nav-link" data-scroll-target="#язык-как-мост">Язык как мост</a></li>
+  <li><a href="#синтаксис" id="toc-синтаксис" class="nav-link" data-scroll-target="#синтаксис">Синтаксис</a></li>
+  <li><a href="#почему-языков-много" id="toc-почему-языков-много" class="nav-link" data-scroll-target="#почему-языков-много">Почему языков много</a></li>
+  <li><a href="#короткий-итог" id="toc-короткий-итог" class="nav-link" data-scroll-target="#короткий-итог">Короткий итог</a></li>
+  <li><a href="#практика" id="toc-практика" class="nav-link" data-scroll-target="#практика">Практика</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/05-why-programming-languages.html">2.5 Зачем нужны языки программирования</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Предисловие</span></h1>
+<h1 class="title">2.5 Зачем нужны языки программирования</h1>
 </div>
 
 
@@ -181,24 +264,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Эта книга написана для тех, кто хочет войти в Python-разработку с нуля и не потеряться в большом количестве терминов, инструментов и советов.</p>
-<p>Здесь нет попытки выучить весь язык сразу. Вместо этого каждая тема появляется тогда, когда она становится нужна для решения понятной задачи.</p>
-<p>Главная цель книги - сформировать инженерную привычку: сначала ясно описывать проблему, затем выбирать подход, и только после этого писать код.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Главная установка">
+<p>Компьютер в итоге работает с низкоуровневыми инструкциями.</p>
+<p>Но человеку неудобно писать большие программы в виде нулей, единиц и машинных команд.</p>
+<p>Поэтому появились языки программирования.</p>
+<section id="после-этой-главы-вы-сможете" class="level2">
+<h2 class="anchored" data-anchor-id="после-этой-главы-вы-сможете">После этой главы вы сможете</h2>
+<ul>
+<li>объяснить, зачем нужны языки программирования;</li>
+<li>понимать, почему Python-код должен быть переведен в действия компьютера;</li>
+<li>отличать удобство для человека от формы, удобной для машины;</li>
+<li>понимать роль синтаксиса.</li>
+</ul>
+</section>
+<section id="язык-как-мост" class="level2">
+<h2 class="anchored" data-anchor-id="язык-как-мост">Язык как мост</h2>
+<p>Язык программирования помогает человеку описать решение в форме, которую можно обработать автоматически.</p>
+<p>Например, человеку понятнее написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>чем вручную описывать низкоуровневые операции, которые нужны для вывода текста на экран.</p>
+</section>
+<section id="синтаксис" class="level2">
+<h2 class="anchored" data-anchor-id="синтаксис">Синтаксис</h2>
+<p>У каждого языка есть правила записи.</p>
+<p>Эти правила называются синтаксисом.</p>
+<p>Если нарушить синтаксис, компьютер не сможет правильно разобрать программу.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Типичная ошибка">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Совет</span>Главная установка
+<span class="screen-reader-only">Предупреждение</span>Типичная ошибка
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Не нужно торопиться. Хороший разработчик отличается не скоростью набора текста, а качеством решений и вниманием к деталям.</p>
+<p>Новички часто думают, что синтаксис - это формальность. На самом деле это договоренность, по которой инструмент понимает ваш код.</p>
 </div>
 </div>
+</section>
+<section id="почему-языков-много" class="level2">
+<h2 class="anchored" data-anchor-id="почему-языков-много">Почему языков много</h2>
+<p>Разные языки создавались для разных задач.</p>
+<p>Одни удобны для системного программирования, другие - для анализа данных, сайтов, автоматизации или обучения.</p>
+<p>Нет одного идеального языка для всех случаев.</p>
+</section>
+<section id="короткий-итог" class="level2">
+<h2 class="anchored" data-anchor-id="короткий-итог">Короткий итог</h2>
+<p>Язык программирования нужен, чтобы человек мог описывать решения понятнее и быстрее.</p>
+<p>Компьютер все равно выполняет точные инструкции, но язык помогает записывать эти инструкции на более удобном уровне.</p>
+</section>
+<section id="практика" class="level2">
+<h2 class="anchored" data-anchor-id="практика">Практика</h2>
+<p>Возьмите любую бытовую задачу и попробуйте записать ее как набор команд с очень строгими правилами.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -608,13 +728,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Путь Python-разработчика">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span>
+      <a href="../../book/chapters/04-how-programs-run.html" class="pagination-link" aria-label="2.4 Как запускаются программы">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.4 Как запускаются программы</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../book/chapters/01-thinking-like-computer.html" class="pagination-link" aria-label="Как думает компьютер">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Как думает компьютер</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/chapters/06-why-python.html" class="pagination-link" aria-label="2.6 Почему Python">
+        <span class="nav-page-text">2.6 Почему Python</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -623,5 +743,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

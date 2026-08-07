@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Лампочки как модель битов</title>
+  <desc id="desc">Восемь лампочек показывают последовательность битов 11010010.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .panel { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .off { fill: #eef1f4; stroke: #9aa6b2; stroke-width: 4; }
+      .on { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 42px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Восемь включателей можно записать как восемь битов</text>
+
+  <rect class="panel" x="80" y="130" width="1040" height="420" rx="18"/>
+  <line class="line" x1="165" y1="305" x2="1035" y2="305"/>
+
+  <g transform="translate(150 210)">
+    <g>
+      <circle class="on" cx="0" cy="70" r="42"/><rect class="olive" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label olive" x="0" y="185" text-anchor="middle">1</text>
+    </g>
+    <g transform="translate(130 0)">
+      <circle class="on" cx="0" cy="70" r="42"/><rect class="olive" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label olive" x="0" y="185" text-anchor="middle">1</text>
+    </g>
+    <g transform="translate(260 0)">
+      <circle class="off" cx="0" cy="70" r="42"/><rect fill="#9aa6b2" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label muted" x="0" y="185" text-anchor="middle">0</text>
+    </g>
+    <g transform="translate(390 0)">
+      <circle class="on" cx="0" cy="70" r="42"/><rect class="olive" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label olive" x="0" y="185" text-anchor="middle">1</text>
+    </g>
+    <g transform="translate(520 0)">
+      <circle class="off" cx="0" cy="70" r="42"/><rect fill="#9aa6b2" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label muted" x="0" y="185" text-anchor="middle">0</text>
+    </g>
+    <g transform="translate(650 0)">
+      <circle class="off" cx="0" cy="70" r="42"/><rect fill="#9aa6b2" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label muted" x="0" y="185" text-anchor="middle">0</text>
+    </g>
+    <g transform="translate(780 0)">
+      <circle class="on" cx="0" cy="70" r="42"/><rect class="olive" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label olive" x="0" y="185" text-anchor="middle">1</text>
+    </g>
+    <g transform="translate(910 0)">
+      <circle class="off" cx="0" cy="70" r="42"/><rect fill="#9aa6b2" x="-18" y="112" width="36" height="28" rx="6"/><text class="text label muted" x="0" y="185" text-anchor="middle">0</text>
+    </g>
+  </g>
+
+  <rect x="405" y="575" width="390" height="72" rx="14" fill="#eef4f8" stroke="#d8dee8" stroke-width="3"/>
+  <text class="text body muted" x="600" y="602" text-anchor="middle">получается последовательность</text>
+  <text class="mono blue" x="600" y="640" text-anchor="middle">11010010</text>
+</svg>

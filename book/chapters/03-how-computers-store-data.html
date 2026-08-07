@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Что такое программа, почему компьютеру нужны точные инструкции и с чего на самом деле начинается программирование.">
 
-<title>2.1 Как думает компьютер – Путь Python-разработчика</title>
+<title>2.3 Как компьютер хранит данные – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/chapters/02-why-binary.html" rel="next">
-<link href="../../book/tom-01-basics.html" rel="prev">
+<link href="../../book/chapters/04-how-programs-run.html" rel="next">
+<link href="../../book/chapters/02-why-binary.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -125,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/01-thinking-like-computer.html">2.1 Как думает компьютер</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/03-how-computers-store-data.html">2.3 Как компьютер хранит данные</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -175,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.1 Как думает компьютер</span></a>
   </div>
 </li>
@@ -187,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
   </div>
 </li>
@@ -233,21 +232,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#после-этой-главы-вы-сможете" id="toc-после-этой-главы-вы-сможете" class="nav-link active" data-scroll-target="#после-этой-главы-вы-сможете">После этой главы вы сможете</a></li>
-  <li><a href="#вы-уже-сталкивались-с-программированием" id="toc-вы-уже-сталкивались-с-программированием" class="nav-link" data-scroll-target="#вы-уже-сталкивались-с-программированием">Вы уже сталкивались с программированием</a></li>
-  <li><a href="#задача-алгоритм-и-программа" id="toc-задача-алгоритм-и-программа" class="nav-link" data-scroll-target="#задача-алгоритм-и-программа">Задача, алгоритм и программа</a></li>
-  <li><a href="#компьютер-не-умеет-догадываться" id="toc-компьютер-не-умеет-догадываться" class="nav-link" data-scroll-target="#компьютер-не-умеет-догадываться">Компьютер не умеет догадываться</a></li>
-  <li><a href="#первая-практика" id="toc-первая-практика" class="nav-link" data-scroll-target="#первая-практика">Первая практика</a></li>
-  <li><a href="#короткий-итог" id="toc-короткий-итог" class="nav-link" data-scroll-target="#короткий-итог">Короткий итог</a></li>
+  <li><a href="#бит-самая-маленькая-единица-информации" id="toc-бит-самая-маленькая-единица-информации" class="nav-link active" data-scroll-target="#бит-самая-маленькая-единица-информации">Бит — самая маленькая единица информации</a></li>
+  <li><a href="#байт" id="toc-байт" class="nav-link" data-scroll-target="#байт">Байт</a></li>
+  <li><a href="#как-компьютер-понимает-что-хранится-в-байте" id="toc-как-компьютер-понимает-что-хранится-в-байте" class="nav-link" data-scroll-target="#как-компьютер-понимает-что-хранится-в-байте">Как компьютер понимает, что хранится в байте?</a></li>
+  <li><a href="#как-хранится-текст" id="toc-как-хранится-текст" class="nav-link" data-scroll-target="#как-хранится-текст">Как хранится текст</a></li>
+  <li><a href="#почему-этого-оказалось-недостаточно" id="toc-почему-этого-оказалось-недостаточно" class="nav-link" data-scroll-target="#почему-этого-оказалось-недостаточно">Почему этого оказалось недостаточно</a></li>
+  <li><a href="#как-хранится-число" id="toc-как-хранится-число" class="nav-link" data-scroll-target="#как-хранится-число">Как хранится число</a></li>
+  <li><a href="#как-хранится-изображение" id="toc-как-хранится-изображение" class="nav-link" data-scroll-target="#как-хранится-изображение">Как хранится изображение</a></li>
+  <li><a href="#как-хранится-музыка" id="toc-как-хранится-музыка" class="nav-link" data-scroll-target="#как-хранится-музыка">Как хранится музыка</a></li>
+  <li><a href="#как-хранится-программа" id="toc-как-хранится-программа" class="nav-link" data-scroll-target="#как-хранится-программа">Как хранится программа</a></li>
+  <li><a href="#главное-что-нужно-запомнить" id="toc-главное-что-нужно-запомнить" class="nav-link" data-scroll-target="#главное-что-нужно-запомнить">Главное, что нужно запомнить</a></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/01-thinking-like-computer.html">2.1 Как думает компьютер</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/03-how-computers-store-data.html">2.3 Как компьютер хранит данные</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2.1 Как думает компьютер</h1>
+<h1 class="title">2.3 Как компьютер хранит данные</h1>
 </div>
 
 
@@ -264,218 +268,264 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Прежде чем изучать переменные, условия, циклы и функции, полезно разобраться с более фундаментальным вопросом:</p>
-<p><strong>что вообще происходит, когда человек пишет программу?</strong></p>
-<p>На первый взгляд кажется, что программирование начинается с изучения языка. Например, с Python.</p>
-<p>Но язык — это только инструмент.</p>
-<p>Настоящее программирование начинается раньше: с умения сформулировать задачу и разбить её на последовательность понятных действий.</p>
-<p>В этой главе мы разберёмся, что такое программа, почему компьютер не умеет догадываться, зачем существуют языки программирования и какую роль во всём этом играет Python.</p>
-<section id="после-этой-главы-вы-сможете" class="level2">
-<h2 class="anchored" data-anchor-id="после-этой-главы-вы-сможете">После этой главы вы сможете</h2>
-<p>После изучения главы вы сможете:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важное уведомление
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Главный вопрос главы:</p>
+<p><strong>Если компьютер знает только 0 и 1, как он хранит текст, числа, фотографии, музыку и программы?</strong></p>
+</div>
+</div>
+<p>После предыдущей главы мы уже знаем важную вещь:</p>
+<blockquote class="blockquote">
+<p>Любая информация внутри компьютера состоит только из нулей и единиц.</p>
+</blockquote>
+<p>Но возникает следующий вопрос.</p>
+<p>Когда вы открываете фотографию, запускаете игру или читаете текстовый файл, вы не видите последовательность вроде</p>
+<pre><code>010011010100101011...</code></pre>
+<p>Вы видите изображение, буквы, числа и кнопки.</p>
+<p>Почему?</p>
+<p>Потому что сами биты ничего не означают.</p>
+<p>Смысл появляется только тогда, когда существует правило их интерпретации.</p>
+<hr>
+<section id="бит-самая-маленькая-единица-информации" class="level1">
+<h1>Бит — самая маленькая единица информации</h1>
+<p>Бит может принимать только два значения.</p>
+<pre><code>0</code></pre>
+<p>или</p>
+<pre><code>1</code></pre>
+<p>Это похоже на обычный выключатель.</p>
+<pre><code>Выключено -&gt; 0
+
+Включено -&gt; 1</code></pre>
+<p>Одного бита почти никогда недостаточно.</p>
+<p>Поэтому биты объединяют в группы.</p>
+<hr>
+</section>
+<section id="байт" class="level1">
+<h1>Байт</h1>
+<p>Самая известная группа — <strong>байт</strong>.</p>
+<p>Один байт состоит из восьми битов.</p>
+<pre><code>10100110</code></pre>
+<p>или</p>
+<pre><code>00000000</code></pre>
+<p>или</p>
+<pre><code>11111111</code></pre>
+<p>Всего существует</p>
+<pre><code>2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256</code></pre>
+<p>различных комбинаций.</p>
+<p>Поэтому один байт способен хранить одно из <strong>256 различных значений</strong>.</p>
+<p>Это очень удобно.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter03/bit-and-byte.svg" class="img-fluid figure-img"></p>
+<figcaption>Восемь битов образуют один байт.</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="как-компьютер-понимает-что-хранится-в-байте" class="level1">
+<h1>Как компьютер понимает, что хранится в байте?</h1>
+<p>Представьте число</p>
+<pre><code>65</code></pre>
+<p>Что это означает?</p>
+<p>Без контекста — ничего.</p>
+<p>Это может быть:</p>
 <ul>
-<li>объяснить своими словами, что такое программа;</li>
-<li>понимать разницу между задачей, алгоритмом и кодом;</li>
-<li>объяснить, почему компьютеру нужны точные инструкции;</li>
-<li>понимать, зачем существуют языки программирования;</li>
-<li>объяснить на базовом уровне, что происходит после запуска Python-программы;</li>
-<li>разбивать простую бытовую задачу на последовательность шагов.</li>
+<li>возраст;</li>
+<li>скорость;</li>
+<li>номер страницы;</li>
+<li>температура.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Главная цель главы">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>То же самое происходит с байтами.</p>
+<p>Последовательность</p>
+<pre><code>01000001</code></pre>
+<p>сама по себе ничего не означает.</p>
+<p>Но если договориться считать её символом ASCII, получится буква</p>
+<pre><code>A</code></pre>
+<p>Если считать её числом —</p>
+<pre><code>65</code></pre>
+<p>То есть одинаковые биты могут означать разные вещи.</p>
+<p>Все зависит от правил.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter03/same-bits-different-meaning.svg" class="img-fluid figure-img"></p>
+<figcaption>Одинаковые биты получают смысл только через правило интерпретации.</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Уведомление</span>Главная цель главы
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Пока не нужно запоминать команды Python.</p>
-<p>Сначала необходимо понять принцип: <strong>компьютер выполняет инструкции, а разработчик эти инструкции проектирует.</strong></p>
-</div>
-</div>
+<hr>
 </section>
-<section id="вы-уже-сталкивались-с-программированием" class="level2">
-<h2 class="anchored" data-anchor-id="вы-уже-сталкивались-с-программированием">Вы уже сталкивались с программированием</h2>
-<p>Представим простую задачу:</p>
-<p><strong>приготовить чашку чая.</strong></p>
-<p>Для человека этой фразы обычно достаточно. Мы автоматически понимаем, что нужно сделать.</p>
-<p>Налить воду. Включить чайник. Подготовить кружку. Положить чай. Дождаться кипения воды. Налить воду в кружку.</p>
-<p>Большую часть этих действий мы даже не проговариваем.</p>
-<p>Наш мозг самостоятельно заполняет пропущенные шаги.</p>
-<p>Но теперь представим устройство, которое умеет выполнять команды, но совершенно не умеет догадываться.</p>
-<p>Мы говорим ему:</p>
-<blockquote class="blockquote">
-<p>Приготовь чай.</p>
-</blockquote>
-<p>Для человека инструкция понятна.</p>
-<p>Для машины — практически бесполезна.</p>
-<p>Нужно описать задачу гораздо точнее:</p>
-<ol type="1">
-<li>Найди чайник.</li>
-<li>Проверь, есть ли в нём вода.</li>
-<li>Если воды недостаточно — добавь её.</li>
-<li>Подключи чайник к электропитанию.</li>
-<li>Включи чайник.</li>
-<li>Возьми кружку.</li>
-<li>Положи в неё чай.</li>
-<li>Дождись кипения воды.</li>
-<li>Налей горячую воду в кружку.</li>
-<li>Подожди несколько минут.</li>
-</ol>
-<p>Теперь большая задача превратилась в последовательность небольших действий.</p>
-<p>Именно с этого начинается программирование.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Запомните">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="как-хранится-текст" class="level1">
+<h1>Как хранится текст</h1>
+<p>Компьютер не хранит буквы.</p>
+<p>Он хранит номера букв.</p>
+<p>Например,</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Символ</th>
+<th style="text-align: right;">Код</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">66</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">67</td>
+</tr>
+</tbody>
+</table>
+<p>Когда вы набираете</p>
+<pre><code>ABC</code></pre>
+<p>в памяти оказывается примерно следующее:</p>
+<pre><code>65 66 67</code></pre>
+<p>или в двоичном виде</p>
+<pre><code>01000001
+01000010
+01000011</code></pre>
+<p>Позже программа снова превращает эти числа в буквы.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter03/text-to-bits.svg" class="img-fluid figure-img"></p>
+<figcaption>Текст хранится как числовые коды, представленные битами.</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Важное уведомление</span>Запомните
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Программирование — это прежде всего умение разбивать задачу на понятные и точные шаги.</strong></p>
-<p>Язык программирования нужен уже после того, как мы понимаем, какие действия должен выполнить компьютер.</p>
-</div>
-</div>
+<hr>
 </section>
-<section id="задача-алгоритм-и-программа" class="level2">
-<h2 class="anchored" data-anchor-id="задача-алгоритм-и-программа">Задача, алгоритм и программа</h2>
-<p>На этом этапе важно различать три понятия:</p>
-<p><strong>задача</strong> — результат, который мы хотим получить;</p>
-<p><strong>алгоритм</strong> — последовательность действий для достижения результата;</p>
-<p><strong>программа</strong> — алгоритм, записанный в форме, которую компьютер способен выполнить.</p>
-<p>Возьмём простой пример.</p>
-<p>Наша задача:</p>
-<blockquote class="blockquote">
-<p>узнать остаток денег после ежемесячных расходов.</p>
-</blockquote>
-<p>Алгоритм можно описать обычным языком:</p>
-<ol type="1">
-<li>Узнать месячный доход.</li>
-<li>Узнать месячные расходы.</li>
-<li>Вычесть расходы из дохода.</li>
-<li>Показать результат.</li>
-</ol>
-<p>А позже мы сможем записать этот алгоритм на Python:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>monthly_income <span class="op">=</span> <span class="dv">5000</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>monthly_expenses <span class="op">=</span> <span class="dv">3200</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>balance <span class="op">=</span> monthly_income <span class="op">-</span> monthly_expenses</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(balance)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Сейчас не нужно разбираться в каждой строке.</p>
-<p>Важно увидеть связь:</p>
-<pre class="text"><code>Задача
-   ↓
-Алгоритм
-   ↓
-Код
-   ↓
-Выполнение
-   ↓
-Результат</code></pre>
-<p>Код не появляется из ниоткуда.</p>
-<p>Перед кодом почти всегда должно существовать понимание того, <strong>что именно должна делать программа</strong>.</p>
+<section id="почему-этого-оказалось-недостаточно" class="level1">
+<h1>Почему этого оказалось недостаточно</h1>
+<p>ASCII содержал только 128 символов.</p>
+<p>Для английского языка этого хватало.</p>
+<p>Но как быть с</p>
+<pre><code>Привет
+こんにちは
+مرحبا
+😀</code></pre>
+<p>Появился Unicode.</p>
+<p>Он назначает номер практически каждому символу, существующему сегодня.</p>
+<p>Поэтому современные программы способны одновременно показывать русский, японский, арабский и эмодзи.</p>
+<hr>
 </section>
-<section id="компьютер-не-умеет-догадываться" class="level2">
-<h2 class="anchored" data-anchor-id="компьютер-не-умеет-догадываться">Компьютер не умеет догадываться</h2>
-<p>Одна из важнейших мыслей для начинающего разработчика:</p>
-<p><strong>компьютер не понимает намерения программиста.</strong></p>
-<p>Он выполняет то, что написано.</p>
-<p>Не то, что мы хотели написать.</p>
-<p>Не то, что имели в виду.</p>
-<p>И не то, что кажется очевидным человеку.</p>
-<p>Представим инструкцию:</p>
-<blockquote class="blockquote">
-<p>Если пользователь взрослый, разрешить регистрацию.</p>
-</blockquote>
-<p>Человек понимает общий смысл.</p>
-<p>Но компьютеру этого недостаточно.</p>
-<p>Что значит «взрослый»?</p>
-<p>18 лет?</p>
-<p>21 год?</p>
-<p>Возраст должен быть больше 18 или больше либо равен 18?</p>
-<p>Что делать, если возраст вообще не указан?</p>
-<p>Что делать, если вместо возраста пользователь ввёл слово?</p>
-<p>Каждый подобный вопрос разработчику приходится превращать в конкретные правила.</p>
-<p>Например:</p>
-<pre class="text"><code>Если возраст пользователя больше или равен 18:
-    разрешить регистрацию.
-Иначе:
-    отказать в регистрации.</code></pre>
-<p>Позже это превратится в настоящий Python-код.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Как думает разработчик">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Совет</span>Как думает разработчик
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Начинающий программист часто спрашивает:</p>
-<blockquote class="blockquote">
-<p>Какую команду Python мне здесь написать?</p>
-</blockquote>
-<p>Более полезный вопрос:</p>
-<blockquote class="blockquote">
-<p>Какие точные действия должна выполнить программа?</p>
-</blockquote>
-<p>Сначала решение. Затем код.</p>
-</div>
-</div>
+<section id="как-хранится-число" class="level1">
+<h1>Как хранится число</h1>
+<p>Компьютер не знает, что такое “сорок два”.</p>
+<p>Он хранит двоичное представление.</p>
+<p>Например,</p>
+<pre><code>42</code></pre>
+<p>становится</p>
+<pre><code>00101010</code></pre>
+<p>Для компьютера это просто набор битов.</p>
+<p>Если программа знает, что это число, она выполняет арифметику.</p>
+<p>Если считает, что это символ, получит совершенно другой результат.</p>
+<hr>
 </section>
-<section id="первая-практика" class="level2">
-<h2 class="anchored" data-anchor-id="первая-практика">Первая практика</h2>
-<p>Пока не открывайте Python.</p>
-<p>Попробуйте выполнить упражнение обычным текстом.</p>
-<p>Нужно написать инструкцию для робота, который должен почистить зубы.</p>
-<p>Плохой вариант:</p>
-<pre class="text"><code>1. Взять щётку.
-2. Почистить зубы.</code></pre>
-<p>Слишком много действий скрыто внутри второго шага.</p>
-<p>Попробуйте описать процесс подробнее.</p>
-<p>Например, подумайте:</p>
+<section id="как-хранится-изображение" class="level1">
+<h1>Как хранится изображение</h1>
+<p>Фотография — это вовсе не рисунок.</p>
+<p>Это огромная таблица пикселей.</p>
+<p>Например,</p>
+<pre><code>🟥 🟩 🟦
+⬜ ⬛ 🟨</code></pre>
+<p>Каждый пиксель имеет цвет.</p>
+<p>Цвет тоже можно записать числами.</p>
+<p>Например,</p>
+<pre><code>Красный
+R = 255
+G = 0
+B = 0</code></pre>
+<p>или</p>
+<pre><code>Зелёный
+
+R = 0
+G = 255
+B = 0</code></pre>
+<p>Таким образом фотография превращается в огромное количество чисел.</p>
+<p>А числа уже легко представить битами.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter03/pixels-and-rgb.svg" class="img-fluid figure-img"></p>
+<figcaption>Изображение хранится как сетка пикселей, а цвет каждого пикселя задаётся числами RGB.</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="как-хранится-музыка" class="level1">
+<h1>Как хранится музыка</h1>
+<p>Музыка — это изменение давления воздуха.</p>
+<p>Микрофон много тысяч раз в секунду измеряет это давление.</p>
+<p>Получается последовательность чисел.</p>
+<p>Например,</p>
+<pre><code>125
+127
+130
+126
+120
+...</code></pre>
+<p>Компьютер хранит именно эти числа.</p>
+<p>При воспроизведении динамик выполняет процесс в обратную сторону.</p>
+<hr>
+</section>
+<section id="как-хранится-программа" class="level1">
+<h1>Как хранится программа</h1>
+<p>Самое интересное — программы тоже являются данными.</p>
+<p>Файл Python</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>хранится как обычный текст.</p>
+<p>Но после запуска интерпретатор читает этот текст и начинает выполнять инструкции.</p>
+<p>То есть один и тот же набор битов может быть:</p>
 <ul>
-<li>откуда взять зубную щётку;</li>
-<li>что сделать с зубной пастой;</li>
-<li>сколько пасты использовать;</li>
-<li>когда открыть воду;</li>
-<li>когда её закрыть;</li>
-<li>сколько времени чистить зубы;</li>
-<li>что сделать со щёткой после использования.</li>
+<li>текстом;</li>
+<li>программой;</li>
+<li>изображением;</li>
+<li>музыкой.</li>
 </ul>
-<p>Чем точнее инструкция, тем ближе она к алгоритму.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Типичная ошибка новичка">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Все определяется тем, <strong>кто именно читает эти данные</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter03/everything-to-bits.svg" class="img-fluid figure-img"></p>
+<figcaption>Текст, числа, изображения, звук и программы сводятся к числам и битам.</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Предупреждение</span>Типичная ошибка новичка
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Не пытайтесь сразу переводить любую задачу в Python.</p>
-<p>Сначала научитесь формулировать решение обычными словами.</p>
-<p>Если алгоритм непонятен на русском языке, код почти наверняка тоже получится запутанным.</p>
-</div>
-</div>
+<hr>
 </section>
-<section id="короткий-итог" class="level2">
-<h2 class="anchored" data-anchor-id="короткий-итог">Короткий итог</h2>
-<p>На этом этапе достаточно запомнить четыре вещи:</p>
-<ol type="1">
-<li>У программы всегда есть задача.</li>
-<li>Задачу необходимо разбить на последовательность действий.</li>
-<li>Компьютер выполняет инструкции буквально.</li>
-<li>Python нужен для записи этих инструкций в форме, которую можно выполнить.</li>
-</ol>
-<p>В следующем разделе мы разберёмся, <strong>почему компьютер вообще способен работать только с очень простыми сигналами и откуда появились знаменитые 0 и 1</strong>.</p>
+<section id="главное-что-нужно-запомнить" class="level1">
+<h1>Главное, что нужно запомнить</h1>
+<p>Компьютер хранит только последовательности битов.</p>
+<p>Никаких букв, фотографий или музыки внутри памяти нет.</p>
+<p>Есть лишь числа.</p>
+<p>Именно программы знают, как превратить эти числа обратно в текст, изображения, звук или команды.</p>
+<p>Поэтому можно сказать так:</p>
+<blockquote class="blockquote">
+<p>Компьютер хранит не сами данные, а их двоичное представление.</p>
+</blockquote>
+<hr>
+</section>
+<section id="что-дальше" class="level1">
+<h1>Что дальше?</h1>
+<p>Теперь мы понимаем:</p>
+<ul>
+<li>почему всё сводится к битам;</li>
+<li>как появляются байты;</li>
+<li>почему существуют кодировки;</li>
+<li>как текст, изображения и числа становятся последовательностями битов.</li>
+</ul>
+<p>Но остается следующий вопрос.</p>
+<p>Даже если программа уже хранится в памяти как набор битов, <strong>как процессор начинает её выполнять?</strong></p>
+<p>Именно об этом будет следующая глава:</p>
+<p><strong>«Как компьютер выполняет программы».</strong></p>
 
 
 </section>
@@ -888,13 +938,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/tom-01-basics.html" class="pagination-link" aria-label="2 Том I. Основы программирования">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2 Том I. Основы программирования</span>
+      <a href="../../book/chapters/02-why-binary.html" class="pagination-link" aria-label="2.2 Почему компьютер понимает только 0 и 1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.2 Почему компьютер понимает только 0 и 1</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/chapters/02-why-binary.html" class="pagination-link" aria-label="2.2 Почему компьютер понимает только 0 и 1">
-        <span class="nav-page-text">2.2 Почему компьютер понимает только 0 и 1</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/chapters/04-how-programs-run.html" class="pagination-link" aria-label="2.4 Как запускаются программы">
+        <span class="nav-page-text">2.4 Как запускаются программы</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

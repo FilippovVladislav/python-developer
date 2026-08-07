@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Откуда появились нули и единицы, почему компьютер использует два состояния и как из электрических сигналов рождается информация.">
+
+<title>2.2 Почему компьютер понимает только 0 и 1 – Путь Python-разработчика</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/chapters/03-how-computers-store-data.html" rel="next">
+<link href="../../book/chapters/01-thinking-like-computer.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-621a3521207ae6c08960dbf0e9d8aa65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/02-why-binary.html">2.2 Почему компьютер понимает только 0 и 1</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Путь Python-разработчика</a> 
+        <div class="sidebar-tools-main">
+    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Том I. Основы программирования</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 Как думает компьютер</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 Как запускаются программы</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Почему Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Рабочее пространство Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.8 Первая Python-программа</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#почему-компьютер-не-понимает-человеческий-язык" id="toc-почему-компьютер-не-понимает-человеческий-язык" class="nav-link active" data-scroll-target="#почему-компьютер-не-понимает-человеческий-язык">Почему компьютер не понимает человеческий язык</a></li>
+  <li><a href="#что-находится-внутри-компьютера" id="toc-что-находится-внутри-компьютера" class="nav-link" data-scroll-target="#что-находится-внутри-компьютера">Что находится внутри компьютера</a></li>
+  <li><a href="#почему-именно-два-состояния" id="toc-почему-именно-два-состояния" class="nav-link" data-scroll-target="#почему-именно-два-состояния">Почему именно два состояния</a></li>
+  <li><a href="#откуда-появились-0-и-1" id="toc-откуда-появились-0-и-1" class="nav-link" data-scroll-target="#откуда-появились-0-и-1">Откуда появились 0 и 1</a></li>
+  <li><a href="#что-такое-бит" id="toc-что-такое-бит" class="nav-link" data-scroll-target="#что-такое-бит">Что такое бит</a></li>
+  <li><a href="#как-из-двух-состояний-получается-сложная-информация" id="toc-как-из-двух-состояний-получается-сложная-информация" class="nav-link" data-scroll-target="#как-из-двух-состояний-получается-сложная-информация">Как из двух состояний получается сложная информация</a></li>
+  <li><a href="#всё-превращается-в-числа" id="toc-всё-превращается-в-числа" class="nav-link" data-scroll-target="#всё-превращается-в-числа">Всё превращается в числа</a></li>
+  <li><a href="#что-происходит-технически" id="toc-что-происходит-технически" class="nav-link" data-scroll-target="#что-происходит-технически">Что происходит технически</a></li>
+  <li><a href="#от-транзисторов-к-логическим-операциям" id="toc-от-транзисторов-к-логическим-операциям" class="nav-link" data-scroll-target="#от-транзисторов-к-логическим-операциям">От транзисторов к логическим операциям</a></li>
+  <li><a href="#немного-истории" id="toc-немного-истории" class="nav-link" data-scroll-target="#немного-истории">Немного истории</a></li>
+  <li><a href="#почему-это-важно-будущему-python-разработчику" id="toc-почему-это-важно-будущему-python-разработчику" class="nav-link" data-scroll-target="#почему-это-важно-будущему-python-разработчику">Почему это важно будущему Python-разработчику</a></li>
+  <li><a href="#практика" id="toc-практика" class="nav-link" data-scroll-target="#практика">Практика</a>
+  <ul class="collapse">
+  <li><a href="#задание-1" id="toc-задание-1" class="nav-link" data-scroll-target="#задание-1">Задание 1</a></li>
+  <li><a href="#задание-2" id="toc-задание-2" class="nav-link" data-scroll-target="#задание-2">Задание 2</a></li>
+  <li><a href="#задание-3" id="toc-задание-3" class="nav-link" data-scroll-target="#задание-3">Задание 3</a></li>
+  </ul></li>
+  <li><a href="#проверьте-себя" id="toc-проверьте-себя" class="nav-link" data-scroll-target="#проверьте-себя">Проверьте себя</a></li>
+  <li><a href="#главное-что-нужно-запомнить" id="toc-главное-что-нужно-запомнить" class="nav-link" data-scroll-target="#главное-что-нужно-запомнить">Главное, что нужно запомнить</a></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/02-why-binary.html">2.2 Почему компьютер понимает только 0 и 1</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">2.2 Почему компьютер понимает только 0 и 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>В предыдущей главе мы разобрались, что компьютер выполняет только точные инструкции.</p>
+<p>Но возникает следующий вопрос:</p>
+<p><strong>почему компьютер вообще работает с нулями и единицами?</strong></p>
+<p>Почему нельзя заставить его сразу понимать слова, числа или команды так, как это делает человек?</p>
+<p>Чтобы ответить на этот вопрос, нужно немного заглянуть внутрь компьютера.</p>
+<p>Не слишком глубоко. Нам не понадобится изучать электронику или физику полупроводников.</p>
+<p>Для Python-разработчика важно понять только основной принцип.</p>
+<section id="почему-компьютер-не-понимает-человеческий-язык" class="level2">
+<h2 class="anchored" data-anchor-id="почему-компьютер-не-понимает-человеческий-язык">Почему компьютер не понимает человеческий язык</h2>
+<p>Человек умеет использовать контекст.</p>
+<p>Если сказать:</p>
+<blockquote class="blockquote">
+<p>Сделай чай.</p>
+</blockquote>
+<p>другой человек обычно понимает, что нужно сделать.</p>
+<p>Он знает:</p>
+<ul>
+<li>где находится чайник;</li>
+<li>сколько примерно налить воды;</li>
+<li>какую кружку взять;</li>
+<li>когда вода закипела;</li>
+<li>что означает слово «чай».</li>
+</ul>
+<p>Большая часть информации вообще не проговаривается.</p>
+<p>Наш мозг автоматически достраивает недостающие шаги.</p>
+<p>Компьютер так не умеет.</p>
+<p>Если программа должна выполнить определённое действие, это действие необходимо описать достаточно точно.</p>
+<p>Компьютер не понимает намерение разработчика.</p>
+<p>Он выполняет только то, что действительно указано в программе.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Главная мысль">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важное уведомление</span>Главная мысль
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Компьютер не обладает здравым смыслом.</p>
+<p>Он не догадывается, что программист хотел сделать.</p>
+<p>Он выполняет конкретные инструкции.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter02/human-vs-computer.svg" class="img-fluid figure-img" alt="Сравнение человека и компьютера при выполнении инструкции"></p>
+<figcaption>Человек использует контекст, а компьютеру нужны точные инструкции</figcaption>
+</figure>
+</div>
+</section>
+<section id="что-находится-внутри-компьютера" class="level2">
+<h2 class="anchored" data-anchor-id="что-находится-внутри-компьютера">Что находится внутри компьютера</h2>
+<p>Современный компьютер состоит из огромного количества электронных компонентов.</p>
+<p>Один из самых важных — <strong>транзистор</strong>.</p>
+<p>Транзистор — это очень маленький электронный переключатель.</p>
+<p>Для понимания программирования его можно представить как обычный выключатель света.</p>
+<p>Выключатель имеет два устойчивых состояния:</p>
+<pre class="text"><code>Включён
+
+Выключен</code></pre>
+<p>Транзистор работает по похожему принципу.</p>
+<p>В упрощённом виде для нас достаточно считать, что он различает два состояния электрического сигнала:</p>
+<pre class="text"><code>Высокий уровень сигнала
+
+Низкий уровень сигнала</code></pre>
+<p>Или ещё проще:</p>
+<pre class="text"><code>Есть сигнал
+
+Нет сигнала</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Насколько точно это объяснение?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Насколько точно это объяснение?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В реальной электронике всё немного сложнее.</p>
+<p>Компьютер работает не с буквальными состояниями «ток есть» и «тока нет», а с диапазонами напряжений, которые электронные схемы интерпретируют как два логических состояния.</p>
+<p>Но для первого знакомства модель «включено / выключено» достаточно точно передаёт основной принцип.</p>
+</div>
+</div>
+<p>Современный процессор содержит огромное количество транзисторов.</p>
+<p>Каждый из них очень мал, но вместе они способны выполнять миллиарды операций.</p>
+<p>Чем больше транзисторов можно разместить внутри микросхемы и чем быстрее они переключаются, тем более сложные вычисления способен выполнять процессор.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter02/transistor-switch.svg" class="img-fluid figure-img" alt="Упрощённая схема двух состояний транзистора"></p>
+<figcaption>Транзистор как электронный переключатель</figcaption>
+</figure>
+</div>
+</section>
+<section id="почему-именно-два-состояния" class="level2">
+<h2 class="anchored" data-anchor-id="почему-именно-два-состояния">Почему именно два состояния</h2>
+<p>Можно задать вполне разумный вопрос:</p>
+<blockquote class="blockquote">
+<p>Почему только два?</p>
+</blockquote>
+<p>Почему не три?</p>
+<p>Почему не десять?</p>
+<p>Теоретически вычислительную систему можно построить и на другом количестве состояний.</p>
+<p>Такие идеи действительно существовали и существуют.</p>
+<p>Но двоичная система оказалась чрезвычайно удобной для электронной техники.</p>
+<p>Причина — <strong>надёжность</strong>.</p>
+<p>Представим, что электронная схема должна различать десять уровней напряжения.</p>
+<p>Условно:</p>
+<pre class="text"><code>0.5 В
+1.0 В
+1.5 В
+2.0 В
+...</code></pre>
+<p>Тогда даже небольшая помеха может привести к ошибке.</p>
+<p>Например, устройство ожидало 1.5 В, а из-за электрического шума получило 1.6 В.</p>
+<p>Какое это состояние?</p>
+<p>Чем больше состояний должна различать система, тем сложнее надёжно определить каждое из них.</p>
+<p>С двумя состояниями гораздо проще.</p>
+<p>Электронная схема может работать по принципу:</p>
+<pre class="text"><code>Низкий уровень → одно состояние
+
+Высокий уровень → другое состояние</code></pre>
+<p>Между ними можно оставить запас.</p>
+<p>Если сигнал немного изменится из-за помех, схема всё равно правильно определит его состояние.</p>
+<p>Именно поэтому два состояния особенно хорошо подходят для быстрых и надёжных цифровых устройств.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Простая аналогия">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Совет</span>Простая аналогия
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Представьте два выключателя.</p>
+<p>Первый имеет только два положения:</p>
+<pre class="text"><code>ВКЛ
+ВЫКЛ</code></pre>
+<p>Второй имеет десять очень близко расположенных положений.</p>
+<p>Каким выключателем проще пользоваться без ошибки?</p>
+<p>Примерно по той же причине электронным схемам удобно работать с двумя состояниями.</p>
+</div>
+</div>
+</section>
+<section id="откуда-появились-0-и-1" class="level2">
+<h2 class="anchored" data-anchor-id="откуда-появились-0-и-1">Откуда появились 0 и 1</h2>
+<p>Сами транзисторы не знают никаких цифр.</p>
+<p>Внутри компьютера не бегают настоящие нули и единицы.</p>
+<p>Цифры <strong>0</strong> и <strong>1</strong> придумали люди как удобные обозначения двух состояний.</p>
+<p>Условно можно записать:</p>
+<pre class="text"><code>Низкий уровень сигнала → 0
+
+Высокий уровень сигнала → 1</code></pre>
+<p>Можно было выбрать и другие обозначения:</p>
+<pre class="text"><code>НЕТ / ДА
+
+ВЫКЛ / ВКЛ
+
+FALSE / TRUE
+
+ЧЁРНЫЙ / БЕЛЫЙ</code></pre>
+<p>Принцип работы компьютера от этого бы не изменился.</p>
+<p>Но обозначения <code>0</code> и <code>1</code> оказались особенно удобными, потому что позволяют использовать <strong>двоичную систему счисления</strong>.</p>
+<p>О ней мы поговорим подробнее позже.</p>
+<p>Пока достаточно понимать:</p>
+<p><strong>0 и 1 — это математические обозначения двух физических состояний.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter02/light-bulbs.svg" class="img-fluid figure-img" alt="Последовательность включённых и выключенных лампочек и соответствующие нули и единицы"></p>
+<figcaption>Включённые и выключенные состояния можно записать как последовательность нулей и единиц</figcaption>
+</figure>
+</div>
+</section>
+<section id="что-такое-бит" class="level2">
+<h2 class="anchored" data-anchor-id="что-такое-бит">Что такое бит</h2>
+<p>Теперь можно аккуратно познакомиться с первым важным термином.</p>
+<p><strong>Бит</strong> — это минимальная единица цифровой информации, которая может принимать одно из двух значений:</p>
+<pre class="text"><code>0</code></pre>
+<p>или</p>
+<pre class="text"><code>1</code></pre>
+<p>Слово <code>bit</code> произошло от английского выражения:</p>
+<p><strong>binary digit</strong> — двоичная цифра.</p>
+<p>Один бит способен хранить только два варианта.</p>
+<p>Например:</p>
+<pre class="text"><code>0 → нет
+
+1 → да</code></pre>
+<p>или:</p>
+<pre class="text"><code>0 → свет выключен
+
+1 → свет включён</code></pre>
+<p>Но одного бита недостаточно для хранения сложной информации.</p>
+<p>Поэтому компьютеры используют большие последовательности битов.</p>
+<p>Например:</p>
+<pre class="text"><code>01000001</code></pre>
+<p>Здесь уже восемь битов.</p>
+<p>Группа из восьми битов называется <strong>байтом</strong>.</p>
+<p>Подробно с битами, байтами и тем, как из них складываются данные, мы познакомимся в следующей главе.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Не нужно зубрить">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Не нужно зубрить
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Пока достаточно запомнить:</p>
+<ul>
+<li>бит принимает значение <code>0</code> или <code>1</code>;</li>
+<li>несколько битов можно объединять;</li>
+<li>из больших последовательностей битов компьютер строит сложные данные.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="как-из-двух-состояний-получается-сложная-информация" class="level2">
+<h2 class="anchored" data-anchor-id="как-из-двух-состояний-получается-сложная-информация">Как из двух состояний получается сложная информация</h2>
+<p>На первый взгляд кажется странным:</p>
+<p>как всего два состояния могут описать фотографию, музыку или целую компьютерную игру?</p>
+<p>Ответ заключается в количестве комбинаций.</p>
+<p>Возьмём один бит:</p>
+<pre class="text"><code>0
+1</code></pre>
+<p>Возможно только <strong>2 комбинации</strong>.</p>
+<p>Теперь два бита:</p>
+<pre class="text"><code>00
+01
+10
+11</code></pre>
+<p>Уже <strong>4 комбинации</strong>.</p>
+<p>Три бита:</p>
+<pre class="text"><code>000
+001
+010
+011
+100
+101
+110
+111</code></pre>
+<p>Получаем <strong>8 комбинаций</strong>.</p>
+<p>Чем больше битов, тем больше разных состояний можно закодировать.</p>
+<p>Для <code>n</code> битов количество комбинаций равно:</p>
+<pre class="text"><code>2ⁿ</code></pre>
+<p>Например:</p>
+<pre class="text"><code>8 бит → 256 комбинаций</code></pre>
+<p>Именно поэтому даже небольшая последовательность битов уже может представлять достаточно много разных значений.</p>
+<p>Компьютер использует огромные последовательности битов.</p>
+<p>Поэтому двух базовых состояний оказывается достаточно для хранения практически любой цифровой информации.</p>
+</section>
+<section id="всё-превращается-в-числа" class="level2">
+<h2 class="anchored" data-anchor-id="всё-превращается-в-числа">Всё превращается в числа</h2>
+<p>Компьютер не хранит букву так, как её видит человек.</p>
+<p>Возьмём:</p>
+<pre class="text"><code>A</code></pre>
+<p>Компьютеру нужно договориться, какое число будет обозначать эту букву.</p>
+<p>Например, в одной из распространённых систем кодирования латинской букве <code>A</code> соответствует число:</p>
+<pre class="text"><code>65</code></pre>
+<p>Число <code>65</code>, в свою очередь, можно представить в двоичной форме:</p>
+<pre class="text"><code>01000001</code></pre>
+<p>Получается цепочка:</p>
+<pre class="text"><code>A
+↓
+65
+↓
+01000001</code></pre>
+<p>С изображениями идея похожая.</p>
+<p>Фотография состоит из пикселей.</p>
+<p>Каждый пиксель описывается числами.</p>
+<p>Например, числа могут определять интенсивность красного, зелёного и синего цветов.</p>
+<p>Дальше эти числа снова представляются последовательностями битов.</p>
+<pre class="text"><code>Фотография
+↓
+Пиксели
+↓
+Числа
+↓
+0 и 1</code></pre>
+<p>Музыка также может быть представлена числами.</p>
+<p>Звуковая волна измеряется много раз в секунду.</p>
+<p>Результаты измерений записываются как числа.</p>
+<pre class="text"><code>Звук
+↓
+Измерения
+↓
+Числа
+↓
+0 и 1</code></pre>
+<p>Видео можно рассматривать как последовательность изображений вместе со звуком.</p>
+<p>Программы тоже состоят из данных и инструкций, которые в конечном итоге представлены тем же способом.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter02/everything-is-data.svg" class="img-fluid figure-img" alt="Преобразование текста, фотографии, музыки и программы в числа и двоичные данные"></p>
+<figcaption>Текст, изображения, звук и программы в конечном итоге превращаются в цифровые данные</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Главная мысль">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важное уведомление</span>Главная мысль
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Компьютер способен работать с текстом, фотографиями, музыкой и программами не потому, что понимает их смысл.</p>
+<p>Он умеет представлять всё это числами.</p>
+<p>А числа можно представить последовательностями <code>0</code> и <code>1</code>.</p>
+</div>
+</div>
+</section>
+<section id="что-происходит-технически" class="level2">
+<h2 class="anchored" data-anchor-id="что-происходит-технически">Что происходит технически</h2>
+<p>Теперь немного точнее посмотрим на путь информации.</p>
+<p>Когда программа работает с некоторым значением, происходит несколько уровней преобразований.</p>
+<p>Упрощённо:</p>
+<pre class="text"><code>Данные программы
+        ↓
+Числовое представление
+        ↓
+Биты
+        ↓
+Электрические сигналы
+        ↓
+Электронные схемы</code></pre>
+<p>Например, Python-программа может работать со строкой:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="st">"Hello"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Для разработчика это текст.</p>
+<p>Python рассматривает его как объект строки.</p>
+<p>Дальше компьютерное оборудование работает уже с машинным представлением этих данных.</p>
+<p>В памяти находятся не слова в человеческом смысле, а закодированные значения.</p>
+<p>На самом нижнем уровне они физически представлены состояниями электронных элементов.</p>
+<p>Важно понимать, что программист почти никогда не работает напрямую с этим уровнем.</p>
+<p>Python специально скрывает большую часть сложности.</p>
+<p>Мы можем писать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="st">"Hello"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>и не думать о том, какие конкретно биты находятся в оперативной памяти.</p>
+<p>Это один из главных принципов программирования:</p>
+<p><strong>каждый следующий уровень скрывает сложность предыдущего.</strong></p>
+<p>Мы ещё много раз встретим эту идею в книге.</p>
+</section>
+<section id="от-транзисторов-к-логическим-операциям" class="level2">
+<h2 class="anchored" data-anchor-id="от-транзисторов-к-логическим-операциям">От транзисторов к логическим операциям</h2>
+<p>Один транзистор сам по себе умеет немного.</p>
+<p>Но транзисторы объединяют в электронные схемы.</p>
+<p>Из них можно создавать так называемые <strong>логические элементы</strong>.</p>
+<p>Они выполняют простые операции над двумя состояниями.</p>
+<p>Например:</p>
+<pre class="text"><code>И
+ИЛИ
+НЕ</code></pre>
+<p>Позже из таких простых операций строятся более сложные схемы:</p>
+<pre class="text"><code>логические элементы
+        ↓
+сумматоры
+        ↓
+регистры
+        ↓
+память
+        ↓
+процессор</code></pre>
+<p>В результате миллиарды очень простых переключателей способны совместно выполнять сложные программы.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Почему это важно программисту">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Почему это важно программисту
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Python-разработчику не нужно уметь проектировать процессоры.</p>
+<p>Но полезно понимать, что любой сложный код в конечном итоге выполняется системой, построенной из огромного количества простых логических операций.</p>
+<p>Это помогает избавиться от ощущения, что компьютер работает благодаря какой-то магии.</p>
+</div>
+</div>
+</section>
+<section id="немного-истории" class="level2">
+<h2 class="anchored" data-anchor-id="немного-истории">Немного истории</h2>
+<p>Первые электронные компьютеры выглядели совсем не так, как современные ноутбуки.</p>
+<p>До появления транзисторов в вычислительной технике широко использовались <strong>электронные лампы</strong>.</p>
+<p>Они выполняли похожую функцию — позволяли управлять электрическими сигналами.</p>
+<p>Но у них были серьёзные недостатки.</p>
+<p>Лампы были:</p>
+<ul>
+<li>большими;</li>
+<li>горячими;</li>
+<li>энергозатратными;</li>
+<li>сравнительно ненадёжными.</li>
+</ul>
+<p>Ранние компьютеры могли занимать целые помещения.</p>
+<p>Появление транзистора позволило резко уменьшить размеры электронных схем.</p>
+<p>Транзисторы были значительно меньше, экономичнее и надёжнее ламп.</p>
+<p>Позже инженеры научились размещать множество транзисторов на одной микросхеме.</p>
+<p>Количество транзисторов продолжало расти.</p>
+<p>Сегодня внутри одного современного процессора могут находиться <strong>миллиарды транзисторов</strong>.</p>
+<p>То, для чего когда-то требовалось целое помещение, теперь помещается в небольшом устройстве.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter02/history-of-computers.svg" class="img-fluid figure-img" alt="Эволюция от электронных ламп к транзисторам, интегральным схемам и современным процессорам"></p>
+<figcaption>Упрощённая эволюция вычислительной техники от электронных ламп до современных процессоров</figcaption>
+</figure>
+</div>
+</section>
+<section id="почему-это-важно-будущему-python-разработчику" class="level2">
+<h2 class="anchored" data-anchor-id="почему-это-важно-будущему-python-разработчику">Почему это важно будущему Python-разработчику</h2>
+<p>Можно задать вопрос:</p>
+<blockquote class="blockquote">
+<p>Если Python скрывает все эти детали, зачем мне вообще знать про транзисторы и биты?</p>
+</blockquote>
+<p>Чтобы писать первые программы, эти знания действительно не обязательны.</p>
+<p>Но они помогают сформировать правильное представление о компьютере.</p>
+<p>Когда позже мы начнём говорить о:</p>
+<ul>
+<li>переменных;</li>
+<li>типах данных;</li>
+<li>памяти;</li>
+<li>файлах;</li>
+<li>кодировках;</li>
+<li>базах данных;</li>
+<li>сетях;</li>
+</ul>
+<p>вы будете понимать, что всё это разные способы организации одной и той же цифровой информации.</p>
+<p>Кроме того, становится понятнее важный принцип:</p>
+<p><strong>абстракции позволяют программисту работать со сложной системой, не думая постоянно о её нижних уровнях.</strong></p>
+<p>Python — один из таких уровней абстракции.</p>
+</section>
+<section id="практика" class="level2">
+<h2 class="anchored" data-anchor-id="практика">Практика</h2>
+<section id="задание-1" class="level3">
+<h3 class="anchored" data-anchor-id="задание-1">Задание 1</h3>
+<p>Представьте четыре выключателя.</p>
+<p>Каждый может быть либо включён, либо выключен.</p>
+<p>Попробуйте самостоятельно записать все возможные комбинации из четырёх состояний с помощью <code>0</code> и <code>1</code>.</p>
+<p>Подсказка:</p>
+<pre class="text"><code>0000
+0001
+0010
+...</code></pre>
+<p>Сколько комбинаций получится?</p>
+</section>
+<section id="задание-2" class="level3">
+<h3 class="anchored" data-anchor-id="задание-2">Задание 2</h3>
+<p>Попробуйте объяснить своими словами:</p>
+<blockquote class="blockquote">
+<p>Почему два состояния удобнее для электронной системы, чем десять?</p>
+</blockquote>
+<p>Не используйте определение из книги дословно.</p>
+<p>Главная задача — сформулировать мысль самостоятельно.</p>
+</section>
+<section id="задание-3" class="level3">
+<h3 class="anchored" data-anchor-id="задание-3">Задание 3</h3>
+<p>Выберите любой объект:</p>
+<ul>
+<li>фотографию;</li>
+<li>песню;</li>
+<li>текстовый документ;</li>
+<li>видео.</li>
+</ul>
+<p>Попробуйте мысленно пройти путь:</p>
+<pre class="text"><code>Объект
+↓
+Как его можно представить числами?
+↓
+Как числа можно представить битами?</code></pre>
+<p>Не нужно знать точные форматы файлов.</p>
+<p>Нас интересует только общий принцип.</p>
+</section>
+</section>
+<section id="проверьте-себя" class="level2">
+<h2 class="anchored" data-anchor-id="проверьте-себя">Проверьте себя</h2>
+<p>Попробуйте ответить без подсказок:</p>
+<ol type="1">
+<li>Что такое транзистор в упрощённом представлении?</li>
+<li>Почему электронным схемам удобно использовать два состояния?</li>
+<li>Действительно ли внутри компьютера находятся цифры <code>0</code> и <code>1</code>?</li>
+<li>Что такое бит?</li>
+<li>Сколько возможных состояний имеет один бит?</li>
+<li>Почему несколько битов позволяют хранить больше информации?</li>
+<li>Как текст можно превратить в двоичные данные?</li>
+<li>Можно ли по одному принципу хранить текст, музыку и фотографии?</li>
+<li>Зачем Python-разработчику понимать эти основы, если Python скрывает работу электроники?</li>
+</ol>
+<p>Если вы можете уверенно объяснить ответы своими словами, значит основная идея главы усвоена.</p>
+</section>
+<section id="главное-что-нужно-запомнить" class="level2">
+<h2 class="anchored" data-anchor-id="главное-что-нужно-запомнить">Главное, что нужно запомнить</h2>
+<ol type="1">
+<li>В основе цифрового компьютера лежат электронные элементы с двумя различимыми состояниями.</li>
+<li>Эти состояния условно обозначают как <code>0</code> и <code>1</code>.</li>
+<li>Один <code>0</code> или <code>1</code> представляет один бит информации.</li>
+<li>Последовательности битов позволяют кодировать множество различных значений.</li>
+<li>Текст, изображения, музыка, видео и программы в конечном итоге представляются цифровыми данными.</li>
+<li>Python скрывает большую часть нижнего уровня и позволяет работать с понятными человеку объектами.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled" title="Главный вывод главы">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важное уведомление</span>Главный вывод главы
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Компьютер не «говорит на языке нулей и единиц».</p>
+<p>Нули и единицы — это удобная математическая модель двух физических состояний электронных схем.</p>
+<p>Комбинируя огромное количество таких простых состояний, компьютер способен хранить данные и выполнять сложнейшие программы.</p>
+</div>
+</div>
+</section>
+<section id="что-дальше" class="level2">
+<h2 class="anchored" data-anchor-id="что-дальше">Что дальше</h2>
+<p>Теперь мы знаем, почему компьютер использует два состояния и откуда появляются <code>0</code> и <code>1</code>.</p>
+<p>Но остаётся важный вопрос:</p>
+<p><strong>как именно из последовательностей битов получаются числа, буквы, изображения и другие данные?</strong></p>
+<p>В следующей главе мы разберёмся, как компьютер хранит информацию и познакомимся с битами, байтами и кодированием данных подробнее.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/chapters/01-thinking-like-computer.html" class="pagination-link" aria-label="2.1 Как думает компьютер">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.1 Как думает компьютер</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../book/chapters/03-how-computers-store-data.html" class="pagination-link" aria-label="2.3 Как компьютер хранит данные">
+        <span class="nav-page-text">2.3 Как компьютер хранит данные</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
