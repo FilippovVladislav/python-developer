@@ -46,22 +46,20 @@ jobs:
 
       - name: Publish HTML to gh-pages
         if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if git ls-remote --exit-code --heads origin gh-pages; then
-            git fetch origin gh-pages
-            git worktree add gh-pages-worktree FETCH_HEAD
-          else
-            git worktree add --orphan gh-pages gh-pages-worktree
-          fi
-
-          find gh-pages-worktree -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          mkdir gh-pages-worktree
           cp -R build/. gh-pages-worktree/
           touch gh-pages-worktree/.nojekyll
 
           cd gh-pages-worktree
+          git init
+          git checkout -b gh-pages
           git add --all
           git commit -m "Publish Quarto book" || exit 0
-          git push origin HEAD:gh-pages
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin gh-pages
