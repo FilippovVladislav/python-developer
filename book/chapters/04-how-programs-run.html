@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Что происходит между нажатием Enter и результатом программы: файл, интерпретатор, память, процесс и вывод.">
 
-<title>2.4 Как запускаются программы – Путь Python-разработчика</title>
+<title>2.4 Как компьютер выполняет программы – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/chapters/05-why-programming-languages.html" rel="next">
+<link href="../../book/chapters/05-why-python.html" rel="next">
 <link href="../../book/chapters/03-how-computers-store-data.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -114,6 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/04-how-programs-run.html">2.4 Как запускаются программы</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/04-how-programs-run.html">2.4 Как компьютер выполняет программы</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -194,31 +194,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2.4 Как запускаются программы</span></a>
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.6 Почему Python</span></a>
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.7 Рабочее пространство Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.8 Первая Python-программа</span></a>
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
       </ul>
@@ -234,9 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#после-этой-главы-вы-сможете" id="toc-после-этой-главы-вы-сможете" class="nav-link active" data-scroll-target="#после-этой-главы-вы-сможете">После этой главы вы сможете</a></li>
-  <li><a href="#файл-с-кодом" id="toc-файл-с-кодом" class="nav-link" data-scroll-target="#файл-с-кодом">Файл с кодом</a></li>
-  <li><a href="#интерпретатор" id="toc-интерпретатор" class="nav-link" data-scroll-target="#интерпретатор">Интерпретатор</a></li>
-  <li><a href="#процесс" id="toc-процесс" class="nav-link" data-scroll-target="#процесс">Процесс</a></li>
+  <li><a href="#программа-это-инструкция-для-компьютера" id="toc-программа-это-инструкция-для-компьютера" class="nav-link" data-scroll-target="#программа-это-инструкция-для-компьютера">Программа — это инструкция для компьютера</a></li>
+  <li><a href="#где-находится-программа-до-запуска" id="toc-где-находится-программа-до-запуска" class="nav-link" data-scroll-target="#где-находится-программа-до-запуска">Где находится программа до запуска</a></li>
+  <li><a href="#что-происходит-после-запуска" id="toc-что-происходит-после-запуска" class="nav-link" data-scroll-target="#что-происходит-после-запуска">Что происходит после запуска</a></li>
+  <li><a href="#как-процессор-выполняет-инструкции" id="toc-как-процессор-выполняет-инструкции" class="nav-link" data-scroll-target="#как-процессор-выполняет-инструкции">Как процессор выполняет инструкции</a></li>
+  <li><a href="#откуда-процессор-знает-какую-инструкцию-выполнять" id="toc-откуда-процессор-знает-какую-инструкцию-выполнять" class="nav-link" data-scroll-target="#откуда-процессор-знает-какую-инструкцию-выполнять">Откуда процессор знает, какую инструкцию выполнять</a></li>
+  <li><a href="#а-где-здесь-python" id="toc-а-где-здесь-python" class="nav-link" data-scroll-target="#а-где-здесь-python">А где здесь Python?</a></li>
   <li><a href="#короткий-итог" id="toc-короткий-итог" class="nav-link" data-scroll-target="#короткий-итог">Короткий итог</a></li>
   <li><a href="#практика" id="toc-практика" class="nav-link" data-scroll-target="#практика">Практика</a></li>
   </ul>
@@ -245,9 +242,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/04-how-programs-run.html">2.4 Как запускаются программы</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/04-how-programs-run.html">2.4 Как компьютер выполняет программы</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2.4 Как запускаются программы</h1>
+<h1 class="title">2.4 Как компьютер выполняет программы</h1>
 </div>
 
 
@@ -264,62 +261,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Когда вы запускаете программу, компьютер не «читает намерения».</p>
-<p>Он выполняет конкретную последовательность действий: находит файл, передает его нужному инструменту, выделяет ресурсы и выполняет инструкции.</p>
-<section id="после-этой-главы-вы-сможете" class="level2">
-<h2 class="anchored" data-anchor-id="после-этой-главы-вы-сможете">После этой главы вы сможете</h2>
-<ul>
-<li>объяснить, что происходит при запуске программы;</li>
-<li>понимать роль файла с кодом;</li>
-<li>отличать программу от процесса;</li>
-<li>понимать, зачем нужен интерпретатор Python.</li>
-</ul>
-</section>
-<section id="файл-с-кодом" class="level2">
-<h2 class="anchored" data-anchor-id="файл-с-кодом">Файл с кодом</h2>
-<p>Python-программа обычно хранится в файле с расширением <code>.py</code>.</p>
-<p>Например:</p>
-<pre class="text"><code>hello.py</code></pre>
-<p>Внутри файла находится текст программы.</p>
-<p>Сам файл еще не выполняется. Чтобы код начал работать, его должен обработать Python.</p>
-</section>
-<section id="интерпретатор" class="level2">
-<h2 class="anchored" data-anchor-id="интерпретатор">Интерпретатор</h2>
-<p><strong>Интерпретатор Python</strong> - это программа, которая читает Python-код и выполняет его.</p>
-<p>Когда вы запускаете команду:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> hello.py</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
-<p>вы просите интерпретатор Python прочитать файл <code>hello.py</code> и выполнить инструкции внутри него.</p>
-</section>
-<section id="процесс" class="level2">
-<h2 class="anchored" data-anchor-id="процесс">Процесс</h2>
-<p>Во время запуска операционная система создает процесс.</p>
-<p>Процесс - это работающая программа вместе с ресурсами, которые ей выделены.</p>
-<p>Например, процесс может использовать:</p>
-<ul>
-<li>память;</li>
-<li>файлы;</li>
-<li>ввод с клавиатуры;</li>
-<li>вывод в терминал.</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Простая схема">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Уведомление</span>Простая схема
+Важное уведомление
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Файл с кодом передается интерпретатору, интерпретатор выполняет инструкции, операционная система управляет ресурсами.</p>
+<p>Главный вопрос главы:</p>
+<p><strong>Если программа хранится в памяти как обычные данные, как процессор начинает её выполнять?</strong></p>
 </div>
 </div>
+<p>Когда вы запускаете программу, компьютер не «читает намерения».</p>
+<p>Он выполняет конкретную последовательность действий: находит файл, загружает нужные данные в оперативную память и передаёт инструкции процессору.</p>
+<section id="после-этой-главы-вы-сможете" class="level2">
+<h2 class="anchored" data-anchor-id="после-этой-главы-вы-сможете">После этой главы вы сможете</h2>
+<ul>
+<li>объяснить, что происходит после запуска программы;</li>
+<li>понимать разницу между файлом программы и работающим процессом;</li>
+<li>объяснить, зачем нужна оперативная память;</li>
+<li>понимать общий цикл работы процессора;</li>
+<li>объяснить, зачем Python-коду нужен интерпретатор.</li>
+</ul>
+</section>
+<section id="программа-это-инструкция-для-компьютера" class="level2">
+<h2 class="anchored" data-anchor-id="программа-это-инструкция-для-компьютера">Программа — это инструкция для компьютера</h2>
+<p>Программа может храниться как обычный файл.</p>
+<p>Например:</p>
+<pre class="text"><code>hello.py</code></pre>
+<p>Внутри файла находится текст программы.</p>
+<p>Сам файл ещё не выполняется. Он просто лежит на накопителе как данные.</p>
+<p>Чтобы программа начала работать, операционная система должна подготовить её к выполнению.</p>
+</section>
+<section id="где-находится-программа-до-запуска" class="level2">
+<h2 class="anchored" data-anchor-id="где-находится-программа-до-запуска">Где находится программа до запуска</h2>
+<p>До запуска программа обычно находится на SSD или другом накопителе.</p>
+<p>Накопитель подходит для долговременного хранения:</p>
+<ul>
+<li>файлы не исчезают после выключения компьютера;</li>
+<li>данные можно хранить долго;</li>
+<li>можно открыть файл позже.</li>
+</ul>
+<p>Но процессор не выполняет программу прямо с накопителя.</p>
+<p>Перед выполнением нужные данные загружаются в оперативную память.</p>
+</section>
+<section id="что-происходит-после-запуска" class="level2">
+<h2 class="anchored" data-anchor-id="что-происходит-после-запуска">Что происходит после запуска</h2>
+<p>После запуска операционная система создаёт процесс.</p>
+<p>Процесс — это работающая программа вместе с ресурсами, которые ей выделены.</p>
+<p>Например, процесс может использовать:</p>
+<ul>
+<li>оперативную память;</li>
+<li>файлы;</li>
+<li>ввод с клавиатуры;</li>
+<li>вывод в терминал.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter04/program-from-disk-to-cpu.svg" class="img-fluid figure-img"></p>
+<figcaption>Путь программы от накопителя к процессору</figcaption>
+</figure>
+</div>
+<p>Главная идея проста: файл программы хранится на накопителе, но во время работы программа находится в оперативной памяти, а процессор выполняет её инструкции.</p>
+</section>
+<section id="как-процессор-выполняет-инструкции" class="level2">
+<h2 class="anchored" data-anchor-id="как-процессор-выполняет-инструкции">Как процессор выполняет инструкции</h2>
+<p>Процессор работает пошагово.</p>
+<p>Он не выполняет всю программу сразу.</p>
+<p>В упрощённом виде его работа выглядит как повторяющийся цикл:</p>
+<ol type="1">
+<li>получить очередную инструкцию;</li>
+<li>понять, что она означает;</li>
+<li>выполнить действие.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter04/fetch-decode-execute.svg" class="img-fluid figure-img"></p>
+<figcaption>Цикл работы процессора: получить, декодировать, выполнить</figcaption>
+</figure>
+</div>
+<p>Этот цикл повторяется очень быстро.</p>
+<p>Именно поэтому программа может выполнять тысячи, миллионы или миллиарды операций за короткое время.</p>
+</section>
+<section id="откуда-процессор-знает-какую-инструкцию-выполнять" class="level2">
+<h2 class="anchored" data-anchor-id="откуда-процессор-знает-какую-инструкцию-выполнять">Откуда процессор знает, какую инструкцию выполнять</h2>
+<p>Процессор должен знать, какую инструкцию выполнить следующей.</p>
+<p>Для этого он хранит указатель на текущую или следующую инструкцию.</p>
+<p>Обычно после одной инструкции процессор переходит к следующей.</p>
+<p>Но не всегда.</p>
+<p>Условия, циклы и вызовы функций могут изменить порядок выполнения.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter04/instruction-pointer.svg" class="img-fluid figure-img"></p>
+<figcaption>Указатель текущей инструкции и переходы</figcaption>
+</figure>
+</div>
+<p>Это одна из причин, почему программа может не просто идти сверху вниз, а принимать решения и повторять действия.</p>
+</section>
+<section id="а-где-здесь-python" class="level2">
+<h2 class="anchored" data-anchor-id="а-где-здесь-python">А где здесь Python?</h2>
+<p>Python-программа обычно хранится в файле с расширением <code>.py</code>.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Привет"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Процессор не выполняет такой текст напрямую.</p>
+<p>Python-код читает специальная программа — интерпретатор Python.</p>
+<p>Когда вы запускаете команду:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> hello.py</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>вы просите интерпретатор Python прочитать файл <code>hello.py</code> и выполнить инструкции внутри него.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter04/python-interpreter.svg" class="img-fluid figure-img"></p>
+<figcaption>Роль интерпретатора Python между файлом и процессором</figcaption>
+</figure>
+</div>
+<p>На этом этапе достаточно понимать общую идею: Python-код обрабатывает интерпретатор, а процессор выполняет инструкции более низкого уровня.</p>
 </section>
 <section id="короткий-итог" class="level2">
 <h2 class="anchored" data-anchor-id="короткий-итог">Короткий итог</h2>
-<p>Программа хранится как текстовый файл.</p>
-<p>При запуске Python читает этот файл и выполняет инструкции.</p>
-<p>Работающая программа становится процессом.</p>
+<p>Программа хранится как файл.</p>
+<p>После запуска операционная система создаёт процесс и загружает нужные данные в оперативную память.</p>
+<p>Процессор получает инструкции, декодирует их и выполняет.</p>
+<p>Python-код не выполняется процессором напрямую: между файлом <code>.py</code> и процессором находится интерпретатор Python.</p>
 </section>
 <section id="практика" class="level2">
 <h2 class="anchored" data-anchor-id="практика">Практика</h2>
@@ -329,6 +394,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 </main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -741,8 +823,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/chapters/05-why-programming-languages.html" class="pagination-link" aria-label="2.5 Зачем нужны языки программирования">
-        <span class="nav-page-text">2.5 Зачем нужны языки программирования</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/chapters/05-why-python.html" class="pagination-link" aria-label="2.5 Почему Python">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

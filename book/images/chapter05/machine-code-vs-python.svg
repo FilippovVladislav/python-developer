@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Машинные инструкции и Python-код</title>
+  <desc id="desc">Слева условные машинные инструкции, справа короткий Python-код, который легче читать человеку.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .machine { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .python { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 25px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 30px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Человеку удобнее писать на языке высокого уровня</text>
+
+  <rect class="machine" x="115" y="155" width="390" height="360" rx="20"/>
+  <text class="text label ink" x="310" y="210" text-anchor="middle">Машинные инструкции</text>
+  <rect class="card" x="170" y="250" width="280" height="170" rx="14"/>
+  <text class="mono blue" x="310" y="290" text-anchor="middle">10110000</text>
+  <text class="mono blue" x="310" y="330" text-anchor="middle">01100001</text>
+  <text class="mono blue" x="310" y="370" text-anchor="middle">11001010</text>
+  <text class="mono blue" x="310" y="410" text-anchor="middle">00010111</text>
+  <text class="text body muted" x="310" y="468" text-anchor="middle">сложно читать человеку</text>
+
+  <path class="line" d="M525 335h150"/>
+  <path class="line" d="M663 323l12 12-12 12"/>
+  <text class="text body muted" x="600" y="305" text-anchor="middle">уровень удобства</text>
+
+  <rect class="python" x="695" y="155" width="390" height="360" rx="20"/>
+  <text class="text label ink" x="890" y="210" text-anchor="middle">Python</text>
+  <rect class="card" x="750" y="285" width="280" height="88" rx="14"/>
+  <text class="mono olive" x="890" y="340" text-anchor="middle">print("Привет")</text>
+  <text class="text body muted" x="890" y="468" text-anchor="middle">удобно читать человеку</text>
+
+  <text class="text body muted" x="600" y="610" text-anchor="middle">Это концептуальная схема: справа не точный перевод левого блока</text>
+</svg>

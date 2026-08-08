@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Почему люди не пишут программы напрямую нулями и единицами, и как языки программирования помогают выражать решения.">
+<meta name="description" content="Какие инструменты нужны для первых программ: Python, редактор кода, терминал, папка проекта и виртуальное окружение.">
 
-<title>2.5 Зачем нужны языки программирования – Путь Python-разработчика</title>
+<title>2.6 Рабочее пространство Python – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,8 +72,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/chapters/06-why-python.html" rel="next">
-<link href="../../book/chapters/04-how-programs-run.html" rel="prev">
+<link href="../../book/chapters/07-first-python-program.html" rel="next">
+<link href="../../book/chapters/05-why-python.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -114,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -125,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/05-why-programming-languages.html">2.5 Зачем нужны языки программирования</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/06-python-workspace.html">2.6 Рабочее пространство Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -194,31 +195,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.4 Как запускаются программы</span></a>
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.6 Почему Python</span></a>
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.7 Рабочее пространство Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.8 Первая Python-программа</span></a>
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
       </ul>
@@ -234,9 +229,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#после-этой-главы-вы-сможете" id="toc-после-этой-главы-вы-сможете" class="nav-link active" data-scroll-target="#после-этой-главы-вы-сможете">После этой главы вы сможете</a></li>
-  <li><a href="#язык-как-мост" id="toc-язык-как-мост" class="nav-link" data-scroll-target="#язык-как-мост">Язык как мост</a></li>
-  <li><a href="#синтаксис" id="toc-синтаксис" class="nav-link" data-scroll-target="#синтаксис">Синтаксис</a></li>
-  <li><a href="#почему-языков-много" id="toc-почему-языков-много" class="nav-link" data-scroll-target="#почему-языков-много">Почему языков много</a></li>
+  <li><a href="#основные-инструменты" id="toc-основные-инструменты" class="nav-link" data-scroll-target="#основные-инструменты">Основные инструменты</a></li>
+  <li><a href="#где-скачать-python" id="toc-где-скачать-python" class="nav-link" data-scroll-target="#где-скачать-python">Где скачать Python</a></li>
+  <li><a href="#python-это-интерпретатор" id="toc-python-это-интерпретатор" class="nav-link" data-scroll-target="#python-это-интерпретатор">Python — это интерпретатор</a></li>
+  <li><a href="#что-такое-редактор-кода" id="toc-что-такое-редактор-кода" class="nav-link" data-scroll-target="#что-такое-редактор-кода">Что такое редактор кода</a></li>
+  <li><a href="#структура-рабочего-проекта" id="toc-структура-рабочего-проекта" class="nav-link" data-scroll-target="#структура-рабочего-проекта">Структура рабочего проекта</a></li>
+  <li><a href="#терминал" id="toc-терминал" class="nav-link" data-scroll-target="#терминал">Терминал</a></li>
+  <li><a href="#виртуальное-окружение" id="toc-виртуальное-окружение" class="nav-link" data-scroll-target="#виртуальное-окружение">Виртуальное окружение</a></li>
   <li><a href="#короткий-итог" id="toc-короткий-итог" class="nav-link" data-scroll-target="#короткий-итог">Короткий итог</a></li>
   <li><a href="#практика" id="toc-практика" class="nav-link" data-scroll-target="#практика">Практика</a></li>
   </ul>
@@ -245,9 +244,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/05-why-programming-languages.html">2.5 Зачем нужны языки программирования</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/06-python-workspace.html">2.6 Рабочее пространство Python</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2.5 Зачем нужны языки программирования</h1>
+<h1 class="title">2.6 Рабочее пространство Python</h1>
 </div>
 
 
@@ -264,63 +263,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Компьютер в итоге работает с низкоуровневыми инструкциями.</p>
-<p>Но человеку неудобно писать большие программы в виде нулей, единиц и машинных команд.</p>
-<p>Поэтому появились языки программирования.</p>
+<p>Перед тем как писать программы, нужно подготовить рабочее пространство.</p>
+<p>Рабочее пространство - это набор инструментов и папок, в которых вы будете писать, запускать и хранить код.</p>
 <section id="после-этой-главы-вы-сможете" class="level2">
 <h2 class="anchored" data-anchor-id="после-этой-главы-вы-сможете">После этой главы вы сможете</h2>
 <ul>
-<li>объяснить, зачем нужны языки программирования;</li>
-<li>понимать, почему Python-код должен быть переведен в действия компьютера;</li>
-<li>отличать удобство для человека от формы, удобной для машины;</li>
-<li>понимать роль синтаксиса.</li>
+<li>понимать, зачем нужен редактор кода;</li>
+<li>понимать роль терминала;</li>
+<li>создать папку проекта;</li>
+<li>объяснить, зачем нужно виртуальное окружение.</li>
 </ul>
 </section>
-<section id="язык-как-мост" class="level2">
-<h2 class="anchored" data-anchor-id="язык-как-мост">Язык как мост</h2>
-<p>Язык программирования помогает человеку описать решение в форме, которую можно обработать автоматически.</p>
-<p>Например, человеку понятнее написать:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
-<p>чем вручную описывать низкоуровневые операции, которые нужны для вывода текста на экран.</p>
+<section id="основные-инструменты" class="level2">
+<h2 class="anchored" data-anchor-id="основные-инструменты">Основные инструменты</h2>
+<p>Для начала нужны:</p>
+<ul>
+<li>установленный Python;</li>
+<li>Visual Studio Code или другой редактор кода;</li>
+<li>терминал;</li>
+<li>браузер;</li>
+<li>папка проекта.</li>
+</ul>
+<p>Этого достаточно, чтобы написать и запустить первую программу.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter06/workspace-components.svg" class="img-fluid figure-img"></p>
+<figcaption>Основные инструменты рабочего места Python-разработчика</figcaption>
+</figure>
+</div>
 </section>
-<section id="синтаксис" class="level2">
-<h2 class="anchored" data-anchor-id="синтаксис">Синтаксис</h2>
-<p>У каждого языка есть правила записи.</p>
-<p>Эти правила называются синтаксисом.</p>
-<p>Если нарушить синтаксис, компьютер не сможет правильно разобрать программу.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Типичная ошибка">
+<section id="где-скачать-python" class="level2">
+<h2 class="anchored" data-anchor-id="где-скачать-python">Где скачать Python</h2>
+<p>Python скачивают с официального сайта проекта.</p>
+<p>Важно понимать: Python устанавливается на компьютер как отдельная программа.</p>
+<p>После установки его можно запускать из терминала.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter06/python-installation.svg" class="img-fluid figure-img"></p>
+<figcaption>Процесс установки Python</figcaption>
+</figure>
+</div>
+</section>
+<section id="python-это-интерпретатор" class="level2">
+<h2 class="anchored" data-anchor-id="python-это-интерпретатор">Python — это интерпретатор</h2>
+<p>Когда вы запускаете файл <code>.py</code>, его читает интерпретатор Python.</p>
+<p>Именно интерпретатор понимает Python-код и выполняет программу.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter06/interpreter-role.svg" class="img-fluid figure-img"></p>
+<figcaption>Роль интерпретатора Python</figcaption>
+</figure>
+</div>
+</section>
+<section id="что-такое-редактор-кода" class="level2">
+<h2 class="anchored" data-anchor-id="что-такое-редактор-кода">Что такое редактор кода</h2>
+<p>Редактор кода помогает писать программы, открывать файлы проекта и запускать команды.</p>
+<p>На первом этапе достаточно понимать основные части редактора: дерево файлов, область кода и терминал.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter06/vscode-overview.svg" class="img-fluid figure-img"></p>
+<figcaption>Условное окно редактора кода</figcaption>
+</figure>
+</div>
+</section>
+<section id="структура-рабочего-проекта" class="level2">
+<h2 class="anchored" data-anchor-id="структура-рабочего-проекта">Структура рабочего проекта</h2>
+<p>Каждый проект лучше хранить в отдельной папке.</p>
+<p>Например:</p>
+<pre class="text"><code>python-start/</code></pre>
+<p>Внутри будут лежать файлы программы, заметки, настройки и позже зависимости.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter06/project-structure.svg" class="img-fluid figure-img"></p>
+<figcaption>Простая структура Python-проекта</figcaption>
+</figure>
+</div>
+</section>
+<section id="терминал" class="level2">
+<h2 class="anchored" data-anchor-id="терминал">Терминал</h2>
+<p>Терминал позволяет запускать команды.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Эта команда показывает установленную версию Python.</p>
+</section>
+<section id="виртуальное-окружение" class="level2">
+<h2 class="anchored" data-anchor-id="виртуальное-окружение">Виртуальное окружение</h2>
+<p>Позже у разных проектов могут появиться разные зависимости.</p>
+<p>Чтобы они не мешали друг другу, используют виртуальные окружения.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Пока достаточно понимать идею">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Предупреждение</span>Типичная ошибка
+<span class="screen-reader-only">Уведомление</span>Пока достаточно понимать идею
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Новички часто думают, что синтаксис - это формальность. На самом деле это договоренность, по которой инструмент понимает ваш код.</p>
+<p>На первом шаге важно знать, что виртуальное окружение изолирует зависимости проекта. Подробно мы разберем это позже.</p>
 </div>
 </div>
-</section>
-<section id="почему-языков-много" class="level2">
-<h2 class="anchored" data-anchor-id="почему-языков-много">Почему языков много</h2>
-<p>Разные языки создавались для разных задач.</p>
-<p>Одни удобны для системного программирования, другие - для анализа данных, сайтов, автоматизации или обучения.</p>
-<p>Нет одного идеального языка для всех случаев.</p>
 </section>
 <section id="короткий-итог" class="level2">
 <h2 class="anchored" data-anchor-id="короткий-итог">Короткий итог</h2>
-<p>Язык программирования нужен, чтобы человек мог описывать решения понятнее и быстрее.</p>
-<p>Компьютер все равно выполняет точные инструкции, но язык помогает записывать эти инструкции на более удобном уровне.</p>
+<p>Рабочее пространство помогает держать код в порядке.</p>
+<p>Редактор нужен для написания кода, терминал - для запуска команд, папка проекта - для организации файлов.</p>
 </section>
 <section id="практика" class="level2">
 <h2 class="anchored" data-anchor-id="практика">Практика</h2>
-<p>Возьмите любую бытовую задачу и попробуйте записать ее как набор команд с очень строгими правилами.</p>
+<p>Создайте папку <code>python-start</code> и проверьте в терминале версию Python командой <code>python --version</code>.</p>
 
 
 </section>
 
 </main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -728,13 +801,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/chapters/04-how-programs-run.html" class="pagination-link" aria-label="2.4 Как запускаются программы">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.4 Как запускаются программы</span>
+      <a href="../../book/chapters/05-why-python.html" class="pagination-link" aria-label="2.5 Почему Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/chapters/06-why-python.html" class="pagination-link" aria-label="2.6 Почему Python">
-        <span class="nav-page-text">2.6 Почему Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/chapters/07-first-python-program.html" class="pagination-link" aria-label="2.7 Первая программа на Python">
+        <span class="nav-page-text">2.7 Первая программа на Python</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

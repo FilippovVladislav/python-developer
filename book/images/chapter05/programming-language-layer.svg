@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Язык программирования как слой между человеком и процессором</title>
+  <desc id="desc">Человек пишет Python-код, переводчик превращает его в машинные инструкции, процессор выполняет инструкции.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 24px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Язык программирования нужен человеку</text>
+
+  <rect class="card" x="455" y="125" width="290" height="70" rx="16"/>
+  <text class="text label blue" x="600" y="168" text-anchor="middle">Человек</text>
+
+  <rect class="accent" x="405" y="245" width="390" height="88" rx="18"/>
+  <text class="text label ink" x="600" y="280" text-anchor="middle">Код на Python</text>
+  <text class="mono blue" x="600" y="314" text-anchor="middle">print("Привет")</text>
+
+  <rect class="soft" x="405" y="385" width="390" height="88" rx="18"/>
+  <text class="text label ink" x="600" y="420" text-anchor="middle">Перевод</text>
+  <text class="text body muted" x="600" y="452" text-anchor="middle">интерпретатор / компилятор</text>
+
+  <rect class="card" x="405" y="525" width="390" height="80" rx="18"/>
+  <text class="text label ink" x="600" y="558" text-anchor="middle">Машинные инструкции</text>
+  <text class="mono olive" x="600" y="590" text-anchor="middle">10110000 01001101</text>
+
+  <rect class="accent" x="885" y="385" width="210" height="88" rx="18"/>
+  <text class="text label ink" x="990" y="438" text-anchor="middle">Процессор</text>
+
+  <path class="line" d="M600 195v50"/>
+  <path class="line" d="M588 233l12 12 12-12"/>
+  <path class="line" d="M600 333v52"/>
+  <path class="line" d="M588 373l12 12 12-12"/>
+  <path class="line" d="M600 473v52"/>
+  <path class="line" d="M588 513l12 12 12-12"/>
+  <path class="line" d="M795 565h95v-92"/>
+  <path class="line" d="M878 485l12-12 12 12"/>
+
+  <text class="text body muted" x="215" y="435" text-anchor="middle">слой между намерением</text>
+  <text class="text body muted" x="215" y="465" text-anchor="middle">и инструкциями CPU</text>
+</svg>

@@ -114,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -194,31 +195,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.4 Как запускаются программы</span></a>
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.6 Почему Python</span></a>
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.7 Рабочее пространство Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.8 Первая Python-программа</span></a>
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
       </ul>
@@ -250,7 +245,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#задание-2" id="toc-задание-2" class="nav-link" data-scroll-target="#задание-2">Задание 2</a></li>
   <li><a href="#задание-3" id="toc-задание-3" class="nav-link" data-scroll-target="#задание-3">Задание 3</a></li>
   </ul></li>
+  <li><a href="#ответы-к-практике" id="toc-ответы-к-практике" class="nav-link" data-scroll-target="#ответы-к-практике">Ответы к практике</a>
+  <ul class="collapse">
+  <li><a href="#ответ-к-заданию-1" id="toc-ответ-к-заданию-1" class="nav-link" data-scroll-target="#ответ-к-заданию-1">Ответ к заданию 1</a></li>
+  <li><a href="#ответ-к-заданию-2" id="toc-ответ-к-заданию-2" class="nav-link" data-scroll-target="#ответ-к-заданию-2">Ответ к заданию 2</a></li>
+  <li><a href="#ответ-к-заданию-3" id="toc-ответ-к-заданию-3" class="nav-link" data-scroll-target="#ответ-к-заданию-3">Ответ к заданию 3</a></li>
+  </ul></li>
   <li><a href="#проверьте-себя" id="toc-проверьте-себя" class="nav-link" data-scroll-target="#проверьте-себя">Проверьте себя</a></li>
+  <li><a href="#ответы-для-самопроверки" id="toc-ответы-для-самопроверки" class="nav-link" data-scroll-target="#ответы-для-самопроверки">Ответы для самопроверки</a></li>
   <li><a href="#главное-что-нужно-запомнить" id="toc-главное-что-нужно-запомнить" class="nav-link" data-scroll-target="#главное-что-нужно-запомнить">Главное, что нужно запомнить</a></li>
   <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше</a></li>
   </ul>
@@ -752,6 +754,63 @@ FALSE / TRUE
 <p>Нас интересует только общий принцип.</p>
 </section>
 </section>
+<section id="ответы-к-практике" class="level2">
+<h2 class="anchored" data-anchor-id="ответы-к-практике">Ответы к практике</h2>
+<p>Используйте этот раздел для самопроверки после того, как попробовали выполнить задания самостоятельно.</p>
+<section id="ответ-к-заданию-1" class="level3">
+<h3 class="anchored" data-anchor-id="ответ-к-заданию-1">Ответ к заданию 1</h3>
+<p>Для четырёх выключателей получится <strong>16 комбинаций</strong>:</p>
+<pre class="text"><code>0000
+0001
+0010
+0011
+0100
+0101
+0110
+0111
+1000
+1001
+1010
+1011
+1100
+1101
+1110
+1111</code></pre>
+<p>Почему именно 16:</p>
+<pre class="text"><code>2 × 2 × 2 × 2 = 16</code></pre>
+<p>У каждого выключателя два состояния, а выключателей четыре.</p>
+</section>
+<section id="ответ-к-заданию-2" class="level3">
+<h3 class="anchored" data-anchor-id="ответ-к-заданию-2">Ответ к заданию 2</h3>
+<p>Два состояния удобнее, потому что электронной системе проще быстро и надёжно отличать одно состояние от другого.</p>
+<p>Например:</p>
+<ul>
+<li>есть сигнал или нет сигнала;</li>
+<li>высокое напряжение или низкое напряжение;</li>
+<li>включено или выключено.</li>
+</ul>
+<p>Если состояний десять, системе пришлось бы гораздо точнее измерять сигнал и чаще решать, к какому состоянию он относится.</p>
+<p>Это увеличивает риск ошибок.</p>
+</section>
+<section id="ответ-к-заданию-3" class="level3">
+<h3 class="anchored" data-anchor-id="ответ-к-заданию-3">Ответ к заданию 3</h3>
+<p>Пример с текстовым документом:</p>
+<pre class="text"><code>Текстовый документ
+↓
+Символы получают числовые коды
+↓
+Числа записываются битами</code></pre>
+<p>Пример с фотографией:</p>
+<pre class="text"><code>Фотография
+↓
+Изображение разбивается на пиксели
+↓
+Цвет каждого пикселя записывается числами
+↓
+Числа записываются битами</code></pre>
+<p>Главное: объект не хранится в компьютере «как есть». Он переводится в числовое представление, а числа уже можно записать последовательностями <code>0</code> и <code>1</code>.</p>
+</section>
+</section>
 <section id="проверьте-себя" class="level2">
 <h2 class="anchored" data-anchor-id="проверьте-себя">Проверьте себя</h2>
 <p>Попробуйте ответить без подсказок:</p>
@@ -767,6 +826,52 @@ FALSE / TRUE
 <li>Зачем Python-разработчику понимать эти основы, если Python скрывает работу электроники?</li>
 </ol>
 <p>Если вы можете уверенно объяснить ответы своими словами, значит основная идея главы усвоена.</p>
+</section>
+<section id="ответы-для-самопроверки" class="level2">
+<h2 class="anchored" data-anchor-id="ответы-для-самопроверки">Ответы для самопроверки</h2>
+<ol type="1">
+<li>В упрощённом представлении транзистор можно считать маленьким электронным выключателем.</li>
+</ol>
+<p>Он находится в одном из двух состояний: сигнал есть или сигнала нет.</p>
+<ol start="2" type="1">
+<li>Два состояния удобны, потому что их легко быстро и надёжно отличать друг от друга.</li>
+</ol>
+<p>Электронной схеме проще определить «есть сигнал» или «нет сигнала», чем различать много близких состояний.</p>
+<ol start="3" type="1">
+<li>Нет, внутри компьютера нет настоящих цифр <code>0</code> и <code>1</code>.</li>
+</ol>
+<p>Это условные обозначения двух физических состояний.</p>
+<ol start="4" type="1">
+<li>Бит — это минимальная единица информации.</li>
+</ol>
+<p>Он может принимать одно из двух значений: <code>0</code> или <code>1</code>.</p>
+<ol start="5" type="1">
+<li>Один бит имеет два возможных состояния.</li>
+</ol>
+<pre class="text"><code>0
+1</code></pre>
+<ol start="6" type="1">
+<li>Несколько битов дают больше комбинаций.</li>
+</ol>
+<p>Например, два бита дают четыре комбинации:</p>
+<pre class="text"><code>00
+01
+10
+11</code></pre>
+<p>Чем больше битов, тем больше разных значений можно закодировать.</p>
+<ol start="7" type="1">
+<li>Текст можно превратить в двоичные данные через числовые коды символов.</li>
+</ol>
+<p>Например:</p>
+<pre class="text"><code>буква → числовой код → биты</code></pre>
+<ol start="8" type="1">
+<li>Да, можно.</li>
+</ol>
+<p>Текст, музыка и фотографии отличаются правилами кодирования, но в памяти компьютера всё равно хранятся как последовательности битов.</p>
+<ol start="9" type="1">
+<li>Эти основы помогают понимать, что происходит под уровнем Python.</li>
+</ol>
+<p>Когда позже появятся переменные, типы данных, файлы, кодировки и память, будет проще понять, почему они работают именно так.</p>
 </section>
 <section id="главное-что-нужно-запомнить" class="level2">
 <h2 class="anchored" data-anchor-id="главное-что-нужно-запомнить">Главное, что нужно запомнить</h2>
@@ -805,6 +910,23 @@ FALSE / TRUE
 </section>
 
 </main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Цикл разработки</title>
+  <desc id="desc">Разработка повторяет цикл: написать код, сохранить, запустить, посмотреть результат или ошибку, изменить код.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-olive { fill: none; stroke: #6f7d2d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 20px; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#6f7d2d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Разработка идет небольшими повторяющимися шагами</text>
+
+  <rect class="accent" x="455" y="130" width="290" height="78" rx="16"/>
+  <text class="text label ink" x="600" y="179" text-anchor="middle">Написать код</text>
+  <rect class="card" x="455" y="260" width="290" height="78" rx="16"/>
+  <text class="text label ink" x="600" y="309" text-anchor="middle">Сохранить</text>
+  <rect class="soft" x="455" y="390" width="290" height="78" rx="16"/>
+  <text class="text label ink" x="600" y="439" text-anchor="middle">Запустить</text>
+
+  <rect class="card" x="130" y="390" width="250" height="78" rx="16"/>
+  <text class="text label blue" x="255" y="439" text-anchor="middle">Результат</text>
+  <rect class="card" x="820" y="390" width="250" height="78" rx="16"/>
+  <text class="text label blue" x="945" y="439" text-anchor="middle">Ошибка</text>
+
+  <rect class="accent" x="455" y="545" width="290" height="78" rx="16"/>
+  <text class="text label ink" x="600" y="594" text-anchor="middle">Изменить код</text>
+
+  <path class="line" d="M600 208v52" marker-end="url(#arrow)"/>
+  <path class="line" d="M600 338v52" marker-end="url(#arrow)"/>
+  <path class="line" d="M455 429H380" marker-end="url(#arrow)"/>
+  <path class="line" d="M745 429h75" marker-end="url(#arrow)"/>
+  <path class="line-olive" d="M255 468 C275 585 380 584 455 584" marker-end="url(#arrow-olive)"/>
+  <path class="line-olive" d="M945 468 C925 585 820 584 745 584" marker-end="url(#arrow-olive)"/>
+  <path class="line" d="M600 545 C600 510 420 510 420 170 C420 135 455 169 455 169" marker-end="url(#arrow)"/>
+  <text class="text body muted" x="600" y="668" text-anchor="middle">Ошибка возвращает к исправлению, а не останавливает работу</text>
+</svg>

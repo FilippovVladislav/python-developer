@@ -78,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -158,31 +159,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.4 Как запускаются программы</span></a>
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/chapters/05-why-programming-languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.5 Зачем нужны языки программирования</span></a>
+  <a href="../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">2.5 Почему Python</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/chapters/06-why-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.6 Почему Python</span></a>
+  <a href="../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/chapters/07-python-workspace.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.7 Рабочее пространство Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../book/chapters/08-first-python-program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2.8 Первая Python-программа</span></a>
+  <a href="../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
       </ul>
@@ -230,11 +225,10 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="../book/chapters/01-thinking-like-computer.html">2.1 Как думает компьютер</a></li>
 <li><a href="../book/chapters/02-why-binary.html">2.2 Почему компьютер понимает только 0 и 1</a></li>
 <li><a href="../book/chapters/03-how-computers-store-data.html">2.3 Как компьютер хранит данные</a></li>
-<li><a href="../book/chapters/04-how-programs-run.html">2.4 Как запускаются программы</a></li>
-<li><a href="../book/chapters/05-why-programming-languages.html">2.5 Зачем нужны языки программирования</a></li>
-<li><a href="../book/chapters/06-why-python.html">2.6 Почему Python</a></li>
-<li><a href="../book/chapters/07-python-workspace.html">2.7 Рабочее пространство Python</a></li>
-<li><a href="../book/chapters/08-first-python-program.html">2.8 Первая Python-программа</a></li>
+<li><a href="../book/chapters/04-how-programs-run.html">2.4 Как компьютер выполняет программы</a></li>
+<li><a href="../book/chapters/05-why-python.html">2.5 Почему Python</a></li>
+<li><a href="../book/chapters/06-python-workspace.html">2.6 Рабочее пространство Python</a></li>
+<li><a href="../book/chapters/07-first-python-program.html">2.7 Первая Python-программа</a></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Как читать этот том">
 <div class="callout-header d-flex align-content-center">
@@ -254,6 +248,23 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

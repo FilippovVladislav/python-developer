@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Почему для книги выбран Python</title>
+  <desc id="desc">Python в центре, вокруг причины выбора: читаемый синтаксис, низкий порог входа, экосистема, области применения, реальная разработка.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .center { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono-large { font-family: "Cascadia Code", Consolas, monospace; font-size: 42px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Python удобен как первый профессиональный язык</text>
+
+  <rect class="center" x="455" y="265" width="290" height="135" rx="24"/>
+  <text class="mono-large blue" x="600" y="345" text-anchor="middle">Python</text>
+
+  <rect class="card" x="100" y="150" width="300" height="86" rx="16"/>
+  <text class="text label blue" x="250" y="187" text-anchor="middle">Читаемый синтаксис</text>
+  <text class="text body muted" x="250" y="216" text-anchor="middle">меньше лишнего шума</text>
+
+  <rect class="card" x="800" y="150" width="300" height="86" rx="16"/>
+  <text class="text label blue" x="950" y="187" text-anchor="middle">Низкий порог входа</text>
+  <text class="text body muted" x="950" y="216" text-anchor="middle">быстрее первый результат</text>
+
+  <rect class="soft" x="100" y="455" width="300" height="86" rx="16"/>
+  <text class="text label ink" x="250" y="492" text-anchor="middle">Большая экосистема</text>
+  <text class="text body muted" x="250" y="521" text-anchor="middle">готовые инструменты</text>
+
+  <rect class="soft" x="800" y="455" width="300" height="86" rx="16"/>
+  <text class="text label ink" x="950" y="492" text-anchor="middle">Много областей</text>
+  <text class="text body muted" x="950" y="521" text-anchor="middle">от веба до данных</text>
+
+  <rect class="card" x="420" y="540" width="360" height="86" rx="16"/>
+  <text class="text label blue" x="600" y="577" text-anchor="middle">Реальная разработка</text>
+  <text class="text body muted" x="600" y="606" text-anchor="middle">используется в проектах</text>
+
+  <path class="line" d="M400 215l75 80"/>
+  <path class="line" d="M800 215l-75 80"/>
+  <path class="line" d="M400 485l80-90"/>
+  <path class="line" d="M800 485l-80-90"/>
+  <path class="line" d="M600 540V400"/>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Установка Python</title>
+  <desc id="desc">Python скачивается с официального сайта, устанавливается как программа и становится доступен в системе.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 25px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Python устанавливается как обычная программа</text>
+
+  <rect class="card" x="105" y="230" width="285" height="170" rx="18"/>
+  <text class="text label blue" x="247" y="285" text-anchor="middle">Официальный сайт</text>
+  <rect class="accent" x="155" y="320" width="185" height="46" rx="10"/>
+  <text class="mono blue" x="247" y="351" text-anchor="middle">python.org</text>
+
+  <rect class="soft" x="458" y="230" width="285" height="170" rx="18"/>
+  <text class="text label ink" x="600" y="285" text-anchor="middle">Установка</text>
+  <text class="text body muted" x="600" y="326" text-anchor="middle">интерпретатора</text>
+  <rect x="525" y="350" width="150" height="30" rx="8" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+
+  <rect class="accent" x="810" y="230" width="285" height="170" rx="18"/>
+  <text class="text label ink" x="952" y="285" text-anchor="middle">Python установлен</text>
+  <text class="mono blue" x="952" y="342" text-anchor="middle">python --version</text>
+
+  <path class="line" d="M390 315h68"/>
+  <path class="line" d="M446 303l12 12-12 12"/>
+  <path class="line" d="M743 315h67"/>
+  <path class="line" d="M798 303l12 12-12 12"/>
+
+  <text class="text body muted" x="600" y="560" text-anchor="middle">После установки команда Python становится доступна в терминале</text>
+</svg>
