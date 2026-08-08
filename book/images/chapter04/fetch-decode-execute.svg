@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Цикл работы процессора</title>
+  <desc id="desc">Процессор повторяет цикл: получить инструкцию, декодировать, выполнить.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 25px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 22px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Процессор повторяет один и тот же цикл</text>
+
+  <rect class="accent" x="160" y="265" width="250" height="130" rx="20"/>
+  <text class="text label ink" x="285" y="318" text-anchor="middle">Получить</text>
+  <text class="text body muted" x="285" y="350" text-anchor="middle">инструкцию</text>
+  <text class="mono blue" x="285" y="382" text-anchor="middle">Fetch</text>
+
+  <rect class="card" x="475" y="265" width="250" height="130" rx="20"/>
+  <text class="text label ink" x="600" y="318" text-anchor="middle">Декодировать</text>
+  <text class="text body muted" x="600" y="350" text-anchor="middle">понять действие</text>
+  <text class="mono olive" x="600" y="382" text-anchor="middle">Decode</text>
+
+  <rect class="soft" x="790" y="265" width="250" height="130" rx="20"/>
+  <text class="text label ink" x="915" y="318" text-anchor="middle">Выполнить</text>
+  <text class="text body muted" x="915" y="350" text-anchor="middle">сделать действие</text>
+  <text class="mono olive" x="915" y="382" text-anchor="middle">Execute</text>
+
+  <path class="line" d="M410 330h65"/>
+  <path class="line" d="M463 318l12 12-12 12"/>
+  <path class="line" d="M725 330h65"/>
+  <path class="line" d="M778 318l12 12-12 12"/>
+
+  <path class="line" d="M915 395v95c0 55-630 55-630 0v-95"/>
+  <path class="line" d="M273 407l12-12 12 12"/>
+
+  <rect x="275" y="552" width="650" height="42" rx="10" fill="#fbfaf7"/>
+  <text class="text body muted" x="600" y="580" text-anchor="middle">После выполнения процессор переходит к следующей инструкции</text>
+</svg>

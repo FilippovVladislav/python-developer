@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Указатель текущей инструкции</title>
+  <desc id="desc">Процессор хранит адрес следующей инструкции и может перейти к следующей строке или выполнить переход к другой инструкции.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .row { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .active { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .target { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .note { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-olive { fill: none; stroke: #6f7d2d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .small { font-size: 18px; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="90" y="82">Процессор хранит адрес следующей инструкции</text>
+
+  <g transform="translate(145 145)">
+    <rect class="row" x="0" y="0" width="430" height="62" rx="12"/>
+    <rect class="row" x="0" y="84" width="430" height="62" rx="12"/>
+    <rect class="active" x="0" y="168" width="430" height="62" rx="12"/>
+    <rect class="row" x="0" y="252" width="430" height="62" rx="12"/>
+    <rect class="target" x="0" y="336" width="430" height="62" rx="12"/>
+
+    <text class="text body ink" x="34" y="39">Инструкция 1</text>
+    <text class="text body ink" x="34" y="123">Инструкция 2</text>
+    <text class="text body ink" x="34" y="207">Инструкция 3</text>
+    <text class="text body ink" x="34" y="291">Инструкция 4</text>
+    <text class="text body ink" x="34" y="375">Инструкция 5</text>
+  </g>
+
+  <rect class="active" x="690" y="276" width="315" height="92" rx="16"/>
+  <text class="text label ink" x="847" y="315" text-anchor="middle">текущая инструкция</text>
+  <text class="text body muted" x="847" y="345" text-anchor="middle">сейчас выполняется строка 3</text>
+  <path class="line" d="M690 322H575"/>
+  <path class="line" d="M587 310l-12 12 12 12"/>
+
+  <rect class="note" x="685" y="140" width="260" height="80" rx="14"/>
+  <text class="text label blue" x="815" y="173" text-anchor="middle">обычный переход</text>
+  <text class="text body muted" x="815" y="203" text-anchor="middle">Инструкция 3 → 4</text>
+  <path class="line" d="M575 350h55v-168h55"/>
+  <path class="line" d="M673 170l12 12-12 12"/>
+
+  <rect class="note" x="720" y="455" width="260" height="80" rx="14"/>
+  <text class="text label olive" x="850" y="488" text-anchor="middle">переход</text>
+  <text class="text body muted" x="850" y="518" text-anchor="middle">Инструкция 3 → 5</text>
+  <path class="line-olive" d="M575 350h505v273H360v-82"/>
+  <path class="line-olive" d="M348 553l12-12 12 12"/>
+
+  <text class="text body muted" x="600" y="655" text-anchor="middle">Условия, циклы и вызовы функций могут изменить обычный порядок выполнения</text>
+</svg>

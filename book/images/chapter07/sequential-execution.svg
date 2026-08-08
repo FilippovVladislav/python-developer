@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Последовательное выполнение инструкций</title>
+  <desc id="desc">Python выполняет строки сверху вниз, и результат появляется в том же порядке.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .active { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 23px; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Python выполняет инструкции сверху вниз</text>
+
+  <rect class="card" x="90" y="145" width="500" height="410" rx="20"/>
+  <text class="text label blue" x="340" y="195" text-anchor="middle">Код программы</text>
+
+  <rect class="active" x="125" y="235" width="430" height="62" rx="12"/>
+  <rect class="card" x="125" y="325" width="430" height="62" rx="12"/>
+  <rect class="card" x="125" y="415" width="430" height="62" rx="12"/>
+  <text class="mono ink" x="145" y="274">1  print("Первый шаг")</text>
+  <text class="mono ink" x="145" y="364">2  print("Второй шаг")</text>
+  <text class="mono ink" x="145" y="454">3  print("Третий шаг")</text>
+  <text class="text body muted" x="340" y="520" text-anchor="middle">текущая строка выделена</text>
+
+  <rect class="soft" x="740" y="185" width="360" height="330" rx="20"/>
+  <text class="text label ink" x="920" y="235" text-anchor="middle">Результат в терминале</text>
+  <text class="mono blue" x="795" y="315">Первый шаг</text>
+  <text class="mono blue" x="795" y="382">Второй шаг</text>
+  <text class="mono blue" x="795" y="449">Третий шаг</text>
+
+  <path class="line" d="M555 266h170" marker-end="url(#arrow)"/>
+  <path class="line" d="M555 356h170" marker-end="url(#arrow)"/>
+  <path class="line" d="M555 446h170" marker-end="url(#arrow)"/>
+</svg>

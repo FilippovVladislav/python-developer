@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Первая Python-программа в файле</title>
+  <desc id="desc">Папка проекта содержит файл hello.py, внутри которого находится Python-код.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 25px; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Первая программа хранится в обычном .py-файле</text>
+
+  <rect class="card" x="90" y="185" width="280" height="300" rx="18"/>
+  <path class="accent" d="M130 235h70l24 35h116v155H130z"/>
+  <text class="mono blue" x="235" y="335" text-anchor="middle">python-learning/</text>
+  <text class="text body muted" x="235" y="535" text-anchor="middle">Папка проекта</text>
+
+  <path class="line" d="M390 335h135" marker-end="url(#arrow)"/>
+
+  <rect class="soft" x="545" y="220" width="260" height="230" rx="18"/>
+  <path d="M610 265h115l42 42v98H610z" fill="#ffffff" stroke="#6f7d2d" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M725 265v42h42" fill="none" stroke="#6f7d2d" stroke-width="4" stroke-linejoin="round"/>
+  <text class="mono olive" x="675" y="357" text-anchor="middle">hello.py</text>
+  <text class="text body muted" x="675" y="495" text-anchor="middle">Файл программы</text>
+
+  <path class="line" d="M825 335h120" marker-end="url(#arrow)"/>
+
+  <rect class="card" x="970" y="205" width="150" height="260" rx="18"/>
+  <rect class="accent" x="1000" y="255" width="90" height="70" rx="12"/>
+  <text class="mono blue" x="1045" y="300" text-anchor="middle">.py</text>
+  <rect x="925" y="360" width="235" height="76" rx="12" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+  <text class="mono ink" x="1042" y="408" text-anchor="middle">print("Привет, мир!")</text>
+  <text class="text body muted" x="1042" y="495" text-anchor="middle">Python-код</text>
+</svg>

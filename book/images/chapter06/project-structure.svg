@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Структура простого проекта</title>
+  <desc id="desc">Все файлы проекта находятся внутри одной папки my-project.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .folder { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .file { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 26px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Все файлы проекта лежат внутри одной папки</text>
+
+  <rect class="card" x="300" y="145" width="600" height="430" rx="20"/>
+  <rect class="folder" x="405" y="205" width="390" height="72" rx="14"/>
+  <text class="mono blue" x="600" y="252" text-anchor="middle">my-project/</text>
+
+  <path class="line" d="M455 277v210"/>
+  <path class="line" d="M455 330h85"/>
+  <path class="line" d="M455 400h85"/>
+  <path class="line" d="M455 470h85"/>
+
+  <rect class="file" x="540" y="300" width="260" height="58" rx="12"/>
+  <text class="mono olive" x="670" y="338" text-anchor="middle">hello.py</text>
+  <rect class="file" x="540" y="370" width="260" height="58" rx="12"/>
+  <text class="mono olive" x="670" y="408" text-anchor="middle">notes.txt</text>
+  <rect class="file" x="540" y="440" width="260" height="58" rx="12"/>
+  <text class="mono olive" x="670" y="478" text-anchor="middle">README.md</text>
+
+  <text class="text body muted" x="600" y="625" text-anchor="middle">Отдельная папка помогает не смешивать файлы разных проектов</text>
+</svg>

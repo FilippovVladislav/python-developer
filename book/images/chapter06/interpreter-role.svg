@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Роль интерпретатора Python</title>
+  <desc id="desc">Файл hello.py передаётся интерпретатору Python, программа выполняется и появляется результат.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 25px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Интерпретатор читает Python-код и выполняет его</text>
+
+  <rect class="card" x="95" y="265" width="230" height="120" rx="18"/>
+  <text class="text label blue" x="210" y="310" text-anchor="middle">hello.py</text>
+  <text class="mono blue" x="210" y="350" text-anchor="middle">print(...)</text>
+
+  <rect class="soft" x="405" y="245" width="290" height="160" rx="20"/>
+  <text class="text label ink" x="550" y="305" text-anchor="middle">Интерпретатор</text>
+  <text class="text label ink" x="550" y="338" text-anchor="middle">Python</text>
+
+  <rect class="accent" x="775" y="245" width="290" height="160" rx="20"/>
+  <text class="text label ink" x="920" y="305" text-anchor="middle">Выполнение</text>
+  <text class="text body muted" x="920" y="338" text-anchor="middle">программы</text>
+  <rect x="835" y="360" width="170" height="38" rx="8" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+  <text class="mono blue" x="920" y="386" text-anchor="middle">результат</text>
+
+  <path class="line" d="M325 325h80"/>
+  <path class="line" d="M393 313l12 12-12 12"/>
+  <path class="line" d="M695 325h80"/>
+  <path class="line" d="M763 313l12 12-12 12"/>
+
+  <text class="text body muted" x="600" y="560" text-anchor="middle">Файл сам по себе не выполняется: его читает интерпретатор</text>
+</svg>

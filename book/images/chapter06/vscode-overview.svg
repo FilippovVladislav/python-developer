@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Условное окно редактора кода</title>
+  <desc id="desc">Абстрактная схема редактора: дерево файлов, открытый файл hello.py, область кода и терминал.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .window { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .pane { fill: #eef4f8; stroke: #d8dee8; stroke-width: 3; }
+      .terminal { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 22px; font-weight: 650; }
+      .body { font-size: 19px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 22px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Редактор помогает писать и запускать программы</text>
+
+  <rect class="window" x="105" y="130" width="990" height="470" rx="18"/>
+  <rect class="pane" x="130" y="165" width="230" height="300" rx="12"/>
+  <text class="text label blue" x="245" y="205" text-anchor="middle">Дерево файлов</text>
+  <text class="mono ink" x="165" y="255">my-project/</text>
+  <text class="mono blue" x="185" y="295">hello.py</text>
+  <text class="mono muted" x="185" y="335">notes.txt</text>
+
+  <rect class="pane" x="390" y="165" width="675" height="250" rx="12"/>
+  <text class="text label blue" x="728" y="205" text-anchor="middle">Открытый файл: hello.py</text>
+  <text class="mono ink" x="435" y="260">print("Привет, мир!")</text>
+  <text class="mono muted" x="435" y="305">name = "Vlad"</text>
+  <text class="mono muted" x="435" y="350">print(name)</text>
+
+  <rect class="terminal" x="390" y="445" width="675" height="115" rx="12"/>
+  <text class="text label ink" x="728" y="485" text-anchor="middle">Терминал</text>
+  <text class="mono olive" x="435" y="530">&gt; python hello.py</text>
+
+  <text class="text body muted" x="245" y="505" text-anchor="middle">папки и файлы</text>
+  <text class="text body muted" x="728" y="620" text-anchor="middle">код пишется в редакторе, команды запускаются в терминале</text>
+</svg>

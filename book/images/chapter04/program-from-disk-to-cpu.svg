@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Путь программы от накопителя к процессору</title>
+  <desc id="desc">Программа хранится на накопителе, загружается в оперативную память, затем процессор выполняет инструкции.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .ram { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .small { font-size: 18px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 24px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="70" text-anchor="middle">Перед выполнением программа</text>
+  <text class="text title ink" x="600" y="112" text-anchor="middle">загружается в оперативную память</text>
+
+  <rect class="card" x="80" y="145" width="280" height="360" rx="18"/>
+  <text class="text label blue" x="220" y="200" text-anchor="middle">Долговременное хранение</text>
+  <rect class="accent" x="145" y="250" width="150" height="90" rx="14"/>
+  <text class="mono blue" x="220" y="302" text-anchor="middle">hello.py</text>
+  <rect x="130" y="380" width="180" height="56" rx="12" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+  <text class="text body muted" x="220" y="417" text-anchor="middle">SSD / накопитель</text>
+
+  <rect class="ram" x="465" y="205" width="270" height="250" rx="18"/>
+  <text class="text label ink" x="600" y="255" text-anchor="middle">RAM</text>
+  <text class="text body muted" x="600" y="292" text-anchor="middle">оперативная память</text>
+  <rect x="515" y="325" width="170" height="58" rx="10" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+  <text class="mono olive" x="600" y="362" text-anchor="middle">инструкции</text>
+
+  <rect class="accent" x="850" y="205" width="270" height="250" rx="18"/>
+  <text class="text label ink" x="985" y="255" text-anchor="middle">CPU</text>
+  <text class="text body muted" x="985" y="292" text-anchor="middle">процессор</text>
+  <rect x="910" y="325" width="150" height="58" rx="10" fill="#ffffff" stroke="#d8dee8" stroke-width="3"/>
+  <text class="mono blue" x="985" y="362" text-anchor="middle">execute</text>
+
+  <path class="line" d="M360 325h105"/>
+  <path class="line" d="M453 313l12 12-12 12"/>
+  <path class="line" d="M735 330h115"/>
+  <path class="line" d="M838 318l12 12-12 12"/>
+
+  <text class="text small muted" x="412" y="295" text-anchor="middle">загрузка</text>
+  <text class="text small muted" x="792" y="300" text-anchor="middle">чтение инструкций</text>
+  <text class="text body muted" x="600" y="600" text-anchor="middle">CPU не выполняет программу прямо с SSD: сначала она оказывается в RAM</text>
+</svg>

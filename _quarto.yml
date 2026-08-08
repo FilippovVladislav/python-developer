@@ -1,6 +1,9 @@
 project:
   type: book
   output-dir: build
+  resources:
+    - book/examples/**
+    - book/assets/**
 
 book:
   title: "Путь Python-разработчика"
@@ -23,16 +26,19 @@ book:
         - book/chapters/02-why-binary.qmd
         - book/chapters/03-how-computers-store-data.qmd
         - book/chapters/04-how-programs-run.qmd
-        - book/chapters/05-why-programming-languages.qmd
-        - book/chapters/06-why-python.qmd
-        - book/chapters/07-python-workspace.qmd
-        - book/chapters/08-first-python-program.qmd
+        - book/chapters/05-why-python.qmd
+        - book/chapters/06-python-workspace.qmd
+        - book/chapters/07-first-python-program.qmd
 
 format:
   html:
     theme:
       - cosmo
       - theme/book.scss
+    css:
+      - book/assets/css/python-playground.css
+    include-after-body:
+      - book/assets/html/python-playground-loader.html
     lang: ru
     toc: true
     toc-depth: 3

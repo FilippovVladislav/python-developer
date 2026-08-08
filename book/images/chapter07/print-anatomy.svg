@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Из чего состоит print</title>
+  <desc id="desc">Строка print Привет мир разделена на имя функции, скобки и текстовое значение.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-olive { fill: none; stroke: #6f7d2d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 42px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Даже одна строка Python состоит из частей</text>
+
+  <rect class="card" x="170" y="180" width="860" height="150" rx="20"/>
+  <text class="mono ink" x="600" y="270" text-anchor="middle">print("Привет, мир!")</text>
+
+  <rect class="accent" x="135" y="450" width="270" height="100" rx="18"/>
+  <text class="text label ink" x="270" y="490" text-anchor="middle">print</text>
+  <text class="text body muted" x="270" y="524" text-anchor="middle">имя функции</text>
+
+  <rect class="soft" x="465" y="450" width="270" height="100" rx="18"/>
+  <text class="text label ink" x="600" y="490" text-anchor="middle">( )</text>
+  <text class="text body muted" x="600" y="524" text-anchor="middle">круглые скобки</text>
+
+  <rect class="accent" x="795" y="450" width="270" height="100" rx="18"/>
+  <text class="text label ink" x="930" y="490" text-anchor="middle">"Привет, мир!"</text>
+  <text class="text body muted" x="930" y="524" text-anchor="middle">текстовое значение</text>
+
+  <path class="line" d="M392 290 C330 345 295 385 270 450"/>
+  <path class="line-olive" d="M520 290 C555 350 585 385 600 450"/>
+  <path class="line" d="M720 290 C820 350 900 385 930 450"/>
+</svg>

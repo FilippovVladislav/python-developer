@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Где используется Python</title>
+  <desc id="desc">Карточки с областями применения Python: веб, автоматизация, анализ данных, машинное обучение, тестирование, DevOps.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .center { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-olive { fill: none; stroke: #6f7d2d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 22px; font-weight: 650; }
+      .mono-large { font-family: "Cascadia Code", Consolas, monospace; font-size: 36px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Python применяется в разных областях</text>
+  <rect class="center" x="485" y="285" width="230" height="95" rx="22"/>
+  <text class="mono-large blue" x="600" y="345" text-anchor="middle">Python</text>
+
+  <g transform="translate(90 145)">
+    <rect class="card" width="285" height="125" rx="16"/>
+    <text class="text label blue" x="142" y="42" text-anchor="middle">Веб-разработка</text>
+    <rect x="78" y="62" width="128" height="42" rx="8" fill="#eef4f8" stroke="#2f5f8f" stroke-width="4"/>
+    <line class="line" x1="78" y1="78" x2="206" y2="78"/>
+  </g>
+
+  <g transform="translate(825 145)">
+    <rect class="card" width="285" height="125" rx="16"/>
+    <text class="text label blue" x="142" y="42" text-anchor="middle">Автоматизация</text>
+    <circle cx="112" cy="84" r="20" fill="#eef4f8" stroke="#2f5f8f" stroke-width="4"/>
+    <circle cx="172" cy="84" r="20" fill="#f0f3df" stroke="#6f7d2d" stroke-width="4"/>
+    <path class="line" d="M132 84h20"/>
+  </g>
+
+  <g transform="translate(90 420)">
+    <rect class="card" width="285" height="125" rx="16"/>
+    <text class="text label blue" x="142" y="42" text-anchor="middle">Анализ данных</text>
+    <rect x="86" y="82" width="18" height="28" fill="#2f5f8f"/>
+    <rect x="124" y="65" width="18" height="45" fill="#6f7d2d"/>
+    <rect x="162" y="72" width="18" height="38" fill="#2f5f8f"/>
+    <line class="line" x1="75" y1="110" x2="205" y2="110"/>
+  </g>
+
+  <g transform="translate(825 420)">
+    <rect class="card" width="285" height="125" rx="16"/>
+    <text class="text label blue" x="142" y="42" text-anchor="middle">Машинное обучение</text>
+    <circle cx="100" cy="82" r="9" class="blue"/>
+    <circle cx="150" cy="62" r="9" class="olive"/>
+    <circle cx="150" cy="102" r="9" class="olive"/>
+    <circle cx="202" cy="82" r="9" class="blue"/>
+    <path class="line" d="M109 82l32-20M109 82l32 20M159 62l34 20M159 102l34-20"/>
+  </g>
+
+  <g transform="translate(405 510)">
+    <rect class="card" width="180" height="105" rx="16"/>
+    <text class="text label blue" x="90" y="38" text-anchor="middle">Тестирование</text>
+    <path class="line-olive" d="M58 70l22 22 44-50"/>
+  </g>
+
+  <g transform="translate(615 510)">
+    <rect class="card" width="180" height="105" rx="16"/>
+    <text class="text label blue" x="90" y="38" text-anchor="middle">DevOps</text>
+    <rect x="48" y="58" width="84" height="18" rx="4" fill="#eef4f8" stroke="#2f5f8f" stroke-width="3"/>
+    <rect x="48" y="82" width="84" height="18" rx="4" fill="#f0f3df" stroke="#6f7d2d" stroke-width="3"/>
+  </g>
+
+  <path class="line" d="M375 205l110 110"/>
+  <path class="line" d="M825 205L715 315"/>
+  <path class="line" d="M375 480l110-105"/>
+  <path class="line" d="M825 480L715 375"/>
+  <path class="line" d="M585 535l15-155"/>
+  <path class="line" d="M615 535l-15-155"/>
+</svg>
