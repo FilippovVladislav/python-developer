@@ -2,7 +2,7 @@
 number-sections: false
 ---
 
-# 2.5 Почему Python
+# 2.5 Почему Python {.unnumbered}
 
 ::: {.callout-important}
 Главный вопрос главы:
