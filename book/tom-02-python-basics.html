@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Владислав Филиппов">
 
-<title>Путь Python-разработчика</title>
+<title>3 Том II. Базовые конструкции Python – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -30,24 +29,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./book/tom-01-basics.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-621a3521207ae6c08960dbf0e9d8aa65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../book/chapters/08-variables.html" rel="next">
+<link href="../book/chapters/07-first-python-program.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-621a3521207ae6c08960dbf0e9d8aa65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="book/assets/css/python-playground.css">
+<link rel="stylesheet" href="../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -90,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -105,9 +105,9 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Путь Python-разработчика</a> 
+      <a href="../">Путь Python-разработчика</a> 
         <div class="sidebar-tools-main">
-    <a href="./Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -125,13 +125,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+            <a href="../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2 Том I. Основы программирования</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -140,43 +140,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.1 Как думает компьютер</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.5 Почему Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
@@ -184,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
+            <a href="../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">3 Том II. Базовые конструкции Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -193,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.1 Переменные</span></a>
   </div>
 </li>
@@ -209,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#путь-python-разработчика" id="toc-путь-python-разработчика" class="nav-link active" data-scroll-target="#путь-python-разработчика"><span class="header-section-number">1</span> Путь Python-разработчика</a></li>
+  <li><a href="#быстрые-ссылки" id="toc-быстрые-ссылки" class="nav-link active" data-scroll-target="#быстрые-ссылки">Быстрые ссылки</a></li>
   </ul>
 </nav>
     </div>
@@ -218,27 +218,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Путь Python-разработчика</h1>
-<p class="subtitle lead">От полного новичка до первой работы</p>
+<h1 class="title">3 Том II. Базовые конструкции Python</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Автор</div>
-    <div class="quarto-title-meta-contents">
-             <p>Владислав Филиппов </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Дата публикации</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">9 августа 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -248,25 +235,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="путь-python-разработчика" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Путь Python-разработчика</h1>
-<p><em>От полного новичка до первой работы</em></p>
-<div class="book-hero">
-<p>Практическая книга по Python и backend-разработке: от первых шагов до уверенной подготовки к первой работе.</p>
-</div>
-<p>Эта книга строится вокруг простого принципа: сначала мышление разработчика, затем синтаксис, инструменты и реальные проекты.</p>
-<p>Вы будете постепенно разбирать задачи, превращать их в алгоритмы, писать понятный Python-код и собирать профессиональную рабочую среду.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Как читать книгу">
+<p>В этом томе собраны первые средства Python, которые нужны для написания собственных небольших программ после первой запущенной программы.</p>
+<p>Каждая глава отвечает на один главный вопрос и вводит только одну важную идею.</p>
+<section id="быстрые-ссылки" class="level2">
+<h2 class="anchored" data-anchor-id="быстрые-ссылки">Быстрые ссылки</h2>
+<ul>
+<li><a href="../book/chapters/08-variables.html">3.1 Переменные</a></li>
+</ul>
+<!--
+- [3.2 Типы данных](chapters/09-data-types.qmd)
+- [3.3 Ввод данных](chapters/10-user-input.qmd)
+- [3.4 Преобразование типов](chapters/11-type-conversion.qmd)
+- [3.5 Арифметические операции](chapters/12-arithmetic.qmd)
+- [3.6 Сравнение значений](chapters/13-comparisons.qmd)
+- [3.7 Условия](chapters/14-conditions.qmd)
+- [3.8 Логические операции](chapters/15-boolean-logic.qmd)
+- [3.9 Цикл while](chapters/16-while-loop.qmd)
+- [3.10 Цикл for](chapters/17-for-loop.qmd)
+- [3.11 Строки](chapters/18-strings.qmd)
+- [3.12 Списки](chapters/19-lists.qmd)
+- [3.13 Функции](chapters/20-functions.qmd)
+-->
+<div class="callout callout-style-default callout-note callout-titled" title="Логика тома">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Уведомление</span>Как читать книгу
+<span class="screen-reader-only">Уведомление</span>Логика тома
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Двигайтесь по главам последовательно. В начале важнее понимать ход мысли, чем запоминать команды.</p>
+<p>Идите по главам последовательно: от сохранения одного значения к типам данных, вводу, преобразованиям, вычислениям, сравнениям, условиям, циклам, строкам, спискам и функциям.</p>
 </div>
 </div>
 
@@ -698,10 +698,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../book/chapters/07-first-python-program.html" class="pagination-link" aria-label="2.7 Первая программа на Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.7 Первая программа на Python</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./book/tom-01-basics.html" class="pagination-link" aria-label="2 Том I. Основы программирования">
-        <span class="nav-page-text">2 Том I. Основы программирования</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../book/chapters/08-variables.html" class="pagination-link" aria-label="3.1 Переменные">
+        <span class="nav-page-text">3.1 Переменные</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -710,5 +713,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
