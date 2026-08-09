@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Присваивание связывает имя со значением</title>
+  <desc id="desc">Строка name равно Анна разделена на имя слева, знак присваивания в центре и значение справа.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .mark { fill: #fff7e8; stroke: #c8a24a; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .gold { fill: #7a5a00; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-olive { fill: none; stroke: #6f7d2d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 21px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 52px; font-weight: 700; }
+    </style>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#6f7d2d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="82" text-anchor="middle">Знак = означает присваивание</text>
+
+  <rect class="card" x="170" y="170" width="860" height="165" rx="20"/>
+  <text class="mono ink" x="350" y="270" text-anchor="middle">name</text>
+  <text class="mono blue" x="600" y="270" text-anchor="middle">=</text>
+  <text class="mono ink" x="850" y="270" text-anchor="middle">"Анна"</text>
+
+  <rect class="accent" x="215" y="465" width="270" height="105" rx="18"/>
+  <text class="text label ink" x="350" y="507" text-anchor="middle">name</text>
+  <text class="text body muted" x="350" y="540" text-anchor="middle">имя переменной</text>
+
+  <rect class="mark" x="465" y="400" width="270" height="105" rx="18"/>
+  <text class="text label ink" x="600" y="442" text-anchor="middle">=</text>
+  <text class="text body gold" x="600" y="475" text-anchor="middle">присваивание</text>
+
+  <rect class="soft" x="715" y="465" width="270" height="105" rx="18"/>
+  <text class="text label ink" x="850" y="507" text-anchor="middle">"Анна"</text>
+  <text class="text body muted" x="850" y="540" text-anchor="middle">значение</text>
+
+  <path class="line" d="M350 300v145" marker-end="url(#arrow-blue)"/>
+  <path class="line" d="M600 300v80" marker-end="url(#arrow-blue)"/>
+  <path class="line-olive" d="M850 300v145" marker-end="url(#arrow-olive)"/>
+
+  <text class="text body muted" x="600" y="625" text-anchor="middle">Python берёт значение справа и связывает его с именем слева</text>
+</svg>

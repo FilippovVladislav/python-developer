@@ -8,7 +8,7 @@ project:
 book:
   title: "Путь Python-разработчика"
   subtitle: "От полного новичка до первой работы"
-  author: "Владислав"
+  author: "Владислав Филиппов"
   date: today
   date-format: "D MMMM YYYY"
   language: ru
@@ -29,6 +29,21 @@ book:
         - book/chapters/05-why-python.qmd
         - book/chapters/06-python-workspace.qmd
         - book/chapters/07-first-python-program.qmd
+    - part: book/tom-02-python-basics.qmd
+      chapters:
+        - book/chapters/08-variables.qmd
+        #- book/chapters/09-data-types.qmd
+        #- book/chapters/10-user-input.qmd
+        #- book/chapters/11-type-conversion.qmd
+        #- book/chapters/12-arithmetic.qmd
+        #- book/chapters/13-comparisons.qmd
+        #- book/chapters/14-conditions.qmd
+        #- book/chapters/15-boolean-logic.qmd
+        #- book/chapters/16-while-loop.qmd
+        #- book/chapters/17-for-loop.qmd
+        #- book/chapters/18-strings.qmd
+        #- book/chapters/19-lists.qmd
+        #- book/chapters/20-functions.qmd
 
 format:
   html:
