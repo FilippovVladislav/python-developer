@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Имя переменной и значение</title>
+  <desc id="desc">Две стадии показывают, что имя age может ссылаться сначала на значение 25 типа int, а затем на строку двадцать пять типа str.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 36px; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Имя и значение — не одно и то же</text>
+
+  <text class="text label blue" x="300" y="174" text-anchor="middle">Сначала</text>
+  <rect class="accent" x="155" y="190" width="290" height="90" rx="18"/>
+  <text class="mono ink" x="300" y="248" text-anchor="middle">age</text>
+  <path class="line" d="M300 292v62" marker-end="url(#arrow)"/>
+  <rect class="card" x="155" y="375" width="290" height="90" rx="18"/>
+  <text class="mono ink" x="300" y="433" text-anchor="middle">25</text>
+  <path class="line" d="M300 477v55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="190" y="552" width="220" height="72" rx="16"/>
+  <text class="text label olive" x="300" y="598" text-anchor="middle">int</text>
+
+  <text class="text label blue" x="900" y="174" text-anchor="middle">Потом</text>
+  <rect class="accent" x="755" y="190" width="290" height="90" rx="18"/>
+  <text class="mono ink" x="900" y="248" text-anchor="middle">age</text>
+  <path class="line" d="M900 292v62" marker-end="url(#arrow)"/>
+  <rect class="card" x="710" y="375" width="380" height="90" rx="18"/>
+  <text class="mono ink" x="900" y="433" text-anchor="middle">"двадцать пять"</text>
+  <path class="line" d="M900 477v55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="790" y="552" width="220" height="72" rx="16"/>
+  <text class="text label olive" x="900" y="598" text-anchor="middle">str</text>
+
+  <rect class="card" x="250" y="103" width="700" height="46" rx="14"/>
+  <text class="text body muted" x="600" y="132" text-anchor="middle">Тип принадлежит значению; имя только ссылается на него</text>
+</svg>

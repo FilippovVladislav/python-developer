@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Каждое значение Python имеет тип</title>
+  <desc id="desc">Карточки показывают значения 42, 3.14, Python, True и None, связанные со своими типами int, float, str, bool и NoneType.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 32px; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="78" text-anchor="middle">Каждое значение Python имеет тип</text>
+  <text class="text body muted" x="600" y="122" text-anchor="middle">Тип определяет, как Python работает со значением</text>
+
+  <g transform="translate(80 210)">
+    <rect class="card" width="180" height="120" rx="18"/>
+    <text class="mono ink" x="90" y="72" text-anchor="middle">42</text>
+    <path class="line" d="M90 135v54" marker-end="url(#arrow)"/>
+    <rect class="soft" x="18" y="205" width="144" height="72" rx="14"/>
+    <text class="text label olive" x="90" y="250" text-anchor="middle">int</text>
+  </g>
+  <g transform="translate(290 210)">
+    <rect class="card" width="180" height="120" rx="18"/>
+    <text class="mono ink" x="90" y="72" text-anchor="middle">3.14</text>
+    <path class="line" d="M90 135v54" marker-end="url(#arrow)"/>
+    <rect class="soft" x="18" y="205" width="144" height="72" rx="14"/>
+    <text class="text label olive" x="90" y="250" text-anchor="middle">float</text>
+  </g>
+  <g transform="translate(510 210)">
+    <rect class="card" width="180" height="120" rx="18"/>
+    <text class="mono ink" x="90" y="72" text-anchor="middle">"Python"</text>
+    <path class="line" d="M90 135v54" marker-end="url(#arrow)"/>
+    <rect class="soft" x="18" y="205" width="144" height="72" rx="14"/>
+    <text class="text label olive" x="90" y="250" text-anchor="middle">str</text>
+  </g>
+  <g transform="translate(730 210)">
+    <rect class="card" width="180" height="120" rx="18"/>
+    <text class="mono ink" x="90" y="72" text-anchor="middle">True</text>
+    <path class="line" d="M90 135v54" marker-end="url(#arrow)"/>
+    <rect class="soft" x="18" y="205" width="144" height="72" rx="14"/>
+    <text class="text label olive" x="90" y="250" text-anchor="middle">bool</text>
+  </g>
+  <g transform="translate(940 210)">
+    <rect class="card" width="180" height="120" rx="18"/>
+    <text class="mono ink" x="90" y="72" text-anchor="middle">None</text>
+    <path class="line" d="M90 135v54" marker-end="url(#arrow)"/>
+    <rect class="soft" x="18" y="205" width="144" height="72" rx="14"/>
+    <text class="text label olive" x="90" y="250" text-anchor="middle">NoneType</text>
+  </g>
+
+  <rect class="accent" x="295" y="575" width="610" height="72" rx="18"/>
+  <text class="text label ink" x="600" y="620" text-anchor="middle">Python хранит тип у каждого значения</text>
+</svg>
