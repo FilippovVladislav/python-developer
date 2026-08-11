@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Основные типы Python</title>
+  <desc id="desc">Визуальная карта пяти основных типов: int, float, str, bool и NoneType.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 24px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 30px; font-weight: 700; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <rect class="accent" x="435" y="265" width="330" height="130" rx="22"/>
+  <text class="text title ink" x="600" y="320" text-anchor="middle">Основные типы</text>
+  <text class="text body muted" x="600" y="358" text-anchor="middle">первые значения в Python</text>
+
+  <path class="line" d="M515 260 385 172" marker-end="url(#arrow)"/>
+  <path class="line" d="M685 260 815 172" marker-end="url(#arrow)"/>
+  <path class="line" d="M425 333H302" marker-end="url(#arrow)"/>
+  <path class="line" d="M775 333h123" marker-end="url(#arrow)"/>
+  <path class="line" d="M600 405v82" marker-end="url(#arrow)"/>
+
+  <rect class="card" x="165" y="82" width="250" height="125" rx="18"/>
+  <text class="mono blue" x="290" y="123" text-anchor="middle">int</text>
+  <text class="text body ink" x="290" y="158" text-anchor="middle">Целые числа</text>
+  <text class="mono olive" x="290" y="190" text-anchor="middle">42</text>
+
+  <rect class="card" x="785" y="82" width="250" height="125" rx="18"/>
+  <text class="mono blue" x="910" y="123" text-anchor="middle">float</text>
+  <text class="text body ink" x="910" y="158" text-anchor="middle">Дробные числа</text>
+  <text class="mono olive" x="910" y="190" text-anchor="middle">3.14</text>
+
+  <rect class="card" x="70" y="270" width="250" height="125" rx="18"/>
+  <text class="mono blue" x="195" y="311" text-anchor="middle">str</text>
+  <text class="text body ink" x="195" y="346" text-anchor="middle">Текст</text>
+  <text class="mono olive" x="195" y="378" text-anchor="middle">"Python"</text>
+
+  <rect class="card" x="880" y="270" width="250" height="125" rx="18"/>
+  <text class="mono blue" x="1005" y="311" text-anchor="middle">bool</text>
+  <text class="text body ink" x="1005" y="346" text-anchor="middle">Истина / ложь</text>
+  <text class="mono olive" x="1005" y="378" text-anchor="middle">True</text>
+
+  <rect class="card" x="475" y="500" width="250" height="125" rx="18"/>
+  <text class="mono blue" x="600" y="541" text-anchor="middle">NoneType</text>
+  <text class="text body ink" x="600" y="576" text-anchor="middle">Отсутствие значения</text>
+  <text class="mono olive" x="600" y="608" text-anchor="middle">None</text>
+
+  <text class="text body muted" x="600" y="665" text-anchor="middle">Позже мы познакомимся с другими типами</text>
+</svg>

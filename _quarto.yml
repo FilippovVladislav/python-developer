@@ -32,7 +32,7 @@ book:
     - part: book/tom-02-python-basics.qmd
       chapters:
         - book/chapters/08-variables.qmd
-        #- book/chapters/09-data-types.qmd
+        - book/chapters/09-data-types.qmd
         #- book/chapters/10-user-input.qmd
         #- book/chapters/11-type-conversion.qmd
         #- book/chapters/12-arithmetic.qmd
