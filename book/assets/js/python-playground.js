@@ -61,6 +61,10 @@
     runButton.textContent = label;
   }
 
+  function setInputWaiting(inputArea, waiting) {
+    inputArea.hidden = !waiting;
+  }
+
   function setOutput(output, text, isError) {
     output.textContent = text || '';
     output.classList.toggle('python-playground__output--error', Boolean(isError));
@@ -79,35 +83,169 @@
     }
 
     return {
-      text: stderr ? stderr : stdout,
+      text: stderr ? stdout + stderr : stdout,
       isError: Boolean(stderr),
     };
   }
 
-  async function runPython(code) {
-    var pyodide = await getPyodide();
-    pyodide.globals.set('__playground_code', code);
+  function createInputController(inputArea, inputPrompt, inputField, inputButton, status) {
+    var pendingResolve = null;
 
-    var result = await pyodide.runPythonAsync([
-      'import contextlib',
-      'import io',
+    function submit() {
+      if (!pendingResolve) {
+        return;
+      }
+
+      var value = inputField.value;
+      var resolve = pendingResolve;
+      pendingResolve = null;
+      inputField.value = '';
+      inputField.disabled = true;
+      inputButton.disabled = true;
+      setInputWaiting(inputArea, false);
+      status.textContent = 'Выполняется…';
+      resolve(value);
+    }
+
+    inputButton.addEventListener('click', submit);
+    inputField.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        submit();
+      }
+    });
+
+    return {
+      request: function (prompt) {
+        return new Promise(function (resolve) {
+          pendingResolve = resolve;
+          inputPrompt.dataset.prompt = prompt || '';
+          inputPrompt.textContent = prompt || 'Введите значение';
+          inputField.disabled = false;
+          inputButton.disabled = false;
+          setInputWaiting(inputArea, true);
+          status.textContent = 'Ожидается ввод…';
+          window.setTimeout(function () {
+            inputField.focus();
+          }, 0);
+        });
+      },
+      reset: function () {
+        if (pendingResolve) {
+          pendingResolve('');
+        }
+        pendingResolve = null;
+        inputField.value = '';
+        inputField.disabled = true;
+        inputButton.disabled = true;
+        inputPrompt.dataset.prompt = '';
+        setInputWaiting(inputArea, false);
+      },
+    };
+  }
+
+  async function runPython(code, callbacks) {
+    var pyodide = await getPyodide();
+    var stdout = '';
+    var stderr = '';
+
+    function appendStdout(text) {
+      stdout += text;
+      callbacks.onOutput(stdout, false);
+    }
+
+    function appendStderr(text) {
+      stderr += text;
+      callbacks.onOutput(stdout + stderr, true);
+    }
+
+    pyodide.globals.set('__playground_code', code);
+    pyodide.globals.set('__playground_input', function (prompt) {
+      var promptText = prompt == null ? '' : String(prompt);
+      return callbacks.onInput(promptText).then(function (value) {
+        appendStdout(promptText + value + '\n');
+        return value;
+      });
+    });
+    pyodide.setStdout({ batched: appendStdout });
+    pyodide.setStderr({ batched: appendStderr });
+
+    try {
+      await pyodide.runPythonAsync([
+      'import ast',
       'import traceback',
       '',
-      '_stdout = io.StringIO()',
-      '_stderr = io.StringIO()',
-      '_namespace = {}',
+      'class _InputTransformer(ast.NodeTransformer):',
+      '    def visit_FunctionDef(self, node):',
+      '        return node',
+      '',
+      '    def visit_AsyncFunctionDef(self, node):',
+      '        return node',
+      '',
+      '    def visit_ClassDef(self, node):',
+      '        return node',
+      '',
+      '    def visit_Call(self, node):',
+      '        self.generic_visit(node)',
+      '        if isinstance(node.func, ast.Name) and node.func.id == "input":',
+      '            return ast.copy_location(',
+      '                ast.Await(',
+      '                    value=ast.Call(',
+      '                        func=ast.Name(id="__playground_input", ctx=ast.Load()),',
+      '                        args=node.args,',
+      '                        keywords=node.keywords,',
+      '                    )',
+      '                ),',
+      '                node,',
+      '            )',
+      '        return node',
       '',
       'try:',
-      '    with contextlib.redirect_stdout(_stdout), contextlib.redirect_stderr(_stderr):',
-      '        exec(__playground_code, _namespace)',
+      '    _tree = ast.parse(__playground_code, filename="<playground>")',
+      '    _tree = _InputTransformer().visit(_tree)',
+      '    _main = ast.AsyncFunctionDef(',
+      '        name="__playground_main",',
+      '        args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),',
+      '        body=_tree.body or [ast.Pass()],',
+      '        decorator_list=[],',
+      '        returns=None,',
+      '        type_comment=None,',
+      '    )',
+      '    if hasattr(_main, "type_params"):',
+      '        _main.type_params = []',
+      '    _module = ast.Module(',
+      '        body=[',
+      '            _main,',
+      '            ast.Expr(',
+      '                value=ast.Await(',
+      '                    value=ast.Call(',
+      '                        func=ast.Name(id="__playground_main", ctx=ast.Load()),',
+      '                        args=[],',
+      '                        keywords=[],',
+      '                    )',
+      '                )',
+      '            ),',
+      '        ],',
+      '        type_ignores=[],',
+      '    )',
+      '    ast.fix_missing_locations(_module)',
+      '    _namespace = {"__name__": "__main__", "__playground_input": __playground_input}',
+      '    _compiled = compile(_module, "<playground>", "exec", flags=ast.PyCF_ALLOW_TOP_LEVEL_AWAIT)',
+      '    await eval(_compiled, _namespace)',
       'except BaseException:',
-      '    traceback.print_exc(file=_stderr)',
-      '',
-      "{'stdout': _stdout.getvalue(), 'stderr': _stderr.getvalue()}",
-    ].join('\n'));
+      '    traceback.print_exc()',
+      ].join('\n'));
+    } finally {
+      pyodide.setStdout();
+      pyodide.setStderr();
+      pyodide.globals.delete('__playground_code');
+      pyodide.globals.delete('__playground_input');
+    }
 
-    pyodide.globals.delete('__playground_code');
-    return result;
+    return {
+      stdout: stdout,
+      stderr: stderr,
+    };
   }
 
   async function loadSource(block, textarea, output, status) {
@@ -170,11 +308,37 @@
     var output = createElement('pre', 'python-playground__output');
     output.setAttribute('aria-live', 'polite');
 
+    var inputArea = createElement('div', 'python-playground__input');
+    inputArea.hidden = true;
+    var inputPrompt = createElement('div', 'python-playground__input-prompt');
+    var inputControls = createElement('div', 'python-playground__input-controls');
+    var inputField = createElement('input', 'python-playground__input-field');
+    inputField.type = 'text';
+    inputField.autocomplete = 'off';
+    inputField.disabled = true;
+    inputField.setAttribute('aria-label', 'Ввод для Python input');
+    var inputButton = createElement('button', 'python-playground__button', 'Отправить');
+    inputButton.type = 'button';
+    inputButton.disabled = true;
+    inputControls.appendChild(inputField);
+    inputControls.appendChild(inputButton);
+    inputArea.appendChild(inputPrompt);
+    inputArea.appendChild(inputControls);
+
     block.appendChild(header);
     block.appendChild(textarea);
     block.appendChild(actions);
     block.appendChild(resultHeader);
+    block.appendChild(inputArea);
     block.appendChild(output);
+
+    var inputController = createInputController(
+      inputArea,
+      inputPrompt,
+      inputField,
+      inputButton,
+      status
+    );
 
     textarea.addEventListener('input', function () {
       fitEditorHeight(textarea);
@@ -194,25 +358,44 @@
     });
 
     runButton.addEventListener('click', async function () {
+      var runId = String(Date.now()) + String(Math.random());
+      block.dataset.runId = runId;
+      inputController.reset();
       setOutput(output, '', false);
       setBusy(runButton, true, pyodideReadyPromise ? 'Выполняется…' : 'Загрузка Python…');
       status.textContent = pyodideReadyPromise ? 'Выполняется…' : 'Загрузка Python…';
 
       try {
-        var result = await runPython(textarea.value);
-        var formatted = formatResult(result.toJs());
-        result.destroy();
+        var result = await runPython(textarea.value, {
+          onInput: inputController.request,
+          onOutput: function (text, isError) {
+            if (block.dataset.runId === runId) {
+              setOutput(output, text, isError);
+            }
+          },
+        });
+        var formatted = formatResult(result);
+        if (block.dataset.runId !== runId) {
+          return;
+        }
         setOutput(output, formatted.text, formatted.isError);
         status.textContent = formatted.isError ? 'Python сообщил об ошибке.' : 'Готово.';
       } catch (error) {
-        setOutput(output, error.message, true);
-        status.textContent = 'Не удалось выполнить код.';
+        if (block.dataset.runId === runId) {
+          setOutput(output, error.message, true);
+          status.textContent = 'Не удалось выполнить код.';
+        }
       } finally {
-        setBusy(runButton, false, 'Запустить');
+        if (block.dataset.runId === runId) {
+          inputController.reset();
+          setBusy(runButton, false, 'Запустить');
+        }
       }
     });
 
     resetButton.addEventListener('click', function () {
+      block.dataset.runId = '';
+      inputController.reset();
       textarea.value = block.dataset.initialCode || '';
       fitEditorHeight(textarea);
       setOutput(output, '', false);

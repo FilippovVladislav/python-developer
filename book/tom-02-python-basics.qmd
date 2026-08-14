@@ -8,8 +8,9 @@
 
 - [3.1 Переменные](chapters/08-variables.qmd)
 - [3.2 Типы данных](chapters/09-data-types.qmd)
-<!--
 - [3.3 Ввод данных](chapters/10-user-input.qmd)
+  
+<!--
 - [3.4 Преобразование типов](chapters/11-type-conversion.qmd)
 - [3.5 Арифметические операции](chapters/12-arithmetic.qmd)
 - [3.6 Сравнение значений](chapters/13-comparisons.qmd)

@@ -1,0 +1,11 @@
+name = input("Как вас зовут? ")
+city = input("Ваш город? ")
+profession = input("Ваша профессия? ")
+language = input("Какой язык вы изучаете? ")
+
+print()
+print("Профиль")
+print("Имя:", name)
+print("Город:", city)
+print("Профессия:", profession)
+print("Изучает:", language)
