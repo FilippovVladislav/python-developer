@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Строка из input и число для вычислений</title>
+  <desc id="desc">Пользователь вводит 25, input возвращает строку 25 типа str, а для вычислений нужно число 25 типа int. Между ними вопрос как превратить строку в число.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .card { fill: #ffffff; stroke: #d8dee8; stroke-width: 3; }
+      .accent { fill: #eef4f8; stroke: #2f5f8f; stroke-width: 4; }
+      .soft { fill: #f0f3df; stroke: #6f7d2d; stroke-width: 4; }
+      .warn { fill: #fff4f1; stroke: #c9553d; stroke-width: 4; }
+      .ink { fill: #17212b; }
+      .muted { fill: #5f6b78; }
+      .blue { fill: #2f5f8f; }
+      .olive { fill: #6f7d2d; }
+      .red { fill: #c9553d; }
+      .line { fill: none; stroke: #2f5f8f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .line-red { fill: none; stroke: #c9553d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 36px; font-weight: 700; }
+      .label { font-size: 23px; font-weight: 650; }
+      .body { font-size: 20px; }
+      .mono { font-family: "Cascadia Code", Consolas, monospace; font-size: 34px; font-weight: 700; }
+      .question { font-size: 64px; font-weight: 750; }
+    </style>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#c9553d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="76" text-anchor="middle">Строка "25" не является числом 25</text>
+
+  <rect class="soft" x="95" y="160" width="350" height="82" rx="16"/>
+  <text class="text body muted" x="270" y="192" text-anchor="middle">Пользователь вводит</text>
+  <text class="mono olive" x="270" y="226" text-anchor="middle">25</text>
+  <path class="line" d="M270 248v54" marker-end="url(#arrow-blue)"/>
+
+  <rect class="accent" x="95" y="320" width="350" height="82" rx="16"/>
+  <text class="mono ink" x="270" y="373" text-anchor="middle">input()</text>
+  <path class="line" d="M270 408v54" marker-end="url(#arrow-blue)"/>
+
+  <rect class="card" x="95" y="480" width="350" height="82" rx="16"/>
+  <text class="mono blue" x="270" y="533" text-anchor="middle">"25"</text>
+  <rect class="soft" x="170" y="585" width="200" height="62" rx="14"/>
+  <text class="mono olive" x="270" y="627" text-anchor="middle">str</text>
+
+  <circle cx="600" cy="410" r="58" fill="#fff4f1" stroke="#c9553d" stroke-width="4"/>
+  <text class="text question red" x="600" y="432" text-anchor="middle">?</text>
+  <text class="text label ink" x="600" y="520" text-anchor="middle">Как превратить строку в число?</text>
+  <path class="line-red" d="M455 522c52 40 97 60 145 60s93-20 145-60" marker-end="url(#arrow-red)"/>
+
+  <rect class="accent" x="755" y="305" width="350" height="110" rx="16"/>
+  <text class="text body muted" x="930" y="342" text-anchor="middle">Для вычислений хотелось бы</text>
+  <text class="mono blue" x="930" y="389" text-anchor="middle">25</text>
+  <rect class="soft" x="830" y="455" width="200" height="62" rx="14"/>
+  <text class="mono olive" x="930" y="497" text-anchor="middle">int</text>
+</svg>
