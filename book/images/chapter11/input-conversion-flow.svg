@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="220" viewBox="0 0 760 220" role="img" aria-labelledby="title desc">
+  <title id="title">Преобразование ввода в число</title>
+  <desc id="desc">Пользователь вводит 25, input возвращает строку 25, int создает целое число 25, после этого программа выполняет вычисление.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2f5f8f"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#2f5f8f;stroke-width:2;rx:8}
+      .soft{fill:#eef4f8}
+      .text{font-family:Arial,sans-serif;font-size:18px;fill:#17212b}
+      .small{font-size:14px;fill:#5f6b78}
+      .arrow{stroke:#2f5f8f;stroke-width:2.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="20" y="55" width="130" height="95" class="box soft"/>
+  <text x="85" y="92" text-anchor="middle" class="text">ввод</text>
+  <text x="85" y="122" text-anchor="middle" class="text">25</text>
+  <line x1="155" y1="103" x2="230" y2="103" class="arrow"/>
+  <rect x="235" y="55" width="130" height="95" class="box"/>
+  <text x="300" y="92" text-anchor="middle" class="text">input()</text>
+  <text x="300" y="122" text-anchor="middle" class="small">"25" : str</text>
+  <line x1="370" y1="103" x2="445" y2="103" class="arrow"/>
+  <rect x="450" y="55" width="130" height="95" class="box"/>
+  <text x="515" y="92" text-anchor="middle" class="text">int()</text>
+  <text x="515" y="122" text-anchor="middle" class="small">25 : int</text>
+  <line x1="585" y1="103" x2="660" y2="103" class="arrow"/>
+  <rect x="665" y="55" width="75" height="95" class="box soft"/>
+  <text x="702" y="94" text-anchor="middle" class="text">+ 1</text>
+  <text x="702" y="122" text-anchor="middle" class="small">26</text>
+</svg>

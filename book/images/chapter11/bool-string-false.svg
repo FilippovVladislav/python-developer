@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="230" viewBox="0 0 760 230" role="img" aria-labelledby="title desc">
+  <title id="title">bool от строки False</title>
+  <desc id="desc">Логическое False и строка False ведут себя по-разному: bool от False дает False, а bool от непустой строки False дает True.</desc>
+  <defs>
+    <style>
+      .panel{fill:#fff;stroke:#d8dee8;stroke-width:2;rx:8}
+      .good{fill:#eef8f0;stroke:#5b8f5b}
+      .warn{fill:#fff4f1;stroke:#c9553d}
+      .code{font-family:Consolas,monospace;font-size:22px;fill:#17212b}
+      .text{font-family:Arial,sans-serif;font-size:17px;fill:#17212b}
+      .muted{fill:#5f6b78;font-size:15px}
+    </style>
+  </defs>
+  <rect x="35" y="40" width="310" height="145" class="panel warn"/>
+  <text x="190" y="82" text-anchor="middle" class="code">False</text>
+  <text x="190" y="118" text-anchor="middle" class="text">логическое значение</text>
+  <text x="190" y="150" text-anchor="middle" class="code">bool(False) → False</text>
+  <rect x="415" y="40" width="310" height="145" class="panel good"/>
+  <text x="570" y="82" text-anchor="middle" class="code">"False"</text>
+  <text x="570" y="118" text-anchor="middle" class="text">непустая строка</text>
+  <text x="570" y="150" text-anchor="middle" class="code">bool("False") → True</text>
+  <text x="380" y="210" text-anchor="middle" class="text muted">bool() смотрит не на смысл слова, а на само значение и его тип.</text>
+</svg>
