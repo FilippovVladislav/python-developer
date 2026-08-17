@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="220" viewBox="0 0 760 220" role="img" aria-labelledby="title desc">
+  <title id="title">Ошибка преобразования в int</title>
+  <desc id="desc">Строка Python передается в int, но ее нельзя представить как целое число, поэтому возникает ValueError.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#c9553d"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#2f5f8f;stroke-width:2;rx:8}
+      .error{fill:#fff4f1;stroke:#c9553d}
+      .text{font-family:Arial,sans-serif;font-size:18px;fill:#17212b}
+      .code{font-family:Consolas,monospace;font-size:20px;fill:#17212b}
+      .small{font-size:15px;fill:#5f6b78}
+      .arrow{stroke:#c9553d;stroke-width:2.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="55" y="60" width="170" height="95" class="box"/>
+  <text x="140" y="100" text-anchor="middle" class="code">"Python"</text>
+  <text x="140" y="128" text-anchor="middle" class="text small">str</text>
+  <line x1="235" y1="108" x2="330" y2="108" class="arrow"/>
+  <rect x="340" y="60" width="120" height="95" class="box"/>
+  <text x="400" y="116" text-anchor="middle" class="code">int()</text>
+  <line x1="470" y1="108" x2="565" y2="108" class="arrow"/>
+  <rect x="575" y="60" width="130" height="95" class="box error"/>
+  <text x="640" y="100" text-anchor="middle" class="code">ValueError</text>
+  <text x="640" y="128" text-anchor="middle" class="text small">нет целого числа</text>
+</svg>
