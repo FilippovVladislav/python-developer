@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3.5 Арифметические операции – Путь Python-разработчика</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/chapters/11-type-conversion.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e19df9547eb517d331095cdad01067e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/12-arithmetic.html">3.5 Арифметические операции</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Путь Python-разработчика</a> 
+        <div class="sidebar-tools-main">
+    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Том I. Основы программирования</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 Как думает компьютер</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Почему Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Том II. Базовые конструкции Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 Переменные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/09-data-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 Типы данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/10-user-input.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 Ввод данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/11-type-conversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.4 Преобразование типов</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/12-arithmetic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3.5 Арифметические операции</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#основные-арифметические-операторы" id="toc-основные-арифметические-операторы" class="nav-link active" data-scroll-target="#основные-арифметические-операторы">Основные арифметические операторы</a></li>
+  <li><a href="#сложение" id="toc-сложение" class="nav-link" data-scroll-target="#сложение">Сложение</a></li>
+  <li><a href="#вычитание" id="toc-вычитание" class="nav-link" data-scroll-target="#вычитание">Вычитание</a></li>
+  <li><a href="#умножение" id="toc-умножение" class="nav-link" data-scroll-target="#умножение">Умножение</a></li>
+  <li><a href="#обычное-деление" id="toc-обычное-деление" class="nav-link" data-scroll-target="#обычное-деление">Обычное деление</a></li>
+  <li><a href="#деление-может-давать-дробный-результат" id="toc-деление-может-давать-дробный-результат" class="nav-link" data-scroll-target="#деление-может-давать-дробный-результат">Деление может давать дробный результат</a></li>
+  <li><a href="#деление-на-ноль" id="toc-деление-на-ноль" class="nav-link" data-scroll-target="#деление-на-ноль">Деление на ноль</a></li>
+  <li><a href="#целочисленное-деление" id="toc-целочисленное-деление" class="nav-link" data-scroll-target="#целочисленное-деление">Целочисленное деление</a></li>
+  <li><a href="#остаток-от-деления" id="toc-остаток-от-деления" class="nav-link" data-scroll-target="#остаток-от-деления">Остаток от деления</a></li>
+  <li><a href="#зачем-нужен-остаток-от-деления" id="toc-зачем-нужен-остаток-от-деления" class="nav-link" data-scroll-target="#зачем-нужен-остаток-от-деления">Зачем нужен остаток от деления</a></li>
+  <li><a href="#возведение-в-степень" id="toc-возведение-в-степень" class="nav-link" data-scroll-target="#возведение-в-степень">Возведение в степень</a></li>
+  <li><a href="#несколько-операций-в-одном-выражении" id="toc-несколько-операций-в-одном-выражении" class="nav-link" data-scroll-target="#несколько-операций-в-одном-выражении">Несколько операций в одном выражении</a></li>
+  <li><a href="#приоритет-операций" id="toc-приоритет-операций" class="nav-link" data-scroll-target="#приоритет-операций">Приоритет операций</a></li>
+  <li><a href="#скобки-делают-вычисления-понятнее" id="toc-скобки-делают-вычисления-понятнее" class="nav-link" data-scroll-target="#скобки-делают-вычисления-понятнее">Скобки делают вычисления понятнее</a></li>
+  <li><a href="#операции-одинакового-приоритета" id="toc-операции-одинакового-приоритета" class="nav-link" data-scroll-target="#операции-одинакового-приоритета">Операции одинакового приоритета</a></li>
+  <li><a href="#особенность-оператора" id="toc-особенность-оператора" class="nav-link" data-scroll-target="#особенность-оператора">Особенность оператора <code>**</code></a></li>
+  <li><a href="#вычисления-с-int-и-float" id="toc-вычисления-с-int-и-float" class="nav-link" data-scroll-target="#вычисления-с-int-и-float">Вычисления с int и float</a></li>
+  <li><a href="#вычисления-с-пользовательским-вводом" id="toc-вычисления-с-пользовательским-вводом" class="nav-link" data-scroll-target="#вычисления-с-пользовательским-вводом">Вычисления с пользовательским вводом</a></li>
+  <li><a href="#попробуйте-сами" id="toc-попробуйте-сами" class="nav-link" data-scroll-target="#попробуйте-сами">Попробуйте сами</a></li>
+  <li><a href="#что-важно-запомнить" id="toc-что-важно-запомнить" class="nav-link" data-scroll-target="#что-важно-запомнить">Что важно запомнить</a>
+  <ul class="collapse">
+  <li><a href="#практические-задания" id="toc-практические-задания" class="nav-link" data-scroll-target="#практические-задания">Практические задания</a></li>
+  </ul></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/12-arithmetic.html">3.5 Арифметические операции</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">3.5 Арифметические операции</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важное уведомление
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Главный вопрос главы:</p>
+<p><strong>Как Python выполняет вычисления с числами?</strong></p>
+</div>
+</div>
+<p>В предыдущих главах мы научились хранить числа в переменных:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>получать их от пользователя:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Сколько вам лет? "</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>и превращать строки в числа:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="bu">int</span>(age)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Теперь можно использовать эти значения для вычислений.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>360</code></pre>
+<p>Здесь Python выполнил <strong>арифметическую операцию</strong> — умножение.</p>
+<p>Но умножение — только одна из доступных операций.</p>
+<p>Python умеет складывать, вычитать, умножать, делить, находить остаток от деления, возводить числа в степень и выполнять другие вычисления.</p>
+<hr>
+<section id="основные-арифметические-операторы" class="level2">
+<h2 class="anchored" data-anchor-id="основные-арифметические-операторы">Основные арифметические операторы</h2>
+<p>Для вычислений Python использует специальные символы — <strong>арифметические операторы</strong>.</p>
+<p>Основные из них:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Оператор</th>
+<th>Операция</th>
+<th>Пример</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>сложение</td>
+<td><code>10 + 3</code></td>
+<td><code>13</code></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>вычитание</td>
+<td><code>10 - 3</code></td>
+<td><code>7</code></td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>умножение</td>
+<td><code>10 * 3</code></td>
+<td><code>30</code></td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>обычное деление</td>
+<td><code>10 / 3</code></td>
+<td><code>3.333...</code></td>
+</tr>
+<tr class="odd">
+<td><code>//</code></td>
+<td>целочисленное деление</td>
+<td><code>10 // 3</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>остаток от деления</td>
+<td><code>10 % 3</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td><code>**</code></td>
+<td>возведение в степень</td>
+<td><code>10 ** 3</code></td>
+<td><code>1000</code></td>
+</tr>
+</tbody>
+</table>
+<p>Начнём с самых привычных операций.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter12/arithmetic-operators.svg" class="img-fluid figure-img" alt="Карточки показывают семь арифметических операторов Python: сложение, вычитание, умножение, обычное деление, целочисленное деление, остаток от деления и возведение в степень"></p>
+<figcaption>Карта основных арифметических операторов</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="сложение" class="level2">
+<h2 class="anchored" data-anchor-id="сложение">Сложение</h2>
+<p>Оператор <code>+</code> складывает числа:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">+</span> <span class="dv">5</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>15</code></pre>
+<p>Можно складывать значения переменных:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>apples <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>oranges <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> apples <span class="op">+</span> oranges</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>8</code></pre>
+<p>Или сохранить результат вычисления в новую переменную:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>salary <span class="op">=</span> <span class="dv">80000</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> <span class="dv">15000</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> salary <span class="op">+</span> bonus</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>95000</code></pre>
+<p>Общая схема:</p>
+<pre class="text"><code>значение + значение
+        ↓
+     результат</code></pre>
+<hr>
+</section>
+<section id="вычитание" class="level2">
+<h2 class="anchored" data-anchor-id="вычитание">Вычитание</h2>
+<p>Оператор <code>-</code> выполняет вычитание:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">-</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>7</code></pre>
+<p>Например, можно вычислить оставшуюся сумму:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>money <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>spent <span class="op">=</span> <span class="dv">350</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>remaining <span class="op">=</span> money <span class="op">-</span> spent</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(remaining)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>650</code></pre>
+<hr>
+</section>
+<section id="умножение" class="level2">
+<h2 class="anchored" data-anchor-id="умножение">Умножение</h2>
+<p>Для умножения используется оператор <code>*</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">6</span> <span class="op">*</span> <span class="dv">4</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>24</code></pre>
+<p>Например, стоимость нескольких одинаковых товаров:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>600</code></pre>
+<p>Теперь мы можем соединить это с пользовательским вводом:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Цена товара: "</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Количество: "</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Итого:"</span>, total)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Пример работы:</p>
+<pre class="text"><code>Цена товара: 49.5
+Количество: 3
+Итого: 148.5</code></pre>
+<p>Здесь используются сразу несколько уже знакомых элементов:</p>
+<pre class="text"><code>input()
+   ↓
+преобразование типов
+   ↓
+числа
+   ↓
+умножение
+   ↓
+результат</code></pre>
+<hr>
+</section>
+<section id="обычное-деление" class="level2">
+<h2 class="anchored" data-anchor-id="обычное-деление">Обычное деление</h2>
+<p>Для деления используется оператор <code>/</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>5.0</code></pre>
+<p>Обратите внимание: результат имеет дробный тип <code>float</code>.</p>
+<p>Проверим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(result))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>5.0
+&lt;class 'float'&gt;</code></pre>
+<p>Даже если числа делятся без остатка, оператор <code>/</code> возвращает <code>float</code>.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">8</span> <span class="op">/</span> <span class="dv">4</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">20</span> <span class="op">/</span> <span class="dv">5</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>2.0
+4.0</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Важно">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Оператор <code>/</code> выполняет обычное деление и возвращает результат типа <code>float</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>5.0</code></pre>
+<p>а не:</p>
+<pre class="text"><code>5</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="деление-может-давать-дробный-результат" class="level2">
+<h2 class="anchored" data-anchor-id="деление-может-давать-дробный-результат">Деление может давать дробный результат</h2>
+<p>Если одно число не делится на другое без остатка:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">4</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>получим:</p>
+<pre class="text"><code>2.5</code></pre>
+<p>Например, можно разделить общий счёт между несколькими людьми:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">1500</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>per_person <span class="op">=</span> total <span class="op">/</span> people</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(per_person)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>375.0</code></pre>
+<hr>
+</section>
+<section id="деление-на-ноль" class="level2">
+<h2 class="anchored" data-anchor-id="деление-на-ноль">Деление на ноль</h2>
+<p>Попробуем:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Такое вычисление невозможно.</p>
+<p>Python остановит программу и сообщит об ошибке:</p>
+<pre class="text"><code>ZeroDivisionError</code></pre>
+<p>Проверьте это в playground: ошибка сделана намеренно. Замените <code>0</code> на другое число и запустите код снова.</p>
+<div class="python-playground" data-source="../examples/chapter12/zero-division.py" data-title="Деление на ноль">
+
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="На ноль делить нельзя">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Предупреждение</span>На ноль делить нельзя
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Это относится не только к <code>/</code>.</p>
+<p>Следующие выражения также приводят к <code>ZeroDivisionError</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">//</span> <span class="dv">0</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">%</span> <span class="dv">0</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Позже мы научимся проверять данные до выполнения подобных операций.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="целочисленное-деление" class="level2">
+<h2 class="anchored" data-anchor-id="целочисленное-деление">Целочисленное деление</h2>
+<p>Кроме обычного <code>/</code>, в Python существует оператор:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="op">//</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Он выполняет <strong>целочисленное деление</strong>.</p>
+<p>Сравним:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>3.3333333333333335
+3</code></pre>
+<p>При обычном делении:</p>
+<pre class="text"><code>10 / 3 → 3.333...</code></pre>
+<p>При целочисленном:</p>
+<pre class="text"><code>10 // 3 → 3</code></pre>
+<p>Можно представить это так:</p>
+<pre class="text"><code>10 = 3 × 3 + 1
+     └───┘
+   целая часть</code></pre>
+<p>Оператор <code>//</code> показывает, сколько <strong>полных раз</strong> делитель помещается в делимом.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">17</span> <span class="op">//</span> <span class="dv">5</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>3</code></pre>
+<p>Потому что в <code>17</code> помещаются три полные пятёрки:</p>
+<pre class="text"><code>5 + 5 + 5 = 15</code></pre>
+<p>и ещё остаётся <code>2</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Не путайте // с int()">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Предупреждение</span>Не путайте // с int()
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для положительных чисел результаты иногда выглядят одинаково:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)   <span class="co"># 3</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span>       <span class="co"># 3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Но это разные операции.</p>
+<p>Особенно это заметно на отрицательных числах:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="op">-</span><span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>))</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">-</span><span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>-3
+-4</code></pre>
+<p><code>int()</code> отбрасывает дробную часть в направлении нуля.</p>
+<p>Оператор <code>//</code> выполняет деление с округлением вниз.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="остаток-от-деления" class="level2">
+<h2 class="anchored" data-anchor-id="остаток-от-деления">Остаток от деления</h2>
+<p>Оператор <code>%</code> возвращает <strong>остаток от деления</strong>.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>1</code></pre>
+<p>Почему?</p>
+<p>Число <code>10</code> можно представить так:</p>
+<pre class="text"><code>10 = 3 × 3 + 1
+             ↑
+           остаток</code></pre>
+<p>Ещё несколько примеров:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">15</span> <span class="op">%</span> <span class="dv">4</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">20</span> <span class="op">%</span> <span class="dv">6</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">8</span> <span class="op">%</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>3
+2
+0</code></pre>
+<p>Если число делится без остатка, <code>%</code> возвращает <code>0</code>.</p>
+<p>Сравните <code>/</code>, <code>//</code> и <code>%</code> на одних и тех же числах:</p>
+<div class="python-playground" data-source="../examples/chapter12/division-types.py" data-title="/, // и %">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter12/division-three-ways.svg" class="img-fluid figure-img" alt="Обычное деление 10 делить на 3 дает 3.333, целочисленное деление дает 3 полные части, остаток от деления дает 1; вместе это записывается как 10 равно 3 умножить на 3 плюс 1"></p>
+<figcaption>Три способа деления</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="зачем-нужен-остаток-от-деления" class="level2">
+<h2 class="anchored" data-anchor-id="зачем-нужен-остаток-от-деления">Зачем нужен остаток от деления</h2>
+<p>Оператор <code>%</code> часто используется, когда нужно узнать, делится ли число на другое число без остатка.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">%</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>0</code></pre>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">11</span> <span class="op">%</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>1</code></pre>
+<p>Получается:</p>
+<pre class="text"><code>10 % 2 → 0
+11 % 2 → 1</code></pre>
+<p>Позже это позволит проверять, является ли число чётным.</p>
+<p>Но <code>%</code> полезен не только для этого.</p>
+<p>Например, переведём минуты в часы и оставшиеся минуты.</p>
+<p>Пусть есть:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> <span class="dv">135</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Полные часы:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> minutes <span class="op">//</span> <span class="dv">60</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Оставшиеся минуты:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>remaining_minutes <span class="op">=</span> minutes <span class="op">%</span> <span class="dv">60</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Полная программа:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> <span class="dv">135</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> minutes <span class="op">//</span> <span class="dv">60</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>remaining_minutes <span class="op">=</span> minutes <span class="op">%</span> <span class="dv">60</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Часы:"</span>, hours)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Минуты:"</span>, remaining_minutes)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Часы: 2
+Минуты: 15</code></pre>
+<div class="python-playground" data-source="../examples/chapter12/minutes-converter.py" data-title="Минуты в часы и минуты">
+
+</div>
+<p>Здесь <code>//</code> и <code>%</code> удобно работают вместе:</p>
+<pre class="text"><code>135 минут
+    ↓
+135 // 60 → 2 часа
+135 % 60  → 15 минут</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter12/minutes-conversion.svg" class="img-fluid figure-img" alt="135 минут делятся на 60 с помощью оператора // и дают 2 часа, а оператор % показывает остаток 15 минут; итог 135 минут равно 2 часа 15 минут"></p>
+<figcaption>Перевод минут в часы и минуты</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="возведение-в-степень" class="level2">
+<h2 class="anchored" data-anchor-id="возведение-в-степень">Возведение в степень</h2>
+<p>Оператор <code>**</code> используется для возведения числа в степень.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">**</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>8</code></pre>
+<p>Потому что:</p>
+<pre class="text"><code>2³ = 2 × 2 × 2 = 8</code></pre>
+<p>Ещё примеры:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span> <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">**</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>25
+1000</code></pre>
+<p>Квадрат числа можно вычислить так:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> number <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>49</code></pre>
+<hr>
+</section>
+<section id="несколько-операций-в-одном-выражении" class="level2">
+<h2 class="anchored" data-anchor-id="несколько-операций-в-одном-выражении">Несколько операций в одном выражении</h2>
+<p>Python позволяет использовать несколько арифметических операций сразу:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Какой результат получится?</p>
+<p>Можно предположить:</p>
+<pre class="text"><code>20</code></pre>
+<p>если сначала выполнить:</p>
+<pre class="text"><code>2 + 3</code></pre>
+<p>а затем умножить на <code>4</code>.</p>
+<p>Но Python выведет:</p>
+<pre class="text"><code>14</code></pre>
+<p>Почему?</p>
+<p>Потому что операции имеют <strong>приоритет</strong>.</p>
+<p>Сначала выполняется умножение:</p>
+<pre class="text"><code>3 * 4 → 12</code></pre>
+<p>затем сложение:</p>
+<pre class="text"><code>2 + 12 → 14</code></pre>
+<hr>
+</section>
+<section id="приоритет-операций" class="level2">
+<h2 class="anchored" data-anchor-id="приоритет-операций">Приоритет операций</h2>
+<p>В выражениях Python не всегда выполняет операции просто слева направо.</p>
+<p>У разных операций есть разный приоритет.</p>
+<p>Для операций этой главы удобно помнить следующий порядок:</p>
+<pre class="text"><code>()
+↓
+**
+↓
+*, /, //, %
+↓
++, -</code></pre>
+<p>Сначала выполняются выражения в скобках.</p>
+<p>Затем — возведение в степень.</p>
+<p>После этого:</p>
+<pre class="text"><code>*
+/
+//
+%</code></pre>
+<p>И только потом:</p>
+<pre class="text"><code>+
+-</code></pre>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>14</code></pre>
+<p>А здесь:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>) <span class="op">*</span> <span class="dv">4</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>результат уже другой:</p>
+<pre class="text"><code>20</code></pre>
+<p>Скобки заставили Python сначала выполнить:</p>
+<pre class="text"><code>2 + 3</code></pre>
+<p>Попробуйте изменить выражения и посмотреть, как меняется результат:</p>
+<div class="python-playground" data-source="../examples/chapter12/operator-precedence.py" data-title="Приоритет операций">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter12/operator-precedence.svg" class="img-fluid figure-img" alt="Выражение 2 плюс 3 умножить на 4 дает 14, потому что сначала выполняется умножение; выражение в скобках 2 плюс 3 умножить на 4 дает 20, потому что скобки меняют порядок вычислений"></p>
+<figcaption>Приоритет арифметических операций</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="скобки-делают-вычисления-понятнее" class="level2">
+<h2 class="anchored" data-anchor-id="скобки-делают-вычисления-понятнее">Скобки делают вычисления понятнее</h2>
+<p>Скобки полезны не только для изменения порядка операций.</p>
+<p>Они помогают человеку быстрее понять выражение.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity <span class="op">+</span> delivery</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>можно написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> (price <span class="op">*</span> quantity) <span class="op">+</span> delivery</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат будет тем же.</p>
+<p>Но второй вариант явно показывает:</p>
+<ol type="1">
+<li>сначала вычисляется стоимость товаров;</li>
+<li>затем добавляется доставка.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Используйте скобки для ясности">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Совет</span>Используйте скобки для ясности
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Не обязательно запоминать все правила приоритета наизусть.</p>
+<p>Если порядок вычислений может быть непонятен, используйте скобки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>average <span class="op">=</span> (first <span class="op">+</span> second <span class="op">+</span> third) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Так код легче читать и проверять.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="операции-одинакового-приоритета" class="level2">
+<h2 class="anchored" data-anchor-id="операции-одинакового-приоритета">Операции одинакового приоритета</h2>
+<p>Большинство операций одного уровня выполняются слева направо.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">20</span> <span class="op">/</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Сначала:</p>
+<pre class="text"><code>20 / 5 → 4.0</code></pre>
+<p>затем:</p>
+<pre class="text"><code>4.0 * 2 → 8.0</code></pre>
+<p>Результат:</p>
+<pre class="text"><code>8.0</code></pre>
+<p>Ещё пример:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">20</span> <span class="op">-</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Получаем:</p>
+<pre class="text"><code>17</code></pre>
+<p>То есть:</p>
+<pre class="text"><code>20 - 5 → 15
+15 + 2 → 17</code></pre>
+<hr>
+</section>
+<section id="особенность-оператора" class="level2">
+<h2 class="anchored" data-anchor-id="особенность-оператора">Особенность оператора <code>**</code></h2>
+<p>Возведение в степень имеет важную особенность.</p>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">**</span> <span class="dv">3</span> <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Python интерпретирует это как:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">**</span> (<span class="dv">3</span> <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Сначала:</p>
+<pre class="text"><code>3 ** 2 → 9</code></pre>
+<p>затем:</p>
+<pre class="text"><code>2 ** 9 → 512</code></pre>
+<p>Результат:</p>
+<pre class="text"><code>512</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Для сложных выражений лучше использовать скобки">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Для сложных выражений лучше использовать скобки
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Даже если вы знаете правила приоритета, явная запись часто понятнее:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">**</span> (<span class="dv">3</span> <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>или:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="op">**</span> <span class="dv">3</span>) <span class="op">**</span> <span class="dv">2</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Эти выражения дают разные результаты, и скобки сразу показывают намерение программиста.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="вычисления-с-int-и-float" class="level2">
+<h2 class="anchored" data-anchor-id="вычисления-с-int-и-float">Вычисления с int и float</h2>
+<p>В одном выражении могут участвовать <code>int</code> и <code>float</code>.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="fl">2.5</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(result))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>12.5
+&lt;class 'float'&gt;</code></pre>
+<p>Ещё пример:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">12.5</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(total))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>50.0
+&lt;class 'float'&gt;</code></pre>
+<p>Если в вычислении участвует дробное число, результат часто также становится <code>float</code>.</p>
+<hr>
+</section>
+<section id="вычисления-с-пользовательским-вводом" class="level2">
+<h2 class="anchored" data-anchor-id="вычисления-с-пользовательским-вводом">Вычисления с пользовательским вводом</h2>
+<p>Теперь объединим несколько изученных тем.</p>
+<p>Напишем простой калькулятор стоимости покупки:</p>
+<div class="python-playground" data-source="../examples/chapter12/shopping-calculator.py" data-title="Калькулятор покупки">
+
+</div>
+<p>Пример работы:</p>
+<pre class="text"><code>Цена товара: 250
+Количество: 3
+Стоимость доставки: 150
+Итого: 900.0</code></pre>
+<p>В этой небольшой программе уже есть:</p>
+<pre class="text"><code>input()
+    ↓
+преобразование типов
+    ↓
+переменные
+    ↓
+арифметические операции
+    ↓
+результат</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter12/arithmetic-flow.svg" class="img-fluid figure-img" alt="Пользователь вводит 49.5 и 3, input возвращает строки, float создает число 49.5, int создает число 3, затем Python вычисляет 49.5 умножить на 3 и получает 148.5"></p>
+<figcaption>Связь input, преобразования типов и арифметики</figcaption>
+</figure>
+</div>
+<p>Мы постепенно начинаем соединять отдельные конструкции Python в полноценные программы.</p>
+<hr>
+</section>
+<section id="попробуйте-сами" class="level2">
+<h2 class="anchored" data-anchor-id="попробуйте-сами">Попробуйте сами</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Эксперимент">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Совет</span>Эксперимент
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Создайте программу:</p>
+<div class="python-playground" data-source="../examples/chapter12/basic-arithmetic.py" data-title="Основные арифметические операции">
+
+</div>
+<p>Перед запуском попробуйте самостоятельно предсказать каждый результат.</p>
+<p>Затем измените:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>на другие числа и посмотрите, как изменятся результаты.</p>
+<p>Особенно сравните:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">/</span> b</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">//</span> b</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">%</span> b</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<hr>
+</section>
+<section id="что-важно-запомнить" class="level2">
+<h2 class="anchored" data-anchor-id="что-важно-запомнить">Что важно запомнить</h2>
+<p>Python поддерживает основные арифметические операции:</p>
+<pre class="text"><code>+   сложение
+-   вычитание
+*   умножение
+/   обычное деление
+//  целочисленное деление
+%   остаток от деления
+**  возведение в степень</code></pre>
+<p>Особенно важно различать три операции:</p>
+<pre class="text"><code>10 / 3  → 3.333...
+10 // 3 → 3
+10 % 3  → 1</code></pre>
+<p>Они отвечают на разные вопросы:</p>
+<pre class="text"><code>/   → какой результат деления?
+
+//  → сколько полных частей помещается?
+
+%   → что осталось?</code></pre>
+<p>При нескольких операциях Python учитывает их приоритет:</p>
+<pre class="text"><code>()
+↓
+**
+↓
+*, /, //, %
+↓
++, -</code></pre>
+<p>Скобки позволяют явно задать нужный порядок:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>) <span class="op">*</span> <span class="dv">4</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>И самое важное:</p>
+<blockquote class="blockquote">
+<p><strong>Арифметическое выражение — это способ получить новое значение из уже известных числовых значений.</strong></p>
+</blockquote>
+<hr>
+<section id="практические-задания" class="level3">
+<h3 class="anchored" data-anchor-id="практические-задания">Практические задания</h3>
+<p><strong>Задание 1. Четыре операции</strong></p>
+<p>Пользователь вводит два числа.</p>
+<p>Выведите:</p>
+<ul>
+<li>их сумму;</li>
+<li>разность;</li>
+<li>произведение;</li>
+<li>результат деления.</li>
+</ul>
+<p>Пример:</p>
+<pre class="text"><code>Первое число: 10
+Второе число: 4
+
+Сумма: 14.0
+Разность: 6.0
+Произведение: 40.0
+Деление: 2.5</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Первое число: "</span>))</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Второе число: "</span>))</span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Сумма:"</span>, a <span class="op">+</span> b)</span>
+<span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Разность:"</span>, a <span class="op">-</span> b)</span>
+<span id="cb120-6"><a href="#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Произведение:"</span>, a <span class="op">*</span> b)</span>
+<span id="cb120-7"><a href="#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Деление:"</span>, a <span class="op">/</span> b)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 2. Площадь прямоугольника</strong></p>
+<p>Пользователь вводит длину и ширину прямоугольника.</p>
+<p>Вычислите его площадь.</p>
+<p>Пример:</p>
+<pre class="text"><code>Длина: 5
+Ширина: 3
+Площадь: 15.0</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Длина: "</span>))</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Ширина: "</span>))</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> length <span class="op">*</span> width</span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Площадь:"</span>, area)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 3. Среднее значение</strong></p>
+<p>Пользователь вводит три числа.</p>
+<p>Вычислите их среднее арифметическое.</p>
+<p>Пример:</p>
+<pre class="text"><code>Первое число: 10
+Второе число: 20
+Третье число: 30
+Среднее: 20.0</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Первое число: "</span>))</span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Второе число: "</span>))</span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Третье число: "</span>))</span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>average <span class="op">=</span> (a <span class="op">+</span> b <span class="op">+</span> c) <span class="op">/</span> <span class="dv">3</span></span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Среднее:"</span>, average)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Скобки здесь важны:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>(a <span class="op">+</span> b <span class="op">+</span> c) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Сначала складываются три числа, затем результат делится на <code>3</code>.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 4. Часы и минуты</strong></p>
+<p>Пользователь вводит количество минут.</p>
+<p>Переведите его в часы и оставшиеся минуты.</p>
+<p>Пример:</p>
+<pre class="text"><code>Количество минут: 135
+Часы: 2
+Минуты: 15</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Количество минут: "</span>))</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> minutes <span class="op">//</span> <span class="dv">60</span></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>remaining_minutes <span class="op">=</span> minutes <span class="op">%</span> <span class="dv">60</span></span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Часы:"</span>, hours)</span>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Минуты:"</span>, remaining_minutes)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>//</code> находит количество полных часов, а <code>%</code> — оставшиеся минуты.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 5. Предскажите результат</strong></p>
+<p>Не запускайте код сразу.</p>
+<p>Определите результаты:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>) <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">17</span> <span class="op">//</span> <span class="dv">5</span>)</span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">17</span> <span class="op">%</span> <span class="dv">5</span>)</span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">**</span> <span class="dv">4</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Результат:</p>
+<pre class="text"><code>14
+20
+3
+2
+16</code></pre>
+<p>В первом выражении умножение выполняется раньше сложения:</p>
+<pre class="text"><code>2 + 3 * 4
+    ↓
+2 + 12
+    ↓
+14</code></pre>
+<p>Во втором порядок изменяют скобки:</p>
+<pre class="text"><code>(2 + 3) * 4
+    ↓
+5 * 4
+  ↓
+20</code></pre>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 6. Найдите проблему</strong></p>
+<p>Что произойдёт здесь?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> number <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Почему?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Программа завершится с ошибкой:</p>
+<pre class="text"><code>ZeroDivisionError</code></pre>
+<p>На ноль делить нельзя.</p>
+<p>Ошибка возникает при выполнении:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 7. Задача со звёздочкой</strong></p>
+<p>Пользователь вводит количество секунд.</p>
+<p>Переведите его в:</p>
+<ul>
+<li>полные минуты;</li>
+<li>оставшиеся секунды.</li>
+</ul>
+<p>Например:</p>
+<pre class="text"><code>Количество секунд: 145
+Минуты: 2
+Секунды: 25</code></pre>
+<p>Попробуйте решить задачу с помощью <code>//</code> и <code>%</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>seconds <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Количество секунд: "</span>))</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>minutes <span class="op">=</span> seconds <span class="op">//</span> <span class="dv">60</span></span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a>remaining_seconds <span class="op">=</span> seconds <span class="op">%</span> <span class="dv">60</span></span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Минуты:"</span>, minutes)</span>
+<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Секунды:"</span>, remaining_seconds)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Для <code>145</code>:</p>
+<pre class="text"><code>145 // 60 → 2
+145 % 60  → 25</code></pre>
+<p>Поэтому:</p>
+<pre class="text"><code>145 секунд = 2 минуты 25 секунд</code></pre>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="что-дальше" class="level2">
+<h2 class="anchored" data-anchor-id="что-дальше">Что дальше?</h2>
+<p>Теперь программа умеет:</p>
+<ul>
+<li>хранить данные в переменных;</li>
+<li>различать типы данных;</li>
+<li>получать данные через <code>input()</code>;</li>
+<li>преобразовывать строки в числа;</li>
+<li>выполнять вычисления.</li>
+</ul>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Цена: "</span>))</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Количество: "</span>))</span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Итого:"</span>, total)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Но пока программа выполняет одни и те же действия независимо от результата вычислений.</p>
+<p>Что если нужно сделать так:</p>
+<pre class="text"><code>если пользователь совершеннолетний → показать одно сообщение
+иначе → другое</code></pre>
+<p>Или:</p>
+<pre class="text"><code>если пароль правильный → продолжить
+иначе → сообщить об ошибке</code></pre>
+<p>Для этого программе нужно научиться <strong>сравнивать значения и принимать решения</strong>.</p>
+<p>Следующий главный вопрос:</p>
+<p><strong>Как Python сравнивает значения?</strong></p>
+<p>Этому посвящена следующая глава:</p>
+<p><strong>«Сравнение значений».</strong></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/chapters/11-type-conversion.html" class="pagination-link" aria-label="3.4 Преобразование типов">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3.4 Преобразование типов</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

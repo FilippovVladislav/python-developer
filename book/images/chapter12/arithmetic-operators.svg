@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Карта арифметических операторов Python</title>
+  <desc id="desc">Карточки показывают сложение, вычитание, умножение, деление, целочисленное деление, остаток и степень.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:26px;font-weight:700}.op{font-family:"Cascadia Code",Consolas,monospace;font-size:42px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#2f5f8f"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="64" text-anchor="middle">Арифметические операторы</text>
+  <text class="text body muted" x="600" y="98" text-anchor="middle">Разные операторы выполняют разные вычисления</text>
+
+  <rect class="accent" x="90" y="145" width="290" height="135" rx="18"/>
+  <text class="op blue" x="130" y="204">+</text>
+  <text class="text label ink" x="195" y="185">сложение</text>
+  <text class="mono olive" x="235" y="238" text-anchor="middle">10 + 3 → 13</text>
+
+  <rect class="card" x="455" y="145" width="290" height="135" rx="18"/>
+  <text class="op blue" x="495" y="204">-</text>
+  <text class="text label ink" x="560" y="185">вычитание</text>
+  <text class="mono olive" x="600" y="238" text-anchor="middle">10 - 3 → 7</text>
+
+  <rect class="soft" x="820" y="145" width="290" height="135" rx="18"/>
+  <text class="op blue" x="860" y="204">*</text>
+  <text class="text label ink" x="925" y="185">умножение</text>
+  <text class="mono olive" x="965" y="238" text-anchor="middle">10 * 3 → 30</text>
+
+  <rect class="card" x="90" y="330" width="290" height="135" rx="18"/>
+  <text class="op blue" x="130" y="389">/</text>
+  <text class="text label ink" x="195" y="370">деление</text>
+  <text class="mono olive" x="235" y="423" text-anchor="middle">10 / 3 → 3.333...</text>
+
+  <rect class="accent" x="455" y="330" width="290" height="135" rx="18"/>
+  <text class="op blue" x="488" y="389">//</text>
+  <text class="text label ink" x="575" y="370">полные части</text>
+  <text class="mono olive" x="600" y="423" text-anchor="middle">10 // 3 → 3</text>
+
+  <rect class="soft" x="820" y="330" width="290" height="135" rx="18"/>
+  <text class="op blue" x="860" y="389">%</text>
+  <text class="text label ink" x="925" y="370">остаток</text>
+  <text class="mono olive" x="965" y="423" text-anchor="middle">10 % 3 → 1</text>
+
+  <rect class="card" x="455" y="515" width="290" height="115" rx="18"/>
+  <text class="op blue" x="490" y="575">**</text>
+  <text class="text label ink" x="575" y="558">степень</text>
+  <text class="mono olive" x="600" y="604" text-anchor="middle">10 ** 3 → 1000</text>
+</svg>
