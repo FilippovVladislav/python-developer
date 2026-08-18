@@ -35,7 +35,7 @@ book:
         - book/chapters/09-data-types.qmd
         - book/chapters/10-user-input.qmd
         - book/chapters/11-type-conversion.qmd
-        #- book/chapters/12-arithmetic.qmd
+        - book/chapters/12-arithmetic.qmd
         #- book/chapters/13-comparisons.qmd
         #- book/chapters/14-conditions.qmd
         #- book/chapters/15-boolean-logic.qmd

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">От ввода к арифметическому результату</title>
+  <desc id="desc">Пользователь вводит цену и количество, input возвращает строки, float и int создают числа, затем Python вычисляет итог.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="64" text-anchor="middle">Ввод → преобразование типов → вычисление → результат</text>
+
+  <rect class="card" x="95" y="125" width="230" height="82" rx="16"/>
+  <text class="text label ink" x="210" y="176" text-anchor="middle">Пользователь</text>
+  <path class="line" d="M330 166h70" marker-end="url(#arrow)"/>
+  <rect class="accent" x="415" y="125" width="210" height="82" rx="16"/>
+  <text class="mono blue" x="520" y="176" text-anchor="middle">input()</text>
+  <path class="line" d="M630 166h70" marker-end="url(#arrow)"/>
+  <rect class="card" x="715" y="125" width="185" height="82" rx="16"/>
+  <text class="mono olive" x="808" y="176" text-anchor="middle">"49.5"</text>
+  <path class="line" d="M905 166h70" marker-end="url(#arrow)"/>
+  <rect class="soft" x="990" y="125" width="140" height="82" rx="16"/>
+  <text class="mono blue" x="1060" y="176" text-anchor="middle">float()</text>
+  <path class="line" d="M1060 212v55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="960" y="285" width="200" height="82" rx="16"/>
+  <text class="mono olive" x="1060" y="337" text-anchor="middle">49.5</text>
+
+  <rect class="card" x="95" y="390" width="230" height="82" rx="16"/>
+  <text class="text label ink" x="210" y="441" text-anchor="middle">Пользователь</text>
+  <path class="line" d="M330 431h70" marker-end="url(#arrow)"/>
+  <rect class="accent" x="415" y="390" width="210" height="82" rx="16"/>
+  <text class="mono blue" x="520" y="441" text-anchor="middle">input()</text>
+  <path class="line" d="M630 431h70" marker-end="url(#arrow)"/>
+  <rect class="card" x="715" y="390" width="185" height="82" rx="16"/>
+  <text class="mono olive" x="808" y="441" text-anchor="middle">"3"</text>
+  <path class="line" d="M905 431h70" marker-end="url(#arrow)"/>
+  <rect class="soft" x="990" y="390" width="140" height="82" rx="16"/>
+  <text class="mono blue" x="1060" y="441" text-anchor="middle">int()</text>
+  <path class="line" d="M1060 477v55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="960" y="550" width="200" height="82" rx="16"/>
+  <text class="mono olive" x="1060" y="602" text-anchor="middle">3</text>
+
+  <path class="line" d="M955 326c-140 0-210 95-250 165" marker-end="url(#arrow)"/>
+  <path class="line" d="M955 591c-140 0-210-50-250-100" marker-end="url(#arrow)"/>
+  <rect class="accent" x="430" y="505" width="290" height="82" rx="18"/>
+  <text class="mono ink" x="575" y="557" text-anchor="middle">49.5 × 3</text>
+  <path class="line" d="M575 592v45" marker-end="url(#arrow)"/>
+  <rect class="card" x="455" y="645" width="240" height="45" rx="14"/>
+  <text class="mono olive" x="575" y="676" text-anchor="middle">148.5</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Приоритет арифметических операций</title>
+  <desc id="desc">Два выражения показывают, как скобки меняют порядок вычислений и результат.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:29px;font-weight:700}.big{font-family:"Cascadia Code",Consolas,monospace;font-size:38px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="64" text-anchor="middle">Порядок операций влияет на результат</text>
+
+  <rect class="card" x="70" y="120" width="350" height="420" rx="18"/>
+  <text class="big blue" x="245" y="185" text-anchor="middle">2 + 3 * 4</text>
+  <path class="line" d="M245 205v38" marker-end="url(#arrow)"/>
+  <text class="mono ink" x="245" y="285" text-anchor="middle">2 + 12</text>
+  <path class="line" d="M245 305v38" marker-end="url(#arrow)"/>
+  <text class="big olive" x="245" y="390" text-anchor="middle">14</text>
+  <text class="text body muted" x="245" y="470" text-anchor="middle">умножение раньше сложения</text>
+
+  <rect class="soft" x="470" y="120" width="350" height="420" rx="18"/>
+  <text class="big blue" x="645" y="185" text-anchor="middle">(2 + 3) * 4</text>
+  <rect x="520" y="145" width="145" height="52" rx="12" fill="none" stroke="#6f7d2d" stroke-width="5"/>
+  <path class="line" d="M645 205v38" marker-end="url(#arrow)"/>
+  <text class="mono ink" x="645" y="285" text-anchor="middle">5 * 4</text>
+  <path class="line" d="M645 305v38" marker-end="url(#arrow)"/>
+  <text class="big olive" x="645" y="390" text-anchor="middle">20</text>
+  <text class="text body muted" x="645" y="470" text-anchor="middle">скобки меняют порядок</text>
+
+  <rect class="accent" x="875" y="120" width="250" height="420" rx="18"/>
+  <text class="text label ink" x="1000" y="168" text-anchor="middle">Приоритет</text>
+  <text class="mono blue" x="1000" y="230" text-anchor="middle">()</text>
+  <path class="line" d="M1000 245v35" marker-end="url(#arrow)"/>
+  <text class="mono blue" x="1000" y="320" text-anchor="middle">**</text>
+  <path class="line" d="M1000 335v35" marker-end="url(#arrow)"/>
+  <text class="mono blue" x="1000" y="410" text-anchor="middle">*, /, //, %</text>
+  <path class="line" d="M1000 425v35" marker-end="url(#arrow)"/>
+  <text class="mono blue" x="1000" y="500" text-anchor="middle">+, -</text>
+</svg>
