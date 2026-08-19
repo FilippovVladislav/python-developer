@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Карта операторов сравнения Python</title>
+  <desc id="desc">Шесть карточек показывают операторы сравнения и то, что каждое сравнение возвращает True или False.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.label-wide{font-size:21px}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}.op{font-family:"Cascadia Code",Consolas,monospace;font-size:44px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="62" text-anchor="middle">Операторы сравнения</text>
+  <text class="text body muted" x="600" y="98" text-anchor="middle">Каждое сравнение возвращает True или False</text>
+
+  <rect class="accent" x="85" y="145" width="305" height="135" rx="18"/>
+  <text class="op blue" x="157" y="204" text-anchor="middle">==</text>
+  <text class="text label ink" x="285" y="186" text-anchor="middle">равно</text>
+  <text class="mono olive" x="238" y="238" text-anchor="middle">5 == 5 → True</text>
+
+  <rect class="card" x="447" y="145" width="305" height="135" rx="18"/>
+  <text class="op blue" x="519" y="204" text-anchor="middle">!=</text>
+  <text class="text label ink" x="647" y="186" text-anchor="middle">не равно</text>
+  <text class="mono olive" x="600" y="238" text-anchor="middle">5 != 3 → True</text>
+
+  <rect class="soft" x="810" y="145" width="305" height="135" rx="18"/>
+  <text class="op blue" x="882" y="204" text-anchor="middle">&gt;</text>
+  <text class="text label ink" x="1010" y="186" text-anchor="middle">больше</text>
+  <text class="mono olive" x="962" y="238" text-anchor="middle">10 &gt; 5 → True</text>
+
+  <rect class="card" x="85" y="345" width="305" height="135" rx="18"/>
+  <text class="op blue" x="157" y="404" text-anchor="middle">&lt;</text>
+  <text class="text label ink" x="285" y="386" text-anchor="middle">меньше</text>
+  <text class="mono olive" x="238" y="438" text-anchor="middle">10 &lt; 5 → False</text>
+
+  <rect class="accent" x="447" y="345" width="305" height="135" rx="18"/>
+  <text class="op blue" x="519" y="404" text-anchor="middle">&gt;=</text>
+  <text class="text label label-wide ink" x="647" y="386" text-anchor="middle">больше или равно</text>
+  <text class="mono olive" x="600" y="438" text-anchor="middle">10 &gt;= 10 → True</text>
+
+  <rect class="soft" x="810" y="345" width="305" height="135" rx="18"/>
+  <text class="op blue" x="882" y="404" text-anchor="middle">&lt;=</text>
+  <text class="text label label-wide ink" x="1010" y="386" text-anchor="middle">меньше или равно</text>
+  <text class="mono olive" x="962" y="438" text-anchor="middle">5 &lt;= 10 → True</text>
+
+  <rect class="card" x="325" y="555" width="550" height="76" rx="18"/>
+  <text class="text label ink" x="600" y="603" text-anchor="middle">Сравнение отвечает логическим значением</text>
+</svg>

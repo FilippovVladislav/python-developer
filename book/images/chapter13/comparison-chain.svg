@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Цепочка сравнений проверяет диапазон</title>
+  <desc id="desc">Два примера показывают, что age 25 находится в диапазоне от 18 до 65, а age 70 находится вне диапазона.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.warn{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:700}.big{font-family:"Cascadia Code",Consolas,monospace;font-size:48px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="62" text-anchor="middle">Цепочки сравнений</text>
+  <text class="text body muted" x="600" y="98" text-anchor="middle">Одна запись проверяет, находится ли значение внутри диапазона</text>
+
+  <rect class="card" x="95" y="145" width="1010" height="205" rx="22"/>
+  <text class="mono blue" x="300" y="205" text-anchor="middle">age = 25</text>
+  <text class="mono ink" x="640" y="205" text-anchor="middle">18 &lt;= age &lt;= 65</text>
+  <text class="big olive" x="965" y="215" text-anchor="middle">True</text>
+  <path class="line" d="M235 285H805"/>
+  <circle cx="235" cy="285" r="12" fill="#2f5f8f"/>
+  <circle cx="415" cy="285" r="16" fill="#6f7d2d"/>
+  <circle cx="805" cy="285" r="12" fill="#2f5f8f"/>
+  <text class="mono blue" x="235" y="330" text-anchor="middle">18</text>
+  <text class="mono olive" x="415" y="330" text-anchor="middle">25</text>
+  <text class="mono blue" x="805" y="330" text-anchor="middle">65</text>
+
+  <rect class="card" x="95" y="410" width="1010" height="205" rx="22"/>
+  <text class="mono blue" x="300" y="470" text-anchor="middle">age = 70</text>
+  <text class="mono ink" x="640" y="470" text-anchor="middle">18 &lt;= age &lt;= 65</text>
+  <text class="big red" x="965" y="480" text-anchor="middle">False</text>
+  <path class="line" d="M235 550H805"/>
+  <circle cx="235" cy="550" r="12" fill="#2f5f8f"/>
+  <circle cx="805" cy="550" r="12" fill="#2f5f8f"/>
+  <circle cx="895" cy="550" r="16" fill="#c9553d"/>
+  <text class="mono blue" x="235" y="595" text-anchor="middle">18</text>
+  <text class="mono blue" x="805" y="595" text-anchor="middle">65</text>
+  <text class="mono red" x="895" y="595" text-anchor="middle">70</text>
+
+  <text class="text body muted" x="600" y="665" text-anchor="middle">Цепочка сравнения читается почти как математическая запись диапазона</text>
+</svg>

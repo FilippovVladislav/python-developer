@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">От input к числовому сравнению</title>
+  <desc id="desc">Путь пользовательского ввода через input, строку, int, число, сравнение и логическое значение True.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:30px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="54" text-anchor="middle">input() → str → int() → сравнение → bool</text>
+
+  <rect class="card" x="90" y="120" width="210" height="90" rx="16"/>
+  <text class="text label ink" x="195" y="154" text-anchor="middle">Пользователь</text>
+  <text class="mono olive" x="195" y="190" text-anchor="middle">20</text>
+  <path class="line" d="M305 165h70" marker-end="url(#arrow)"/>
+  <rect class="accent" x="390" y="120" width="180" height="90" rx="16"/>
+  <text class="mono blue" x="480" y="176" text-anchor="middle">input()</text>
+  <path class="line" d="M575 165h70" marker-end="url(#arrow)"/>
+  <rect class="card" x="660" y="120" width="180" height="90" rx="16"/>
+  <text class="mono olive" x="750" y="158" text-anchor="middle">"20"</text>
+  <text class="smallmono blue" x="750" y="190" text-anchor="middle">str</text>
+  <path class="line" d="M845 165h70" marker-end="url(#arrow)"/>
+  <rect class="soft" x="930" y="120" width="180" height="90" rx="16"/>
+  <text class="mono blue" x="1020" y="176" text-anchor="middle">int()</text>
+
+  <path class="line" d="M1020 215v70" marker-end="url(#arrow)"/>
+  <rect class="card" x="930" y="305" width="180" height="90" rx="16"/>
+  <text class="mono olive" x="1020" y="343" text-anchor="middle">20</text>
+  <text class="smallmono blue" x="1020" y="375" text-anchor="middle">int</text>
+  <path class="line" d="M925 350H760" marker-end="url(#arrow)"/>
+  <rect class="accent" x="520" y="305" width="220" height="90" rx="16"/>
+  <text class="mono blue" x="630" y="361" text-anchor="middle">20 &gt;= 18</text>
+  <path class="line" d="M515 350H350" marker-end="url(#arrow)"/>
+  <rect class="soft" x="170" y="305" width="160" height="90" rx="16"/>
+  <text class="mono olive" x="250" y="343" text-anchor="middle">True</text>
+  <text class="smallmono blue" x="250" y="375" text-anchor="middle">bool</text>
+
+  <rect class="card" x="185" y="510" width="830" height="82" rx="18"/>
+  <text class="text label ink" x="600" y="544" text-anchor="middle">Для числового сравнения ввод сначала превращается в число</text>
+  <text class="text body muted" x="600" y="574" text-anchor="middle">Это связывает ввод данных, преобразование типов и сравнение значений</text>
+</svg>
