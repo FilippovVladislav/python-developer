@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Отступ определяет блок кода</title>
+  <desc id="desc">Две строки print с отступом объединены в блок if, а последний print без отступа находится за пределами блока.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.brace{fill:none;stroke:#6f7d2d;stroke-width:5;stroke-linecap:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Отступ показывает, что входит в блок if</text>
+
+  <rect class="card" x="95" y="115" width="710" height="455" rx="18"/>
+  <rect class="accent" x="135" y="152" width="430" height="64" rx="14"/>
+  <text class="mono blue" x="350" y="193" text-anchor="middle">if age &gt;= 18:</text>
+
+  <rect class="soft" x="205" y="250" width="548" height="150" rx="16"/>
+  <text class="smallmono ink" x="255" y="300">print("Возраст подтверждён")</text>
+  <text class="smallmono ink" x="255" y="360">print("Доступ разрешён")</text>
+
+  <path class="brace" d="M165 248c-35 0-35 28-35 42v70c0 14 0 42 35 42"/>
+  <text class="text label olive" x="390" y="444" text-anchor="middle">блок условия: общий отступ 4 пробела</text>
+
+  <path class="line" d="M390 458v48" marker-end="url(#arrow)"/>
+  <rect class="card" x="205" y="520" width="548" height="60" rx="14"/>
+  <text class="smallmono ink" x="245" y="558">print("Проверка завершена")</text>
+
+  <rect class="accent" x="855" y="180" width="250" height="110" rx="16"/>
+  <text class="text label ink" x="980" y="224" text-anchor="middle">внутри if</text>
+  <text class="text body muted" x="980" y="256" text-anchor="middle">выполняется только</text>
+  <text class="text body muted" x="980" y="282" text-anchor="middle">при True</text>
+
+  <rect class="card" x="855" y="430" width="250" height="110" rx="16"/>
+  <text class="text label ink" x="980" y="474" text-anchor="middle">после if</text>
+  <text class="text body muted" x="980" y="506" text-anchor="middle">выполняется</text>
+  <text class="text body muted" x="980" y="532" text-anchor="middle">в любом случае</text>
+</svg>

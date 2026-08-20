@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Ввод, тип, сравнение, решение и действие</title>
+  <desc id="desc">Схема связывает пользовательский ввод, input, строку, int, число, сравнение, if или else и итоговое действие для возраста 20 и альтернативного возраста 15.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:21px;font-weight:650}.body{font-size:18px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:21px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="54" text-anchor="middle">Ввод → тип → сравнение → решение → действие</text>
+
+  <rect class="card" x="70" y="118" width="160" height="74" rx="14"/>
+  <text class="text label ink" x="150" y="148" text-anchor="middle">Пользователь</text>
+  <text class="mono olive" x="150" y="176" text-anchor="middle">20</text>
+  <path class="line" d="M235 155h50" marker-end="url(#arrow)"/>
+  <rect class="accent" x="300" y="118" width="140" height="74" rx="14"/>
+  <text class="mono blue" x="370" y="164" text-anchor="middle">input()</text>
+  <path class="line" d="M445 155h50" marker-end="url(#arrow)"/>
+  <rect class="card" x="510" y="118" width="130" height="74" rx="14"/>
+  <text class="mono olive" x="575" y="150" text-anchor="middle">"20"</text>
+  <text class="smallmono blue" x="575" y="176" text-anchor="middle">str</text>
+  <path class="line" d="M645 155h50" marker-end="url(#arrow)"/>
+  <rect class="soft" x="710" y="118" width="120" height="74" rx="14"/>
+  <text class="mono blue" x="770" y="164" text-anchor="middle">int()</text>
+  <path class="line" d="M835 155h50" marker-end="url(#arrow)"/>
+  <rect class="card" x="900" y="118" width="130" height="74" rx="14"/>
+  <text class="mono olive" x="965" y="150" text-anchor="middle">20</text>
+  <text class="smallmono blue" x="965" y="176" text-anchor="middle">int</text>
+
+  <path class="line" d="M965 198v55" marker-end="url(#arrow)"/>
+  <rect class="accent" x="830" y="270" width="270" height="74" rx="14"/>
+  <text class="mono blue" x="965" y="316" text-anchor="middle">20 &gt;= 18</text>
+  <path class="line" d="M830 307H675" marker-end="url(#arrow)"/>
+  <rect class="soft" x="520" y="270" width="135" height="74" rx="14"/>
+  <text class="mono olive" x="588" y="316" text-anchor="middle">True</text>
+  <path class="line" d="M520 307H385" marker-end="url(#arrow)"/>
+  <rect class="soft" x="255" y="270" width="110" height="74" rx="14"/>
+  <text class="mono blue" x="310" y="316" text-anchor="middle">if</text>
+  <path class="line" d="M310 350v55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="105" y="420" width="410" height="78" rx="16"/>
+  <text class="text label ink" x="310" y="468" text-anchor="middle">«Доступ разрешён»</text>
+
+  <rect class="card" x="100" y="575" width="1000" height="72" rx="18"/>
+  <text class="text label ink" x="600" y="604" text-anchor="middle">Альтернативная ветка: 15 → 15 &gt;= 18 → False → else → «Доступ запрещён»</text>
+  <text class="text body muted" x="600" y="632" text-anchor="middle">Условия соединяют темы ввода, преобразования типов, сравнений и выбора действия</text>
+
+  <rect class="alt" x="760" y="420" width="300" height="78" rx="16"/>
+  <text class="smallmono red" x="910" y="451" text-anchor="middle">15 &gt;= 18 → False</text>
+  <text class="text label ink" x="910" y="480" text-anchor="middle">else: «Доступ запрещён»</text>
+</svg>

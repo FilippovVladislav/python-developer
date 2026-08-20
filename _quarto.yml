@@ -37,7 +37,7 @@ book:
         - book/chapters/11-type-conversion.qmd
         - book/chapters/12-arithmetic.qmd
         - book/chapters/13-comparisons.qmd
-        #- book/chapters/14-conditions.qmd
+        - book/chapters/14-conditions.qmd
         #- book/chapters/15-boolean-logic.qmd
         #- book/chapters/16-while-loop.qmd
         #- book/chapters/17-for-loop.qmd
