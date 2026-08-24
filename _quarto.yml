@@ -39,11 +39,8 @@ book:
         - book/chapters/13-comparisons.qmd
         - book/chapters/14-conditions.qmd
         - book/chapters/15-boolean-logic.qmd
-<<<<<<< HEAD
         - book/chapters/16-while-loop.qmd
-=======
         #- book/chapters/16-while-loop.qmd
->>>>>>> ad4257896bce959fef813053f542bd3515796055
         #- book/chapters/17-for-loop.qmd
         #- book/chapters/18-strings.qmd
         #- book/chapters/19-lists.qmd

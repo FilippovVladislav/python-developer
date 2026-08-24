@@ -14,11 +14,6 @@
 - [3.6 Сравнение значений](chapters/13-comparisons.qmd)
 - [3.7 Условия](chapters/14-conditions.qmd)
 - [3.8 Логические операции](chapters/15-boolean-logic.qmd)
-<<<<<<< HEAD
-=======
-
-<!--
->>>>>>> ad4257896bce959fef813053f542bd3515796055
 - [3.9 Цикл while](chapters/16-while-loop.qmd)
 
 <!--
