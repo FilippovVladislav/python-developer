@@ -1,4 +1,5 @@
 ---
+description: "Условия в Python для начинающих: if, else, elif, отступы, блоки кода, проверки после input() и выбор действий в программе."
 number-sections: true
 ---
 

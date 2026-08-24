@@ -1,4 +1,5 @@
 ---
+description: "Преобразование типов в Python: int(), float(), str(), bool(), ввод чисел через input(), ошибки преобразования и практические примеры для новичков."
 number-sections: true
 ---
 
