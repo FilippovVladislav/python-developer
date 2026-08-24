@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Счётчик в цикле while</title>
+  <desc id="desc">Схема показывает итерации count от 1 до 4: три проверки дают True, после увеличения до 4 условие count меньше или равно 3 становится False и цикл завершается.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:21px;font-weight:650}.body{font-size:18px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:23px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:19px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="54" text-anchor="middle">Счётчик изменяется на каждой итерации</text>
+  <rect class="card" x="448" y="88" width="304" height="58" rx="14"/>
+  <text class="mono blue" x="600" y="125" text-anchor="middle">count = 1</text>
+
+  <rect class="soft" x="70" y="190" width="240" height="150" rx="16"/>
+  <text class="text label ink" x="190" y="225" text-anchor="middle">Итерация 1</text>
+  <text class="mono blue" x="190" y="260" text-anchor="middle">1 &lt;= 3 → True</text>
+  <text class="smallmono olive" x="190" y="292" text-anchor="middle">print(1)</text>
+  <text class="smallmono blue" x="190" y="322" text-anchor="middle">count = 2</text>
+  <path class="line" d="M315 265h55" marker-end="url(#arrow)"/>
+
+  <rect class="soft" x="390" y="190" width="240" height="150" rx="16"/>
+  <text class="text label ink" x="510" y="225" text-anchor="middle">Итерация 2</text>
+  <text class="mono blue" x="510" y="260" text-anchor="middle">2 &lt;= 3 → True</text>
+  <text class="smallmono olive" x="510" y="292" text-anchor="middle">print(2)</text>
+  <text class="smallmono blue" x="510" y="322" text-anchor="middle">count = 3</text>
+  <path class="line" d="M635 265h55" marker-end="url(#arrow)"/>
+
+  <rect class="soft" x="710" y="190" width="240" height="150" rx="16"/>
+  <text class="text label ink" x="830" y="225" text-anchor="middle">Итерация 3</text>
+  <text class="mono blue" x="830" y="260" text-anchor="middle">3 &lt;= 3 → True</text>
+  <text class="smallmono olive" x="830" y="292" text-anchor="middle">print(3)</text>
+  <text class="smallmono blue" x="830" y="322" text-anchor="middle">count = 4</text>
+  <path class="line" d="M830 347C830 408 665 418 665 472" marker-end="url(#arrow)"/>
+
+  <rect class="alt" x="450" y="485" width="430" height="96" rx="18"/>
+  <text class="mono red" x="665" y="525" text-anchor="middle">4 &lt;= 3 → False</text>
+  <text class="text label ink" x="665" y="557" text-anchor="middle">цикл завершён</text>
+  <text class="text body muted" x="600" y="645" text-anchor="middle">После цикла count равен 4, потому что последнее увеличение уже произошло</text>
+</svg>

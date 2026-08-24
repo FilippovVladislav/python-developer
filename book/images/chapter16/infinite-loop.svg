@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Бесконечный цикл и исправленный вариант</title>
+  <desc id="desc">Слева показан цикл, где count остаётся 1 и условие снова истинно. Справа показан вариант с count плюс равно 1, где состояние меняется и цикл может завершиться.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.warn{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.ok{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:18px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:21px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:18px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="55" text-anchor="middle">Если состояние не изменяется, условие может не стать False</text>
+
+  <rect class="alt" x="70" y="100" width="500" height="505" rx="18"/>
+  <text class="text label ink" x="320" y="140" text-anchor="middle">Ошибка: count не меняется</text>
+  <text class="mono blue" x="150" y="190">count = 1</text>
+  <text class="mono blue" x="150" y="225">while count &lt;= 5:</text>
+  <text class="mono blue" x="184" y="260">print(count)</text>
+  <rect class="card" x="155" y="305" width="330" height="62" rx="14"/>
+  <text class="mono red" x="320" y="344" text-anchor="middle">count остаётся 1</text>
+  <path class="warn" d="M320 373v48" marker-end="url(#arrow-red)"/>
+  <rect class="card" x="155" y="435" width="330" height="62" rx="14"/>
+  <text class="mono red" x="320" y="474" text-anchor="middle">1 &lt;= 5 → True</text>
+  <path class="warn" d="M155 466C80 466 80 335 145 335" marker-end="url(#arrow-red)"/>
+  <text class="text body muted" x="320" y="545" text-anchor="middle">проверка снова даёт True</text>
+
+  <rect class="soft" x="630" y="100" width="500" height="505" rx="18"/>
+  <text class="text label ink" x="880" y="140" text-anchor="middle">Исправление: состояние меняется</text>
+  <text class="mono blue" x="710" y="190">count = 1</text>
+  <text class="mono blue" x="710" y="225">while count &lt;= 5:</text>
+  <text class="mono blue" x="744" y="260">print(count)</text>
+  <text class="mono blue" x="744" y="295">count += 1</text>
+  <rect class="card" x="715" y="340" width="330" height="62" rx="14"/>
+  <text class="mono olive" x="880" y="379" text-anchor="middle">1 → 2 → 3 → 4 → 5</text>
+  <path class="ok" d="M880 408v48" marker-end="url(#arrow-green)"/>
+  <rect class="card" x="715" y="470" width="330" height="62" rx="14"/>
+  <text class="mono olive" x="880" y="509" text-anchor="middle">6 &lt;= 5 → False</text>
+  <path class="line" d="M1048 501h45" marker-end="url(#arrow)"/>
+  <text class="text body muted" x="880" y="575" text-anchor="middle">цикл может завершиться</text>
+</svg>

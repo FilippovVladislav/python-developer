@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Как работает цикл while</title>
+  <desc id="desc">Схема показывает, что while проверяет условие, выполняет блок при True, изменяет состояние, возвращается к условию и выходит из цикла при False.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.true{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.false{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:21px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="56" text-anchor="middle">while повторяет блок, пока условие остаётся True</text>
+
+  <rect class="accent" x="420" y="105" width="360" height="86" rx="16"/>
+  <text class="text label ink" x="600" y="139" text-anchor="middle">условие цикла</text>
+  <text class="mono blue" x="600" y="171" text-anchor="middle">count &lt;= 3</text>
+
+  <path class="true" d="M520 198C420 240 350 250 300 290" marker-end="url(#arrow-true)"/>
+  <text class="text label olive" x="395" y="236" text-anchor="middle">True</text>
+  <rect class="soft" x="120" y="300" width="360" height="78" rx="16"/>
+  <text class="text label ink" x="300" y="348" text-anchor="middle">выполнить блок</text>
+
+  <path class="line" d="M300 384v54" marker-end="url(#arrow)"/>
+  <rect class="card" x="120" y="455" width="360" height="78" rx="16"/>
+  <text class="text label ink" x="300" y="486" text-anchor="middle">изменить состояние</text>
+  <text class="smallmono blue" x="300" y="514" text-anchor="middle">count += 1</text>
+
+  <path class="line" d="M300 540C300 628 900 628 900 148C900 126 842 122 788 132" marker-end="url(#arrow)"/>
+  <text class="text body muted" x="600" y="632" text-anchor="middle">после изменения программа снова возвращается к проверке условия</text>
+
+  <path class="false" d="M680 198C780 240 850 250 900 290" marker-end="url(#arrow-false)"/>
+  <text class="text label red" x="805" y="236" text-anchor="middle">False</text>
+  <rect class="alt" x="720" y="300" width="360" height="78" rx="16"/>
+  <text class="text label ink" x="900" y="348" text-anchor="middle">выйти из цикла</text>
+</svg>
