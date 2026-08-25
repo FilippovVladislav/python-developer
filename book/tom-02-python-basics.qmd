@@ -19,9 +19,9 @@ description: "Второй том книги «Путь Python-разработ�
 - [3.7 Условия](chapters/14-conditions.qmd)
 - [3.8 Логические операции](chapters/15-boolean-logic.qmd)
 - [3.9 Цикл while](chapters/16-while-loop.qmd)
+- [3.10 Цикл for](chapters/17-for-loop.qmd)
 
 <!--
-- [3.10 Цикл for](chapters/17-for-loop.qmd)
 - [3.11 Строки](chapters/18-strings.qmd)
 - [3.12 Списки](chapters/19-lists.qmd)
 - [3.13 Функции](chapters/20-functions.qmd)
