@@ -946,7 +946,7 @@
     "href": "book/tom-02-python-basics.html#быстрые-ссылки",
     "title": "3 Том II. Базовые конструкции Python",
     "section": "",
-    "text": "3.1 Переменные\n3.2 Типы данных\n3.3 Ввод данных\n3.4 Преобразование типов\n3.5 Арифметические операции\n3.6 Сравнение значений\n3.7 Условия\n3.8 Логические операции\n3.9 Цикл while\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от сохранения одного значения к типам данных, вводу, преобразованиям, вычислениям, сравнениям, условиям, циклам, строкам, спискам и функциям.",
+    "text": "3.1 Переменные\n3.2 Типы данных\n3.3 Ввод данных\n3.4 Преобразование типов\n3.5 Арифметические операции\n3.6 Сравнение значений\n3.7 Условия\n3.8 Логические операции\n3.9 Цикл while\n3.10 Цикл for\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от сохранения одного значения к типам данных, вводу, преобразованиям, вычислениям, сравнениям, условиям, циклам, строкам, спискам и функциям.",
     "crumbs": [
       "3 Том II. Базовые конструкции Python"
     ]
@@ -2995,6 +2995,479 @@
     "crumbs": [
       "3 Том II. Базовые конструкции Python",
       "3.9 Цикл while"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html",
+    "href": "book/chapters/17-for-loop.html",
+    "title": "3.10 Цикл for",
+    "section": "",
+    "text": "Первый цикл for\nВ предыдущей главе мы познакомились с циклом while.\nНапример:\nРезультат:\nЗдесь нам пришлось самостоятельно:\nНо во многих задачах мы заранее знаем, какие значения нужно перебрать.\nНапример:\nДля таких случаев в Python существует цикл:\nНачнём с простого примера:\nРезультат:\nНа первый взгляд здесь появились сразу несколько новых элементов:\nРазберём их постепенно.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#первый-цикл-for",
+    "href": "book/chapters/17-for-loop.html#первый-цикл-for",
+    "title": "3.10 Цикл for",
+    "section": "",
+    "text": "for number in range(1, 6):\n    print(number)\n\n\n\n\n1\n2\n3\n4\n5\n\nfor\nin\nrange()",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#как-читать-цикл-for",
+    "href": "book/chapters/17-for-loop.html#как-читать-цикл-for",
+    "title": "3.10 Цикл for",
+    "section": "Как читать цикл for",
+    "text": "Как читать цикл for\nКод:\nfor number in range(1, 6):\n    print(number)\nможно прочитать примерно так:\n\nДля каждого значения number из последовательности от 1 до 5 выполнить print(number).\n\nВо время работы number последовательно получает значения:\n1\n2\n3\n4\n5\nДля каждого из них выполняется тело цикла.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#как-работает-for",
+    "href": "book/chapters/17-for-loop.html#как-работает-for",
+    "title": "3.10 Цикл for",
+    "section": "Как работает for",
+    "text": "Как работает for\nРассмотрим:\nfor number in range(1, 4):\n    print(number)\nrange(1, 4) задаёт значения:\n1\n2\n3\nПервая итерация:\nnumber = 1\nPython выполняет:\nprint(number)\nЗатем:\nnumber = 2\nи блок выполняется снова.\nПосле этого:\nnumber = 3\nи выполняется третья итерация.\nКогда значения заканчиваются, цикл завершается.\nОбщая схема:\n\n\n\nСхема работы цикла for",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#переменная-цикла",
+    "href": "book/chapters/17-for-loop.html#переменная-цикла",
+    "title": "3.10 Цикл for",
+    "section": "Переменная цикла",
+    "text": "Переменная цикла\nВ конструкции:\nfor number in range(1, 6):\nnumber называется переменной цикла.\nНа каждой итерации она получает очередное значение.\nНапример:\nfor number in range(1, 4):\n    print(\"Текущее значение:\", number)\nРезультат:\nТекущее значение: 1\nТекущее значение: 2\nТекущее значение: 3\nМожно представить:\nитерация 1 → number = 1\nитерация 2 → number = 2\nитерация 3 → number = 3\nНам не нужно вручную писать:\nnumber += 1\nЦикл for сам переходит к следующему значению.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#что-делает-range",
+    "href": "book/chapters/17-for-loop.html#что-делает-range",
+    "title": "3.10 Цикл for",
+    "section": "Что делает range()",
+    "text": "Что делает range()\nВ предыдущем примере использовалась функция:\nrange()\nОна задаёт последовательность целых чисел.\nНапример:\nrange(1, 6)\nсоответствует значениям:\n1\n2\n3\n4\n5\nОбратите внимание:\n6 не входит\nВторое число задаёт границу, до которой нужно идти, не включая её.\n\n\n\n\n\n\nВажное уведомлениеПравая граница не входит\n\n\n\nrange(1, 6)\nдаёт:\n1\n2\n3\n4\n5\nно не 6.\nЭто одно из самых важных правил range().",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#range-с-одним-аргументом",
+    "href": "book/chapters/17-for-loop.html#range-с-одним-аргументом",
+    "title": "3.10 Цикл for",
+    "section": "range() с одним аргументом",
+    "text": "range() с одним аргументом\nМожно написать:\nrange(5)\nЭто означает:\n0\n1\n2\n3\n4\nПоэтому:\nfor number in range(5):\n    print(number)\nвыведет:\n0\n1\n2\n3\n4\nЕсли начало не указано, Python начинает с:\n0\nПолучается:\nrange(5)\n↓\n0, 1, 2, 3, 4",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#range-с-двумя-аргументами",
+    "href": "book/chapters/17-for-loop.html#range-с-двумя-аргументами",
+    "title": "3.10 Цикл for",
+    "section": "range() с двумя аргументами",
+    "text": "range() с двумя аргументами\nЗапись:\nrange(start, stop)\nзадаёт:\nначало\n↓\n...\n↓\nдо stop, не включая stop\nНапример:\nfor number in range(3, 8):\n    print(number)\nРезультат:\n3\n4\n5\n6\n7\nТо есть:\nstart = 3\nstop = 8\nПроверьте в HTML-версии две базовые формы range(): с одним аргументом и с двумя аргументами.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#range-с-шагом",
+    "href": "book/chapters/17-for-loop.html#range-с-шагом",
+    "title": "3.10 Цикл for",
+    "section": "range() с шагом",
+    "text": "range() с шагом\nУ range() может быть третий аргумент:\nrange(start, stop, step)\nОн задаёт шаг.\nНапример:\nfor number in range(2, 11, 2):\n    print(number)\nРезультат:\n2\n4\n6\n8\n10\nЗдесь:\nstart = 2\nstop = 11\nstep = 2\nКаждое следующее значение увеличивается на 2.\n\n\n\nТри формы range",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#шаг-может-быть-больше-единицы",
+    "href": "book/chapters/17-for-loop.html#шаг-может-быть-больше-единицы",
+    "title": "3.10 Цикл for",
+    "section": "Шаг может быть больше единицы",
+    "text": "Шаг может быть больше единицы\nНапример:\nfor number in range(0, 21, 5):\n    print(number)\nРезультат:\n0\n5\n10\n15\n20\nМожно представить:\n0\n↓ +5\n5\n↓ +5\n10\n↓ +5\n15\n↓ +5\n20\nПоменяйте в HTML-версии третий аргумент range() и посмотрите, как меняется шаг.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#обратный-отсчёт",
+    "href": "book/chapters/17-for-loop.html#обратный-отсчёт",
+    "title": "3.10 Цикл for",
+    "section": "Обратный отсчёт",
+    "text": "Обратный отсчёт\nШаг может быть отрицательным.\nНапример:\nfor number in range(5, 0, -1):\n    print(number)\n\nprint(\"Старт!\")\n\n\n\nРезультат:\n5\n4\n3\n2\n1\nСтарт!\nЗдесь:\nstart = 5\nstop = 0\nstep = -1\nЗначение 0 снова не включается.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#важно-правильно-задать-направление",
+    "href": "book/chapters/17-for-loop.html#важно-правильно-задать-направление",
+    "title": "3.10 Цикл for",
+    "section": "Важно правильно задать направление",
+    "text": "Важно правильно задать направление\nРассмотрим:\nfor number in range(5, 0):\n    print(number)\nТакой цикл ничего не выведет.\nПочему?\nПо умолчанию шаг равен:\n+1\nНо нам нужно двигаться:\n5 → 4 → 3 → 2 → 1\nТо есть вниз.\nПоэтому нужен отрицательный шаг:\nrange(5, 0, -1)\n\n\n\n\n\n\nПредупреждениеШаг должен соответствовать направлению\n\n\n\nЕсли начало больше конца:\nrange(5, 0)\nа шаг положительный, значений не будет.\nДля движения назад используйте отрицательный шаг:\nrange(5, 0, -1)\n\n\n\n\n\nНаправление range зависит от шага",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#повторение-действия-несколько-раз",
+    "href": "book/chapters/17-for-loop.html#повторение-действия-несколько-раз",
+    "title": "3.10 Цикл for",
+    "section": "Повторение действия несколько раз",
+    "text": "Повторение действия несколько раз\nИногда само значение переменной цикла не так важно.\nНапример, нужно вывести сообщение пять раз:\nfor number in range(5):\n    print(\"Изучаю Python\")\nРезультат:\nИзучаю Python\nИзучаю Python\nИзучаю Python\nИзучаю Python\nИзучаю Python\nrange(5) задаёт пять значений для перебора:\n0\n1\n2\n3\n4\nПоэтому тело выполняется пять раз.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#отступы-работают-так-же-как-в-if-и-while",
+    "href": "book/chapters/17-for-loop.html#отступы-работают-так-же-как-в-if-и-while",
+    "title": "3.10 Цикл for",
+    "section": "Отступы работают так же, как в if и while",
+    "text": "Отступы работают так же, как в if и while\nТело for определяется отступом:\nfor number in range(3):\n    print(\"Итерация\")\n    print(number)\n\nprint(\"Цикл завершён\")\nРезультат:\nИтерация\n0\nИтерация\n1\nИтерация\n2\nЦикл завершён\nДве строки:\n    print(\"Итерация\")\n    print(number)\nпринадлежат циклу.\nА:\nprint(\"Цикл завершён\")\nвыполняется после цикла.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#for-и-while-могут-решать-одну-задачу",
+    "href": "book/chapters/17-for-loop.html#for-и-while-могут-решать-одну-задачу",
+    "title": "3.10 Цикл for",
+    "section": "for и while могут решать одну задачу",
+    "text": "for и while могут решать одну задачу\nРассмотрим while:\nnumber = 1\n\nwhile number &lt;= 5:\n    print(number)\n    number += 1\nТо же самое можно написать через for:\nfor number in range(1, 6):\n    print(number)\nРезультат в обоих случаях:\n1\n2\n3\n4\n5\nНо for короче.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#когда-удобен-while",
+    "href": "book/chapters/17-for-loop.html#когда-удобен-while",
+    "title": "3.10 Цикл for",
+    "section": "Когда удобен while",
+    "text": "Когда удобен while\nwhile особенно удобен, когда мы не знаем заранее, сколько будет повторений.\nНапример:\npassword = input(\"Введите пароль: \")\n\nwhile password != \"python123\":\n    password = input(\"Попробуйте ещё раз: \")\nМы не знаем:\nпользователь введёт пароль со второй попытки?\nс пятой?\nс десятой?\nКоличество повторений зависит от условия.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#когда-удобен-for",
+    "href": "book/chapters/17-for-loop.html#когда-удобен-for",
+    "title": "3.10 Цикл for",
+    "section": "Когда удобен for",
+    "text": "Когда удобен for\nfor особенно удобен, когда известна последовательность, которую нужно перебрать.\nНапример:\nfor number in range(1, 6):\n    print(number)\nЗдесь заранее известны значения:\n1\n2\n3\n4\n5\nМожно запомнить:\nwhile\n→ повторять, пока условие True\n\nfor\n→ выполнить для каждого значения\n\n\n\n\n\n\nСоветwhile или for?\n\n\n\nИспользуйте while, когда главное — условие продолжения.\nИспользуйте for, когда главное — перебор известных значений или элементов.\n\n\n\n\n\nСравнение циклов while и for",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#for-умеет-перебирать-строку",
+    "href": "book/chapters/17-for-loop.html#for-умеет-перебирать-строку",
+    "title": "3.10 Цикл for",
+    "section": "for умеет перебирать строку",
+    "text": "for умеет перебирать строку\nfor работает не только с range().\nСтрока тоже содержит последовательность элементов — символов.\nНапример:\nfor letter in \"Python\":\n    print(letter)\nРезультат:\nP\ny\nt\nh\no\nn\nНа каждой итерации переменная:\nletter\nполучает следующий символ.\n\n\n\nПеребор строки в for",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#как-перебирается-строка",
+    "href": "book/chapters/17-for-loop.html#как-перебирается-строка",
+    "title": "3.10 Цикл for",
+    "section": "Как перебирается строка",
+    "text": "Как перебирается строка\nДля:\nfor letter in \"Cat\":\n    print(letter)\nпроисходит:\nитерация 1 → letter = \"C\"\nитерация 2 → letter = \"a\"\nитерация 3 → letter = \"t\"\nПосле последнего символа цикл завершается.\nЭто показывает важную особенность for:\n\nfor перебирает элементы некоторой последовательности по одному.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#имя-переменной-цикла-должно-быть-понятным",
+    "href": "book/chapters/17-for-loop.html#имя-переменной-цикла-должно-быть-понятным",
+    "title": "3.10 Цикл for",
+    "section": "Имя переменной цикла должно быть понятным",
+    "text": "Имя переменной цикла должно быть понятным\nТехнически можно написать:\nfor x in \"Python\":\n    print(x)\nНо чаще понятнее:\nfor letter in \"Python\":\n    print(letter)\nДля чисел:\nfor number in range(5):\nДля символов:\nfor letter in \"Python\":\nХорошее имя помогает понять смысл цикла.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#подсчёт-количества-итераций",
+    "href": "book/chapters/17-for-loop.html#подсчёт-количества-итераций",
+    "title": "3.10 Цикл for",
+    "section": "Подсчёт количества итераций",
+    "text": "Подсчёт количества итераций\nРассмотрим:\nfor number in range(2, 8):\n    print(number)\nЗначения:\n2\n3\n4\n5\n6\n7\nТо есть цикл выполнит:\n6 итераций\nПолезно уметь заранее определять:\n\nпервое значение;\nпоследнее значение;\nшаг;\nколичество итераций.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#типичная-ошибка-с-правой-границей",
+    "href": "book/chapters/17-for-loop.html#типичная-ошибка-с-правой-границей",
+    "title": "3.10 Цикл for",
+    "section": "Типичная ошибка с правой границей",
+    "text": "Типичная ошибка с правой границей\nРассмотрим задачу:\n\nВывести числа от 1 до 10.\n\nМожно ошибочно написать:\nfor number in range(1, 10):\n    print(number)\nРезультат закончится на:\n9\nПотому что 10 не входит в range(1, 10).\nПравильно:\nfor number in range(1, 11):\n    print(number)\n\n\n\n\n\n\nПредупреждениеПомните о stop\n\n\n\nЧтобы получить:\n1, 2, 3, ..., 10\nнужно:\nrange(1, 11)\nЗначение stop не включается.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#сумма-чисел-с-for",
+    "href": "book/chapters/17-for-loop.html#сумма-чисел-с-for",
+    "title": "3.10 Цикл for",
+    "section": "Сумма чисел с for",
+    "text": "Сумма чисел с for\nВ предыдущей главе мы использовали накопитель:\ntotal = 0\nС for он работает так же.\nНапример, найдём сумму чисел от 1 до 5:\ntotal = 0\n\nfor number in range(1, 6):\n    total += number\n\nprint(\"Сумма:\", total)\n\n\n\nРезультат:\nСумма: 15\nНа каждой итерации:\nnumber = 1 → total = 1\nnumber = 2 → total = 3\nnumber = 3 → total = 6\nnumber = 4 → total = 10\nnumber = 5 → total = 15",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#накопитель-внутри-for",
+    "href": "book/chapters/17-for-loop.html#накопитель-внутри-for",
+    "title": "3.10 Цикл for",
+    "section": "Накопитель внутри for",
+    "text": "Накопитель внутри for\nЗдесь у переменных разные роли:\nnumber\nполучает очередное значение из range().\nА:\ntotal\nсохраняет накопленный результат.\nКод:\ntotal = 0\n\nfor number in range(1, 6):\n    total += number\nможно читать:\n\nДля каждого числа от 1 до 5 прибавить это число к общей сумме.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#вычисления-внутри-цикла",
+    "href": "book/chapters/17-for-loop.html#вычисления-внутри-цикла",
+    "title": "3.10 Цикл for",
+    "section": "Вычисления внутри цикла",
+    "text": "Вычисления внутри цикла\nВнутри for можно выполнять любые знакомые операции.\nНапример, вывести квадраты чисел:\nfor number in range(1, 6):\n    square = number ** 2\n\n    print(number, \"→\", square)\nРезультат:\n1 → 1\n2 → 4\n3 → 9\n4 → 16\n5 → 25",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#условия-внутри-for",
+    "href": "book/chapters/17-for-loop.html#условия-внутри-for",
+    "title": "3.10 Цикл for",
+    "section": "Условия внутри for",
+    "text": "Условия внутри for\nВнутри цикла можно использовать if.\nНапример:\nfor number in range(1, 6):\n    if number == 3:\n        print(\"Нашли тройку\")\n\n    print(number)\nРезультат:\n1\n2\nНашли тройку\n3\n4\n5\nНа каждой итерации Python получает новое значение number, а затем может проверить его условием.\nОбщая схема:\nследующее значение\n       ↓\n      for\n       ↓\n      if\n       ↓\nпроверить значение\n       ↓\nвыполнить нужное действие",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#условие-может-зависеть-от-каждого-значения",
+    "href": "book/chapters/17-for-loop.html#условие-может-зависеть-от-каждого-значения",
+    "title": "3.10 Цикл for",
+    "section": "Условие может зависеть от каждого значения",
+    "text": "Условие может зависеть от каждого значения\nНапример, определим, какие числа делятся на 2 без остатка:\nfor number in range(1, 11):\n    if number % 2 == 0:\n        print(number)\n\n\n\nРезультат:\n2\n4\n6\n8\n10\nМы уже знаем:\nnumber % 2 == 0\nозначает, что число делится на 2 без остатка.\nТеперь эта проверка выполняется для каждого числа.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#таблица-умножения-для-одного-числа",
+    "href": "book/chapters/17-for-loop.html#таблица-умножения-для-одного-числа",
+    "title": "3.10 Цикл for",
+    "section": "Таблица умножения для одного числа",
+    "text": "Таблица умножения для одного числа\nЦикл удобно использовать для повторяющихся вычислений.\nНапример:\nnumber = int(input(\"Введите число: \"))\n\nfor multiplier in range(1, 11):\n    result = number * multiplier\n\n    print(number, \"*\", multiplier, \"=\", result)\n\n\n\nЕсли пользователь введёт:\n5\nрезультат:\n5 * 1 = 5\n5 * 2 = 10\n5 * 3 = 15\n5 * 4 = 20\n5 * 5 = 25\n5 * 6 = 30\n5 * 7 = 35\n5 * 8 = 40\n5 * 9 = 45\n5 * 10 = 50\nЗдесь for выполняет одно и то же вычисление с разными значениями multiplier.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#повторный-input-с-for",
+    "href": "book/chapters/17-for-loop.html#повторный-input-с-for",
+    "title": "3.10 Цикл for",
+    "section": "Повторный input() с for",
+    "text": "Повторный input() с for\nЕсли заранее известно количество вводов, for тоже может быть удобнее while.\nНапример, пользователь должен ввести три числа:\ntotal = 0\n\nfor attempt in range(3):\n    number = float(input(\"Введите число: \"))\n    total += number\n\nprint(\"Сумма:\", total)\nЦикл выполнится ровно:\n3 раза",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#переменная-цикла-после-завершения",
+    "href": "book/chapters/17-for-loop.html#переменная-цикла-после-завершения",
+    "title": "3.10 Цикл for",
+    "section": "Переменная цикла после завершения",
+    "text": "Переменная цикла после завершения\nРассмотрим:\nfor number in range(1, 4):\n    print(number)\n\nprint(\"Последнее значение:\", number)\nПосле цикла number содержит последнее полученное значение:\n3\nНо обычно переменная цикла нужна прежде всего внутри самого перебора.\nНе стоит строить программу вокруг её значения после завершения цикла без необходимости.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#range-задаёт-числа-по-правилам",
+    "href": "book/chapters/17-for-loop.html#range-задаёт-числа-по-правилам",
+    "title": "3.10 Цикл for",
+    "section": "range() задаёт числа по правилам",
+    "text": "range() задаёт числа по правилам\nПолезно собрать основные формы range() вместе.\n\nТолько stop\nrange(5)\nзначения:\n0, 1, 2, 3, 4\n\n\nstart и stop\nrange(2, 6)\nзначения:\n2, 3, 4, 5\n\n\nstart, stop и step\nrange(2, 11, 2)\nзначения:\n2, 4, 6, 8, 10\n\n\nОтрицательный шаг\nrange(5, 0, -1)\nзначения:\n5, 4, 3, 2, 1",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#range-не-включает-stop",
+    "href": "book/chapters/17-for-loop.html#range-не-включает-stop",
+    "title": "3.10 Цикл for",
+    "section": "range() не включает stop",
+    "text": "range() не включает stop\nЭто правило работает и для отрицательного шага.\nНапример:\nrange(5, 0, -1)\nне включает:\n0\nА:\nrange(5, -1, -1)\nдаст:\n5\n4\n3\n2\n1\n0\nПотому что правая граница теперь:\n-1",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#пустой-range",
+    "href": "book/chapters/17-for-loop.html#пустой-range",
+    "title": "3.10 Цикл for",
+    "section": "Пустой range",
+    "text": "Пустой range\nНекоторые значения range() могут не содержать ни одного числа.\nНапример:\nfor number in range(5, 1):\n    print(number)\nничего не выведет.\nПо умолчанию Python пытается двигаться вверх:\n+1\nНо начало:\n5\nуже больше правой границы:\n1\nПоэтому последовательность пуста.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#не-нужно-изменять-переменную-цикла-вручную",
+    "href": "book/chapters/17-for-loop.html#не-нужно-изменять-переменную-цикла-вручную",
+    "title": "3.10 Цикл for",
+    "section": "Не нужно изменять переменную цикла вручную",
+    "text": "Не нужно изменять переменную цикла вручную\nС while мы писали:\nnumber += 1\nНо в for это обычно не требуется.\nПравильно:\nfor number in range(1, 6):\n    print(number)\nНе нужно добавлять:\nnumber += 1\nдля перехода к следующей итерации.\nfor сам получает следующее значение из range().\n\n\n\n\n\n\nПредупреждениеfor сам управляет перебором\n\n\n\nВ цикле:\nfor number in range(1, 6):\nпеременная number автоматически получает очередное значение.\nНе нужно вручную увеличивать её, как счётчик while.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#for-это-не-просто-счётчик",
+    "href": "book/chapters/17-for-loop.html#for-это-не-просто-счётчик",
+    "title": "3.10 Цикл for",
+    "section": "for — это не просто счётчик",
+    "text": "for — это не просто счётчик\nВажно не воспринимать for только как сокращённый while.\nНапример:\nfor letter in \"Python\":\n    print(letter)\nЗдесь никакого числового счётчика вообще нет.\nfor получает следующий элемент последовательности.\nИменно поэтому его удобно читать так:\nдля каждого элемента",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#сравним-while-и-for",
+    "href": "book/chapters/17-for-loop.html#сравним-while-и-for",
+    "title": "3.10 Цикл for",
+    "section": "Сравним while и for",
+    "text": "Сравним while и for\nОдна задача через while:\nnumber = 1\n\nwhile number &lt;= 5:\n    print(number)\n    number += 1\nЧерез for:\nfor number in range(1, 6):\n    print(number)\nВ while мы управляем:\nначальным значением\nусловием\nизменением\nВ for мы задаём:\nпоследовательность значений\nа перебор выполняется автоматически.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#попробуйте-сами",
+    "href": "book/chapters/17-for-loop.html#попробуйте-сами",
+    "title": "3.10 Цикл for",
+    "section": "Попробуйте сами",
+    "text": "Попробуйте сами\n\n\n\n\n\n\nСоветЭксперимент\n\n\n\nЗапустите:\nfor number in range(1, 11):\n    print(number)\nЗатем измените программу так, чтобы она выводила:\n0, 1, 2, 3, 4\nзатем:\n2, 4, 6, 8, 10\nзатем:\n10, 8, 6, 4, 2\nПеред запуском определите:\n\nstart;\nstop;\nstep.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#типичные-ошибки",
+    "href": "book/chapters/17-for-loop.html#типичные-ошибки",
+    "title": "3.10 Цикл for",
+    "section": "Типичные ошибки",
+    "text": "Типичные ошибки\n\nНеправильная правая граница\nЗадача:\nвывести 1..10\nОшибка:\nrange(1, 10)\nПравильно:\nrange(1, 11)\n\n\nНеправильный шаг\nОшибка:\nrange(5, 0, 1)\nДля движения вниз нужен:\nrange(5, 0, -1)\n\n\nЛишнее изменение переменной\nНе нужно писать:\nfor number in range(5):\n    number += 1\nчтобы цикл перешёл к следующему значению.\nfor делает это самостоятельно.\n\n\nНеправильный отступ\nНеправильно:\nfor number in range(5):\nprint(number)\nПравильно:\nfor number in range(5):\n    print(number)",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#пошаговый-разбор-for",
+    "href": "book/chapters/17-for-loop.html#пошаговый-разбор-for",
+    "title": "3.10 Цикл for",
+    "section": "Пошаговый разбор for",
+    "text": "Пошаговый разбор for\nРассмотрим:\ntotal = 0\n\nfor number in range(1, 4):\n    total += number\nПошагово:\n\n\n\nИтерация\nnumber\ntotal до\ntotal после\n\n\n\n\n1\n1\n0\n1\n\n\n2\n2\n1\n3\n\n\n3\n3\n3\n6\n\n\n\nПосле этого значения в range(1, 4) заканчиваются.\nЦикл завершается.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#пример-сумма-покупок",
+    "href": "book/chapters/17-for-loop.html#пример-сумма-покупок",
+    "title": "3.10 Цикл for",
+    "section": "Пример: сумма покупок",
+    "text": "Пример: сумма покупок\nДопустим, пользователь должен ввести стоимость трёх покупок.\ntotal = 0\n\nfor purchase in range(3):\n    price = float(input(\"Стоимость покупки: \"))\n    total += price\n\nprint(\"Общая сумма:\", total)\n\n\n\nПример:\nСтоимость покупки: 100\nСтоимость покупки: 250\nСтоимость покупки: 50\nОбщая сумма: 400.0\nЗдесь нам заранее известно:\nнужно получить ровно 3 значения\nПоэтому for подходит очень хорошо.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#пример-символы-слова",
+    "href": "book/chapters/17-for-loop.html#пример-символы-слова",
+    "title": "3.10 Цикл for",
+    "section": "Пример: символы слова",
+    "text": "Пример: символы слова\nПользователь вводит слово:\nword = input(\"Введите слово: \")\n\nfor letter in word:\n    print(letter)\n\n\n\nНапример:\nВведите слово: Code\nC\no\nd\ne\nКоличество итераций зависит от количества символов в строке.\nНам не нужно знать его заранее.\nСам for перебирает строку до конца.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#что-важно-запомнить",
+    "href": "book/chapters/17-for-loop.html#что-важно-запомнить",
+    "title": "3.10 Цикл for",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nЦикл for выполняет блок кода для каждого значения или элемента последовательности.\nОсновная форма:\nfor переменная in последовательность:\n    действие\nНапример:\nfor number in range(1, 6):\n    print(number)\nНа каждой итерации:\nследующее значение\n↓\nпеременная цикла\n↓\nтело цикла\n↓\nследующее значение\nОсновные формы range():\nrange(stop)\n\nrange(start, stop)\n\nrange(start, stop, step)\nНапример:\nrange(5)\n→ 0, 1, 2, 3, 4\n\nrange(2, 6)\n→ 2, 3, 4, 5\n\nrange(2, 11, 2)\n→ 2, 4, 6, 8, 10\n\nrange(5, 0, -1)\n→ 5, 4, 3, 2, 1\nВажно:\n\nЗначение stop в range() не включается.\n\nfor можно использовать не только с числами:\nfor letter in \"Python\":\n    print(letter)\nГлавное различие между циклами:\nwhile\n→ повторять, пока условие True\n\nfor\n→ выполнить для каждого элемента или значения\nИ самое важное:\n\nfor позволяет программе последовательно обработать все значения некоторой последовательности без ручного управления счётчиком.\n\n\n\nПрактические задания\nЗадание 1. Числа от 1 до 10\nС помощью for выведите:\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfor number in range(1, 11):\n    print(number)\n\n\n\n\nЗадание 2. Пять сообщений\nВыведите строку:\nИзучаю Python\nровно пять раз.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfor number in range(5):\n    print(\"Изучаю Python\")\nЦикл выполнится пять раз, потому что:\nrange(5)\n→ 0, 1, 2, 3, 4\n\n\n\n\nЗадание 3. Чётные числа\nВыведите:\n2\n4\n6\n8\n10\nИспользуйте шаг range().\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfor number in range(2, 11, 2):\n    print(number)\n\n\n\n\nЗадание 4. Обратный отсчёт\nВыведите:\n5\n4\n3\n2\n1\nСтарт!\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfor number in range(5, 0, -1):\n    print(number)\n\nprint(\"Старт!\")\n\n\n\n\nЗадание 5. Квадраты чисел\nВыведите квадраты чисел от 1 до 5.\nПример:\n1 → 1\n2 → 4\n3 → 9\n4 → 16\n5 → 25\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfor number in range(1, 6):\n    square = number ** 2\n\n    print(number, \"→\", square)\n\n\n\n\nЗадание 6. Сумма от 1 до 10\nС помощью for вычислите:\n1 + 2 + 3 + ... + 10\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ntotal = 0\n\nfor number in range(1, 11):\n    total += number\n\nprint(\"Сумма:\", total)\nРезультат:\nСумма: 55\n\n\n\n\nЗадание 7. Таблица умножения\nПользователь вводит число.\nВыведите таблицу умножения этого числа от 1 до 10.\nНапример:\nВведите число: 3\n\n3 * 1 = 3\n3 * 2 = 6\n3 * 3 = 9\n...\n3 * 10 = 30\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumber = int(input(\"Введите число: \"))\n\nfor multiplier in range(1, 11):\n    result = number * multiplier\n\n    print(number, \"*\", multiplier, \"=\", result)\n\n\n\n\nЗадание 8. Символы строки\nПользователь вводит слово.\nВыведите каждый символ на отдельной строке.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nword = input(\"Введите слово: \")\n\nfor letter in word:\n    print(letter)\n\n\n\n\nЗадание 9. Сумма покупок\nПользователь вводит стоимость 4 покупок.\nНайдите общую сумму.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ntotal = 0\n\nfor purchase in range(4):\n    price = float(input(\"Стоимость покупки: \"))\n    total += price\n\nprint(\"Общая сумма:\", total)\n\n\n\n\nЗадание 10. Найдите ошибку\nНужно вывести числа:\n5\n4\n3\n2\n1\nНо программа:\nfor number in range(5, 0):\n    print(number)\nничего не выводит.\nПочему?\nИсправьте её.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nПо умолчанию range() использует шаг:\n+1\nНо нам нужно идти от 5 вниз к 1.\nПоэтому требуется отрицательный шаг:\nfor number in range(5, 0, -1):\n    print(number)\nРезультат:\n5\n4\n3\n2\n1\n\n\n\n\nЗадание 11. Предскажите результат\nНе запускайте код сразу.\nfor number in range(2, 9, 3):\n    print(number)\nОтветьте:\n\nКакие числа будут выведены?\nСколько будет итераций?\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nЗначения:\n2\n5\n8\nПотому что:\n2\n↓ +3\n5\n↓ +3\n8\n↓ +3\n11\n11 уже находится за границей 9.\nПоэтому цикл выполняет:\n3 итерации\n\n\n\n\nЗадание 12. Задача со звёздочкой\nПользователь вводит число.\nВыведите все числа от 1 до этого числа, которые делятся на 3 без остатка.\nНапример:\nВведите число: 15\n\n3\n6\n9\n12\n15\nИспользуйте for, range(), % и if.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nlimit = int(input(\"Введите число: \"))\n\nfor number in range(1, limit + 1):\n    if number % 3 == 0:\n        print(number)\nЗдесь:\nlimit + 1\nиспользуется потому, что правая граница range() не включается.\nДля:\nlimit = 15\nнужно задать последовательность:\nrange(1, 16)\nчтобы число 15 тоже участвовало в переборе.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
+    ]
+  },
+  {
+    "objectID": "book/chapters/17-for-loop.html#что-дальше",
+    "href": "book/chapters/17-for-loop.html#что-дальше",
+    "title": "3.10 Цикл for",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nТеперь программа умеет повторять действия для каждого значения или элемента последовательности.\nСледующий шаг:\nперебор символов строки\n↓\nподробная работа со строками\nСледующая глава: Строки.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "3.10 Цикл for"
     ]
   }
 ]

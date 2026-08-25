@@ -150,11 +150,17 @@
     var stderr = '';
 
     function appendStdout(text) {
+      if (text && text.slice(-1) !== '\n') {
+        text += '\n';
+      }
       stdout += text;
       callbacks.onOutput(stdout, false);
     }
 
     function appendStderr(text) {
+      if (text && text.slice(-1) !== '\n') {
+        text += '\n';
+      }
       stderr += text;
       callbacks.onOutput(stdout + stderr, true);
     }

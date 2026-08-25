@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Как работает цикл for</title>
+  <desc id="desc">Схема показывает, что for получает следующий элемент последовательности, сохраняет его в переменной, выполняет тело цикла и повторяет это до конца последовательности.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.true{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.false{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:34px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:32px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="54" text-anchor="middle">for получает следующий элемент и выполняет блок</text>
+
+  <rect class="card" x="90" y="108" width="300" height="100" rx="18"/>
+  <text class="text label ink" x="240" y="143" text-anchor="middle">последовательность</text>
+  <rect class="soft" x="130" y="160" width="48" height="34" rx="8"/>
+  <text class="mono olive" x="154" y="185" text-anchor="middle">1</text>
+  <rect class="soft" x="205" y="160" width="48" height="34" rx="8"/>
+  <text class="mono olive" x="229" y="185" text-anchor="middle">2</text>
+  <rect class="soft" x="280" y="160" width="48" height="34" rx="8"/>
+  <text class="mono olive" x="304" y="185" text-anchor="middle">3</text>
+
+  <path class="line" d="M395 158h70" marker-end="url(#arrow)"/>
+  <rect class="accent" x="485" y="110" width="310" height="96" rx="18"/>
+  <text class="text label ink" x="640" y="148" text-anchor="middle">получить следующее</text>
+  <text class="text label ink" x="640" y="178" text-anchor="middle">значение</text>
+
+  <path class="line" d="M640 214v52" marker-end="url(#arrow)"/>
+  <rect class="card" x="495" y="285" width="290" height="75" rx="16"/>
+  <text class="bigmono blue" x="640" y="333" text-anchor="middle">number</text>
+
+  <path class="line" d="M640 368v52" marker-end="url(#arrow)"/>
+  <rect class="soft" x="470" y="438" width="340" height="82" rx="18"/>
+  <text class="text label ink" x="640" y="471" text-anchor="middle">выполнить тело цикла</text>
+  <text class="mono olive" x="640" y="502" text-anchor="middle">print(number)</text>
+
+  <path class="line" d="M815 478h75" marker-end="url(#arrow)"/>
+  <rect class="accent" x="910" y="428" width="220" height="100" rx="18"/>
+  <text class="text label ink" x="1020" y="467" text-anchor="middle">есть ещё</text>
+  <text class="text label ink" x="1020" y="497" text-anchor="middle">значение?</text>
+
+  <path class="true" d="M1020 422C1030 280 870 160 805 158" marker-end="url(#arrow-true)"/>
+  <text class="text label olive" x="1003" y="304" text-anchor="middle">Да</text>
+
+  <path class="false" d="M1020 535v62" marker-end="url(#arrow-false)"/>
+  <text class="text label red" x="1058" y="574" text-anchor="middle">Нет</text>
+  <rect class="alt" x="900" y="610" width="240" height="58" rx="16"/>
+  <text class="text label ink" x="1020" y="648" text-anchor="middle">выход из цикла</text>
+
+  <text class="text body muted" x="420" y="646" text-anchor="middle">for сам переходит от одного элемента к следующему</text>
+</svg>
