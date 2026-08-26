@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Строки в Python для начинающих: тип str, символы, индексы, отрицательные индексы, len(), срезы, неизменяемость строк, in и not in, перебор через for и основные методы строк.">
+
+<title>3.11 Строки – Путь Python-разработчика</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/chapters/17-for-loop.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e19df9547eb517d331095cdad01067e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/18-strings.html">3.11 Строки</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Путь Python-разработчика</a> 
+        <div class="sidebar-tools-main">
+    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Том I. Основы программирования</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 Как думает компьютер</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Почему Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Том II. Базовые конструкции Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 Переменные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/09-data-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 Типы данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/10-user-input.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 Ввод данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/11-type-conversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.4 Преобразование типов</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/12-arithmetic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.5 Арифметические операции</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/13-comparisons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.6 Сравнение значений</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/14-conditions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.7 Условия</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/15-boolean-logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.8 Логические операции</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/16-while-loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.9 Цикл while</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/17-for-loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.10 Цикл for</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/18-strings.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3.11 Строки</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#что-такое-строка" id="toc-что-такое-строка" class="nav-link active" data-scroll-target="#что-такое-строка">Что такое строка</a></li>
+  <li><a href="#строка-состоит-из-символов" id="toc-строка-состоит-из-символов" class="nav-link" data-scroll-target="#строка-состоит-из-символов">Строка состоит из символов</a></li>
+  <li><a href="#индексы" id="toc-индексы" class="nav-link" data-scroll-target="#индексы">Индексы</a></li>
+  <li><a href="#получение-символа-по-индексу" id="toc-получение-символа-по-индексу" class="nav-link" data-scroll-target="#получение-символа-по-индексу">Получение символа по индексу</a></li>
+  <li><a href="#индекс-может-храниться-в-переменной" id="toc-индекс-может-храниться-в-переменной" class="nav-link" data-scroll-target="#индекс-может-храниться-в-переменной">Индекс может храниться в переменной</a></li>
+  <li><a href="#последний-символ" id="toc-последний-символ" class="nav-link" data-scroll-target="#последний-символ">Последний символ</a></li>
+  <li><a href="#отрицательные-индексы" id="toc-отрицательные-индексы" class="nav-link" data-scroll-target="#отрицательные-индексы">Отрицательные индексы</a></li>
+  <li><a href="#ошибка-индекса" id="toc-ошибка-индекса" class="nav-link" data-scroll-target="#ошибка-индекса">Ошибка индекса</a></li>
+  <li><a href="#длина-строки" id="toc-длина-строки" class="nav-link" data-scroll-target="#длина-строки">Длина строки</a></li>
+  <li><a href="#пробел-тоже-является-символом" id="toc-пробел-тоже-является-символом" class="nav-link" data-scroll-target="#пробел-тоже-является-символом">Пробел тоже является символом</a></li>
+  <li><a href="#пустая-строка" id="toc-пустая-строка" class="nav-link" data-scroll-target="#пустая-строка">Пустая строка</a></li>
+  <li><a href="#последний-индекс-и-длина-строки" id="toc-последний-индекс-и-длина-строки" class="nav-link" data-scroll-target="#последний-индекс-и-длина-строки">Последний индекс и длина строки</a></li>
+  <li><a href="#перебор-строки-через-for" id="toc-перебор-строки-через-for" class="nav-link" data-scroll-target="#перебор-строки-через-for">Перебор строки через for</a></li>
+  <li><a href="#символ-тоже-является-строкой" id="toc-символ-тоже-является-строкой" class="nav-link" data-scroll-target="#символ-тоже-является-строкой">Символ тоже является строкой</a></li>
+  <li><a href="#проверка-длины-одного-символа" id="toc-проверка-длины-одного-символа" class="nav-link" data-scroll-target="#проверка-длины-одного-символа">Проверка длины одного символа</a></li>
+  <li><a href="#объединение-строк" id="toc-объединение-строк" class="nav-link" data-scroll-target="#объединение-строк">Объединение строк</a></li>
+  <li><a href="#строки-можно-умножать" id="toc-строки-можно-умножать" class="nav-link" data-scroll-target="#строки-можно-умножать">Строки можно умножать</a></li>
+  <li><a href="#строку-нельзя-изменить-по-индексу" id="toc-строку-нельзя-изменить-по-индексу" class="nav-link" data-scroll-target="#строку-нельзя-изменить-по-индексу">Строку нельзя изменить по индексу</a></li>
+  <li><a href="#новую-строку-создать-можно" id="toc-новую-строку-создать-можно" class="nav-link" data-scroll-target="#новую-строку-создать-можно">Новую строку создать можно</a></li>
+  <li><a href="#срез-строки" id="toc-срез-строки" class="nav-link" data-scroll-target="#срез-строки">Срез строки</a></li>
+  <li><a href="#правая-граница-среза-не-включается" id="toc-правая-граница-среза-не-включается" class="nav-link" data-scroll-target="#правая-граница-среза-не-включается">Правая граница среза не включается</a></li>
+  <li><a href="#срез-с-начала-строки" id="toc-срез-с-начала-строки" class="nav-link" data-scroll-target="#срез-с-начала-строки">Срез с начала строки</a></li>
+  <li><a href="#срез-до-конца-строки" id="toc-срез-до-конца-строки" class="nav-link" data-scroll-target="#срез-до-конца-строки">Срез до конца строки</a></li>
+  <li><a href="#копия-всей-строки" id="toc-копия-всей-строки" class="nav-link" data-scroll-target="#копия-всей-строки">Копия всей строки</a></li>
+  <li><a href="#отрицательные-индексы-в-срезах" id="toc-отрицательные-индексы-в-срезах" class="nav-link" data-scroll-target="#отрицательные-индексы-в-срезах">Отрицательные индексы в срезах</a></li>
+  <li><a href="#срез-с-шагом" id="toc-срез-с-шагом" class="nav-link" data-scroll-target="#срез-с-шагом">Срез с шагом</a></li>
+  <li><a href="#строка-в-обратном-порядке" id="toc-строка-в-обратном-порядке" class="nav-link" data-scroll-target="#строка-в-обратном-порядке">Строка в обратном порядке</a></li>
+  <li><a href="#проверка-наличия-текста-с-in" id="toc-проверка-наличия-текста-с-in" class="nav-link" data-scroll-target="#проверка-наличия-текста-с-in">Проверка наличия текста с in</a></li>
+  <li><a href="#проверка-отсутствия-с-not-in" id="toc-проверка-отсутствия-с-not-in" class="nav-link" data-scroll-target="#проверка-отсутствия-с-not-in">Проверка отсутствия с not in</a></li>
+  <li><a href="#in-внутри-if" id="toc-in-внутри-if" class="nav-link" data-scroll-target="#in-внутри-if">in внутри if</a></li>
+  <li><a href="#регистр-по-прежнему-имеет-значение" id="toc-регистр-по-прежнему-имеет-значение" class="nav-link" data-scroll-target="#регистр-по-прежнему-имеет-значение">Регистр по-прежнему имеет значение</a></li>
+  <li><a href="#методы-строк" id="toc-методы-строк" class="nav-link" data-scroll-target="#методы-строк">Методы строк</a></li>
+  <li><a href="#upper" id="toc-upper" class="nav-link" data-scroll-target="#upper">upper()</a></li>
+  <li><a href="#lower" id="toc-lower" class="nav-link" data-scroll-target="#lower">lower()</a></li>
+  <li><a href="#strip" id="toc-strip" class="nav-link" data-scroll-target="#strip">strip()</a></li>
+  <li><a href="#несколько-методов-подряд" id="toc-несколько-методов-подряд" class="nav-link" data-scroll-target="#несколько-методов-подряд">Несколько методов подряд</a></li>
+  <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace">replace()</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count()</a></li>
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find">find()</a></li>
+  <li><a href="#startswith" id="toc-startswith" class="nav-link" data-scroll-target="#startswith">startswith()</a></li>
+  <li><a href="#endswith" id="toc-endswith" class="nav-link" data-scroll-target="#endswith">endswith()</a></li>
+  <li><a href="#методы-возвращают-новые-значения" id="toc-методы-возвращают-новые-значения" class="nav-link" data-scroll-target="#методы-возвращают-новые-значения">Методы возвращают новые значения</a></li>
+  <li><a href="#подсчёт-символов-через-for" id="toc-подсчёт-символов-через-for" class="nav-link" data-scroll-target="#подсчёт-символов-через-for">Подсчёт символов через for</a></li>
+  <li><a href="#подсчёт-определённого-символа" id="toc-подсчёт-определённого-символа" class="nav-link" data-scroll-target="#подсчёт-определённого-символа">Подсчёт определённого символа</a></li>
+  <li><a href="#поиск-символа-внутри-цикла" id="toc-поиск-символа-внутри-цикла" class="nav-link" data-scroll-target="#поиск-символа-внутри-цикла">Поиск символа внутри цикла</a></li>
+  <li><a href="#пример-количество-гласных" id="toc-пример-количество-гласных" class="nav-link" data-scroll-target="#пример-количество-гласных">Пример: количество гласных</a></li>
+  <li><a href="#пример-проверка-начала-и-конца" id="toc-пример-проверка-начала-и-конца" class="nav-link" data-scroll-target="#пример-проверка-начала-и-конца">Пример: проверка начала и конца</a></li>
+  <li><a href="#пример-нормализация-ответа" id="toc-пример-нормализация-ответа" class="nav-link" data-scroll-target="#пример-нормализация-ответа">Пример: нормализация ответа</a></li>
+  <li><a href="#что-лучше-индекс-или-for" id="toc-что-лучше-индекс-или-for" class="nav-link" data-scroll-target="#что-лучше-индекс-или-for">Что лучше: индекс или for</a></li>
+  <li><a href="#что-важно-запомнить" id="toc-что-важно-запомнить" class="nav-link" data-scroll-target="#что-важно-запомнить">Что важно запомнить</a>
+  <ul class="collapse">
+  <li><a href="#практические-задания" id="toc-практические-задания" class="nav-link" data-scroll-target="#практические-задания">Практические задания</a></li>
+  </ul></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/18-strings.html">3.11 Строки</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">3.11 Строки</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важное уведомление
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Главный вопрос главы:</p>
+<p><strong>Как Python хранит текст и как работать с отдельными символами строки?</strong></p>
+</div>
+</div>
+<p>Со строками мы работаем почти с самого начала курса.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Анна"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="st">"Москва"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>language <span class="op">=</span> <span class="st">"Python"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Функция <code>input()</code> тоже возвращает строку:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите имя: "</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Мы уже сравнивали строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>password <span class="op">==</span> <span class="st">"python123"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>и даже перебирали их через <code>for</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">"Python"</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Теперь разберём строки подробнее.</p>
+<hr>
+<section id="что-такое-строка" class="level2">
+<h2 class="anchored" data-anchor-id="что-такое-строка">Что такое строка</h2>
+<p>Строка — это значение типа:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Она используется для хранения текста.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>language <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(language)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(language))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Python
+&lt;class 'str'&gt;</code></pre>
+<p>Строка может содержать:</p>
+<ul>
+<li>буквы;</li>
+<li>цифры;</li>
+<li>пробелы;</li>
+<li>знаки препинания;</li>
+<li>специальные символы.</li>
+</ul>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Python 3.14!"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Всё значение целиком имеет тип:</p>
+<pre class="text"><code>str</code></pre>
+<hr>
+</section>
+<section id="строка-состоит-из-символов" class="level2">
+<h2 class="anchored" data-anchor-id="строка-состоит-из-символов">Строка состоит из символов</h2>
+<p>Рассмотрим:</p>
+<pre class="text"><code>Python</code></pre>
+<p>Строка состоит из отдельных символов:</p>
+<pre class="text"><code>P y t h o n</code></pre>
+<p>Можно представить её так:</p>
+<pre class="text"><code>"P" "y" "t" "h" "o" "n"</code></pre>
+<p>Каждый символ занимает определённую позицию.</p>
+<p>Именно поэтому Python позволяет получать отдельные символы строки.</p>
+<hr>
+</section>
+<section id="индексы" class="level2">
+<h2 class="anchored" data-anchor-id="индексы">Индексы</h2>
+<p>Позиция символа называется <strong>индексом</strong>.</p>
+<p>Но Python начинает считать не с <code>1</code>, а с:</p>
+<pre class="text"><code>0</code></pre>
+<p>Для строки:</p>
+<pre class="text"><code>Python</code></pre>
+<p>индексы выглядят так:</p>
+<pre class="text"><code>символ:   P   y   t   h   o   n
+индекс:   0   1   2   3   4   5</code></pre>
+<p>Поэтому первый символ имеет индекс:</p>
+<pre class="text"><code>0</code></pre>
+<p>а не:</p>
+<pre class="text"><code>1</code></pre>
+<div class="callout callout-style-default callout-important callout-titled" title="Индексация начинается с нуля">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важное уведомление</span>Индексация начинается с нуля
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>первый символ:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>второй:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>третий:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">2</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Это правило встречается в Python очень часто.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="получение-символа-по-индексу" class="level2">
+<h2 class="anchored" data-anchor-id="получение-символа-по-индексу">Получение символа по индексу</h2>
+<p>Чтобы получить символ, после имени строки используются квадратные скобки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">0</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>P</code></pre>
+<p>Другие примеры:</p>
+<div class="python-playground" data-source="../examples/chapter18/string-indexing.py" data-title="Индексы строки начинаются с 0">
+
+</div>
+<p>Результат:</p>
+<pre class="text"><code>P
+y
+t
+n</code></pre>
+<hr>
+</section>
+<section id="индекс-может-храниться-в-переменной" class="level2">
+<h2 class="anchored" data-anchor-id="индекс-может-храниться-в-переменной">Индекс может храниться в переменной</h2>
+<p>Не обязательно писать число прямо внутри скобок.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[index])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>h</code></pre>
+<p>Это особенно полезно, когда позиция вычисляется программой.</p>
+<hr>
+</section>
+<section id="последний-символ" class="level2">
+<h2 class="anchored" data-anchor-id="последний-символ">Последний символ</h2>
+<p>Для строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>последний символ имеет индекс:</p>
+<pre class="text"><code>5</code></pre>
+<p>Можно написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">5</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Но для строки другой длины индекс будет уже другим.</p>
+<p>Python предоставляет более удобный способ:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>n</code></pre>
+<p>Отрицательные индексы считаются с конца строки.</p>
+<hr>
+</section>
+<section id="отрицательные-индексы" class="level2">
+<h2 class="anchored" data-anchor-id="отрицательные-индексы">Отрицательные индексы</h2>
+<p>Для строки:</p>
+<pre class="text"><code>Python</code></pre>
+<p>можно представить:</p>
+<pre class="text"><code>символ:    P   y   t   h   o   n
+индекс:    0   1   2   3   4   5
+отриц.:   -6  -5  -4  -3  -2  -1</code></pre>
+<p>Например:</p>
+<div class="python-playground" data-source="../examples/chapter18/negative-indexing.py" data-title="Отрицательные индексы">
+
+</div>
+<p>Результат:</p>
+<pre class="text"><code>n
+o
+h</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled" title="Когда удобны отрицательные индексы">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Совет</span>Когда удобны отрицательные индексы
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если нужен последний символ строки, обычно проще написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>word[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>чем сначала вычислять длину строки.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter18/string-indexes.svg" class="img-fluid figure-img" alt="Строка Python показана как шесть карточек с символами P, y, t, h, o, n. Под ними находятся положительные индексы 0, 1, 2, 3, 4, 5 и отрицательные индексы -6, -5, -4, -3, -2, -1."></p>
+<figcaption>Положительные и отрицательные индексы строки</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="ошибка-индекса" class="level2">
+<h2 class="anchored" data-anchor-id="ошибка-индекса">Ошибка индекса</h2>
+<p>Что произойдёт здесь?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">10</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>В строке нет символа с индексом <code>10</code>.</p>
+<p>Поэтому Python сообщит об ошибке:</p>
+<pre class="text"><code>IndexError</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled" title="Индекс должен существовать">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Предупреждение</span>Индекс должен существовать
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Python"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>доступны положительные индексы:</p>
+<pre class="text"><code>0..5</code></pre>
+<p>Попытка обратиться к несуществующей позиции приводит к:</p>
+<pre class="text"><code>IndexError</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="длина-строки" class="level2">
+<h2 class="anchored" data-anchor-id="длина-строки">Длина строки</h2>
+<p>Чтобы узнать количество символов, используется функция:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(word))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>6</code></pre>
+<p>Строка содержит шесть символов:</p>
+<pre class="text"><code>P
+y
+t
+h
+o
+n</code></pre>
+<hr>
+</section>
+<section id="пробел-тоже-является-символом" class="level2">
+<h2 class="anchored" data-anchor-id="пробел-тоже-является-символом">Пробел тоже является символом</h2>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Hello Python"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Проверим длину:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(text))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>12</code></pre>
+<p>Почему не <code>11</code>?</p>
+<p>Потому что пробел между словами тоже является символом.</p>
+<p>Можно представить:</p>
+<pre class="text"><code>H e l l o _ P y t h o n</code></pre>
+<p>Здесь <code>_</code> условно показывает пробел.</p>
+<hr>
+</section>
+<section id="пустая-строка" class="level2">
+<h2 class="anchored" data-anchor-id="пустая-строка">Пустая строка</h2>
+<p>Строка может вообще не содержать символов:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">""</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Её длина:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(text))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>0</code></pre>
+<p>Такая строка называется <strong>пустой строкой</strong>.</p>
+<p>Мы уже встречали её раньше:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">""</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>False</code></pre>
+<p>Проверьте в HTML-версии три случая: обычное слово, строку с пробелом и пустую строку.</p>
+<div class="python-playground" data-source="../examples/chapter18/string-length.py" data-title="Длина строки">
+
+</div>
+<hr>
+</section>
+<section id="последний-индекс-и-длина-строки" class="level2">
+<h2 class="anchored" data-anchor-id="последний-индекс-и-длина-строки">Последний индекс и длина строки</h2>
+<p>Если длина строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(word)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>равна <code>6</code>, последний индекс равен:</p>
+<pre class="text"><code>5</code></pre>
+<p>То есть:</p>
+<pre class="text"><code>последний индекс = длина - 1</code></pre>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>last_index <span class="op">=</span> <span class="bu">len</span>(word) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(last_index)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[last_index])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>5
+n</code></pre>
+<p>Хотя для последнего символа проще использовать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>word[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="перебор-строки-через-for" class="level2">
+<h2 class="anchored" data-anchor-id="перебор-строки-через-for">Перебор строки через for</h2>
+<p>В предыдущей главе мы уже видели:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> <span class="st">"Python"</span>:</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Теперь понятно, что <code>for</code> получает каждый символ строки по очереди.</p>
+<pre class="text"><code>"P"
+↓
+"y"
+↓
+"t"
+↓
+"h"
+↓
+"o"
+↓
+"n"</code></pre>
+<p>Полный пример:</p>
+<div class="python-playground" data-source="../examples/chapter18/string-iteration.py" data-title="Перебор символов строки">
+
+</div>
+<p>Например:</p>
+<pre class="text"><code>Введите слово: Python
+P
+y
+t
+h
+o
+n</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter18/string-iteration.svg" class="img-fluid figure-img" alt="Схема показывает строку Python, конструкцию for letter in word и последовательное получение значений letter равных P, y, t, h, o и n."></p>
+<figcaption>Перебор строки через цикл for</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="символ-тоже-является-строкой" class="level2">
+<h2 class="anchored" data-anchor-id="символ-тоже-является-строкой">Символ тоже является строкой</h2>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>letter <span class="op">=</span> word[<span class="dv">0</span>]</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(letter)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(letter))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>P
+&lt;class 'str'&gt;</code></pre>
+<p>В Python нет отдельного типа данных для одного символа.</p>
+<p>Даже один символ имеет тип:</p>
+<pre class="text"><code>str</code></pre>
+<p>То есть:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">"P"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>— это строка длиной <code>1</code>.</p>
+<hr>
+</section>
+<section id="проверка-длины-одного-символа" class="level2">
+<h2 class="anchored" data-anchor-id="проверка-длины-одного-символа">Проверка длины одного символа</h2>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>letter <span class="op">=</span> <span class="st">"P"</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(letter))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>1</code></pre>
+<p>Получается:</p>
+<pre class="text"><code>""       → длина 0
+"P"      → длина 1
+"Python" → длина 6</code></pre>
+<hr>
+</section>
+<section id="объединение-строк" class="level2">
+<h2 class="anchored" data-anchor-id="объединение-строк">Объединение строк</h2>
+<p>Мы уже знаем, что оператор:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="op">+</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>для строк означает объединение.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>first_name <span class="op">=</span> <span class="st">"Анна"</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>last_name <span class="op">=</span> <span class="st">"Иванова"</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>full_name <span class="op">=</span> first_name <span class="op">+</span> last_name</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(full_name)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>АннаИванова</code></pre>
+<p>Между строками нет пробела.</p>
+<p>Его нужно добавить самостоятельно:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>full_name <span class="op">=</span> first_name <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> last_name</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(full_name)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Анна Иванова</code></pre>
+<hr>
+</section>
+<section id="строки-можно-умножать" class="level2">
+<h2 class="anchored" data-anchor-id="строки-можно-умножать">Строки можно умножать</h2>
+<p>Для строк оператор:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>может означать повторение.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python "</span> <span class="op">*</span> <span class="dv">3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Python Python Python </code></pre>
+<p>Другой пример:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> <span class="st">"-"</span> <span class="op">*</span> <span class="dv">20</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>--------------------</code></pre>
+<p>Это удобно для простого текстового оформления.</p>
+<hr>
+</section>
+<section id="строку-нельзя-изменить-по-индексу" class="level2">
+<h2 class="anchored" data-anchor-id="строку-нельзя-изменить-по-индексу">Строку нельзя изменить по индексу</h2>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"J"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Можно ожидать:</p>
+<pre class="text"><code>Jython</code></pre>
+<p>Но Python сообщит об ошибке.</p>
+<p>Строки в Python <strong>неизменяемые</strong>.</p>
+<p>Это означает, что нельзя изменить отдельный символ существующей строки.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Строки неизменяемы">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важное уведомление</span>Строки неизменяемы
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Можно получить символ:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>но нельзя написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"J"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Чтобы получить другую строку, нужно создать новое значение.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter18/immutable-string.svg" class="img-fluid figure-img" alt="Слева показано, что попытка выполнить word[0] = J для строки Python приводит к TypeError. Справа показано создание новой строки Jython выражением J плюс word[1:]."></p>
+<figcaption>Неизменяемость строк</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="новую-строку-создать-можно" class="level2">
+<h2 class="anchored" data-anchor-id="новую-строку-создать-можно">Новую строку создать можно</h2>
+<p>Хотя изменить существующую строку нельзя, можно создать новую:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>new_word <span class="op">=</span> <span class="st">"J"</span> <span class="op">+</span> word[<span class="dv">1</span>:]</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(new_word)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Jython</code></pre>
+<p>Здесь появилась новая операция:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">1</span>:]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Это <strong>срез строки</strong>.</p>
+<p>Разберём его подробнее.</p>
+<hr>
+</section>
+<section id="срез-строки" class="level2">
+<h2 class="anchored" data-anchor-id="срез-строки">Срез строки</h2>
+<p>Срез позволяет получить часть строки.</p>
+<p>Синтаксис:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>text[start:stop]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">0</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Pyt</code></pre>
+<p>Python берёт символы с индекса:</p>
+<pre class="text"><code>0</code></pre>
+<p>до:</p>
+<pre class="text"><code>3</code></pre>
+<p>но индекс <code>3</code> не включается.</p>
+<p>Получается:</p>
+<pre class="text"><code>0 → P
+1 → y
+2 → t</code></pre>
+<div class="python-playground" data-source="../examples/chapter18/string-slicing.py" data-title="Срезы строки">
+
+</div>
+<hr>
+</section>
+<section id="правая-граница-среза-не-включается" class="level2">
+<h2 class="anchored" data-anchor-id="правая-граница-среза-не-включается">Правая граница среза не включается</h2>
+<p>Это похоже на <code>range()</code>.</p>
+<p>Для:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>получаем символы:</p>
+<pre class="text"><code>0
+1
+2</code></pre>
+<p>Индекс:</p>
+<pre class="text"><code>3</code></pre>
+<p>уже не входит.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Похоже на range()">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Похоже на range()
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>число <code>5</code> не включается.</p>
+<p>В:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>text[<span class="dv">1</span>:<span class="dv">5</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>символ с индексом <code>5</code> тоже не включается.</p>
+<p>И в <code>range()</code>, и в срезах правая граница <code>stop</code> не входит в результат.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter18/string-slice.svg" class="img-fluid figure-img" alt="Для строки Python показан срез word[1:4]. В результат входят символы с индексами 1, 2 и 3, получается yth. Индекс 4 отмечен как граница stop, которая не включается."></p>
+<figcaption>Срез строки с правой границей</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="срез-с-начала-строки" class="level2">
+<h2 class="anchored" data-anchor-id="срез-с-начала-строки">Срез с начала строки</h2>
+<p>Если <code>start</code> не указан:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>word[:<span class="dv">3</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Python начинает с первого символа.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[:<span class="dv">3</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Pyt</code></pre>
+<p>Это то же самое, что:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="срез-до-конца-строки" class="level2">
+<h2 class="anchored" data-anchor-id="срез-до-конца-строки">Срез до конца строки</h2>
+<p>Если не указан <code>stop</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">2</span>:]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Python берёт строку от указанного индекса до конца.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">2</span>:])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>thon</code></pre>
+<hr>
+</section>
+<section id="копия-всей-строки" class="level2">
+<h2 class="anchored" data-anchor-id="копия-всей-строки">Копия всей строки</h2>
+<p>Можно написать:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>word[:]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[:])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Python</code></pre>
+<hr>
+</section>
+<section id="отрицательные-индексы-в-срезах" class="level2">
+<h2 class="anchored" data-anchor-id="отрицательные-индексы-в-срезах">Отрицательные индексы в срезах</h2>
+<p>Отрицательные индексы можно использовать и в срезах.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[:<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Pytho</code></pre>
+<p>То есть:</p>
+<blockquote class="blockquote">
+<p>взять всё, кроме последнего символа.</p>
+</blockquote>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="op">-</span><span class="dv">3</span>:])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даст:</p>
+<pre class="text"><code>hon</code></pre>
+<hr>
+</section>
+<section id="срез-с-шагом" class="level2">
+<h2 class="anchored" data-anchor-id="срез-с-шагом">Срез с шагом</h2>
+<p>Как и <code>range()</code>, срез может иметь шаг:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>text[start:stop:step]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[::<span class="dv">2</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Pto</code></pre>
+<p>Берутся символы с шагом <code>2</code>:</p>
+<pre class="text"><code>индекс 0 → P
+индекс 2 → t
+индекс 4 → o</code></pre>
+<hr>
+</section>
+<section id="строка-в-обратном-порядке" class="level2">
+<h2 class="anchored" data-anchor-id="строка-в-обратном-порядке">Строка в обратном порядке</h2>
+<p>Срез с отрицательным шагом позволяет идти справа налево.</p>
+<p>Например:</p>
+<div class="python-playground" data-source="../examples/chapter18/reverse-string.py" data-title="Строка в обратном порядке">
+
+</div>
+<p>Результат:</p>
+<pre class="text"><code>nohtyP</code></pre>
+<p>Здесь шаг:</p>
+<pre class="text"><code>-1</code></pre>
+<p>означает движение по строке в обратном направлении.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Полезный приём">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Совет</span>Полезный приём
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Запись:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>text[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>возвращает строку в обратном порядке.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Python"</span>[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>nohtyP</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="проверка-наличия-текста-с-in" class="level2">
+<h2 class="anchored" data-anchor-id="проверка-наличия-текста-с-in">Проверка наличия текста с in</h2>
+<p>Оператор:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>можно использовать для проверки наличия подстроки.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Изучаю Python"</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python"</span> <span class="kw">in</span> text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>True</code></pre>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Java"</span> <span class="kw">in</span> text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>False</code></pre>
+<hr>
+</section>
+<section id="проверка-отсутствия-с-not-in" class="level2">
+<h2 class="anchored" data-anchor-id="проверка-отсутствия-с-not-in">Проверка отсутствия с not in</h2>
+<p>Можно проверить и обратное:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Изучаю Python"</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Java"</span> <span class="kw">not</span> <span class="kw">in</span> text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>True</code></pre>
+<p>Получается:</p>
+<pre class="text"><code>in
+→ содержится?
+
+not in
+→ не содержится?</code></pre>
+<div class="python-playground" data-source="../examples/chapter18/string-membership.py" data-title="Проверка in и not in">
+
+</div>
+<hr>
+</section>
+<section id="in-внутри-if" class="level2">
+<h2 class="anchored" data-anchor-id="in-внутри-if">in внутри if</h2>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите сообщение: "</span>)</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"Python"</span> <span class="kw">in</span> text:</span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"В сообщении упоминается Python"</span>)</span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Python не найден"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Здесь оператор <code>in</code> возвращает <code>True</code> или <code>False</code>, а <code>if</code> использует этот результат.</p>
+<hr>
+</section>
+<section id="регистр-по-прежнему-имеет-значение" class="level2">
+<h2 class="anchored" data-anchor-id="регистр-по-прежнему-имеет-значение">Регистр по-прежнему имеет значение</h2>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Изучаю Python"</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python"</span> <span class="kw">in</span> text)</span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"python"</span> <span class="kw">in</span> text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>True
+False</code></pre>
+<p>Для Python:</p>
+<pre class="text"><code>Python</code></pre>
+<p>и:</p>
+<pre class="text"><code>python</code></pre>
+<p>— разные последовательности символов.</p>
+<hr>
+</section>
+<section id="методы-строк" class="level2">
+<h2 class="anchored" data-anchor-id="методы-строк">Методы строк</h2>
+<p>Кроме операторов, строки имеют специальные операции, которые вызываются через точку.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>text.upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Такие операции называются <strong>методами</strong>.</p>
+<p>Общая форма:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>строка.метод()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Познакомимся с несколькими часто используемыми методами.</p>
+<div class="python-playground" data-source="../examples/chapter18/string-methods.py" data-title="Основные методы строк">
+
+</div>
+<hr>
+</section>
+<section id="upper" class="level2">
+<h2 class="anchored" data-anchor-id="upper">upper()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>создаёт строку в верхнем регистре.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> text.upper()</span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>PYTHON</code></pre>
+<p>Исходная строка при этом не изменяется:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>по-прежнему:</p>
+<pre class="text"><code>Python</code></pre>
+<p>Это снова связано с неизменяемостью строк.</p>
+<hr>
+</section>
+<section id="lower" class="level2">
+<h2 class="anchored" data-anchor-id="lower">lower()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>lower()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>создаёт строку в нижнем регистре:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"PyThOn"</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.lower())</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>python</code></pre>
+<p>Это удобно, например, для сравнения пользовательского ввода:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Продолжить? yes/no: "</span>)</span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> answer.lower() <span class="op">==</span> <span class="st">"yes"</span>:</span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Продолжаем"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Теперь сработают:</p>
+<pre class="text"><code>yes
+YES
+Yes
+YeS</code></pre>
+<hr>
+</section>
+<section id="strip" class="level2">
+<h2 class="anchored" data-anchor-id="strip">strip()</h2>
+<p>Пользователь иногда случайно вводит лишние пробелы:</p>
+<pre class="text"><code>   Python   </code></pre>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>strip()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>убирает пробелы по краям строки.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"   Python   "</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.strip())</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Python</code></pre>
+<p>Пробелы внутри строки не удаляются.</p>
+<hr>
+</section>
+<section id="несколько-методов-подряд" class="level2">
+<h2 class="anchored" data-anchor-id="несколько-методов-подряд">Несколько методов подряд</h2>
+<p>Методы можно применять последовательно.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Продолжить? "</span>)</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> answer.strip().lower()</span>
+<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-5"><a href="#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(answer)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Если пользователь введёт:</p>
+<pre class="text"><code>   YES</code></pre>
+<p>результат:</p>
+<pre class="text"><code>yes</code></pre>
+<p>Это полезно для нормализации пользовательского ввода.</p>
+<hr>
+</section>
+<section id="replace" class="level2">
+<h2 class="anchored" data-anchor-id="replace">replace()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>replace()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>создаёт новую строку, заменяя один фрагмент другим.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Я изучаю Java"</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a>new_text <span class="op">=</span> text.replace(<span class="st">"Java"</span>, <span class="st">"Python"</span>)</span>
+<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-5"><a href="#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(new_text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Я изучаю Python</code></pre>
+<p>Исходная строка:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>text</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>при этом не изменяется.</p>
+<hr>
+</section>
+<section id="count" class="level2">
+<h2 class="anchored" data-anchor-id="count">count()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>count()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>позволяет подсчитать количество вхождений.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"banana"</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.count(<span class="st">"a"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>3</code></pre>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.count(<span class="st">"na"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>даёт:</p>
+<pre class="text"><code>2</code></pre>
+<hr>
+</section>
+<section id="find" class="level2">
+<h2 class="anchored" data-anchor-id="find">find()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>find()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>позволяет найти позицию подстроки.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.find(<span class="st">"t"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>2</code></pre>
+<p>Потому что:</p>
+<pre class="text"><code>P → 0
+y → 1
+t → 2</code></pre>
+<p>Если фрагмент не найден:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.find(<span class="st">"Java"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>результат:</p>
+<pre class="text"><code>-1</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="find() и in отвечают на разные вопросы">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>find() и in отвечают на разные вопросы
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Py"</span> <span class="kw">in</span> text</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>отвечает:</p>
+<blockquote class="blockquote">
+<p>содержится ли фрагмент?</p>
+</blockquote>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>text.find(<span class="st">"Py"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>отвечает:</p>
+<blockquote class="blockquote">
+<p>с какого индекса начинается фрагмент?</p>
+</blockquote>
+<p>Если нужна только проверка наличия, обычно понятнее использовать <code>in</code>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="startswith" class="level2">
+<h2 class="anchored" data-anchor-id="startswith">startswith()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>startswith()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>проверяет, начинается ли строка с определённого текста.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb171"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">"report.pdf"</span></span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filename.startswith(<span class="st">"report"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>True</code></pre>
+<hr>
+</section>
+<section id="endswith" class="level2">
+<h2 class="anchored" data-anchor-id="endswith">endswith()</h2>
+<p>Метод:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a>endswith()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>проверяет окончание строки.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb174"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">"report.pdf"</span></span>
+<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filename.endswith(<span class="st">".pdf"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>True</code></pre>
+<p>Так можно проверять, например, расширение файла.</p>
+<hr>
+</section>
+<section id="методы-возвращают-новые-значения" class="level2">
+<h2 class="anchored" data-anchor-id="методы-возвращают-новые-значения">Методы возвращают новые значения</h2>
+<p>Рассмотрим:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a>text.upper()</span>
+<span id="cb176-4"><a href="#cb176-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-5"><a href="#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Python</code></pre>
+<p>Почему не:</p>
+<pre class="text"><code>PYTHON</code></pre>
+<p>Потому что:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a>text.upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>создало новое значение, но мы его никуда не сохранили.</p>
+<p>Нужно:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb180"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> text.upper()</span>
+<span id="cb180-2"><a href="#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Теперь:</p>
+<pre class="text"><code>PYTHON</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled" title="Методы обычно не изменяют исходную строку">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Предупреждение</span>Методы обычно не изменяют исходную строку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Такой вызов:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb182"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a>text.upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>сам по себе не изменяет <code>text</code>.</p>
+<p>Если новый результат нужен дальше, сохраните его:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb183"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> text.upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>или:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb184"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a>new_text <span class="op">=</span> text.upper()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<hr>
+</section>
+<section id="подсчёт-символов-через-for" class="level2">
+<h2 class="anchored" data-anchor-id="подсчёт-символов-через-for">Подсчёт символов через for</h2>
+<p>Можно посчитать символы самостоятельно:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb185-3"><a href="#cb185-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-4"><a href="#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> text:</span>
+<span id="cb185-5"><a href="#cb185-5" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb185-6"><a href="#cb185-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-7"><a href="#cb185-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>6</code></pre>
+<p>Но для длины строки уже есть:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb187"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Такой цикл полезен не для замены <code>len()</code>, а для понимания того, как перебирается строка.</p>
+<hr>
+</section>
+<section id="подсчёт-определённого-символа" class="level2">
+<h2 class="anchored" data-anchor-id="подсчёт-определённого-символа">Подсчёт определённого символа</h2>
+<p>Например:</p>
+<div class="python-playground" data-source="../examples/chapter18/count-character.py" data-title="Подсчёт символа через for">
+
+</div>
+<p>Например:</p>
+<pre class="text"><code>Введите текст: banana
+Количество: 3</code></pre>
+<p>Это та же идея, что:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb189"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a>text.count(<span class="st">"a"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Но цикл показывает сам алгоритм подсчёта.</p>
+<hr>
+</section>
+<section id="поиск-символа-внутри-цикла" class="level2">
+<h2 class="anchored" data-anchor-id="поиск-символа-внутри-цикла">Поиск символа внутри цикла</h2>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word:</span>
+<span id="cb190-4"><a href="#cb190-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="op">==</span> <span class="st">"t"</span>:</span>
+<span id="cb190-5"><a href="#cb190-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Символ найден"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Когда <code>letter</code> становится:</p>
+<pre class="text"><code>t</code></pre>
+<p>условие выполняется.</p>
+<p>Позже мы научимся управлять циклом более гибко, когда нужный символ уже найден.</p>
+<hr>
+</section>
+<section id="пример-количество-гласных" class="level2">
+<h2 class="anchored" data-anchor-id="пример-количество-гласных">Пример: количество гласных</h2>
+<p>Рассмотрим простой пример:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb192"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите слово: "</span>)</span>
+<span id="cb192-2"><a href="#cb192-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb192-3"><a href="#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word.lower():</span>
+<span id="cb192-5"><a href="#cb192-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="kw">in</span> <span class="st">"aeiou"</span>:</span>
+<span id="cb192-6"><a href="#cb192-6" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb192-7"><a href="#cb192-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-8"><a href="#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Количество гласных:"</span>, count)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Например:</p>
+<pre class="text"><code>Введите слово: Python
+Количество гласных: 1</code></pre>
+<p>Здесь объединяются:</p>
+<pre class="text"><code>input()
+↓
+строка
+↓
+lower()
+↓
+for
+↓
+in
+↓
+if
+↓
+счётчик</code></pre>
+<hr>
+</section>
+<section id="пример-проверка-начала-и-конца" class="level2">
+<h2 class="anchored" data-anchor-id="пример-проверка-начала-и-конца">Пример: проверка начала и конца</h2>
+<div class="python-playground" data-source="../examples/chapter18/filename-check.py" data-title="Проверка расширения файла">
+
+</div>
+<p>Например:</p>
+<pre class="text"><code>Введите имя файла: main.py
+Python-файл</code></pre>
+<hr>
+</section>
+<section id="пример-нормализация-ответа" class="level2">
+<h2 class="anchored" data-anchor-id="пример-нормализация-ответа">Пример: нормализация ответа</h2>
+<p>Пользователь может написать:</p>
+<pre class="text"><code>YES
+Yes
+ yes
+   YES   </code></pre>
+<p>Можно привести ввод к единому виду:</p>
+<div class="python-playground" data-source="../examples/chapter18/normalize-input.py" data-title="Нормализация ввода">
+
+</div>
+<p>Это один из самых практичных способов работы со строками пользовательского ввода.</p>
+<hr>
+</section>
+<section id="что-лучше-индекс-или-for" class="level2">
+<h2 class="anchored" data-anchor-id="что-лучше-индекс-или-for">Что лучше: индекс или for</h2>
+<p>Если нужен конкретный символ:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb197"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>удобно использовать индекс.</p>
+<p>Если нужно обработать все символы:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb198"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word:</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>обычно удобнее использовать <code>for</code>.</p>
+<p>Например:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb199"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">0</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>отвечает:</p>
+<blockquote class="blockquote">
+<p>какой первый символ?</p>
+</blockquote>
+<p>А:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb200"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb200-1"><a href="#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word:</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>означает:</p>
+<blockquote class="blockquote">
+<p>обработать каждый символ.</p>
+</blockquote>
+<hr>
+</section>
+<section id="что-важно-запомнить" class="level2">
+<h2 class="anchored" data-anchor-id="что-важно-запомнить">Что важно запомнить</h2>
+<p>Строка — это значение типа:</p>
+<pre class="text"><code>str</code></pre>
+<p>Она состоит из символов.</p>
+<p>Индексы начинаются с:</p>
+<pre class="text"><code>0</code></pre>
+<p>Например:</p>
+<pre class="text"><code>Python
+
+P y t h o n
+0 1 2 3 4 5</code></pre>
+<p>Отрицательные индексы идут с конца:</p>
+<pre class="text"><code>-6 -5 -4 -3 -2 -1</code></pre>
+<p>Получение символа:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb205"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>]</span>
+<span id="cb205-2"><a href="#cb205-2" aria-hidden="true" tabindex="-1"></a>word[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Длина строки:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb206"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb206-1"><a href="#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(word)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Срез:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb207"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a>word[start:stop]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>или:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb208"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a>word[start:stop:step]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Правая граница <code>stop</code> не включается.</p>
+<p>Строки неизменяемые:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb209"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"J"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>не работает.</p>
+<p>Полезные операции:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb210"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co">"text"</span> <span class="op">+</span> <span class="st">"text"</span></span>
+<span id="cb210-2"><a href="#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="co">"text"</span> <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb210-3"><a href="#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="co">"Py"</span> <span class="kw">in</span> text</span>
+<span id="cb210-4"><a href="#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="co">"Java"</span> <span class="kw">not</span> <span class="kw">in</span> text</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Полезные методы:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb211"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a>upper()</span>
+<span id="cb211-2"><a href="#cb211-2" aria-hidden="true" tabindex="-1"></a>lower()</span>
+<span id="cb211-3"><a href="#cb211-3" aria-hidden="true" tabindex="-1"></a>strip()</span>
+<span id="cb211-4"><a href="#cb211-4" aria-hidden="true" tabindex="-1"></a>replace()</span>
+<span id="cb211-5"><a href="#cb211-5" aria-hidden="true" tabindex="-1"></a>count()</span>
+<span id="cb211-6"><a href="#cb211-6" aria-hidden="true" tabindex="-1"></a>find()</span>
+<span id="cb211-7"><a href="#cb211-7" aria-hidden="true" tabindex="-1"></a>startswith()</span>
+<span id="cb211-8"><a href="#cb211-8" aria-hidden="true" tabindex="-1"></a>endswith()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>И самое важное:</p>
+<blockquote class="blockquote">
+<p><strong>Строка — это последовательность символов, которую можно читать по индексам, получать частями и последовательно обрабатывать.</strong></p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter18/string-toolbox.svg" class="img-fluid figure-img" alt="В центре схемы находится строка. Вокруг неё расположены основные инструменты главы: индекс word[0], длина len(word), срез word[1:4], проверка Py in word, методы upper, lower, strip, replace, find, startswith и endswith."></p>
+<figcaption>Карта работы со строками</figcaption>
+</figure>
+</div>
+<hr>
+<section id="практические-задания" class="level3">
+<h3 class="anchored" data-anchor-id="практические-задания">Практические задания</h3>
+<p><strong>Задание 1. Первый и последний символ</strong></p>
+<p>Пользователь вводит слово.</p>
+<p>Выведите:</p>
+<ul>
+<li>первый символ;</li>
+<li>последний символ.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb212"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите слово: "</span>)</span>
+<span id="cb212-2"><a href="#cb212-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-3"><a href="#cb212-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Первый символ:"</span>, word[<span class="dv">0</span>])</span>
+<span id="cb212-4"><a href="#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Последний символ:"</span>, word[<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 2. Длина строки</strong></p>
+<p>Пользователь вводит текст.</p>
+<p>Выведите количество символов.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb213"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите текст: "</span>)</span>
+<span id="cb213-2"><a href="#cb213-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-3"><a href="#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Длина:"</span>, <span class="bu">len</span>(text))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Пробелы тоже учитываются как символы.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 3. Первые три символа</strong></p>
+<p>Пользователь вводит строку.</p>
+<p>Выведите первые три символа с помощью среза.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb214"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите текст: "</span>)</span>
+<span id="cb214-2"><a href="#cb214-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-3"><a href="#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text[:<span class="dv">3</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 4. Строка без первого символа</strong></p>
+<p>Пользователь вводит слово.</p>
+<p>Выведите всё слово, кроме первого символа.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb215"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите слово: "</span>)</span>
+<span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-3"><a href="#cb215-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">1</span>:])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 5. Строка наоборот</strong></p>
+<p>Пользователь вводит слово.</p>
+<p>Выведите его в обратном порядке.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb216"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите слово: "</span>)</span>
+<span id="cb216-2"><a href="#cb216-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[::<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 6. Проверка подстроки</strong></p>
+<p>Пользователь вводит сообщение.</p>
+<p>Проверьте, содержится ли в нём слово:</p>
+<pre class="text"><code>Python</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите сообщение: "</span>)</span>
+<span id="cb218-2"><a href="#cb218-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-3"><a href="#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python"</span> <span class="kw">in</span> text)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 7. Нормализация ответа</strong></p>
+<p>Пользователь отвечает на вопрос:</p>
+<pre class="text"><code>Продолжить? yes/no:</code></pre>
+<p>Ответ может содержать пробелы и любой регистр.</p>
+<p>Сделайте так, чтобы:</p>
+<pre class="text"><code>YES
+ yes
+Yes
+   YES</code></pre>
+<p>считались ответом <code>yes</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb221"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb221-1"><a href="#cb221-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Продолжить? yes/no: "</span>)</span>
+<span id="cb221-2"><a href="#cb221-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-3"><a href="#cb221-3" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> answer.strip().lower()</span>
+<span id="cb221-4"><a href="#cb221-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-5"><a href="#cb221-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> answer <span class="op">==</span> <span class="st">"yes"</span>:</span>
+<span id="cb221-6"><a href="#cb221-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Продолжаем"</span>)</span>
+<span id="cb221-7"><a href="#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb221-8"><a href="#cb221-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Останавливаемся"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 8. Подсчёт символа</strong></p>
+<p>Пользователь вводит строку.</p>
+<p>Подсчитайте, сколько раз в ней встречается буква:</p>
+<pre class="text"><code>a</code></pre>
+<p>Используйте <code>count()</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb223"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb223-1"><a href="#cb223-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите текст: "</span>)</span>
+<span id="cb223-2"><a href="#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-3"><a href="#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.count(<span class="st">"a"</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 9. Подсчёт символа через for</strong></p>
+<p>Решите предыдущую задачу без <code>count()</code>.</p>
+<p>Используйте <code>for</code> и <code>if</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb224"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb224-1"><a href="#cb224-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите текст: "</span>)</span>
+<span id="cb224-2"><a href="#cb224-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb224-3"><a href="#cb224-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-4"><a href="#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> text:</span>
+<span id="cb224-5"><a href="#cb224-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="op">==</span> <span class="st">"a"</span>:</span>
+<span id="cb224-6"><a href="#cb224-6" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb224-7"><a href="#cb224-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-8"><a href="#cb224-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 10. Python-файл</strong></p>
+<p>Пользователь вводит имя файла.</p>
+<p>Проверьте, заканчивается ли оно на:</p>
+<pre class="text"><code>.py</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb226"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb226-1"><a href="#cb226-1" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите имя файла: "</span>)</span>
+<span id="cb226-2"><a href="#cb226-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-3"><a href="#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> filename.endswith(<span class="st">".py"</span>):</span>
+<span id="cb226-4"><a href="#cb226-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Python-файл"</span>)</span>
+<span id="cb226-5"><a href="#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb226-6"><a href="#cb226-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Не Python-файл"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 11. Найдите ошибку</strong></p>
+<p>Почему этот код не работает?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb227"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb227-1"><a href="#cb227-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb227-2"><a href="#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-3"><a href="#cb227-3" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"J"</span></span>
+<span id="cb227-4"><a href="#cb227-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-5"><a href="#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Строки в Python неизменяемые.</p>
+<p>Нельзя изменить отдельный символ:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb228"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a>word[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"J"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Можно создать новую строку:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb229"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb229-1"><a href="#cb229-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb229-2"><a href="#cb229-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-3"><a href="#cb229-3" aria-hidden="true" tabindex="-1"></a>new_word <span class="op">=</span> <span class="st">"J"</span> <span class="op">+</span> word[<span class="dv">1</span>:]</span>
+<span id="cb229-4"><a href="#cb229-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-5"><a href="#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(new_word)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Результат:</p>
+<pre class="text"><code>Jython</code></pre>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 12. Предскажите результат</strong></p>
+<p>Не запускайте код сразу.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb231"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb231-1"><a href="#cb231-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
+<span id="cb231-2"><a href="#cb231-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-3"><a href="#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">0</span>])</span>
+<span id="cb231-4"><a href="#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb231-5"><a href="#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">1</span>:<span class="dv">4</span>])</span>
+<span id="cb231-6"><a href="#cb231-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[:<span class="dv">2</span>])</span>
+<span id="cb231-7"><a href="#cb231-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[<span class="dv">2</span>:])</span>
+<span id="cb231-8"><a href="#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(word[::<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Результат:</p>
+<pre class="text"><code>P
+n
+yth
+Py
+thon
+nohtyP</code></pre>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Задание 13. Задача со звёздочкой</strong></p>
+<p>Пользователь вводит слово.</p>
+<p>Подсчитайте количество гласных букв:</p>
+<pre class="text"><code>a
+e
+i
+o
+u</code></pre>
+<p>Регистр учитывать не нужно.</p>
+<p>Например:</p>
+<pre class="text"><code>Введите слово: Education
+Количество гласных: 5</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Ответ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb235"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Введите слово: "</span>)</span>
+<span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-3"><a href="#cb235-3" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb235-4"><a href="#cb235-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-5"><a href="#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word.lower():</span>
+<span id="cb235-6"><a href="#cb235-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="kw">in</span> <span class="st">"aeiou"</span>:</span>
+<span id="cb235-7"><a href="#cb235-7" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb235-8"><a href="#cb235-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-9"><a href="#cb235-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Количество гласных:"</span>, count)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Здесь:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb236"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a>word.lower()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>приводит строку к нижнему регистру.</p>
+<p>Затем цикл перебирает каждый символ.</p>
+<p>Условие:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb237"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb237-1"><a href="#cb237-1" aria-hidden="true" tabindex="-1"></a>letter <span class="kw">in</span> <span class="st">"aeiou"</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>проверяет, является ли символ одной из гласных.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="что-дальше" class="level2">
+<h2 class="anchored" data-anchor-id="что-дальше">Что дальше?</h2>
+<p>Теперь мы умеем подробно работать с текстом:</p>
+<pre class="text"><code>строка
+↓
+символы
+↓
+индексы
+↓
+срезы
+↓
+for
+↓
+методы строк</code></pre>
+<p>В примерах этой главы код уже стал длиннее:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb239"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb239-1"><a href="#cb239-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> answer.strip().lower()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>и:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb240"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> text:</span>
+<span id="cb240-2"><a href="#cb240-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="op">==</span> <span class="st">"a"</span>:</span>
+<span id="cb240-3"><a href="#cb240-3" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Следующий шаг:</p>
+<pre class="text"><code>повторяющийся фрагмент кода
+↓
+отдельная команда со своим именем
+↓
+функция</code></pre>
+<p>В следующей главе разберём <strong>функции</strong>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/chapters/17-for-loop.html" class="pagination-link" aria-label="3.10 Цикл for">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3.10 Цикл for</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

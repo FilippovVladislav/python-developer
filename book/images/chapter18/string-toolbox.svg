@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Карта работы со строками</title>
+  <desc id="desc">Визуальная карта главы: индекс, длина, срез, проверка вхождения, регистр, очистка, замена, поиск и проверка начала или конца строки.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:22px;font-weight:700}.centermono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Инструменты работы со строкой</text>
+
+  <rect class="accent" x="455" y="275" width="290" height="130" rx="22"/>
+  <text class="text title ink" x="600" y="328" text-anchor="middle">Строка</text>
+  <text class="centermono blue" x="600" y="372" text-anchor="middle">str</text>
+
+  <g stroke="#2f5f8f" stroke-width="4" stroke-linecap="round">
+    <line x1="455" y1="315" x2="305" y2="170"/>
+    <line x1="600" y1="275" x2="600" y2="168"/>
+    <line x1="745" y1="315" x2="895" y2="170"/>
+    <line x1="455" y1="365" x2="305" y2="505"/>
+    <line x1="600" y1="405" x2="600" y2="530"/>
+    <line x1="745" y1="365" x2="895" y2="505"/>
+    <line x1="455" y1="340" x2="190" y2="340"/>
+    <line x1="745" y1="340" x2="1010" y2="340"/>
+  </g>
+
+  <rect class="card" x="95" y="100" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="218" y="138" text-anchor="middle">Индекс</text>
+  <text class="mono blue" x="218" y="174" text-anchor="middle">word[0]</text>
+
+  <rect class="card" x="478" y="88" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="600" y="126" text-anchor="middle">Длина</text>
+  <text class="mono blue" x="600" y="162" text-anchor="middle">len(word)</text>
+
+  <rect class="card" x="860" y="100" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="982" y="138" text-anchor="middle">Срез</text>
+  <text class="mono blue" x="982" y="174" text-anchor="middle">word[1:4]</text>
+
+  <rect class="soft" x="70" y="292" width="270" height="102" rx="16"/>
+  <text class="text label ink" x="205" y="330" text-anchor="middle">Проверка</text>
+  <text class="mono olive" x="205" y="366" text-anchor="middle">"Py" in word</text>
+
+  <rect class="soft" x="860" y="292" width="270" height="102" rx="16"/>
+  <text class="text label ink" x="995" y="330" text-anchor="middle">Регистр</text>
+  <text class="mono olive" x="995" y="366" text-anchor="middle">upper() lower()</text>
+
+  <rect class="card" x="95" y="482" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="218" y="520" text-anchor="middle">Очистка</text>
+  <text class="mono blue" x="218" y="556" text-anchor="middle">strip()</text>
+
+  <rect class="card" x="478" y="515" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="600" y="553" text-anchor="middle">Замена</text>
+  <text class="mono blue" x="600" y="589" text-anchor="middle">replace()</text>
+
+  <rect class="card" x="860" y="482" width="245" height="102" rx="16"/>
+  <text class="text label ink" x="982" y="520" text-anchor="middle">Поиск</text>
+  <text class="mono blue" x="982" y="556" text-anchor="middle">find()</text>
+
+  <rect class="accent" x="345" y="628" width="510" height="54" rx="14"/>
+  <text class="mono blue" x="600" y="663" text-anchor="middle">startswith()   endswith()</text>
+</svg>

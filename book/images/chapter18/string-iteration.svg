@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Перебор строки через for</title>
+  <desc id="desc">Схема показывает, что цикл for берёт из строки Python символы по одному и записывает очередной символ в переменную letter.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:40px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">for обрабатывает символы по одному</text>
+
+  <rect class="accent" x="110" y="115" width="330" height="95" rx="18"/>
+  <text class="bigmono blue" x="275" y="174" text-anchor="middle">"Python"</text>
+  <path class="line" d="M445 162h120" marker-end="url(#arrow)"/>
+  <rect class="card" x="585" y="115" width="505" height="95" rx="18"/>
+  <text class="mono blue" x="838" y="174" text-anchor="middle">for letter in word</text>
+
+  <path class="line" d="M838 218v55" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect class="soft" x="430" y="292" width="340" height="54" rx="12"/><text class="mono olive" x="600" y="328" text-anchor="middle">letter = "P"</text>
+    <path class="step" d="M600 352v32" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="430" y="392" width="340" height="54" rx="12"/><text class="mono olive" x="600" y="428" text-anchor="middle">letter = "y"</text>
+    <path class="step" d="M600 452v32" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="430" y="492" width="340" height="54" rx="12"/><text class="mono olive" x="600" y="528" text-anchor="middle">letter = "t"</text>
+    <path class="step" d="M600 552v32" marker-end="url(#arrow-olive)"/>
+    <rect class="card" x="430" y="592" width="340" height="54" rx="12"/><text class="mono blue" x="600" y="628" text-anchor="middle">... затем "h", "o", "n"</text>
+  </g>
+
+  <rect class="accent" x="85" y="355" width="250" height="142" rx="18"/>
+  <text class="text label ink" x="210" y="407" text-anchor="middle">Связь с for</text>
+  <text class="text body muted" x="210" y="444" text-anchor="middle">следующий элемент</text>
+  <text class="text body muted" x="210" y="474" text-anchor="middle">становится letter</text>
+
+  <text class="text body muted" x="600" y="675" text-anchor="middle">У строки элементами являются отдельные символы</text>
+</svg>
