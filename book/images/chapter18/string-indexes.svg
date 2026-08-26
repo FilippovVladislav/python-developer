@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Индексы строки Python</title>
+  <desc id="desc">Схема показывает строку Python как шесть символов с положительными индексами от 0 до 5 и отрицательными индексами от -6 до -1.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:30px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:42px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Индексы строки</text>
+  <text class="text body muted" x="600" y="92" text-anchor="middle">Индексация начинается с 0, отрицательные индексы идут с конца</text>
+
+  <rect class="accent" x="145" y="125" width="910" height="95" rx="18"/>
+  <text class="mono blue" x="600" y="184" text-anchor="middle">word = "Python"</text>
+
+  <text class="text label ink" x="112" y="323" text-anchor="end">символ</text>
+  <text class="text label ink" x="112" y="428" text-anchor="end">индекс</text>
+  <text class="text label ink" x="112" y="533" text-anchor="end">отриц.</text>
+
+  <g>
+    <rect class="soft" x="155" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="215" y="326" text-anchor="middle">P</text>
+    <rect class="soft" x="295" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="355" y="326" text-anchor="middle">y</text>
+    <rect class="soft" x="435" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="495" y="326" text-anchor="middle">t</text>
+    <rect class="soft" x="575" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="635" y="326" text-anchor="middle">h</text>
+    <rect class="soft" x="715" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="775" y="326" text-anchor="middle">o</text>
+    <rect class="soft" x="855" y="270" width="120" height="85" rx="14"/><text class="bigmono olive" x="915" y="326" text-anchor="middle">n</text>
+  </g>
+
+  <g>
+    <rect class="card" x="155" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="215" y="429" text-anchor="middle">0</text>
+    <rect class="card" x="295" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="355" y="429" text-anchor="middle">1</text>
+    <rect class="card" x="435" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="495" y="429" text-anchor="middle">2</text>
+    <rect class="card" x="575" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="635" y="429" text-anchor="middle">3</text>
+    <rect class="card" x="715" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="775" y="429" text-anchor="middle">4</text>
+    <rect class="card" x="855" y="385" width="120" height="68" rx="12"/><text class="mono blue" x="915" y="429" text-anchor="middle">5</text>
+  </g>
+
+  <g>
+    <rect class="card" x="155" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="215" y="534" text-anchor="middle">-6</text>
+    <rect class="card" x="295" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="355" y="534" text-anchor="middle">-5</text>
+    <rect class="card" x="435" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="495" y="534" text-anchor="middle">-4</text>
+    <rect class="card" x="575" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="635" y="534" text-anchor="middle">-3</text>
+    <rect class="card" x="715" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="775" y="534" text-anchor="middle">-2</text>
+    <rect class="card" x="855" y="490" width="120" height="68" rx="12"/><text class="mono blue" x="915" y="534" text-anchor="middle">-1</text>
+  </g>
+
+  <rect class="accent" x="235" y="600" width="730" height="58" rx="14"/>
+  <text class="text label ink" x="600" y="637" text-anchor="middle">Последний положительный индекс: len(word) - 1</text>
+</svg>
