@@ -1,8 +1,9 @@
 ---
+description: "Списки в Python для начинающих: создание list, элементы, индексы, отрицательные индексы, len(), изменяемость, append(), insert(), remove(), pop(), clear(), in, for, срезы, методы списков и простая копия через срез."
 number-sections: true
 ---
 
-# Списки
+# 3.12 Списки  {.unnumbered}
 
 ::: {.callout-important}
 Главный вопрос главы:
