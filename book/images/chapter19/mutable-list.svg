@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Список изменяемый</title>
+  <desc id="desc">Схема сравнивает замену элемента списка по индексу с попыткой заменить символ строки по индексу, которая приводит к ошибке.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.bad{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:30px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Элемент списка можно заменить</text>
+
+  <rect class="accent" x="80" y="115" width="650" height="74" rx="18"/>
+  <text class="mono blue" x="405" y="162" text-anchor="middle">languages = ["Python", "Java", "Go"]</text>
+  <rect class="soft" x="80" y="220" width="650" height="74" rx="18"/>
+  <text class="mono olive" x="405" y="267" text-anchor="middle">languages[1] = "Rust"</text>
+  <path class="line" d="M405 300v58" marker-end="url(#arrow)"/>
+  <rect class="card" x="80" y="380" width="650" height="96" rx="18"/>
+  <rect class="soft" x="125" y="402" width="170" height="54" rx="12"/><text class="mono olive" x="210" y="437" text-anchor="middle">"Python"</text>
+  <rect class="soft" x="325" y="402" width="170" height="54" rx="12"/><text class="mono olive" x="410" y="437" text-anchor="middle">"Rust"</text>
+  <rect class="soft" x="525" y="402" width="150" height="54" rx="12"/><text class="mono olive" x="600" y="437" text-anchor="middle">"Go"</text>
+  <text class="text label ink" x="405" y="535" text-anchor="middle">Список изменяемый</text>
+
+  <rect class="card" x="790" y="115" width="330" height="170" rx="18"/>
+  <text class="text label ink" x="955" y="152" text-anchor="middle">Строка</text>
+  <text class="mono blue" x="955" y="205" text-anchor="middle">word = "Python"</text>
+  <text class="mono blue" x="955" y="248" text-anchor="middle">word[0] = "J"</text>
+  <path class="bad" d="M955 298v55" marker-end="url(#arrow-red)"/>
+  <rect class="alt" x="790" y="375" width="330" height="92" rx="18"/>
+  <text class="bigmono red" x="955" y="433" text-anchor="middle">ошибка</text>
+  <text class="text body muted" x="955" y="514" text-anchor="middle">Символ строки заменить нельзя</text>
+
+  <rect class="accent" x="170" y="600" width="860" height="58" rx="14"/>
+  <text class="text label ink" x="600" y="637" text-anchor="middle">list хранит элементы как последовательность и разрешает замену по индексу</text>
+</svg>

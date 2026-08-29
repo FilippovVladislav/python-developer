@@ -42,7 +42,7 @@ book:
         - book/chapters/16-while-loop.qmd
         - book/chapters/17-for-loop.qmd
         - book/chapters/18-strings.qmd
-        #- book/chapters/19-lists.qmd
+        - book/chapters/19-lists.qmd
         #- book/chapters/20-functions.qmd
 
 format:
