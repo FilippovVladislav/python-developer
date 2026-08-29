@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Списки в Python для начинающих: создание list, элементы, индексы, отрицательные индексы, len(), изменяемость, append(), insert(), remove(), pop(), clear(), in, for, срезы, методы списков и простая копия через срез.">
 
-<title>2&nbsp; Списки – Путь Python-разработчика</title>
+<title>3.12 Списки – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -124,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/19-lists.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Списки</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/19-lists.html">3.12 Списки</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -294,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../book/chapters/19-lists.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Списки</span></span></a>
+ <span class="menu-text">3.12 Списки</span></a>
   </div>
 </li>
       </ul>
@@ -309,78 +310,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#первый-список" id="toc-первый-список" class="nav-link active" data-scroll-target="#первый-список"><span class="header-section-number">2.1</span> Первый список</a></li>
-  <li><a href="#тип-list" id="toc-тип-list" class="nav-link" data-scroll-target="#тип-list"><span class="header-section-number">2.2</span> Тип list</a></li>
-  <li><a href="#элементы-списка" id="toc-элементы-списка" class="nav-link" data-scroll-target="#элементы-списка"><span class="header-section-number">2.3</span> Элементы списка</a></li>
-  <li><a href="#в-списке-могут-храниться-числа" id="toc-в-списке-могут-храниться-числа" class="nav-link" data-scroll-target="#в-списке-могут-храниться-числа"><span class="header-section-number">2.4</span> В списке могут храниться числа</a></li>
-  <li><a href="#список-может-содержать-значения-разных-типов" id="toc-список-может-содержать-значения-разных-типов" class="nav-link" data-scroll-target="#список-может-содержать-значения-разных-типов"><span class="header-section-number">2.5</span> Список может содержать значения разных типов</a></li>
-  <li><a href="#пустой-список" id="toc-пустой-список" class="nav-link" data-scroll-target="#пустой-список"><span class="header-section-number">2.6</span> Пустой список</a></li>
-  <li><a href="#индексы-списка" id="toc-индексы-списка" class="nav-link" data-scroll-target="#индексы-списка"><span class="header-section-number">2.7</span> Индексы списка</a></li>
-  <li><a href="#получение-элемента-по-индексу" id="toc-получение-элемента-по-индексу" class="nav-link" data-scroll-target="#получение-элемента-по-индексу"><span class="header-section-number">2.8</span> Получение элемента по индексу</a></li>
-  <li><a href="#отрицательные-индексы" id="toc-отрицательные-индексы" class="nav-link" data-scroll-target="#отрицательные-индексы"><span class="header-section-number">2.9</span> Отрицательные индексы</a></li>
-  <li><a href="#ошибка-индекса" id="toc-ошибка-индекса" class="nav-link" data-scroll-target="#ошибка-индекса"><span class="header-section-number">2.10</span> Ошибка индекса</a></li>
-  <li><a href="#длина-списка" id="toc-длина-списка" class="nav-link" data-scroll-target="#длина-списка"><span class="header-section-number">2.11</span> Длина списка</a></li>
-  <li><a href="#списки-можно-изменять" id="toc-списки-можно-изменять" class="nav-link" data-scroll-target="#списки-можно-изменять"><span class="header-section-number">2.12</span> Списки можно изменять</a></li>
-  <li><a href="#изменение-элемента" id="toc-изменение-элемента" class="nav-link" data-scroll-target="#изменение-элемента"><span class="header-section-number">2.13</span> Изменение элемента</a></li>
-  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="header-section-number">2.14</span> append()</a></li>
-  <li><a href="#добавление-пользовательского-значения" id="toc-добавление-пользовательского-значения" class="nav-link" data-scroll-target="#добавление-пользовательского-значения"><span class="header-section-number">2.15</span> Добавление пользовательского значения</a></li>
-  <li><a href="#append-внутри-цикла" id="toc-append-внутри-цикла" class="nav-link" data-scroll-target="#append-внутри-цикла"><span class="header-section-number">2.16</span> append() внутри цикла</a></li>
-  <li><a href="#insert" id="toc-insert" class="nav-link" data-scroll-target="#insert"><span class="header-section-number">2.17</span> insert()</a></li>
-  <li><a href="#разница-между-append-и-insert" id="toc-разница-между-append-и-insert" class="nav-link" data-scroll-target="#разница-между-append-и-insert"><span class="header-section-number">2.18</span> Разница между append() и insert()</a></li>
-  <li><a href="#удаление-по-значению-remove" id="toc-удаление-по-значению-remove" class="nav-link" data-scroll-target="#удаление-по-значению-remove"><span class="header-section-number">2.19</span> Удаление по значению: remove()</a></li>
-  <li><a href="#remove-удаляет-первое-совпадение" id="toc-remove-удаляет-первое-совпадение" class="nav-link" data-scroll-target="#remove-удаляет-первое-совпадение"><span class="header-section-number">2.20</span> remove() удаляет первое совпадение</a></li>
-  <li><a href="#если-значения-нет" id="toc-если-значения-нет" class="nav-link" data-scroll-target="#если-значения-нет"><span class="header-section-number">2.21</span> Если значения нет</a></li>
-  <li><a href="#удаление-по-индексу-pop" id="toc-удаление-по-индексу-pop" class="nav-link" data-scroll-target="#удаление-по-индексу-pop"><span class="header-section-number">2.22</span> Удаление по индексу: pop()</a></li>
-  <li><a href="#pop-без-индекса" id="toc-pop-без-индекса" class="nav-link" data-scroll-target="#pop-без-индекса"><span class="header-section-number">2.23</span> pop() без индекса</a></li>
-  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">2.24</span> clear()</a></li>
-  <li><a href="#проверка-элемента-с-in" id="toc-проверка-элемента-с-in" class="nav-link" data-scroll-target="#проверка-элемента-с-in"><span class="header-section-number">2.25</span> Проверка элемента с in</a></li>
-  <li><a href="#not-in" id="toc-not-in" class="nav-link" data-scroll-target="#not-in"><span class="header-section-number">2.26</span> not in</a></li>
-  <li><a href="#перебор-списка-через-for" id="toc-перебор-списка-через-for" class="nav-link" data-scroll-target="#перебор-списка-через-for"><span class="header-section-number">2.27</span> Перебор списка через for</a></li>
-  <li><a href="#как-for-перебирает-список" id="toc-как-for-перебирает-список" class="nav-link" data-scroll-target="#как-for-перебирает-список"><span class="header-section-number">2.28</span> Как for перебирает список</a></li>
-  <li><a href="#когда-индекс-не-нужен" id="toc-когда-индекс-не-нужен" class="nav-link" data-scroll-target="#когда-индекс-не-нужен"><span class="header-section-number">2.29</span> Когда индекс не нужен</a></li>
-  <li><a href="#перебор-по-индексам" id="toc-перебор-по-индексам" class="nav-link" data-scroll-target="#перебор-по-индексам"><span class="header-section-number">2.30</span> Перебор по индексам</a></li>
-  <li><a href="#изменение-элементов-по-индексам" id="toc-изменение-элементов-по-индексам" class="nav-link" data-scroll-target="#изменение-элементов-по-индексам"><span class="header-section-number">2.31</span> Изменение элементов по индексам</a></li>
-  <li><a href="#срезы-списков" id="toc-срезы-списков" class="nav-link" data-scroll-target="#срезы-списков"><span class="header-section-number">2.32</span> Срезы списков</a></li>
-  <li><a href="#другие-срезы" id="toc-другие-срезы" class="nav-link" data-scroll-target="#другие-срезы"><span class="header-section-number">2.33</span> Другие срезы</a></li>
-  <li><a href="#срез-создаёт-новый-список" id="toc-срез-создаёт-новый-список" class="nav-link" data-scroll-target="#срез-создаёт-новый-список"><span class="header-section-number">2.34</span> Срез создаёт новый список</a></li>
-  <li><a href="#объединение-списков" id="toc-объединение-списков" class="nav-link" data-scroll-target="#объединение-списков"><span class="header-section-number">2.35</span> Объединение списков</a></li>
-  <li><a href="#повторение-списка" id="toc-повторение-списка" class="nav-link" data-scroll-target="#повторение-списка"><span class="header-section-number">2.36</span> Повторение списка</a></li>
-  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count"><span class="header-section-number">2.37</span> count()</a></li>
-  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index"><span class="header-section-number">2.38</span> index()</a></li>
-  <li><a href="#сортировка-списка" id="toc-сортировка-списка" class="nav-link" data-scroll-target="#сортировка-списка"><span class="header-section-number">2.39</span> Сортировка списка</a></li>
-  <li><a href="#sort-изменяет-список" id="toc-sort-изменяет-список" class="nav-link" data-scroll-target="#sort-изменяет-список"><span class="header-section-number">2.40</span> sort() изменяет список</a></li>
-  <li><a href="#сортировка-строк" id="toc-сортировка-строк" class="nav-link" data-scroll-target="#сортировка-строк"><span class="header-section-number">2.41</span> Сортировка строк</a></li>
-  <li><a href="#reverse" id="toc-reverse" class="nav-link" data-scroll-target="#reverse"><span class="header-section-number">2.42</span> reverse()</a></li>
-  <li><a href="#sum" id="toc-sum" class="nav-link" data-scroll-target="#sum"><span class="header-section-number">2.43</span> sum()</a></li>
-  <li><a href="#min-и-max" id="toc-min-и-max" class="nav-link" data-scroll-target="#min-и-max"><span class="header-section-number">2.44</span> min() и max()</a></li>
-  <li><a href="#среднее-значение" id="toc-среднее-значение" class="nav-link" data-scroll-target="#среднее-значение"><span class="header-section-number">2.45</span> Среднее значение</a></li>
-  <li><a href="#важный-случай-пустой-список" id="toc-важный-случай-пустой-список" class="nav-link" data-scroll-target="#важный-случай-пустой-список"><span class="header-section-number">2.46</span> Важный случай: пустой список</a></li>
-  <li><a href="#bool-списка" id="toc-bool-списка" class="nav-link" data-scroll-target="#bool-списка"><span class="header-section-number">2.47</span> bool списка</a></li>
-  <li><a href="#проверка-пустого-списка" id="toc-проверка-пустого-списка" class="nav-link" data-scroll-target="#проверка-пустого-списка"><span class="header-section-number">2.48</span> Проверка пустого списка</a></li>
-  <li><a href="#создание-списка-из-пользовательского-ввода" id="toc-создание-списка-из-пользовательского-ввода" class="nav-link" data-scroll-target="#создание-списка-из-пользовательского-ввода"><span class="header-section-number">2.49</span> Создание списка из пользовательского ввода</a></li>
-  <li><a href="#почему-это-лучше-одного-накопителя" id="toc-почему-это-лучше-одного-накопителя" class="nav-link" data-scroll-target="#почему-это-лучше-одного-накопителя"><span class="header-section-number">2.50</span> Почему это лучше одного накопителя</a></li>
-  <li><a href="#пример-оценки" id="toc-пример-оценки" class="nav-link" data-scroll-target="#пример-оценки"><span class="header-section-number">2.51</span> Пример: оценки</a></li>
-  <li><a href="#пример-список-покупок" id="toc-пример-список-покупок" class="nav-link" data-scroll-target="#пример-список-покупок"><span class="header-section-number">2.52</span> Пример: список покупок</a></li>
-  <li><a href="#пример-поиск-элемента" id="toc-пример-поиск-элемента" class="nav-link" data-scroll-target="#пример-поиск-элемента"><span class="header-section-number">2.53</span> Пример: поиск элемента</a></li>
-  <li><a href="#пример-фильтрация-значений" id="toc-пример-фильтрация-значений" class="nav-link" data-scroll-target="#пример-фильтрация-значений"><span class="header-section-number">2.54</span> Пример: фильтрация значений</a></li>
-  <li><a href="#изменение-списка-во-время-перебора" id="toc-изменение-списка-во-время-перебора" class="nav-link" data-scroll-target="#изменение-списка-во-время-перебора"><span class="header-section-number">2.55</span> Изменение списка во время перебора</a></li>
-  <li><a href="#копия-списка" id="toc-копия-списка" class="nav-link" data-scroll-target="#копия-списка"><span class="header-section-number">2.56</span> Копия списка</a></li>
-  <li><a href="#присваивание-не-копия" id="toc-присваивание-не-копия" class="nav-link" data-scroll-target="#присваивание-не-копия"><span class="header-section-number">2.57</span> Присваивание — не копия</a></li>
-  <li><a href="#настоящая-простая-копия" id="toc-настоящая-простая-копия" class="nav-link" data-scroll-target="#настоящая-простая-копия"><span class="header-section-number">2.58</span> Настоящая простая копия</a></li>
-  <li><a href="#что-важно-запомнить" id="toc-что-важно-запомнить" class="nav-link" data-scroll-target="#что-важно-запомнить"><span class="header-section-number">2.59</span> Что важно запомнить</a>
+  <li><a href="#первый-список" id="toc-первый-список" class="nav-link active" data-scroll-target="#первый-список">Первый список</a></li>
+  <li><a href="#тип-list" id="toc-тип-list" class="nav-link" data-scroll-target="#тип-list">Тип list</a></li>
+  <li><a href="#элементы-списка" id="toc-элементы-списка" class="nav-link" data-scroll-target="#элементы-списка">Элементы списка</a></li>
+  <li><a href="#в-списке-могут-храниться-числа" id="toc-в-списке-могут-храниться-числа" class="nav-link" data-scroll-target="#в-списке-могут-храниться-числа">В списке могут храниться числа</a></li>
+  <li><a href="#список-может-содержать-значения-разных-типов" id="toc-список-может-содержать-значения-разных-типов" class="nav-link" data-scroll-target="#список-может-содержать-значения-разных-типов">Список может содержать значения разных типов</a></li>
+  <li><a href="#пустой-список" id="toc-пустой-список" class="nav-link" data-scroll-target="#пустой-список">Пустой список</a></li>
+  <li><a href="#индексы-списка" id="toc-индексы-списка" class="nav-link" data-scroll-target="#индексы-списка">Индексы списка</a></li>
+  <li><a href="#получение-элемента-по-индексу" id="toc-получение-элемента-по-индексу" class="nav-link" data-scroll-target="#получение-элемента-по-индексу">Получение элемента по индексу</a></li>
+  <li><a href="#отрицательные-индексы" id="toc-отрицательные-индексы" class="nav-link" data-scroll-target="#отрицательные-индексы">Отрицательные индексы</a></li>
+  <li><a href="#ошибка-индекса" id="toc-ошибка-индекса" class="nav-link" data-scroll-target="#ошибка-индекса">Ошибка индекса</a></li>
+  <li><a href="#длина-списка" id="toc-длина-списка" class="nav-link" data-scroll-target="#длина-списка">Длина списка</a></li>
+  <li><a href="#списки-можно-изменять" id="toc-списки-можно-изменять" class="nav-link" data-scroll-target="#списки-можно-изменять">Списки можно изменять</a></li>
+  <li><a href="#изменение-элемента" id="toc-изменение-элемента" class="nav-link" data-scroll-target="#изменение-элемента">Изменение элемента</a></li>
+  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append">append()</a></li>
+  <li><a href="#добавление-пользовательского-значения" id="toc-добавление-пользовательского-значения" class="nav-link" data-scroll-target="#добавление-пользовательского-значения">Добавление пользовательского значения</a></li>
+  <li><a href="#append-внутри-цикла" id="toc-append-внутри-цикла" class="nav-link" data-scroll-target="#append-внутри-цикла">append() внутри цикла</a></li>
+  <li><a href="#insert" id="toc-insert" class="nav-link" data-scroll-target="#insert">insert()</a></li>
+  <li><a href="#разница-между-append-и-insert" id="toc-разница-между-append-и-insert" class="nav-link" data-scroll-target="#разница-между-append-и-insert">Разница между append() и insert()</a></li>
+  <li><a href="#удаление-по-значению-remove" id="toc-удаление-по-значению-remove" class="nav-link" data-scroll-target="#удаление-по-значению-remove">Удаление по значению: remove()</a></li>
+  <li><a href="#remove-удаляет-первое-совпадение" id="toc-remove-удаляет-первое-совпадение" class="nav-link" data-scroll-target="#remove-удаляет-первое-совпадение">remove() удаляет первое совпадение</a></li>
+  <li><a href="#если-значения-нет" id="toc-если-значения-нет" class="nav-link" data-scroll-target="#если-значения-нет">Если значения нет</a></li>
+  <li><a href="#удаление-по-индексу-pop" id="toc-удаление-по-индексу-pop" class="nav-link" data-scroll-target="#удаление-по-индексу-pop">Удаление по индексу: pop()</a></li>
+  <li><a href="#pop-без-индекса" id="toc-pop-без-индекса" class="nav-link" data-scroll-target="#pop-без-индекса">pop() без индекса</a></li>
+  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear">clear()</a></li>
+  <li><a href="#проверка-элемента-с-in" id="toc-проверка-элемента-с-in" class="nav-link" data-scroll-target="#проверка-элемента-с-in">Проверка элемента с in</a></li>
+  <li><a href="#not-in" id="toc-not-in" class="nav-link" data-scroll-target="#not-in">not in</a></li>
+  <li><a href="#перебор-списка-через-for" id="toc-перебор-списка-через-for" class="nav-link" data-scroll-target="#перебор-списка-через-for">Перебор списка через for</a></li>
+  <li><a href="#как-for-перебирает-список" id="toc-как-for-перебирает-список" class="nav-link" data-scroll-target="#как-for-перебирает-список">Как for перебирает список</a></li>
+  <li><a href="#когда-индекс-не-нужен" id="toc-когда-индекс-не-нужен" class="nav-link" data-scroll-target="#когда-индекс-не-нужен">Когда индекс не нужен</a></li>
+  <li><a href="#перебор-по-индексам" id="toc-перебор-по-индексам" class="nav-link" data-scroll-target="#перебор-по-индексам">Перебор по индексам</a></li>
+  <li><a href="#изменение-элементов-по-индексам" id="toc-изменение-элементов-по-индексам" class="nav-link" data-scroll-target="#изменение-элементов-по-индексам">Изменение элементов по индексам</a></li>
+  <li><a href="#срезы-списков" id="toc-срезы-списков" class="nav-link" data-scroll-target="#срезы-списков">Срезы списков</a></li>
+  <li><a href="#другие-срезы" id="toc-другие-срезы" class="nav-link" data-scroll-target="#другие-срезы">Другие срезы</a></li>
+  <li><a href="#срез-создаёт-новый-список" id="toc-срез-создаёт-новый-список" class="nav-link" data-scroll-target="#срез-создаёт-новый-список">Срез создаёт новый список</a></li>
+  <li><a href="#объединение-списков" id="toc-объединение-списков" class="nav-link" data-scroll-target="#объединение-списков">Объединение списков</a></li>
+  <li><a href="#повторение-списка" id="toc-повторение-списка" class="nav-link" data-scroll-target="#повторение-списка">Повторение списка</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count()</a></li>
+  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index">index()</a></li>
+  <li><a href="#сортировка-списка" id="toc-сортировка-списка" class="nav-link" data-scroll-target="#сортировка-списка">Сортировка списка</a></li>
+  <li><a href="#sort-изменяет-список" id="toc-sort-изменяет-список" class="nav-link" data-scroll-target="#sort-изменяет-список">sort() изменяет список</a></li>
+  <li><a href="#сортировка-строк" id="toc-сортировка-строк" class="nav-link" data-scroll-target="#сортировка-строк">Сортировка строк</a></li>
+  <li><a href="#reverse" id="toc-reverse" class="nav-link" data-scroll-target="#reverse">reverse()</a></li>
+  <li><a href="#sum" id="toc-sum" class="nav-link" data-scroll-target="#sum">sum()</a></li>
+  <li><a href="#min-и-max" id="toc-min-и-max" class="nav-link" data-scroll-target="#min-и-max">min() и max()</a></li>
+  <li><a href="#среднее-значение" id="toc-среднее-значение" class="nav-link" data-scroll-target="#среднее-значение">Среднее значение</a></li>
+  <li><a href="#важный-случай-пустой-список" id="toc-важный-случай-пустой-список" class="nav-link" data-scroll-target="#важный-случай-пустой-список">Важный случай: пустой список</a></li>
+  <li><a href="#bool-списка" id="toc-bool-списка" class="nav-link" data-scroll-target="#bool-списка">bool списка</a></li>
+  <li><a href="#проверка-пустого-списка" id="toc-проверка-пустого-списка" class="nav-link" data-scroll-target="#проверка-пустого-списка">Проверка пустого списка</a></li>
+  <li><a href="#создание-списка-из-пользовательского-ввода" id="toc-создание-списка-из-пользовательского-ввода" class="nav-link" data-scroll-target="#создание-списка-из-пользовательского-ввода">Создание списка из пользовательского ввода</a></li>
+  <li><a href="#почему-это-лучше-одного-накопителя" id="toc-почему-это-лучше-одного-накопителя" class="nav-link" data-scroll-target="#почему-это-лучше-одного-накопителя">Почему это лучше одного накопителя</a></li>
+  <li><a href="#пример-оценки" id="toc-пример-оценки" class="nav-link" data-scroll-target="#пример-оценки">Пример: оценки</a></li>
+  <li><a href="#пример-список-покупок" id="toc-пример-список-покупок" class="nav-link" data-scroll-target="#пример-список-покупок">Пример: список покупок</a></li>
+  <li><a href="#пример-поиск-элемента" id="toc-пример-поиск-элемента" class="nav-link" data-scroll-target="#пример-поиск-элемента">Пример: поиск элемента</a></li>
+  <li><a href="#пример-фильтрация-значений" id="toc-пример-фильтрация-значений" class="nav-link" data-scroll-target="#пример-фильтрация-значений">Пример: фильтрация значений</a></li>
+  <li><a href="#изменение-списка-во-время-перебора" id="toc-изменение-списка-во-время-перебора" class="nav-link" data-scroll-target="#изменение-списка-во-время-перебора">Изменение списка во время перебора</a></li>
+  <li><a href="#копия-списка" id="toc-копия-списка" class="nav-link" data-scroll-target="#копия-списка">Копия списка</a></li>
+  <li><a href="#присваивание-не-копия" id="toc-присваивание-не-копия" class="nav-link" data-scroll-target="#присваивание-не-копия">Присваивание — не копия</a></li>
+  <li><a href="#настоящая-простая-копия" id="toc-настоящая-простая-копия" class="nav-link" data-scroll-target="#настоящая-простая-копия">Настоящая простая копия</a></li>
+  <li><a href="#что-важно-запомнить" id="toc-что-важно-запомнить" class="nav-link" data-scroll-target="#что-важно-запомнить">Что важно запомнить</a>
   <ul class="collapse">
-  <li><a href="#практические-задания" id="toc-практические-задания" class="nav-link" data-scroll-target="#практические-задания"><span class="header-section-number">2.59.1</span> Практические задания</a></li>
+  <li><a href="#практические-задания" id="toc-практические-задания" class="nav-link" data-scroll-target="#практические-задания">Практические задания</a></li>
   </ul></li>
-  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше"><span class="header-section-number">2.60</span> Что дальше?</a></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/19-lists.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Списки</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-02-python-basics.html">3 Том II. Базовые конструкции Python</a></li><li class="breadcrumb-item"><a href="../../book/chapters/19-lists.html">3.12 Списки</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Списки</span></h1>
+<h1 class="title">3.12 Списки</h1>
 </div>
 
 
@@ -430,8 +431,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Но такой подход быстро становится неудобным.</p>
 <p>В Python для хранения нескольких значений существует <strong>список</strong>.</p>
 <hr>
-<section id="первый-список" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="первый-список"><span class="header-section-number">2.1</span> Первый список</h2>
+<section id="первый-список" class="level2">
+<h2 class="anchored" data-anchor-id="первый-список">Первый список</h2>
 <p>Список создаётся с помощью квадратных скобок:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">"Москва"</span>, <span class="st">"Казань"</span>, <span class="st">"Самара"</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Здесь одна переменная:</p>
@@ -445,8 +446,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="text"><code>['Москва', 'Казань', 'Самара']</code></pre>
 <hr>
 </section>
-<section id="тип-list" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="тип-list"><span class="header-section-number">2.2</span> Тип list</h2>
+<section id="тип-list" class="level2">
+<h2 class="anchored" data-anchor-id="тип-list">Тип list</h2>
 <p>Списки имеют тип:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Проверим:</p>
@@ -465,8 +466,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="элементы-списка" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="элементы-списка"><span class="header-section-number">2.3</span> Элементы списка</h2>
+<section id="элементы-списка" class="level2">
+<h2 class="anchored" data-anchor-id="элементы-списка">Элементы списка</h2>
 <p>Значения внутри списка называются <strong>элементами</strong>.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
@@ -486,8 +487,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="в-списке-могут-храниться-числа" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="в-списке-могут-храниться-числа"><span class="header-section-number">2.4</span> В списке могут храниться числа</h2>
+<section id="в-списке-могут-храниться-числа" class="level2">
+<h2 class="anchored" data-anchor-id="в-списке-могут-храниться-числа">В списке могут храниться числа</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">250</span>, <span class="dv">79</span>, <span class="dv">500</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -498,8 +499,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> [<span class="fl">18.5</span>, <span class="fl">20.1</span>, <span class="fl">17.8</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="список-может-содержать-значения-разных-типов" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="список-может-содержать-значения-разных-типов"><span class="header-section-number">2.5</span> Список может содержать значения разных типов</h2>
+<section id="список-может-содержать-значения-разных-типов" class="level2">
+<h2 class="anchored" data-anchor-id="список-может-содержать-значения-разных-типов">Список может содержать значения разных типов</h2>
 <p>Python позволяет написать:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="st">"Анна"</span>, <span class="dv">25</span>, <span class="fl">1.68</span>, <span class="va">True</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Здесь находятся:</p>
@@ -533,8 +534,8 @@ bool</code></pre>
 </div>
 <hr>
 </section>
-<section id="пустой-список" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="пустой-список"><span class="header-section-number">2.6</span> Пустой список</h2>
+<section id="пустой-список" class="level2">
+<h2 class="anchored" data-anchor-id="пустой-список">Пустой список</h2>
 <p>Список может не содержать элементов:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> []</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Это <strong>пустой список</strong>.</p>
@@ -549,8 +550,8 @@ bool</code></pre>
 <p>Пустой список часто используется как начало набора, который будет заполняться позже.</p>
 <hr>
 </section>
-<section id="индексы-списка" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="индексы-списка"><span class="header-section-number">2.7</span> Индексы списка</h2>
+<section id="индексы-списка" class="level2">
+<h2 class="anchored" data-anchor-id="индексы-списка">Индексы списка</h2>
 <p>Как и строки, списки используют индексы.</p>
 <p>Рассмотрим:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
@@ -561,8 +562,8 @@ bool</code></pre>
 <pre class="text"><code>0</code></pre>
 <hr>
 </section>
-<section id="получение-элемента-по-индексу" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="получение-элемента-по-индексу"><span class="header-section-number">2.8</span> Получение элемента по индексу</h2>
+<section id="получение-элемента-по-индексу" class="level2">
+<h2 class="anchored" data-anchor-id="получение-элемента-по-индексу">Получение элемента по индексу</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -577,8 +578,8 @@ bool</code></pre>
 Go</code></pre>
 <hr>
 </section>
-<section id="отрицательные-индексы" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="отрицательные-индексы"><span class="header-section-number">2.9</span> Отрицательные индексы</h2>
+<section id="отрицательные-индексы" class="level2">
+<h2 class="anchored" data-anchor-id="отрицательные-индексы">Отрицательные индексы</h2>
 <p>Списки поддерживают отрицательные индексы так же, как строки.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
@@ -600,8 +601,8 @@ Java</code></pre>
 отриц.:      -3      -2     -1</code></pre>
 <hr>
 </section>
-<section id="ошибка-индекса" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="ошибка-индекса"><span class="header-section-number">2.10</span> Ошибка индекса</h2>
+<section id="ошибка-индекса" class="level2">
+<h2 class="anchored" data-anchor-id="ошибка-индекса">Ошибка индекса</h2>
 <p>Если обратиться к несуществующему элементу:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -611,8 +612,8 @@ Java</code></pre>
 <p>Причина та же, что и со строками: такого индекса нет.</p>
 <hr>
 </section>
-<section id="длина-списка" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="длина-списка"><span class="header-section-number">2.11</span> Длина списка</h2>
+<section id="длина-списка" class="level2">
+<h2 class="anchored" data-anchor-id="длина-списка">Длина списка</h2>
 <p>Функция:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>работает и со списками.</p>
@@ -630,8 +631,8 @@ Java</code></pre>
 <pre class="text"><code>0</code></pre>
 <hr>
 </section>
-<section id="списки-можно-изменять" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="списки-можно-изменять"><span class="header-section-number">2.12</span> Списки можно изменять</h2>
+<section id="списки-можно-изменять" class="level2">
+<h2 class="anchored" data-anchor-id="списки-можно-изменять">Списки можно изменять</h2>
 <p>Здесь появляется важное отличие от строк.</p>
 <p>Строки неизменяемые:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"Python"</span></span>
@@ -673,8 +674,8 @@ Java</code></pre>
 </div>
 <hr>
 </section>
-<section id="изменение-элемента" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="изменение-элемента"><span class="header-section-number">2.13</span> Изменение элемента</h2>
+<section id="изменение-элемента" class="level2">
+<h2 class="anchored" data-anchor-id="изменение-элемента">Изменение элемента</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>]</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -686,8 +687,8 @@ Java</code></pre>
 <p>Изменяется только выбранный элемент.</p>
 <hr>
 </section>
-<section id="append" class="level2" data-number="2.14">
-<h2 data-number="2.14" class="anchored" data-anchor-id="append"><span class="header-section-number">2.14</span> append()</h2>
+<section id="append" class="level2">
+<h2 class="anchored" data-anchor-id="append">append()</h2>
 <p>Чтобы добавить новый элемент в конец списка, используется метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>append()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Например:</p>
@@ -706,8 +707,8 @@ Java</code></pre>
 ["Python", "Java", "Go"]</code></pre>
 <hr>
 </section>
-<section id="добавление-пользовательского-значения" class="level2" data-number="2.15">
-<h2 data-number="2.15" class="anchored" data-anchor-id="добавление-пользовательского-значения"><span class="header-section-number">2.15</span> Добавление пользовательского значения</h2>
+<section id="добавление-пользовательского-значения" class="level2">
+<h2 class="anchored" data-anchor-id="добавление-пользовательского-значения">Добавление пользовательского значения</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> []</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -722,8 +723,8 @@ Java</code></pre>
 <pre class="text"><code>['Анна']</code></pre>
 <hr>
 </section>
-<section id="append-внутри-цикла" class="level2" data-number="2.16">
-<h2 data-number="2.16" class="anchored" data-anchor-id="append-внутри-цикла"><span class="header-section-number">2.16</span> append() внутри цикла</h2>
+<section id="append-внутри-цикла" class="level2">
+<h2 class="anchored" data-anchor-id="append-внутри-цикла">append() внутри цикла</h2>
 <p>Список особенно полезен вместе с циклами.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> []</span>
@@ -752,8 +753,8 @@ Java</code></pre>
 </div>
 <hr>
 </section>
-<section id="insert" class="level2" data-number="2.17">
-<h2 data-number="2.17" class="anchored" data-anchor-id="insert"><span class="header-section-number">2.17</span> insert()</h2>
+<section id="insert" class="level2">
+<h2 class="anchored" data-anchor-id="insert">insert()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>insert()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>позволяет добавить элемент в определённую позицию.</p>
@@ -769,8 +770,8 @@ Java</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>список.insert(индекс, значение)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="разница-между-append-и-insert" class="level2" data-number="2.18">
-<h2 data-number="2.18" class="anchored" data-anchor-id="разница-между-append-и-insert"><span class="header-section-number">2.18</span> Разница между append() и insert()</h2>
+<section id="разница-между-append-и-insert" class="level2">
+<h2 class="anchored" data-anchor-id="разница-между-append-и-insert">Разница между append() и insert()</h2>
 <p><code>append()</code> добавляет в конец:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>items.append(value)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>insert()</code> добавляет в указанную позицию:</p>
@@ -787,8 +788,8 @@ Java</code></pre>
 <pre class="text"><code>[10, 20, 30, 40]</code></pre>
 <hr>
 </section>
-<section id="удаление-по-значению-remove" class="level2" data-number="2.19">
-<h2 data-number="2.19" class="anchored" data-anchor-id="удаление-по-значению-remove"><span class="header-section-number">2.19</span> Удаление по значению: remove()</h2>
+<section id="удаление-по-значению-remove" class="level2">
+<h2 class="anchored" data-anchor-id="удаление-по-значению-remove">Удаление по значению: remove()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>remove()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>удаляет элемент по его значению.</p>
@@ -802,8 +803,8 @@ Java</code></pre>
 <pre class="text"><code>['Python', 'Go']</code></pre>
 <hr>
 </section>
-<section id="remove-удаляет-первое-совпадение" class="level2" data-number="2.20">
-<h2 data-number="2.20" class="anchored" data-anchor-id="remove-удаляет-первое-совпадение"><span class="header-section-number">2.20</span> remove() удаляет первое совпадение</h2>
+<section id="remove-удаляет-первое-совпадение" class="level2">
+<h2 class="anchored" data-anchor-id="remove-удаляет-первое-совпадение">remove() удаляет первое совпадение</h2>
 <p>Рассмотрим:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">30</span>]</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -816,8 +817,8 @@ Java</code></pre>
 <pre class="text"><code>10</code></pre>
 <hr>
 </section>
-<section id="если-значения-нет" class="level2" data-number="2.21">
-<h2 data-number="2.21" class="anchored" data-anchor-id="если-значения-нет"><span class="header-section-number">2.21</span> Если значения нет</h2>
+<section id="если-значения-нет" class="level2">
+<h2 class="anchored" data-anchor-id="если-значения-нет">Если значения нет</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>]</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -830,8 +831,8 @@ Java</code></pre>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    languages.remove(<span class="st">"Go"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="удаление-по-индексу-pop" class="level2" data-number="2.22">
-<h2 data-number="2.22" class="anchored" data-anchor-id="удаление-по-индексу-pop"><span class="header-section-number">2.22</span> Удаление по индексу: pop()</h2>
+<section id="удаление-по-индексу-pop" class="level2">
+<h2 class="anchored" data-anchor-id="удаление-по-индексу-pop">Удаление по индексу: pop()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>pop()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>может удалить элемент по индексу и вернуть его.</p>
@@ -851,8 +852,8 @@ Java</code></pre>
 </div>
 <hr>
 </section>
-<section id="pop-без-индекса" class="level2" data-number="2.23">
-<h2 data-number="2.23" class="anchored" data-anchor-id="pop-без-индекса"><span class="header-section-number">2.23</span> pop() без индекса</h2>
+<section id="pop-без-индекса" class="level2">
+<h2 class="anchored" data-anchor-id="pop-без-индекса">pop() без индекса</h2>
 <p>Если индекс не указан:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>languages.pop()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>удаляется последний элемент.</p>
@@ -868,8 +869,8 @@ Java</code></pre>
 ['Python', 'Java']</code></pre>
 <hr>
 </section>
-<section id="clear" class="level2" data-number="2.24">
-<h2 data-number="2.24" class="anchored" data-anchor-id="clear"><span class="header-section-number">2.24</span> clear()</h2>
+<section id="clear" class="level2">
+<h2 class="anchored" data-anchor-id="clear">clear()</h2>
 <p>Чтобы удалить все элементы:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>clear()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Например:</p>
@@ -883,8 +884,8 @@ Java</code></pre>
 <p>Сам список остаётся существовать, но становится пустым.</p>
 <hr>
 </section>
-<section id="проверка-элемента-с-in" class="level2" data-number="2.25">
-<h2 data-number="2.25" class="anchored" data-anchor-id="проверка-элемента-с-in"><span class="header-section-number">2.25</span> Проверка элемента с in</h2>
+<section id="проверка-элемента-с-in" class="level2">
+<h2 class="anchored" data-anchor-id="проверка-элемента-с-in">Проверка элемента с in</h2>
 <p>Оператор:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>работает и со списками.</p>
@@ -900,8 +901,8 @@ Java</code></pre>
 <pre class="text"><code>False</code></pre>
 <hr>
 </section>
-<section id="not-in" class="level2" data-number="2.26">
-<h2 data-number="2.26" class="anchored" data-anchor-id="not-in"><span class="header-section-number">2.26</span> not in</h2>
+<section id="not-in" class="level2">
+<h2 class="anchored" data-anchor-id="not-in">not in</h2>
 <p>Можно проверить отсутствие:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -913,8 +914,8 @@ Java</code></pre>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Python найден"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="перебор-списка-через-for" class="level2" data-number="2.27">
-<h2 data-number="2.27" class="anchored" data-anchor-id="перебор-списка-через-for"><span class="header-section-number">2.27</span> Перебор списка через for</h2>
+<section id="перебор-списка-через-for" class="level2">
+<h2 class="anchored" data-anchor-id="перебор-списка-через-for">Перебор списка через for</h2>
 <p><code>for</code> отлично подходит для списков.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
@@ -933,8 +934,8 @@ Go</code></pre>
 <p>получает очередной элемент списка.</p>
 <hr>
 </section>
-<section id="как-for-перебирает-список" class="level2" data-number="2.28">
-<h2 data-number="2.28" class="anchored" data-anchor-id="как-for-перебирает-список"><span class="header-section-number">2.28</span> Как for перебирает список</h2>
+<section id="как-for-перебирает-список" class="level2">
+<h2 class="anchored" data-anchor-id="как-for-перебирает-список">Как for перебирает список</h2>
 <p>Можно представить:</p>
 <pre class="text"><code>["Python", "Java", "Go"]
         ↓
@@ -956,8 +957,8 @@ language = "Go"
 </div>
 <hr>
 </section>
-<section id="когда-индекс-не-нужен" class="level2" data-number="2.29">
-<h2 data-number="2.29" class="anchored" data-anchor-id="когда-индекс-не-нужен"><span class="header-section-number">2.29</span> Когда индекс не нужен</h2>
+<section id="когда-индекс-не-нужен" class="level2">
+<h2 class="anchored" data-anchor-id="когда-индекс-не-нужен">Когда индекс не нужен</h2>
 <p>Если нужно просто обработать каждый элемент:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> language <span class="kw">in</span> languages:</span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(language)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
@@ -986,8 +987,8 @@ language = "Go"
 </div>
 <hr>
 </section>
-<section id="перебор-по-индексам" class="level2" data-number="2.30">
-<h2 data-number="2.30" class="anchored" data-anchor-id="перебор-по-индексам"><span class="header-section-number">2.30</span> Перебор по индексам</h2>
+<section id="перебор-по-индексам" class="level2">
+<h2 class="anchored" data-anchor-id="перебор-по-индексам">Перебор по индексам</h2>
 <p>Иногда индекс действительно нужен.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>]</span>
@@ -1006,8 +1007,8 @@ language = "Go"
 2</code></pre>
 <hr>
 </section>
-<section id="изменение-элементов-по-индексам" class="level2" data-number="2.31">
-<h2 data-number="2.31" class="anchored" data-anchor-id="изменение-элементов-по-индексам"><span class="header-section-number">2.31</span> Изменение элементов по индексам</h2>
+<section id="изменение-элементов-по-индексам" class="level2">
+<h2 class="anchored" data-anchor-id="изменение-элементов-по-индексам">Изменение элементов по индексам</h2>
 <p>Если нужно изменить каждый элемент списка, индексы могут быть полезны.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
@@ -1021,8 +1022,8 @@ language = "Go"
 <p>Здесь изменяется сам список.</p>
 <hr>
 </section>
-<section id="срезы-списков" class="level2" data-number="2.32">
-<h2 data-number="2.32" class="anchored" data-anchor-id="срезы-списков"><span class="header-section-number">2.32</span> Срезы списков</h2>
+<section id="срезы-списков" class="level2">
+<h2 class="anchored" data-anchor-id="срезы-списков">Срезы списков</h2>
 <p>Списки поддерживают срезы так же, как строки.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
@@ -1033,8 +1034,8 @@ language = "Go"
 <p>Правая граница снова не включается.</p>
 <hr>
 </section>
-<section id="другие-срезы" class="level2" data-number="2.33">
-<h2 data-number="2.33" class="anchored" data-anchor-id="другие-срезы"><span class="header-section-number">2.33</span> Другие срезы</h2>
+<section id="другие-срезы" class="level2">
+<h2 class="anchored" data-anchor-id="другие-срезы">Другие срезы</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[:<span class="dv">3</span>])</span>
@@ -1053,8 +1054,8 @@ language = "Go"
 <p>Правила очень похожи на строки.</p>
 <hr>
 </section>
-<section id="срез-создаёт-новый-список" class="level2" data-number="2.34">
-<h2 data-number="2.34" class="anchored" data-anchor-id="срез-создаёт-новый-список"><span class="header-section-number">2.34</span> Срез создаёт новый список</h2>
+<section id="срез-создаёт-новый-список" class="level2">
+<h2 class="anchored" data-anchor-id="срез-создаёт-новый-список">Срез создаёт новый список</h2>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>]</span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1066,8 +1067,8 @@ language = "Go"
 <p><code>part</code> — отдельный список.</p>
 <hr>
 </section>
-<section id="объединение-списков" class="level2" data-number="2.35">
-<h2 data-number="2.35" class="anchored" data-anchor-id="объединение-списков"><span class="header-section-number">2.35</span> Объединение списков</h2>
+<section id="объединение-списков" class="level2">
+<h2 class="anchored" data-anchor-id="объединение-списков">Объединение списков</h2>
 <p>Оператор:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="op">+</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>может объединять списки.</p>
@@ -1082,8 +1083,8 @@ language = "Go"
 <pre class="text"><code>[1, 2, 3, 4]</code></pre>
 <hr>
 </section>
-<section id="повторение-списка" class="level2" data-number="2.36">
-<h2 data-number="2.36" class="anchored" data-anchor-id="повторение-списка"><span class="header-section-number">2.36</span> Повторение списка</h2>
+<section id="повторение-списка" class="level2">
+<h2 class="anchored" data-anchor-id="повторение-списка">Повторение списка</h2>
 <p>Оператор:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>может повторять элементы списка.</p>
@@ -1097,8 +1098,8 @@ language = "Go"
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Hi"</span> <span class="op">*</span> <span class="dv">3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="count" class="level2" data-number="2.37">
-<h2 data-number="2.37" class="anchored" data-anchor-id="count"><span class="header-section-number">2.37</span> count()</h2>
+<section id="count" class="level2">
+<h2 class="anchored" data-anchor-id="count">count()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>count()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>подсчитывает количество элементов с определённым значением.</p>
@@ -1110,8 +1111,8 @@ language = "Go"
 <pre class="text"><code>3</code></pre>
 <hr>
 </section>
-<section id="index" class="level2" data-number="2.38">
-<h2 data-number="2.38" class="anchored" data-anchor-id="index"><span class="header-section-number">2.38</span> index()</h2>
+<section id="index" class="level2">
+<h2 class="anchored" data-anchor-id="index">index()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>index()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>возвращает индекс первого совпадения.</p>
@@ -1125,8 +1126,8 @@ language = "Go"
 <pre class="text"><code>ValueError</code></pre>
 <hr>
 </section>
-<section id="сортировка-списка" class="level2" data-number="2.39">
-<h2 data-number="2.39" class="anchored" data-anchor-id="сортировка-списка"><span class="header-section-number">2.39</span> Сортировка списка</h2>
+<section id="сортировка-списка" class="level2">
+<h2 class="anchored" data-anchor-id="сортировка-списка">Сортировка списка</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>sort()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>сортирует сам список.</p>
@@ -1140,8 +1141,8 @@ language = "Go"
 <pre class="text"><code>[10, 20, 30]</code></pre>
 <hr>
 </section>
-<section id="sort-изменяет-список" class="level2" data-number="2.40">
-<h2 data-number="2.40" class="anchored" data-anchor-id="sort-изменяет-список"><span class="header-section-number">2.40</span> sort() изменяет список</h2>
+<section id="sort-изменяет-список" class="level2">
+<h2 class="anchored" data-anchor-id="sort-изменяет-список">sort() изменяет список</h2>
 <p>Это отличается от многих методов строк.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
@@ -1176,8 +1177,8 @@ language = "Go"
 </div>
 <hr>
 </section>
-<section id="сортировка-строк" class="level2" data-number="2.41">
-<h2 data-number="2.41" class="anchored" data-anchor-id="сортировка-строк"><span class="header-section-number">2.41</span> Сортировка строк</h2>
+<section id="сортировка-строк" class="level2">
+<h2 class="anchored" data-anchor-id="сортировка-строк">Сортировка строк</h2>
 <p>Можно сортировать и список строк:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Олег"</span>, <span class="st">"Анна"</span>, <span class="st">"Максим"</span>]</span>
 <span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1188,8 +1189,8 @@ language = "Go"
 <p>На этом этапе достаточно понимать сам факт сортировки.</p>
 <hr>
 </section>
-<section id="reverse" class="level2" data-number="2.42">
-<h2 data-number="2.42" class="anchored" data-anchor-id="reverse"><span class="header-section-number">2.42</span> reverse()</h2>
+<section id="reverse" class="level2">
+<h2 class="anchored" data-anchor-id="reverse">reverse()</h2>
 <p>Метод:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>reverse()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>изменяет порядок элементов на обратный.</p>
@@ -1213,8 +1214,8 @@ language = "Go"
 <p>Срез создаёт новый список.</p>
 <hr>
 </section>
-<section id="sum" class="level2" data-number="2.43">
-<h2 data-number="2.43" class="anchored" data-anchor-id="sum"><span class="header-section-number">2.43</span> sum()</h2>
+<section id="sum" class="level2">
+<h2 class="anchored" data-anchor-id="sum">sum()</h2>
 <p>Для списка чисел можно использовать:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Например:</p>
@@ -1226,8 +1227,8 @@ language = "Go"
 <p>Это короче, чем писать накопитель вручную.</p>
 <hr>
 </section>
-<section id="min-и-max" class="level2" data-number="2.44">
-<h2 data-number="2.44" class="anchored" data-anchor-id="min-и-max"><span class="header-section-number">2.44</span> min() и max()</h2>
+<section id="min-и-max" class="level2">
+<h2 class="anchored" data-anchor-id="min-и-max">min() и max()</h2>
 <p>Функция:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>()</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>находит минимальное значение.</p>
@@ -1243,8 +1244,8 @@ language = "Go"
 30</code></pre>
 <hr>
 </section>
-<section id="среднее-значение" class="level2" data-number="2.45">
-<h2 data-number="2.45" class="anchored" data-anchor-id="среднее-значение"><span class="header-section-number">2.45</span> Среднее значение</h2>
+<section id="среднее-значение" class="level2">
+<h2 class="anchored" data-anchor-id="среднее-значение">Среднее значение</h2>
 <p>Отдельной встроенной функции среднего в этом базовом наборе нет.</p>
 <p>Но можно вычислить:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
@@ -1260,8 +1261,8 @@ len()
 /</code></pre>
 <hr>
 </section>
-<section id="важный-случай-пустой-список" class="level2" data-number="2.46">
-<h2 data-number="2.46" class="anchored" data-anchor-id="важный-случай-пустой-список"><span class="header-section-number">2.46</span> Важный случай: пустой список</h2>
+<section id="важный-случай-пустой-список" class="level2">
+<h2 class="anchored" data-anchor-id="важный-случай-пустой-список">Важный случай: пустой список</h2>
 <p>Рассмотрим:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> []</span>
 <span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1281,8 +1282,8 @@ len()
 <span id="cb159-7"><a href="#cb159-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Список пуст"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="bool-списка" class="level2" data-number="2.47">
-<h2 data-number="2.47" class="anchored" data-anchor-id="bool-списка"><span class="header-section-number">2.47</span> bool списка</h2>
+<section id="bool-списка" class="level2">
+<h2 class="anchored" data-anchor-id="bool-списка">bool списка</h2>
 <p>Мы уже знаем:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">""</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>для пустой строки даёт:</p>
@@ -1305,8 +1306,8 @@ len()
 </blockquote>
 <hr>
 </section>
-<section id="проверка-пустого-списка" class="level2" data-number="2.48">
-<h2 data-number="2.48" class="anchored" data-anchor-id="проверка-пустого-списка"><span class="header-section-number">2.48</span> Проверка пустого списка</h2>
+<section id="проверка-пустого-списка" class="level2">
+<h2 class="anchored" data-anchor-id="проверка-пустого-списка">Проверка пустого списка</h2>
 <p>Есть несколько понятных вариантов.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb167"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(numbers) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -1335,8 +1336,8 @@ len()
 </div>
 <hr>
 </section>
-<section id="создание-списка-из-пользовательского-ввода" class="level2" data-number="2.49">
-<h2 data-number="2.49" class="anchored" data-anchor-id="создание-списка-из-пользовательского-ввода"><span class="header-section-number">2.49</span> Создание списка из пользовательского ввода</h2>
+<section id="создание-списка-из-пользовательского-ввода" class="level2">
+<h2 class="anchored" data-anchor-id="создание-списка-из-пользовательского-ввода">Создание списка из пользовательского ввода</h2>
 <p>Например, пользователь вводит три числа:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb171"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> []</span>
 <span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1356,8 +1357,8 @@ len()
 </div>
 <hr>
 </section>
-<section id="почему-это-лучше-одного-накопителя" class="level2" data-number="2.50">
-<h2 data-number="2.50" class="anchored" data-anchor-id="почему-это-лучше-одного-накопителя"><span class="header-section-number">2.50</span> Почему это лучше одного накопителя</h2>
+<section id="почему-это-лучше-одного-накопителя" class="level2">
+<h2 class="anchored" data-anchor-id="почему-это-лучше-одного-накопителя">Почему это лучше одного накопителя</h2>
 <p>В прошлых главах мы могли написать:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1380,8 +1381,8 @@ len()
 <p>Список сохраняет данные для дальнейшей обработки.</p>
 <hr>
 </section>
-<section id="пример-оценки" class="level2" data-number="2.51">
-<h2 data-number="2.51" class="anchored" data-anchor-id="пример-оценки"><span class="header-section-number">2.51</span> Пример: оценки</h2>
+<section id="пример-оценки" class="level2">
+<h2 class="anchored" data-anchor-id="пример-оценки">Пример: оценки</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">72</span>, <span class="dv">100</span>, <span class="dv">88</span>]</span>
 <span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Количество:"</span>, <span class="bu">len</span>(scores))</span>
@@ -1398,8 +1399,8 @@ len()
 </div>
 <hr>
 </section>
-<section id="пример-список-покупок" class="level2" data-number="2.52">
-<h2 data-number="2.52" class="anchored" data-anchor-id="пример-список-покупок"><span class="header-section-number">2.52</span> Пример: список покупок</h2>
+<section id="пример-список-покупок" class="level2">
+<h2 class="anchored" data-anchor-id="пример-список-покупок">Пример: список покупок</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> [<span class="st">"Хлеб"</span>, <span class="st">"Молоко"</span>, <span class="st">"Сыр"</span>]</span>
 <span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb177-3"><a href="#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> product <span class="kw">in</span> products:</span>
@@ -1414,8 +1415,8 @@ len()
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb180"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>products.remove(<span class="st">"Молоко"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="пример-поиск-элемента" class="level2" data-number="2.53">
-<h2 data-number="2.53" class="anchored" data-anchor-id="пример-поиск-элемента"><span class="header-section-number">2.53</span> Пример: поиск элемента</h2>
+<section id="пример-поиск-элемента" class="level2">
+<h2 class="anchored" data-anchor-id="пример-поиск-элемента">Пример: поиск элемента</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb181"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> [<span class="st">"Хлеб"</span>, <span class="st">"Молоко"</span>, <span class="st">"Сыр"</span>]</span>
 <span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb181-3"><a href="#cb181-3" aria-hidden="true" tabindex="-1"></a>product <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Что ищем? "</span>)</span>
@@ -1439,8 +1440,8 @@ True / False
 if</code></pre>
 <hr>
 </section>
-<section id="пример-фильтрация-значений" class="level2" data-number="2.54">
-<h2 data-number="2.54" class="anchored" data-anchor-id="пример-фильтрация-значений"><span class="header-section-number">2.54</span> Пример: фильтрация значений</h2>
+<section id="пример-фильтрация-значений" class="level2">
+<h2 class="anchored" data-anchor-id="пример-фильтрация-значений">Пример: фильтрация значений</h2>
 <p>Пока не будем создавать отдельный новый список, но можем вывести только подходящие значения.</p>
 <p>Например:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb183"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">20</span>, <span class="dv">2</span>]</span>
@@ -1454,8 +1455,8 @@ if</code></pre>
 <p>Позже мы научимся сохранять такие выбранные значения в отдельный список более системно.</p>
 <hr>
 </section>
-<section id="изменение-списка-во-время-перебора" class="level2" data-number="2.55">
-<h2 data-number="2.55" class="anchored" data-anchor-id="изменение-списка-во-время-перебора"><span class="header-section-number">2.55</span> Изменение списка во время перебора</h2>
+<section id="изменение-списка-во-время-перебора" class="level2">
+<h2 class="anchored" data-anchor-id="изменение-списка-во-время-перебора">Изменение списка во время перебора</h2>
 <p>Рассмотрим идею:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Можно захотеть удалять элементы прямо внутри:</p>
@@ -1482,8 +1483,8 @@ if</code></pre>
 </div>
 <hr>
 </section>
-<section id="копия-списка" class="level2" data-number="2.56">
-<h2 data-number="2.56" class="anchored" data-anchor-id="копия-списка"><span class="header-section-number">2.56</span> Копия списка</h2>
+<section id="копия-списка" class="level2">
+<h2 class="anchored" data-anchor-id="копия-списка">Копия списка</h2>
 <p>Рассмотрим:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1498,8 +1499,8 @@ if</code></pre>
 <p>Для простых значений это удобный способ сделать копию списка.</p>
 <hr>
 </section>
-<section id="присваивание-не-копия" class="level2" data-number="2.57">
-<h2 data-number="2.57" class="anchored" data-anchor-id="присваивание-не-копия"><span class="header-section-number">2.57</span> Присваивание — не копия</h2>
+<section id="присваивание-не-копия" class="level2">
+<h2 class="anchored" data-anchor-id="присваивание-не-копия">Присваивание — не копия</h2>
 <p>Рассмотрим:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb191"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> first</span>
@@ -1522,8 +1523,8 @@ if</code></pre>
 second ─┘</code></pre>
 <hr>
 </section>
-<section id="настоящая-простая-копия" class="level2" data-number="2.58">
-<h2 data-number="2.58" class="anchored" data-anchor-id="настоящая-простая-копия"><span class="header-section-number">2.58</span> Настоящая простая копия</h2>
+<section id="настоящая-простая-копия" class="level2">
+<h2 class="anchored" data-anchor-id="настоящая-простая-копия">Настоящая простая копия</h2>
 <p>Если нужен отдельный список:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb195"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb195-2"><a href="#cb195-2" aria-hidden="true" tabindex="-1"></a>second <span class="op">=</span> first[:]</span>
@@ -1565,8 +1566,8 @@ second ─┘</code></pre>
 </div>
 <hr>
 </section>
-<section id="что-важно-запомнить" class="level2" data-number="2.59">
-<h2 data-number="2.59" class="anchored" data-anchor-id="что-важно-запомнить"><span class="header-section-number">2.59</span> Что важно запомнить</h2>
+<section id="что-важно-запомнить" class="level2">
+<h2 class="anchored" data-anchor-id="что-важно-запомнить">Что важно запомнить</h2>
 <p>Список — это значение типа:</p>
 <pre class="text"><code>list</code></pre>
 <p>Он позволяет хранить несколько элементов:</p>
@@ -1609,8 +1610,8 @@ second ─┘</code></pre>
 <p><strong>Список позволяет сохранить несколько связанных значений и затем обрабатывать их как единый набор данных.</strong></p>
 </blockquote>
 <hr>
-<section id="практические-задания" class="level3" data-number="2.59.1">
-<h3 data-number="2.59.1" class="anchored" data-anchor-id="практические-задания"><span class="header-section-number">2.59.1</span> Практические задания</h3>
+<section id="практические-задания" class="level3">
+<h3 class="anchored" data-anchor-id="практические-задания">Практические задания</h3>
 <p><strong>Задание 1. Первый и последний элемент</strong></p>
 <p>Дан список:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb210"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">"Python"</span>, <span class="st">"Java"</span>, <span class="st">"Go"</span>, <span class="st">"Rust"</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2074,8 +2075,8 @@ len() / sum() / min() / max()</code></pre>
 <hr>
 </section>
 </section>
-<section id="что-дальше" class="level2" data-number="2.60">
-<h2 data-number="2.60" class="anchored" data-anchor-id="что-дальше"><span class="header-section-number">2.60</span> Что дальше?</h2>
+<section id="что-дальше" class="level2">
+<h2 class="anchored" data-anchor-id="что-дальше">Что дальше?</h2>
 <p>Теперь программа умеет хранить несколько связанных значений в одном списке:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb253"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb253-1"><a href="#cb253-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Но в примерах главы код уже начинает повторяться.</p>
