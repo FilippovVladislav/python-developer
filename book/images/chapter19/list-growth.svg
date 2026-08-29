@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Рост списка через append</title>
+  <desc id="desc">Схема показывает, как append постепенно добавляет числа 10, 20 и 30 в конец списка.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:32px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">append() добавляет элементы в конец</text>
+
+  <g>
+    <rect class="card" x="120" y="120" width="300" height="74" rx="18"/><text class="mono blue" x="270" y="168" text-anchor="middle">[]</text>
+    <path class="step" d="M425 157h110" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="555" y="120" width="215" height="74" rx="18"/><text class="mono olive" x="662" y="168" text-anchor="middle">append(10)</text>
+    <path class="line" d="M775 157h90" marker-end="url(#arrow)"/>
+    <rect class="card" x="885" y="120" width="195" height="74" rx="18"/><text class="mono blue" x="982" y="168" text-anchor="middle">[10]</text>
+  </g>
+
+  <g>
+    <rect class="card" x="120" y="285" width="300" height="74" rx="18"/><text class="mono blue" x="270" y="333" text-anchor="middle">[10]</text>
+    <path class="step" d="M425 322h110" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="555" y="285" width="215" height="74" rx="18"/><text class="mono olive" x="662" y="333" text-anchor="middle">append(20)</text>
+    <path class="line" d="M775 322h90" marker-end="url(#arrow)"/>
+    <rect class="card" x="885" y="285" width="195" height="74" rx="18"/><text class="mono blue" x="982" y="333" text-anchor="middle">[10, 20]</text>
+  </g>
+
+  <g>
+    <rect class="card" x="120" y="450" width="300" height="74" rx="18"/><text class="mono blue" x="270" y="498" text-anchor="middle">[10, 20]</text>
+    <path class="step" d="M425 487h110" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="555" y="450" width="215" height="74" rx="18"/><text class="mono olive" x="662" y="498" text-anchor="middle">append(30)</text>
+    <path class="line" d="M775 487h90" marker-end="url(#arrow)"/>
+    <rect class="card" x="885" y="450" width="195" height="74" rx="18"/><text class="mono blue" x="982" y="498" text-anchor="middle">[10, 20, 30]</text>
+  </g>
+
+  <rect class="accent" x="235" y="600" width="730" height="58" rx="14"/>
+  <text class="text label ink" x="600" y="637" text-anchor="middle">Цикл с input() может повторять append() несколько раз</text>
+</svg>

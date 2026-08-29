@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Присваивание и копия списка</title>
+  <desc id="desc">Схема показывает, что second = first связывает два имени с одним списком, а second = first[:] создаёт отдельный список.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:23px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:28px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Присваивание не создаёт копию списка</text>
+
+  <rect class="card" x="65" y="110" width="515" height="510" rx="18"/>
+  <text class="text label ink" x="322" y="150" text-anchor="middle">Один список и два имени</text>
+  <text class="mono blue" x="322" y="198" text-anchor="middle">first = [1, 2, 3]</text>
+  <text class="mono blue" x="322" y="232" text-anchor="middle">second = first</text>
+
+  <text class="bigmono blue" x="150" y="325" text-anchor="middle">first</text>
+  <text class="bigmono blue" x="150" y="425" text-anchor="middle">second</text>
+  <path class="line" d="M205 318C255 318 270 365 320 365" marker-end="url(#arrow)"/>
+  <path class="line" d="M220 418C260 418 275 365 320 365" marker-end="url(#arrow)"/>
+  <rect class="soft" x="340" y="315" width="190" height="100" rx="16"/>
+  <text class="bigmono olive" x="435" y="375" text-anchor="middle">[1, 2, 3]</text>
+
+  <path class="step" d="M322 455v52" marker-end="url(#arrow-olive)"/>
+  <text class="mono olive" x="322" y="548" text-anchor="middle">second.append(4)</text>
+  <text class="mono blue" x="322" y="590" text-anchor="middle">оба имени видят [1, 2, 3, 4]</text>
+
+  <rect class="card" x="620" y="110" width="515" height="510" rx="18"/>
+  <text class="text label ink" x="878" y="150" text-anchor="middle">Отдельная простая копия</text>
+  <text class="mono blue" x="878" y="198" text-anchor="middle">first = [1, 2, 3]</text>
+  <text class="mono blue" x="878" y="232" text-anchor="middle">second = first[:]</text>
+
+  <text class="bigmono blue" x="720" y="325" text-anchor="middle">first</text>
+  <path class="line" d="M775 318h75" marker-end="url(#arrow)"/>
+  <rect class="soft" x="870" y="282" width="200" height="70" rx="14"/>
+  <text class="bigmono olive" x="970" y="326" text-anchor="middle">[1, 2, 3]</text>
+
+  <text class="bigmono blue" x="720" y="445" text-anchor="middle">second</text>
+  <path class="line" d="M795 438h55" marker-end="url(#arrow)"/>
+  <rect class="soft" x="870" y="402" width="220" height="70" rx="14"/>
+  <text class="bigmono olive" x="980" y="446" text-anchor="middle">[1, 2, 3]</text>
+
+  <path class="step" d="M878 495v44" marker-end="url(#arrow-olive)"/>
+  <text class="mono olive" x="878" y="580" text-anchor="middle">append(4) меняет только second</text>
+
+  <rect class="accent" x="245" y="642" width="710" height="46" rx="14"/>
+  <text class="text label ink" x="600" y="673" text-anchor="middle">Для простой копии одноуровневого списка можно использовать [:]</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Устройство списка</title>
+  <desc id="desc">Схема показывает список languages с тремя элементами Python, Java и Go, положительными индексами 0, 1, 2 и отрицательными индексами -3, -2, -1.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:27px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Одна переменная хранит несколько элементов</text>
+  <text class="text body muted" x="600" y="92" text-anchor="middle">Список похож на строку как последовательность, но его элементы могут быть целыми значениями</text>
+
+  <rect class="accent" x="120" y="125" width="960" height="86" rx="18"/>
+  <text class="mono blue" x="600" y="178" text-anchor="middle">languages = ["Python", "Java", "Go"]</text>
+
+  <text class="text label ink" x="115" y="296" text-anchor="end">список</text>
+  <rect class="card" x="145" y="245" width="910" height="120" rx="18"/>
+  <text class="text body muted" x="600" y="385" text-anchor="middle">контейнер списка</text>
+
+  <text class="text label ink" x="115" y="315" text-anchor="end">элемент</text>
+  <g>
+    <rect class="soft" x="195" y="270" width="220" height="74" rx="14"/><text class="bigmono olive" x="305" y="318" text-anchor="middle">"Python"</text>
+    <rect class="soft" x="490" y="270" width="220" height="74" rx="14"/><text class="bigmono olive" x="600" y="318" text-anchor="middle">"Java"</text>
+    <rect class="soft" x="785" y="270" width="220" height="74" rx="14"/><text class="bigmono olive" x="895" y="318" text-anchor="middle">"Go"</text>
+  </g>
+
+  <text class="text label ink" x="115" y="462" text-anchor="end">индекс</text>
+  <g>
+    <rect class="card" x="195" y="420" width="220" height="64" rx="12"/><text class="mono blue" x="305" y="462" text-anchor="middle">0</text>
+    <rect class="card" x="490" y="420" width="220" height="64" rx="12"/><text class="mono blue" x="600" y="462" text-anchor="middle">1</text>
+    <rect class="card" x="785" y="420" width="220" height="64" rx="12"/><text class="mono blue" x="895" y="462" text-anchor="middle">2</text>
+  </g>
+
+  <text class="text label ink" x="115" y="557" text-anchor="end">отриц.</text>
+  <g>
+    <rect class="card" x="195" y="515" width="220" height="64" rx="12"/><text class="mono blue" x="305" y="557" text-anchor="middle">-3</text>
+    <rect class="card" x="490" y="515" width="220" height="64" rx="12"/><text class="mono blue" x="600" y="557" text-anchor="middle">-2</text>
+    <rect class="card" x="785" y="515" width="220" height="64" rx="12"/><text class="mono blue" x="895" y="557" text-anchor="middle">-1</text>
+  </g>
+
+  <path class="line" d="M600 214v25" marker-end="url(#arrow)"/>
+  <text class="text label ink" x="600" y="645" text-anchor="middle">Индекс выбирает один элемент из общего набора</text>
+</svg>

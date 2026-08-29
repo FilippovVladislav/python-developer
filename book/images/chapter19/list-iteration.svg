@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Перебор списка через for</title>
+  <desc id="desc">Схема показывает, что цикл for получает из списка languages элементы Python, Java и Go по очереди.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:27px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:33px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">for получает каждый элемент списка по очереди</text>
+
+  <rect class="accent" x="110" y="115" width="430" height="95" rx="18"/>
+  <text class="mono blue" x="325" y="174" text-anchor="middle">["Python", "Java", "Go"]</text>
+  <path class="line" d="M545 162h100" marker-end="url(#arrow)"/>
+  <rect class="card" x="665" y="115" width="425" height="95" rx="18"/>
+  <text class="mono blue" x="878" y="174" text-anchor="middle">for language in languages</text>
+
+  <path class="line" d="M878 218v55" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect class="soft" x="425" y="292" width="350" height="56" rx="12"/><text class="mono olive" x="600" y="329" text-anchor="middle">language = "Python"</text>
+    <path class="step" d="M600 354v34" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="425" y="397" width="350" height="56" rx="12"/><text class="mono olive" x="600" y="434" text-anchor="middle">language = "Java"</text>
+    <path class="step" d="M600 459v34" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="425" y="502" width="350" height="56" rx="12"/><text class="mono olive" x="600" y="539" text-anchor="middle">language = "Go"</text>
+    <path class="step" d="M600 564v30" marker-end="url(#arrow-olive)"/>
+    <rect class="card" x="425" y="605" width="350" height="52" rx="12"/><text class="mono blue" x="600" y="639" text-anchor="middle">конец списка</text>
+  </g>
+
+  <rect class="accent" x="90" y="365" width="245" height="120" rx="18"/>
+  <text class="text label ink" x="212" y="413" text-anchor="middle">Без индексов</text>
+  <text class="text body muted" x="212" y="450" text-anchor="middle">переменная сразу</text>
+  <text class="text body muted" x="212" y="478" text-anchor="middle">получает элемент</text>
+</svg>

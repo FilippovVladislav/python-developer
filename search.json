@@ -946,7 +946,7 @@
     "href": "book/tom-02-python-basics.html#быстрые-ссылки",
     "title": "3 Том II. Базовые конструкции Python",
     "section": "",
-    "text": "3.1 Переменные\n3.2 Типы данных\n3.3 Ввод данных\n3.4 Преобразование типов\n3.5 Арифметические операции\n3.6 Сравнение значений\n3.7 Условия\n3.8 Логические операции\n3.9 Цикл while\n3.10 Цикл for\n3.11 Строки\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от сохранения одного значения к типам данных, вводу, преобразованиям, вычислениям, сравнениям, условиям, циклам, строкам, спискам и функциям.",
+    "text": "3.1 Переменные\n3.2 Типы данных\n3.3 Ввод данных\n3.4 Преобразование типов\n3.5 Арифметические операции\n3.6 Сравнение значений\n3.7 Условия\n3.8 Логические операции\n3.9 Цикл while\n3.10 Цикл for\n3.11 Строки\n3.12 Списки\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от сохранения одного значения к типам данных, вводу, преобразованиям, вычислениям, сравнениям, условиям, циклам, строкам, спискам и функциям.",
     "crumbs": [
       "3 Том II. Базовые конструкции Python"
     ]
@@ -4040,6 +4040,677 @@
     "crumbs": [
       "3 Том II. Базовые конструкции Python",
       "3.11 Строки"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html",
+    "href": "book/chapters/19-lists.html",
+    "title": "2  Списки",
+    "section": "",
+    "text": "2.1 Первый список\nДо сих пор одна переменная обычно хранила одно значение.\nНапример:\nНо часто программе нужно работать сразу с несколькими значениями.\nНапример:\nМожно было бы создать много отдельных переменных:\nНо такой подход быстро становится неудобным.\nВ Python для хранения нескольких значений существует список.\nСписок создаётся с помощью квадратных скобок:\nЗдесь одна переменная:\nсодержит сразу три значения.\nВыведем список:\nРезультат:",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#первый-список",
+    "href": "book/chapters/19-lists.html#первый-список",
+    "title": "2  Списки",
+    "section": "",
+    "text": "cities = [\"Москва\", \"Казань\", \"Самара\"]\n\ncities\n\n\ncities = [\"Москва\", \"Казань\", \"Самара\"]\n\nprint(cities)\n\n['Москва', 'Казань', 'Самара']",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#тип-list",
+    "href": "book/chapters/19-lists.html#тип-list",
+    "title": "2  Списки",
+    "section": "2.2 Тип list",
+    "text": "2.2 Тип list\nСписки имеют тип:\nlist\nПроверим:\ncities = [\"Москва\", \"Казань\", \"Самара\"]\n\nprint(type(cities))\nРезультат:\n&lt;class 'list'&gt;\nПолучается:\n[\"Москва\", \"Казань\", \"Самара\"]\n              ↓\n             list\nВ HTML-версии можно сразу проверить несколько списков: со строками, с числами и пустой список.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#элементы-списка",
+    "href": "book/chapters/19-lists.html#элементы-списка",
+    "title": "2  Списки",
+    "section": "2.3 Элементы списка",
+    "text": "2.3 Элементы списка\nЗначения внутри списка называются элементами.\nНапример:\nnumbers = [10, 20, 30]\nЗдесь три элемента:\n10\n20\n30\nВ списке:\nlanguages = [\"Python\", \"Java\", \"Go\"]\nэлементами являются строки.\nМожно представить:\n\n\n\nУстройство списка",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#в-списке-могут-храниться-числа",
+    "href": "book/chapters/19-lists.html#в-списке-могут-храниться-числа",
+    "title": "2  Списки",
+    "section": "2.4 В списке могут храниться числа",
+    "text": "2.4 В списке могут храниться числа\nНапример:\nprices = [100, 250, 79, 500]\n\nprint(prices)\nРезультат:\n[100, 250, 79, 500]\nИли дробные числа:\ntemperatures = [18.5, 20.1, 17.8]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#список-может-содержать-значения-разных-типов",
+    "href": "book/chapters/19-lists.html#список-может-содержать-значения-разных-типов",
+    "title": "2  Списки",
+    "section": "2.5 Список может содержать значения разных типов",
+    "text": "2.5 Список может содержать значения разных типов\nPython позволяет написать:\ndata = [\"Анна\", 25, 1.68, True]\nЗдесь находятся:\nstr\nint\nfloat\nbool\nТакой список технически допустим.\nНо в учебных и реальных программах часто удобнее, когда элементы списка имеют один общий смысл.\nНапример:\nprices = [100, 250, 79]\nили:\nnames = [\"Анна\", \"Максим\", \"Олег\"]\n\n\n\n\n\n\nСоветСписок лучше использовать для связанных значений\n\n\n\nТехнически список может содержать разные типы:\n[\"Анна\", 25, True]\nНо обычно понятнее хранить вместе значения, которые относятся к одной задаче:\nnames = [\"Анна\", \"Максим\", \"Олег\"]\nили:\nscores = [90, 75, 82]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#пустой-список",
+    "href": "book/chapters/19-lists.html#пустой-список",
+    "title": "2  Списки",
+    "section": "2.6 Пустой список",
+    "text": "2.6 Пустой список\nСписок может не содержать элементов:\nitems = []\nЭто пустой список.\nПроверим:\nitems = []\n\nprint(items)\nprint(type(items))\nРезультат:\n[]\n&lt;class 'list'&gt;\nПустой список часто используется как начало набора, который будет заполняться позже.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#индексы-списка",
+    "href": "book/chapters/19-lists.html#индексы-списка",
+    "title": "2  Списки",
+    "section": "2.7 Индексы списка",
+    "text": "2.7 Индексы списка\nКак и строки, списки используют индексы.\nРассмотрим:\nlanguages = [\"Python\", \"Java\", \"Go\"]\nИндексы:\nэлемент:   Python   Java   Go\nиндекс:      0       1     2\nИндексация снова начинается с:\n0",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#получение-элемента-по-индексу",
+    "href": "book/chapters/19-lists.html#получение-элемента-по-индексу",
+    "title": "2  Списки",
+    "section": "2.8 Получение элемента по индексу",
+    "text": "2.8 Получение элемента по индексу\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(languages[0])\nРезультат:\nPython\nДругие примеры:\nprint(languages[1])\nprint(languages[2])\nРезультат:\nJava\nGo",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#отрицательные-индексы",
+    "href": "book/chapters/19-lists.html#отрицательные-индексы",
+    "title": "2  Списки",
+    "section": "2.9 Отрицательные индексы",
+    "text": "2.9 Отрицательные индексы\nСписки поддерживают отрицательные индексы так же, как строки.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(languages[-1])\nprint(languages[-2])\nРезультат:\nGo\nJava\nПроверьте положительные и отрицательные индексы в playground.\n\n\n\nДля списка:\n[\"Python\", \"Java\", \"Go\"]\nможно представить:\nиндекс:       0       1      2\n             Python  Java    Go\nотриц.:      -3      -2     -1",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#ошибка-индекса",
+    "href": "book/chapters/19-lists.html#ошибка-индекса",
+    "title": "2  Списки",
+    "section": "2.10 Ошибка индекса",
+    "text": "2.10 Ошибка индекса\nЕсли обратиться к несуществующему элементу:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(languages[10])\nвозникнет:\nIndexError\nПричина та же, что и со строками: такого индекса нет.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#длина-списка",
+    "href": "book/chapters/19-lists.html#длина-списка",
+    "title": "2  Списки",
+    "section": "2.11 Длина списка",
+    "text": "2.11 Длина списка\nФункция:\nlen()\nработает и со списками.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(len(languages))\nРезультат:\n3\nПустой список:\nitems = []\n\nprint(len(items))\nРезультат:\n0",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#списки-можно-изменять",
+    "href": "book/chapters/19-lists.html#списки-можно-изменять",
+    "title": "2  Списки",
+    "section": "2.12 Списки можно изменять",
+    "text": "2.12 Списки можно изменять\nЗдесь появляется важное отличие от строк.\nСтроки неизменяемые:\nword = \"Python\"\nword[0] = \"J\"\nне работает.\nНо элемент списка изменить можно:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nlanguages[1] = \"Rust\"\n\nprint(languages)\nРезультат:\n['Python', 'Rust', 'Go']\n\n\n\n\n\n\nИзменяемость списка и строки\n\n\n\n\n\n\n\n\nВажное уведомлениеСписки изменяемые\n\n\n\nСтроку нельзя изменить по индексу:\nword[0] = \"J\"\nА список можно:\nlanguages[0] = \"Rust\"\nЭто одно из важных различий между str и list.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#изменение-элемента",
+    "href": "book/chapters/19-lists.html#изменение-элемента",
+    "title": "2  Списки",
+    "section": "2.13 Изменение элемента",
+    "text": "2.13 Изменение элемента\nНапример:\nprices = [100, 200, 300]\n\nprices[1] = 250\n\nprint(prices)\nРезультат:\n[100, 250, 300]\nИзменяется только выбранный элемент.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#append",
+    "href": "book/chapters/19-lists.html#append",
+    "title": "2  Списки",
+    "section": "2.14 append()",
+    "text": "2.14 append()\nЧтобы добавить новый элемент в конец списка, используется метод:\nappend()\nНапример:\nlanguages = [\"Python\", \"Java\"]\n\nlanguages.append(\"Go\")\n\nprint(languages)\nРезультат:\n['Python', 'Java', 'Go']\nМожно представить:\n[\"Python\", \"Java\"]\n         ↓\n   append(\"Go\")\n         ↓\n[\"Python\", \"Java\", \"Go\"]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#добавление-пользовательского-значения",
+    "href": "book/chapters/19-lists.html#добавление-пользовательского-значения",
+    "title": "2  Списки",
+    "section": "2.15 Добавление пользовательского значения",
+    "text": "2.15 Добавление пользовательского значения\nНапример:\nnames = []\n\nname = input(\"Введите имя: \")\n\nnames.append(name)\n\nprint(names)\nЕсли пользователь введёт:\nАнна\nполучим:\n['Анна']",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#append-внутри-цикла",
+    "href": "book/chapters/19-lists.html#append-внутри-цикла",
+    "title": "2  Списки",
+    "section": "2.16 append() внутри цикла",
+    "text": "2.16 append() внутри цикла\nСписок особенно полезен вместе с циклами.\nНапример:\nnumbers = []\n\nfor i in range(3):\n    number = int(input(\"Введите число: \"))\n    numbers.append(number)\n\nprint(numbers)\nЕсли пользователь введёт:\n10\n20\n30\nрезультат:\n[10, 20, 30]\nЗдесь список постепенно заполняется.\nПопробуйте изменить добавляемые языки и ввести свои числа.\n\n\n\n\n\n\nРост списка через append",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#insert",
+    "href": "book/chapters/19-lists.html#insert",
+    "title": "2  Списки",
+    "section": "2.17 insert()",
+    "text": "2.17 insert()\nМетод:\ninsert()\nпозволяет добавить элемент в определённую позицию.\nНапример:\nlanguages = [\"Python\", \"Go\"]\n\nlanguages.insert(1, \"Java\")\n\nprint(languages)\nРезультат:\n['Python', 'Java', 'Go']\nСинтаксис:\nсписок.insert(индекс, значение)",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#разница-между-append-и-insert",
+    "href": "book/chapters/19-lists.html#разница-между-append-и-insert",
+    "title": "2  Списки",
+    "section": "2.18 Разница между append() и insert()",
+    "text": "2.18 Разница между append() и insert()\nappend() добавляет в конец:\nitems.append(value)\ninsert() добавляет в указанную позицию:\nitems.insert(index, value)\nНапример:\nnumbers = [10, 30]\n\nnumbers.append(40)\nполучим:\n[10, 30, 40]\nА:\nnumbers.insert(1, 20)\nдаст:\n[10, 20, 30, 40]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#удаление-по-значению-remove",
+    "href": "book/chapters/19-lists.html#удаление-по-значению-remove",
+    "title": "2  Списки",
+    "section": "2.19 Удаление по значению: remove()",
+    "text": "2.19 Удаление по значению: remove()\nМетод:\nremove()\nудаляет элемент по его значению.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nlanguages.remove(\"Java\")\n\nprint(languages)\nРезультат:\n['Python', 'Go']",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#remove-удаляет-первое-совпадение",
+    "href": "book/chapters/19-lists.html#remove-удаляет-первое-совпадение",
+    "title": "2  Списки",
+    "section": "2.20 remove() удаляет первое совпадение",
+    "text": "2.20 remove() удаляет первое совпадение\nРассмотрим:\nnumbers = [10, 20, 10, 30]\n\nnumbers.remove(10)\n\nprint(numbers)\nРезультат:\n[20, 10, 30]\nУдалилось только первое значение:\n10",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#если-значения-нет",
+    "href": "book/chapters/19-lists.html#если-значения-нет",
+    "title": "2  Списки",
+    "section": "2.21 Если значения нет",
+    "text": "2.21 Если значения нет\nНапример:\nlanguages = [\"Python\", \"Java\"]\n\nlanguages.remove(\"Go\")\nТакого элемента нет.\nPython сообщит об ошибке:\nValueError\nПоэтому перед удалением иногда полезно сначала проверить:\nif \"Go\" in languages:\n    languages.remove(\"Go\")",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#удаление-по-индексу-pop",
+    "href": "book/chapters/19-lists.html#удаление-по-индексу-pop",
+    "title": "2  Списки",
+    "section": "2.22 Удаление по индексу: pop()",
+    "text": "2.22 Удаление по индексу: pop()\nМетод:\npop()\nможет удалить элемент по индексу и вернуть его.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nremoved = languages.pop(1)\n\nprint(removed)\nprint(languages)\nРезультат:\nJava\n['Python', 'Go']\nПроверьте удаление по индексу и удаление первого совпадающего значения.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#pop-без-индекса",
+    "href": "book/chapters/19-lists.html#pop-без-индекса",
+    "title": "2  Списки",
+    "section": "2.23 pop() без индекса",
+    "text": "2.23 pop() без индекса\nЕсли индекс не указан:\nlanguages.pop()\nудаляется последний элемент.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nremoved = languages.pop()\n\nprint(removed)\nprint(languages)\nРезультат:\nGo\n['Python', 'Java']",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#clear",
+    "href": "book/chapters/19-lists.html#clear",
+    "title": "2  Списки",
+    "section": "2.24 clear()",
+    "text": "2.24 clear()\nЧтобы удалить все элементы:\nclear()\nНапример:\nnumbers = [10, 20, 30]\n\nnumbers.clear()\n\nprint(numbers)\nРезультат:\n[]\nСам список остаётся существовать, но становится пустым.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#проверка-элемента-с-in",
+    "href": "book/chapters/19-lists.html#проверка-элемента-с-in",
+    "title": "2  Списки",
+    "section": "2.25 Проверка элемента с in",
+    "text": "2.25 Проверка элемента с in\nОператор:\nin\nработает и со списками.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(\"Python\" in languages)\nРезультат:\nTrue\nА:\nprint(\"Rust\" in languages)\nдаёт:\nFalse",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#not-in",
+    "href": "book/chapters/19-lists.html#not-in",
+    "title": "2  Списки",
+    "section": "2.26 not in",
+    "text": "2.26 not in\nМожно проверить отсутствие:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(\"Rust\" not in languages)\nРезультат:\nTrue\nЭто удобно вместе с if:\nif \"Python\" in languages:\n    print(\"Python найден\")",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#перебор-списка-через-for",
+    "href": "book/chapters/19-lists.html#перебор-списка-через-for",
+    "title": "2  Списки",
+    "section": "2.27 Перебор списка через for",
+    "text": "2.27 Перебор списка через for\nfor отлично подходит для списков.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nfor language in languages:\n    print(language)\nРезультат:\nPython\nJava\nGo\n\n\n\nНа каждой итерации:\nlanguage\nполучает очередной элемент списка.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#как-for-перебирает-список",
+    "href": "book/chapters/19-lists.html#как-for-перебирает-список",
+    "title": "2  Списки",
+    "section": "2.28 Как for перебирает список",
+    "text": "2.28 Как for перебирает список\nМожно представить:\n[\"Python\", \"Java\", \"Go\"]\n        ↓\n      for\n        ↓\nlanguage = \"Python\"\n        ↓\nlanguage = \"Java\"\n        ↓\nlanguage = \"Go\"\n        ↓\n      конец\nЗдесь не нужно использовать индексы.\n\n\n\nПеребор списка через for",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#когда-индекс-не-нужен",
+    "href": "book/chapters/19-lists.html#когда-индекс-не-нужен",
+    "title": "2  Списки",
+    "section": "2.29 Когда индекс не нужен",
+    "text": "2.29 Когда индекс не нужен\nЕсли нужно просто обработать каждый элемент:\nfor language in languages:\n    print(language)\nобычно лучше перебирать сами значения.\nНеобязательно писать:\nfor i in range(len(languages)):\n    print(languages[i])\nТакой вариант тоже возможен, но для простой обработки элементов он сложнее.\n\n\n\n\n\n\nСоветПеребирайте элементы напрямую\n\n\n\nЕсли индекс не нужен, обычно проще:\nfor item in items:\n    print(item)\nчем:\nfor i in range(len(items)):\n    print(items[i])",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#перебор-по-индексам",
+    "href": "book/chapters/19-lists.html#перебор-по-индексам",
+    "title": "2  Списки",
+    "section": "2.30 Перебор по индексам",
+    "text": "2.30 Перебор по индексам\nИногда индекс действительно нужен.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nfor i in range(len(languages)):\n    print(i, languages[i])\nРезультат:\n0 Python\n1 Java\n2 Go\nЗдесь:\nrange(len(languages))\nдаёт:\n0\n1\n2",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#изменение-элементов-по-индексам",
+    "href": "book/chapters/19-lists.html#изменение-элементов-по-индексам",
+    "title": "2  Списки",
+    "section": "2.31 Изменение элементов по индексам",
+    "text": "2.31 Изменение элементов по индексам\nЕсли нужно изменить каждый элемент списка, индексы могут быть полезны.\nНапример:\nnumbers = [1, 2, 3]\n\nfor i in range(len(numbers)):\n    numbers[i] = numbers[i] * 2\n\nprint(numbers)\nРезультат:\n[2, 4, 6]\nЗдесь изменяется сам список.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#срезы-списков",
+    "href": "book/chapters/19-lists.html#срезы-списков",
+    "title": "2  Списки",
+    "section": "2.32 Срезы списков",
+    "text": "2.32 Срезы списков\nСписки поддерживают срезы так же, как строки.\nНапример:\nnumbers = [10, 20, 30, 40, 50]\n\nprint(numbers[1:4])\nРезультат:\n[20, 30, 40]\nПравая граница снова не включается.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#другие-срезы",
+    "href": "book/chapters/19-lists.html#другие-срезы",
+    "title": "2  Списки",
+    "section": "2.33 Другие срезы",
+    "text": "2.33 Другие срезы\nnumbers = [10, 20, 30, 40, 50]\n\nprint(numbers[:3])\nprint(numbers[2:])\nprint(numbers[-2:])\nprint(numbers[::-1])\nРезультат:\n[10, 20, 30]\n[30, 40, 50]\n[40, 50]\n[50, 40, 30, 20, 10]\nПоменяйте границы среза и проверьте, что stop не включается.\n\n\n\nПравила очень похожи на строки.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#срез-создаёт-новый-список",
+    "href": "book/chapters/19-lists.html#срез-создаёт-новый-список",
+    "title": "2  Списки",
+    "section": "2.34 Срез создаёт новый список",
+    "text": "2.34 Срез создаёт новый список\nНапример:\nnumbers = [10, 20, 30, 40]\n\npart = numbers[1:3]\n\nprint(part)\nРезультат:\n[20, 30]\npart — отдельный список.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#объединение-списков",
+    "href": "book/chapters/19-lists.html#объединение-списков",
+    "title": "2  Списки",
+    "section": "2.35 Объединение списков",
+    "text": "2.35 Объединение списков\nОператор:\n+\nможет объединять списки.\nНапример:\nfirst = [1, 2]\nsecond = [3, 4]\n\nresult = first + second\n\nprint(result)\nРезультат:\n[1, 2, 3, 4]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#повторение-списка",
+    "href": "book/chapters/19-lists.html#повторение-списка",
+    "title": "2  Списки",
+    "section": "2.36 Повторение списка",
+    "text": "2.36 Повторение списка\nОператор:\n*\nможет повторять элементы списка.\nНапример:\nnumbers = [1, 2]\n\nprint(numbers * 3)\nРезультат:\n[1, 2, 1, 2, 1, 2]\nЭто похоже на повторение строк:\n\"Hi\" * 3",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#count",
+    "href": "book/chapters/19-lists.html#count",
+    "title": "2  Списки",
+    "section": "2.37 count()",
+    "text": "2.37 count()\nМетод:\ncount()\nподсчитывает количество элементов с определённым значением.\nНапример:\nnumbers = [10, 20, 10, 30, 10]\n\nprint(numbers.count(10))\nРезультат:\n3",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#index",
+    "href": "book/chapters/19-lists.html#index",
+    "title": "2  Списки",
+    "section": "2.38 index()",
+    "text": "2.38 index()\nМетод:\nindex()\nвозвращает индекс первого совпадения.\nНапример:\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nprint(languages.index(\"Java\"))\nРезультат:\n1\nЕсли значения нет, возникнет:\nValueError",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#сортировка-списка",
+    "href": "book/chapters/19-lists.html#сортировка-списка",
+    "title": "2  Списки",
+    "section": "2.39 Сортировка списка",
+    "text": "2.39 Сортировка списка\nМетод:\nsort()\nсортирует сам список.\nНапример:\nnumbers = [30, 10, 20]\n\nnumbers.sort()\n\nprint(numbers)\nРезультат:\n[10, 20, 30]",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#sort-изменяет-список",
+    "href": "book/chapters/19-lists.html#sort-изменяет-список",
+    "title": "2  Списки",
+    "section": "2.40 sort() изменяет список",
+    "text": "2.40 sort() изменяет список\nЭто отличается от многих методов строк.\nНапример:\nnumbers = [3, 1, 2]\n\nnumbers.sort()\n\nprint(numbers)\nСам numbers теперь:\n[1, 2, 3]\n\n\n\n\n\n\nУведомлениеСписки изменяемые\n\n\n\nМетоды списков часто изменяют сам список:\nappend()\nremove()\npop()\nclear()\nsort()\nЭто отличается от строк, где методы вроде:\nupper()\nlower()\nreplace()\nсоздают новые строковые значения.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#сортировка-строк",
+    "href": "book/chapters/19-lists.html#сортировка-строк",
+    "title": "2  Списки",
+    "section": "2.41 Сортировка строк",
+    "text": "2.41 Сортировка строк\nМожно сортировать и список строк:\nnames = [\"Олег\", \"Анна\", \"Максим\"]\n\nnames.sort()\n\nprint(names)\nPython упорядочит строки согласно своим правилам сравнения.\nНа этом этапе достаточно понимать сам факт сортировки.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#reverse",
+    "href": "book/chapters/19-lists.html#reverse",
+    "title": "2  Списки",
+    "section": "2.42 reverse()",
+    "text": "2.42 reverse()\nМетод:\nreverse()\nизменяет порядок элементов на обратный.\nНапример:\nnumbers = [1, 2, 3, 4]\n\nnumbers.reverse()\n\nprint(numbers)\nРезультат:\n[4, 3, 2, 1]\nСоберём несколько методов в одном компактном примере.\n\n\n\nМожно также использовать срез:\nnumbers[::-1]\nНо между этими подходами есть различие:\nreverse()\nизменяет существующий список.\nСрез создаёт новый список.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#sum",
+    "href": "book/chapters/19-lists.html#sum",
+    "title": "2  Списки",
+    "section": "2.43 sum()",
+    "text": "2.43 sum()\nДля списка чисел можно использовать:\nsum()\nНапример:\nnumbers = [10, 20, 30]\n\nprint(sum(numbers))\nРезультат:\n60\nЭто короче, чем писать накопитель вручную.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#min-и-max",
+    "href": "book/chapters/19-lists.html#min-и-max",
+    "title": "2  Списки",
+    "section": "2.44 min() и max()",
+    "text": "2.44 min() и max()\nФункция:\nmin()\nнаходит минимальное значение.\nmax()\n— максимальное.\nНапример:\nnumbers = [12, 5, 30, 8]\n\nprint(min(numbers))\nprint(max(numbers))\nРезультат:\n5\n30",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#среднее-значение",
+    "href": "book/chapters/19-lists.html#среднее-значение",
+    "title": "2  Списки",
+    "section": "2.45 Среднее значение",
+    "text": "2.45 Среднее значение\nОтдельной встроенной функции среднего в этом базовом наборе нет.\nНо можно вычислить:\nnumbers = [10, 20, 30]\n\naverage = sum(numbers) / len(numbers)\n\nprint(average)\nРезультат:\n20.0\nЗдесь объединяются:\nsum()\nlen()\n/",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#важный-случай-пустой-список",
+    "href": "book/chapters/19-lists.html#важный-случай-пустой-список",
+    "title": "2  Списки",
+    "section": "2.46 Важный случай: пустой список",
+    "text": "2.46 Важный случай: пустой список\nРассмотрим:\nnumbers = []\n\naverage = sum(numbers) / len(numbers)\nПолучается:\n0 / 0\nЭто приведёт к:\nZeroDivisionError\nПоэтому перед таким вычислением нужно убедиться, что список не пуст.\nНапример:\nnumbers = []\n\nif len(numbers) &gt; 0:\n    average = sum(numbers) / len(numbers)\n    print(average)\nelse:\n    print(\"Список пуст\")",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#bool-списка",
+    "href": "book/chapters/19-lists.html#bool-списка",
+    "title": "2  Списки",
+    "section": "2.47 bool списка",
+    "text": "2.47 bool списка\nМы уже знаем:\nbool(\"\")\nдля пустой строки даёт:\nFalse\nСо списками работает похожее правило.\nПустой список:\nbool([])\nдаёт:\nFalse\nНепустой:\nbool([1, 2])\nдаёт:\nTrue\nПоэтому позже можно встретить:\nif numbers:\n    print(\"В списке есть элементы\")\nНа текущем этапе можно читать это как:\n\nесли список не пуст.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#проверка-пустого-списка",
+    "href": "book/chapters/19-lists.html#проверка-пустого-списка",
+    "title": "2  Списки",
+    "section": "2.48 Проверка пустого списка",
+    "text": "2.48 Проверка пустого списка\nЕсть несколько понятных вариантов.\nНапример:\nif len(numbers) &gt; 0:\n    print(\"Список не пуст\")\nИли:\nif numbers:\n    print(\"Список не пуст\")\nВторой вариант очень распространён в Python.\n\n\n\n\n\n\nСоветПустой список считается False\n\n\n\n[]\nв логическом контексте считается False.\nПоэтому:\nif items:\n    print(\"Есть элементы\")\nвыполнится только для непустого списка.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#создание-списка-из-пользовательского-ввода",
+    "href": "book/chapters/19-lists.html#создание-списка-из-пользовательского-ввода",
+    "title": "2  Списки",
+    "section": "2.49 Создание списка из пользовательского ввода",
+    "text": "2.49 Создание списка из пользовательского ввода\nНапример, пользователь вводит три числа:\nnumbers = []\n\nfor i in range(3):\n    number = float(input(\"Введите число: \"))\n    numbers.append(number)\n\nprint(numbers)\nПример:\nВведите число: 10\nВведите число: 20\nВведите число: 30\n[10.0, 20.0, 30.0]\nТеперь все введённые значения сохранены и доступны после завершения цикла.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#почему-это-лучше-одного-накопителя",
+    "href": "book/chapters/19-lists.html#почему-это-лучше-одного-накопителя",
+    "title": "2  Списки",
+    "section": "2.50 Почему это лучше одного накопителя",
+    "text": "2.50 Почему это лучше одного накопителя\nВ прошлых главах мы могли написать:\ntotal = 0\n\nfor i in range(3):\n    number = float(input(\"Введите число: \"))\n    total += number\nПосле цикла у нас есть только итоговая сумма.\nНо если использовать список:\nnumbers = []\n\nfor i in range(3):\n    number = float(input(\"Введите число: \"))\n    numbers.append(number)\nпосле цикла доступны все значения.\nНапример:\nprint(numbers)\nprint(sum(numbers))\nprint(min(numbers))\nprint(max(numbers))\nСписок сохраняет данные для дальнейшей обработки.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#пример-оценки",
+    "href": "book/chapters/19-lists.html#пример-оценки",
+    "title": "2  Списки",
+    "section": "2.51 Пример: оценки",
+    "text": "2.51 Пример: оценки\nscores = [85, 90, 72, 100, 88]\n\nprint(\"Количество:\", len(scores))\nprint(\"Сумма:\", sum(scores))\nprint(\"Минимум:\", min(scores))\nprint(\"Максимум:\", max(scores))\n\naverage = sum(scores) / len(scores)\n\nprint(\"Среднее:\", average)\nЭто уже похоже на небольшую обработку набора данных.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#пример-список-покупок",
+    "href": "book/chapters/19-lists.html#пример-список-покупок",
+    "title": "2  Списки",
+    "section": "2.52 Пример: список покупок",
+    "text": "2.52 Пример: список покупок\nproducts = [\"Хлеб\", \"Молоко\", \"Сыр\"]\n\nfor product in products:\n    print(\"-\", product)\nРезультат:\n- Хлеб\n- Молоко\n- Сыр\nМожно добавить новый товар:\nproducts.append(\"Кофе\")\nили удалить:\nproducts.remove(\"Молоко\")",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#пример-поиск-элемента",
+    "href": "book/chapters/19-lists.html#пример-поиск-элемента",
+    "title": "2  Списки",
+    "section": "2.53 Пример: поиск элемента",
+    "text": "2.53 Пример: поиск элемента\nproducts = [\"Хлеб\", \"Молоко\", \"Сыр\"]\n\nproduct = input(\"Что ищем? \")\n\nif product in products:\n    print(\"Товар найден\")\nelse:\n    print(\"Такого товара нет\")\n\n\n\nЗдесь объединяются:\ninput()\n↓\nсписок\n↓\nin\n↓\nTrue / False\n↓\nif",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#пример-фильтрация-значений",
+    "href": "book/chapters/19-lists.html#пример-фильтрация-значений",
+    "title": "2  Списки",
+    "section": "2.54 Пример: фильтрация значений",
+    "text": "2.54 Пример: фильтрация значений\nПока не будем создавать отдельный новый список, но можем вывести только подходящие значения.\nНапример:\nnumbers = [3, 10, 7, 20, 2]\n\nfor number in numbers:\n    if number &gt;= 10:\n        print(number)\nРезультат:\n10\n20\nПозже мы научимся сохранять такие выбранные значения в отдельный список более системно.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#изменение-списка-во-время-перебора",
+    "href": "book/chapters/19-lists.html#изменение-списка-во-время-перебора",
+    "title": "2  Списки",
+    "section": "2.55 Изменение списка во время перебора",
+    "text": "2.55 Изменение списка во время перебора\nРассмотрим идею:\nnumbers = [1, 2, 3, 4]\nМожно захотеть удалять элементы прямо внутри:\nfor number in numbers:\n    ...\nНо изменение размера списка во время его перебора может привести к неожиданному поведению.\nНа этом этапе лучше придерживаться простого правила:\n\n\n\n\n\n\nПредупреждениеНе изменяйте размер списка во время перебора\n\n\n\nПока вы изучаете списки, избегайте конструкций вроде:\nfor item in items:\n    items.remove(item)\nПеребор и одновременное удаление могут привести к пропуску элементов.\nСначала завершите перебор или используйте другой подход.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#копия-списка",
+    "href": "book/chapters/19-lists.html#копия-списка",
+    "title": "2  Списки",
+    "section": "2.56 Копия списка",
+    "text": "2.56 Копия списка\nРассмотрим:\nnumbers = [1, 2, 3]\n\ncopy = numbers[:]\n\nprint(copy)\nРезультат:\n[1, 2, 3]\nСрез:\n[:]\nсоздаёт новый список с теми же элементами.\nДля простых значений это удобный способ сделать копию списка.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#присваивание-не-копия",
+    "href": "book/chapters/19-lists.html#присваивание-не-копия",
+    "title": "2  Списки",
+    "section": "2.57 Присваивание — не копия",
+    "text": "2.57 Присваивание — не копия\nРассмотрим:\nfirst = [1, 2, 3]\nsecond = first\n\nsecond.append(4)\n\nprint(first)\nprint(second)\nРезультат:\n[1, 2, 3, 4]\n[1, 2, 3, 4]\nПочему изменились оба?\nПотому что:\nsecond = first\nне создаёт новый список.\nОба имени связаны с одним списком.\nМожно представить:\nfirst ──┐\n        ├──→ [1, 2, 3]\nsecond ─┘",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#настоящая-простая-копия",
+    "href": "book/chapters/19-lists.html#настоящая-простая-копия",
+    "title": "2  Списки",
+    "section": "2.58 Настоящая простая копия",
+    "text": "2.58 Настоящая простая копия\nЕсли нужен отдельный список:\nfirst = [1, 2, 3]\nsecond = first[:]\n\nsecond.append(4)\n\nprint(first)\nprint(second)\nРезультат:\n[1, 2, 3]\n[1, 2, 3, 4]\nТеперь списки разные.\nПроверьте обе ситуации рядом: присваивание имени и простую копию через срез.\n\n\n\n\n\n\nПрисваивание и копия списка\n\n\n\n\n\n\n\n\nВажное уведомлениеПрисваивание списка не создаёт копию\n\n\n\nsecond = first\nозначает, что два имени ссылаются на один и тот же список.\nДля простой копии одноуровневого списка можно использовать:\nsecond = first[:]\nК более сложным случаям копирования вернёмся позже.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#что-важно-запомнить",
+    "href": "book/chapters/19-lists.html#что-важно-запомнить",
+    "title": "2  Списки",
+    "section": "2.59 Что важно запомнить",
+    "text": "2.59 Что важно запомнить\nСписок — это значение типа:\nlist\nОн позволяет хранить несколько элементов:\nnumbers = [10, 20, 30]\nЭлементы имеют индексы:\n10   20   30\n0    1    2\nПолучение элемента:\nnumbers[0]\nnumbers[-1]\nДлина:\nlen(numbers)\nСписки изменяемые:\nnumbers[0] = 100\nОсновные методы:\nappend()\ninsert()\nremove()\npop()\nclear()\ncount()\nindex()\nsort()\nreverse()\nПолезные функции:\nlen()\nsum()\nmin()\nmax()\nПеребор:\nfor item in items:\n    print(item)\nПроверка:\nitem in items\nitem not in items\nСрез:\nitems[start:stop:step]\nИ самое важное:\n\nСписок позволяет сохранить несколько связанных значений и затем обрабатывать их как единый набор данных.\n\n\n\n2.59.1 Практические задания\nЗадание 1. Первый и последний элемент\nДан список:\nlanguages = [\"Python\", \"Java\", \"Go\", \"Rust\"]\nВыведите первый и последний элементы.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nlanguages = [\"Python\", \"Java\", \"Go\", \"Rust\"]\n\nprint(languages[0])\nprint(languages[-1])\n\n\n\n\nЗадание 2. Изменение элемента\nДан список:\nnumbers = [10, 20, 30]\nЗамените 20 на 25.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [10, 20, 30]\n\nnumbers[1] = 25\n\nprint(numbers)\nРезультат:\n[10, 25, 30]\n\n\n\n\nЗадание 3. Добавление элемента\nСоздайте список:\ncities = [\"Москва\", \"Казань\"]\nДобавьте:\nСамара\nв конец списка.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ncities = [\"Москва\", \"Казань\"]\n\ncities.append(\"Самара\")\n\nprint(cities)\n\n\n\n\nЗадание 4. Удаление элемента\nДан список:\nlanguages = [\"Python\", \"Java\", \"Go\"]\nУдалите \"Java\".\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nlanguages.remove(\"Java\")\n\nprint(languages)\nРезультат:\n['Python', 'Go']\n\n\n\n\nЗадание 5. Перебор списка\nДан список:\nnames = [\"Анна\", \"Максим\", \"Олег\"]\nВыведите каждое имя на отдельной строке.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnames = [\"Анна\", \"Максим\", \"Олег\"]\n\nfor name in names:\n    print(name)\n\n\n\n\nЗадание 6. Сумма элементов\nДан список:\nnumbers = [10, 20, 30, 40]\nВыведите сумму всех элементов.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [10, 20, 30, 40]\n\nprint(sum(numbers))\nРезультат:\n100\n\n\n\n\nЗадание 7. Минимум и максимум\nДан список:\nnumbers = [15, 3, 28, 9, 12]\nВыведите минимальное и максимальное значения.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [15, 3, 28, 9, 12]\n\nprint(\"Минимум:\", min(numbers))\nprint(\"Максимум:\", max(numbers))\n\n\n\n\nЗадание 8. Среднее значение\nДан список:\nscores = [80, 90, 70, 100]\nВычислите среднее значение.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nscores = [80, 90, 70, 100]\n\naverage = sum(scores) / len(scores)\n\nprint(\"Среднее:\", average)\nРезультат:\nСреднее: 85.0\n\n\n\n\nЗадание 9. Проверка элемента\nДан список:\nlanguages = [\"Python\", \"Java\", \"Go\"]\nПопросите пользователя ввести язык программирования и проверьте, есть ли он в списке.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nlanguages = [\"Python\", \"Java\", \"Go\"]\n\nlanguage = input(\"Введите язык: \")\n\nif language in languages:\n    print(\"Язык найден\")\nelse:\n    print(\"Языка нет в списке\")\n\n\n\n\nЗадание 10. Создание списка через input()\nСоздайте пустой список.\nПопросите пользователя ввести три числа и добавьте их в список.\nЗатем выведите весь список.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = []\n\nfor i in range(3):\n    number = float(input(\"Введите число: \"))\n    numbers.append(number)\n\nprint(numbers)\n\n\n\n\nЗадание 11. Только большие числа\nДан список:\nnumbers = [4, 15, 2, 30, 8, 21]\nВыведите только значения больше 10.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [4, 15, 2, 30, 8, 21]\n\nfor number in numbers:\n    if number &gt; 10:\n        print(number)\nРезультат:\n15\n30\n21\n\n\n\n\nЗадание 12. Срез списка\nДан список:\nnumbers = [10, 20, 30, 40, 50]\nВыведите:\n[20, 30, 40]\nс помощью среза.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [10, 20, 30, 40, 50]\n\nprint(numbers[1:4])\n\n\n\n\nЗадание 13. Разворот списка\nДан список:\nnumbers = [1, 2, 3, 4, 5]\nПолучите новый список в обратном порядке с помощью среза.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = [1, 2, 3, 4, 5]\n\nreversed_numbers = numbers[::-1]\n\nprint(reversed_numbers)\nРезультат:\n[5, 4, 3, 2, 1]\n\n\n\n\nЗадание 14. Найдите проблему\nЧто произойдёт?\nnumbers = [10, 20, 30]\n\nprint(numbers[3])\nПочему?\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nСписок содержит три элемента.\nИх индексы:\n10   20   30\n0    1    2\nИндекса:\n3\nнет.\nПоэтому возникнет:\nIndexError\n\n\n\n\nЗадание 15. Присваивание и копия\nКакой результат будет здесь?\nfirst = [1, 2, 3]\nsecond = first\n\nsecond.append(4)\n\nprint(first)\nСначала попробуйте ответить без запуска.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nРезультат:\n[1, 2, 3, 4]\nЗапись:\nsecond = first\nне создаёт новый список.\nОба имени ссылаются на один список.\nПоэтому изменение через second видно и через first.\nЕсли нужен отдельный список:\nsecond = first[:]\n\n\n\n\nЗадание 16. Задача со звёздочкой\nПользователь вводит пять чисел.\nСохраните их в список.\nПосле ввода выведите:\n\nвесь список;\nколичество элементов;\nсумму;\nминимальное число;\nмаксимальное число;\nсреднее значение.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nnumbers = []\n\nfor i in range(5):\n    number = float(input(\"Введите число: \"))\n    numbers.append(number)\n\nprint(\"Список:\", numbers)\nprint(\"Количество:\", len(numbers))\nprint(\"Сумма:\", sum(numbers))\nprint(\"Минимум:\", min(numbers))\nprint(\"Максимум:\", max(numbers))\n\naverage = sum(numbers) / len(numbers)\n\nprint(\"Среднее:\", average)\nЗдесь объединяется сразу несколько изученных тем:\ninput()\n↓\nfloat()\n↓\nfor\n↓\nappend()\n↓\nlist\n↓\nlen() / sum() / min() / max()",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
+    ]
+  },
+  {
+    "objectID": "book/chapters/19-lists.html#что-дальше",
+    "href": "book/chapters/19-lists.html#что-дальше",
+    "title": "2  Списки",
+    "section": "2.60 Что дальше?",
+    "text": "2.60 Что дальше?\nТеперь программа умеет хранить несколько связанных значений в одном списке:\nnumbers = [10, 20, 30]\nНо в примерах главы код уже начинает повторяться.\nНапример, одни и те же действия можно захотеть выполнить в разных местах программы:\nполучить данные\n↓\nпроверить их\n↓\nпосчитать результат\n↓\nвывести ответ\nСледующая тема — функции.\nФункция позволяет дать имя фрагменту программы и вызывать его снова, когда он нужен.",
+    "crumbs": [
+      "3 Том II. Базовые конструкции Python",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Списки</span>"
     ]
   }
 ]
