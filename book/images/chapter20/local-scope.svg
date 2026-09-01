@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Локальная область функции</title>
+  <desc id="desc">Схема показывает внешнюю область с name Анна и отдельную локальную область функции greet, где параметр name равен Максим и переменная message существует только внутри функции.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:31px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">У функции есть своя локальная область</text>
+
+  <rect class="card" x="70" y="115" width="470" height="480" rx="18"/>
+  <text class="text label ink" x="305" y="158" text-anchor="middle">Внешний код</text>
+  <rect class="accent" x="125" y="205" width="360" height="70" rx="14"/>
+  <text class="mono blue" x="305" y="249" text-anchor="middle">name = "Анна"</text>
+  <rect class="soft" x="125" y="365" width="360" height="70" rx="14"/>
+  <text class="mono olive" x="305" y="409" text-anchor="middle">greet("Максим")</text>
+  <path class="step" d="M305 278v80" marker-end="url(#arrow-olive)"/>
+  <text class="text body ink" x="305" y="505" text-anchor="middle">после вызова внешний</text>
+  <text class="mono blue" x="305" y="545" text-anchor="middle">name == "Анна"</text>
+
+  <rect class="card" x="650" y="115" width="480" height="480" rx="18"/>
+  <text class="text label ink" x="890" y="158" text-anchor="middle">Локальная область greet</text>
+  <rect class="accent" x="705" y="195" width="370" height="66" rx="14"/>
+  <text class="mono blue" x="890" y="237" text-anchor="middle">def greet(name):</text>
+  <rect class="soft" x="705" y="310" width="370" height="66" rx="14"/>
+  <text class="mono olive" x="890" y="352" text-anchor="middle">name = "Максим"</text>
+  <rect class="soft" x="705" y="415" width="370" height="66" rx="14"/>
+  <text class="mono olive" x="890" y="457" text-anchor="middle">message = ...</text>
+  <path class="step" d="M890 264v38" marker-end="url(#arrow-olive)"/>
+  <path class="step" d="M890 379v29" marker-end="url(#arrow-olive)"/>
+
+  <path class="line" d="M485 400C570 400 595 320 705 342" marker-end="url(#arrow)"/>
+  <path class="line" d="M705 535C610 630 410 620 305 550" marker-end="url(#arrow)"/>
+  <text class="text body muted" x="600" y="642" text-anchor="middle">локальные переменные не выходят наружу после завершения вызова</text>
+
+  <rect class="alt" x="705" y="505" width="370" height="54" rx="14"/>
+  <text class="text body red" x="890" y="540" text-anchor="middle">message доступна только внутри функции</text>
+</svg>

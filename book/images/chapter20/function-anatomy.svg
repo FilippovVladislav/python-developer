@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Устройство функции</title>
+  <desc id="desc">Схема показывает части функции def greet(name): print Привет name и отдельный вызов greet с аргументом Анна.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.small{font-size:18px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:29px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Функция имеет имя, параметры и тело</text>
+
+  <rect class="card" x="80" y="115" width="690" height="300" rx="18"/>
+  <text class="text label ink" x="425" y="155" text-anchor="middle">Определение функции</text>
+  <rect class="accent" x="130" y="185" width="590" height="92" rx="16"/>
+  <text class="bigmono blue" x="425" y="243" text-anchor="middle">def greet(name):</text>
+  <rect class="soft" x="185" y="330" width="480" height="70" rx="14"/>
+  <text class="mono olive" x="425" y="376" text-anchor="middle">    print("Привет,", name)</text>
+
+  <rect class="card" x="820" y="135" width="300" height="170" rx="18"/>
+  <text class="text label ink" x="970" y="176" text-anchor="middle">Вызов</text>
+  <text class="bigmono blue" x="970" y="238" text-anchor="middle">greet("Анна")</text>
+  <path class="line" d="M820 235h-70" marker-end="url(#arrow)"/>
+
+  <g>
+    <path class="line" d="M168 278v42" marker-end="url(#arrow)"/>
+    <rect class="card" x="50" y="448" width="205" height="70" rx="14"/>
+    <text class="mono blue" x="152" y="492" text-anchor="middle">def</text>
+    <text class="text body ink" x="152" y="548" text-anchor="middle">определение</text>
+    <text class="text body ink" x="152" y="574" text-anchor="middle">функции</text>
+  </g>
+
+  <g>
+    <path class="line" d="M320 278v42" marker-end="url(#arrow)"/>
+    <rect class="card" x="275" y="448" width="205" height="70" rx="14"/>
+    <text class="mono blue" x="378" y="492" text-anchor="middle">greet</text>
+    <text class="text body ink" x="378" y="548" text-anchor="middle">имя функции</text>
+  </g>
+
+  <g>
+    <path class="line" d="M525 278v42" marker-end="url(#arrow)"/>
+    <rect class="card" x="500" y="448" width="205" height="70" rx="14"/>
+    <text class="mono blue" x="602" y="492" text-anchor="middle">name</text>
+    <text class="text body ink" x="602" y="548" text-anchor="middle">параметр</text>
+  </g>
+
+  <g>
+    <path class="line" d="M675 278v42" marker-end="url(#arrow)"/>
+    <rect class="card" x="725" y="448" width="205" height="70" rx="14"/>
+    <text class="mono blue" x="828" y="492" text-anchor="middle">:</text>
+    <text class="text body ink" x="828" y="548" text-anchor="middle">начало блока</text>
+  </g>
+
+  <g>
+    <path class="step" d="M665 365h88" marker-end="url(#arrow-olive)"/>
+    <rect class="soft" x="955" y="448" width="205" height="70" rx="14"/>
+    <text class="mono olive" x="1058" y="492" text-anchor="middle">отступ</text>
+    <text class="text body ink" x="1058" y="548" text-anchor="middle">тело функции</text>
+  </g>
+
+  <rect class="alt" x="820" y="330" width="300" height="76" rx="14"/>
+  <text class="mono red" x="970" y="379" text-anchor="middle">"Анна"</text>
+  <text class="text body ink" x="970" y="432" text-anchor="middle">аргумент при вызове</text>
+
+  <rect class="accent" x="220" y="610" width="760" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="645" text-anchor="middle">Код внутри функции выполняется только при вызове</text>
+</svg>
