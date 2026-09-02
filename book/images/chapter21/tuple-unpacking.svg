@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Распаковка кортежа</title>
+  <desc id="desc">Кортеж point со значениями 10 и 20 распаковывается в переменные x и y. Рядом кортеж color распаковывается в red, green и blue.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.step{fill:none;stroke:#6f7d2d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:31px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-olive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6f7d2d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Элементы кортежа можно распределить по переменным</text>
+
+  <rect class="card" x="80" y="110" width="650" height="500" rx="18"/>
+  <rect class="accent" x="170" y="145" width="470" height="68" rx="14"/>
+  <text class="mono blue" x="405" y="188" text-anchor="middle">point = (10, 20)</text>
+  <path class="line" d="M405 220v50" marker-end="url(#arrow)"/>
+  <rect class="soft" x="250" y="286" width="310" height="62" rx="14"/>
+  <text class="text label ink" x="405" y="326" text-anchor="middle">распаковка</text>
+  <path class="step" d="M350 355C310 385 275 415 245 455" marker-end="url(#arrow-olive)"/>
+  <path class="step" d="M460 355C500 385 535 415 565 455" marker-end="url(#arrow-olive)"/>
+  <rect class="card" x="155" y="470" width="180" height="64" rx="14"/>
+  <text class="bigmono blue" x="245" y="512" text-anchor="middle">x</text>
+  <rect class="card" x="475" y="470" width="180" height="64" rx="14"/>
+  <text class="bigmono blue" x="565" y="512" text-anchor="middle">y</text>
+  <text class="bigmono olive" x="245" y="585" text-anchor="middle">10</text>
+  <text class="bigmono olive" x="565" y="585" text-anchor="middle">20</text>
+
+  <rect class="card" x="785" y="150" width="330" height="430" rx="18"/>
+  <rect class="accent" x="815" y="185" width="270" height="62" rx="14"/>
+  <text class="mono blue" x="950" y="224" text-anchor="middle">color</text>
+  <text class="mono blue" x="950" y="290" text-anchor="middle">(255, 120, 40)</text>
+  <path class="line" d="M950 305v45" marker-end="url(#arrow)"/>
+  <rect class="soft" x="825" y="370" width="250" height="150" rx="14"/>
+  <text class="text body ink" x="950" y="410" text-anchor="middle">red → 255</text>
+  <text class="text body ink" x="950" y="450" text-anchor="middle">green → 120</text>
+  <text class="text body ink" x="950" y="490" text-anchor="middle">blue → 40</text>
+
+  <text class="text label ink" x="600" y="660" text-anchor="middle">Количество переменных должно совпадать с количеством элементов</text>
+</svg>

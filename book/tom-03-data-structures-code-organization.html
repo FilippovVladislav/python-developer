@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Как компьютер хранит данные: биты, байты, числа, текст, изображения, звук и программы в памяти компьютера простыми словами для начинающих.">
+<meta name="description" content="Третий том книги «Путь Python-разработчика»: структуры данных, обработка ошибок, модули, пакеты, файлы, JSON и итоговый консольный проект.">
 
-<title>2.3 Как компьютер хранит данные – Путь Python-разработчика</title>
+<title>Том III. Структуры данных и организация кода – Путь Python-разработчика</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,63 +27,28 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../book/chapters/04-how-programs-run.html" rel="next">
-<link href="../../book/chapters/02-why-binary.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e19df9547eb517d331095cdad01067e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../book/chapters/21-tuples.html" rel="next">
+<link href="../book/chapters/20-functions.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9f98e89ef7965c498590e3ef12fd3477.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e19df9547eb517d331095cdad01067e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
+<link rel="stylesheet" href="../book/assets/css/python-playground.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -126,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/03-how-computers-store-data.html">2.3 Как компьютер хранит данные</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/tom-03-data-structures-code-organization.html">Том III. Структуры данных и организация кода</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
@@ -141,9 +106,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Путь Python-разработчика</a> 
+      <a href="../">Путь Python-разработчика</a> 
         <div class="sidebar-tools-main">
-    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -161,13 +126,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+            <a href="../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2 Том I. Основы программирования</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -176,43 +141,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.1 Как думает компьютер</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.5 Почему Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.6 Рабочее пространство Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2.7 Первая программа на Python</span></a>
   </div>
 </li>
@@ -220,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
+            <a href="../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3 Том II. Базовые конструкции Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -229,79 +194,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.1 Переменные</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/09-data-types.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/09-data-types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.2 Типы данных</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/10-user-input.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/10-user-input.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.3 Ввод данных</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/11-type-conversion.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/11-type-conversion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.4 Преобразование типов</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/12-arithmetic.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/12-arithmetic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.5 Арифметические операции</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/13-comparisons.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/13-comparisons.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.6 Сравнение значений</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/14-conditions.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/14-conditions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.7 Условия</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/15-boolean-logic.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/15-boolean-logic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.8 Логические операции</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/16-while-loop.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/16-while-loop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.9 Цикл while</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/17-for-loop.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/17-for-loop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.10 Цикл for</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/18-strings.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/18-strings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.11 Строки</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/19-lists.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/19-lists.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.12 Списки</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/20-functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/20-functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3.13 Функции</span></a>
   </div>
 </li>
@@ -309,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../book/tom-03-data-structures-code-organization.html" class="sidebar-item-text sidebar-link">
+            <a href="../book/tom-03-data-structures-code-organization.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Том III. Структуры данных и организация кода</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -318,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/chapters/21-tuples.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/chapters/21-tuples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4.1 Кортежи</span></a>
   </div>
 </li>
@@ -334,26 +299,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#бит-самая-маленькая-единица-информации" id="toc-бит-самая-маленькая-единица-информации" class="nav-link active" data-scroll-target="#бит-самая-маленькая-единица-информации">Бит — самая маленькая единица информации</a></li>
-  <li><a href="#байт" id="toc-байт" class="nav-link" data-scroll-target="#байт">Байт</a></li>
-  <li><a href="#как-компьютер-понимает-что-хранится-в-байте" id="toc-как-компьютер-понимает-что-хранится-в-байте" class="nav-link" data-scroll-target="#как-компьютер-понимает-что-хранится-в-байте">Как компьютер понимает, что хранится в байте?</a></li>
-  <li><a href="#как-хранится-текст" id="toc-как-хранится-текст" class="nav-link" data-scroll-target="#как-хранится-текст">Как хранится текст</a></li>
-  <li><a href="#почему-этого-оказалось-недостаточно" id="toc-почему-этого-оказалось-недостаточно" class="nav-link" data-scroll-target="#почему-этого-оказалось-недостаточно">Почему этого оказалось недостаточно</a></li>
-  <li><a href="#как-хранится-число" id="toc-как-хранится-число" class="nav-link" data-scroll-target="#как-хранится-число">Как хранится число</a></li>
-  <li><a href="#как-хранится-изображение" id="toc-как-хранится-изображение" class="nav-link" data-scroll-target="#как-хранится-изображение">Как хранится изображение</a></li>
-  <li><a href="#как-хранится-музыка" id="toc-как-хранится-музыка" class="nav-link" data-scroll-target="#как-хранится-музыка">Как хранится музыка</a></li>
-  <li><a href="#как-хранится-программа" id="toc-как-хранится-программа" class="nav-link" data-scroll-target="#как-хранится-программа">Как хранится программа</a></li>
-  <li><a href="#главное-что-нужно-запомнить" id="toc-главное-что-нужно-запомнить" class="nav-link" data-scroll-target="#главное-что-нужно-запомнить">Главное, что нужно запомнить</a></li>
-  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
+  <li><a href="#быстрые-ссылки" id="toc-быстрые-ссылки" class="nav-link active" data-scroll-target="#быстрые-ссылки">Быстрые ссылки</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-01-basics.html">2 Том I. Основы программирования</a></li><li class="breadcrumb-item"><a href="../../book/chapters/03-how-computers-store-data.html">2.3 Как компьютер хранит данные</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2.3 Как компьютер хранит данные</h1>
+<h1 class="title">Том III. Структуры данных и организация кода</h1>
 </div>
 
 
@@ -370,264 +325,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
+<p>Том III посвящён структурам данных и организации растущих Python-программ.</p>
+<p>После переменных, условий, циклов, строк, списков и функций читатель переходит к более выразительным способам хранить данные, безопаснее работать с ошибками и разделять программу на несколько файлов.</p>
+<p>Главная линия тома ведёт к небольшому консольному приложению: менеджеру задач.</p>
+<section id="быстрые-ссылки" class="level2">
+<h2 class="anchored" data-anchor-id="быстрые-ссылки">Быстрые ссылки</h2>
+<ul>
+<li><a href="../book/chapters/21-tuples.html">4.1 Кортежи</a></li>
+</ul>
+<!--
+- [Множества](chapters/22-sets.qmd)
+- [Словари](chapters/23-dictionaries.qmd)
+- [Работа со словарями](chapters/24-working-with-dictionaries.qmd)
+- [Вложенные структуры данных](chapters/25-nested-data-structures.qmd)
+- [List comprehensions](chapters/26-list-comprehensions.qmd)
+- [Обработка ошибок](chapters/27-error-handling.qmd)
+- [Модули](chapters/28-modules.qmd)
+- [Собственные модули](chapters/29-own-modules.qmd)
+- [Пакеты](chapters/30-packages.qmd)
+- [Файлы](chapters/31-files.qmd)
+- [JSON](chapters/32-json.qmd)
+- [Итоговый проект: менеджер задач](chapters/33-task-manager-project.qmd)
+
+-->
+<div class="callout callout-style-default callout-note callout-titled" title="Логика тома">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Важное уведомление
+<span class="screen-reader-only">Уведомление</span>Логика тома
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Главный вопрос главы:</p>
-<p><strong>Если компьютер знает только 0 и 1, как он хранит текст, числа, фотографии, музыку и программы?</strong></p>
+<p>Идите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.</p>
 </div>
 </div>
-<p>После предыдущей главы мы уже знаем важную вещь:</p>
-<blockquote class="blockquote">
-<p>Любая информация внутри компьютера состоит только из нулей и единиц.</p>
-</blockquote>
-<p>Но возникает следующий вопрос.</p>
-<p>Когда вы открываете фотографию, запускаете игру или читаете текстовый файл, вы не видите последовательность вроде</p>
-<pre><code>010011010100101011...</code></pre>
-<p>Вы видите изображение, буквы, числа и кнопки.</p>
-<p>Почему?</p>
-<p>Потому что сами биты ничего не означают.</p>
-<p>Смысл появляется только тогда, когда существует правило их интерпретации.</p>
-<hr>
-<section id="бит-самая-маленькая-единица-информации" class="level1">
-<h1>Бит — самая маленькая единица информации</h1>
-<p>Бит может принимать только два значения.</p>
-<pre><code>0</code></pre>
-<p>или</p>
-<pre><code>1</code></pre>
-<p>Это похоже на обычный выключатель.</p>
-<pre><code>Выключено -&gt; 0
-
-Включено -&gt; 1</code></pre>
-<p>Одного бита почти никогда недостаточно.</p>
-<p>Поэтому биты объединяют в группы.</p>
-<hr>
-</section>
-<section id="байт" class="level1">
-<h1>Байт</h1>
-<p>Самая известная группа — <strong>байт</strong>.</p>
-<p>Один байт состоит из восьми битов.</p>
-<pre><code>10100110</code></pre>
-<p>или</p>
-<pre><code>00000000</code></pre>
-<p>или</p>
-<pre><code>11111111</code></pre>
-<p>Всего существует</p>
-<pre><code>2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256</code></pre>
-<p>различных комбинаций.</p>
-<p>Поэтому один байт способен хранить одно из <strong>256 различных значений</strong>.</p>
-<p>Это очень удобно.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/chapter03/bit-and-byte.svg" class="img-fluid figure-img"></p>
-<figcaption>Восемь битов образуют один байт.</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="как-компьютер-понимает-что-хранится-в-байте" class="level1">
-<h1>Как компьютер понимает, что хранится в байте?</h1>
-<p>Представьте число</p>
-<pre><code>65</code></pre>
-<p>Что это означает?</p>
-<p>Без контекста — ничего.</p>
-<p>Это может быть:</p>
-<ul>
-<li>возраст;</li>
-<li>скорость;</li>
-<li>номер страницы;</li>
-<li>температура.</li>
-</ul>
-<p>То же самое происходит с байтами.</p>
-<p>Последовательность</p>
-<pre><code>01000001</code></pre>
-<p>сама по себе ничего не означает.</p>
-<p>Но если договориться считать её символом ASCII, получится буква</p>
-<pre><code>A</code></pre>
-<p>Если считать её числом —</p>
-<pre><code>65</code></pre>
-<p>То есть одинаковые биты могут означать разные вещи.</p>
-<p>Все зависит от правил.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/chapter03/same-bits-different-meaning.svg" class="img-fluid figure-img"></p>
-<figcaption>Одинаковые биты получают смысл только через правило интерпретации.</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="как-хранится-текст" class="level1">
-<h1>Как хранится текст</h1>
-<p>Компьютер не хранит буквы.</p>
-<p>Он хранит номера букв.</p>
-<p>Например,</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Символ</th>
-<th style="text-align: right;">Код</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td style="text-align: right;">65</td>
-</tr>
-<tr class="even">
-<td>B</td>
-<td style="text-align: right;">66</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td style="text-align: right;">67</td>
-</tr>
-</tbody>
-</table>
-<p>Когда вы набираете</p>
-<pre><code>ABC</code></pre>
-<p>в памяти оказывается примерно следующее:</p>
-<pre><code>65 66 67</code></pre>
-<p>или в двоичном виде</p>
-<pre><code>01000001
-01000010
-01000011</code></pre>
-<p>Позже программа снова превращает эти числа в буквы.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/chapter03/text-to-bits.svg" class="img-fluid figure-img"></p>
-<figcaption>Текст хранится как числовые коды, представленные битами.</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="почему-этого-оказалось-недостаточно" class="level1">
-<h1>Почему этого оказалось недостаточно</h1>
-<p>ASCII содержал только 128 символов.</p>
-<p>Для английского языка этого хватало.</p>
-<p>Но как быть с</p>
-<pre><code>Привет
-こんにちは
-مرحبا
-😀</code></pre>
-<p>Появился Unicode.</p>
-<p>Он назначает номер практически каждому символу, существующему сегодня.</p>
-<p>Поэтому современные программы способны одновременно показывать русский, японский, арабский и эмодзи.</p>
-<hr>
-</section>
-<section id="как-хранится-число" class="level1">
-<h1>Как хранится число</h1>
-<p>Компьютер не знает, что такое “сорок два”.</p>
-<p>Он хранит двоичное представление.</p>
-<p>Например,</p>
-<pre><code>42</code></pre>
-<p>становится</p>
-<pre><code>00101010</code></pre>
-<p>Для компьютера это просто набор битов.</p>
-<p>Если программа знает, что это число, она выполняет арифметику.</p>
-<p>Если считает, что это символ, получит совершенно другой результат.</p>
-<hr>
-</section>
-<section id="как-хранится-изображение" class="level1">
-<h1>Как хранится изображение</h1>
-<p>Фотография — это вовсе не рисунок.</p>
-<p>Это огромная таблица пикселей.</p>
-<p>Например,</p>
-<pre><code>🟥 🟩 🟦
-⬜ ⬛ 🟨</code></pre>
-<p>Каждый пиксель имеет цвет.</p>
-<p>Цвет тоже можно записать числами.</p>
-<p>Например,</p>
-<pre><code>Красный
-R = 255
-G = 0
-B = 0</code></pre>
-<p>или</p>
-<pre><code>Зелёный
-
-R = 0
-G = 255
-B = 0</code></pre>
-<p>Таким образом фотография превращается в огромное количество чисел.</p>
-<p>А числа уже легко представить битами.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/chapter03/pixels-and-rgb.svg" class="img-fluid figure-img"></p>
-<figcaption>Изображение хранится как сетка пикселей, а цвет каждого пикселя задаётся числами RGB.</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="как-хранится-музыка" class="level1">
-<h1>Как хранится музыка</h1>
-<p>Музыка — это изменение давления воздуха.</p>
-<p>Микрофон много тысяч раз в секунду измеряет это давление.</p>
-<p>Получается последовательность чисел.</p>
-<p>Например,</p>
-<pre><code>125
-127
-130
-126
-120
-...</code></pre>
-<p>Компьютер хранит именно эти числа.</p>
-<p>При воспроизведении динамик выполняет процесс в обратную сторону.</p>
-<hr>
-</section>
-<section id="как-хранится-программа" class="level1">
-<h1>Как хранится программа</h1>
-<p>Самое интересное — программы тоже являются данными.</p>
-<p>Файл Python</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
-<p>хранится как обычный текст.</p>
-<p>Но после запуска интерпретатор читает этот текст и начинает выполнять инструкции.</p>
-<p>То есть один и тот же набор битов может быть:</p>
-<ul>
-<li>текстом;</li>
-<li>программой;</li>
-<li>изображением;</li>
-<li>музыкой.</li>
-</ul>
-<p>Все определяется тем, <strong>кто именно читает эти данные</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/chapter03/everything-to-bits.svg" class="img-fluid figure-img"></p>
-<figcaption>Текст, числа, изображения, звук и программы сводятся к числам и битам.</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-<section id="главное-что-нужно-запомнить" class="level1">
-<h1>Главное, что нужно запомнить</h1>
-<p>Компьютер хранит только последовательности битов.</p>
-<p>Никаких букв, фотографий или музыки внутри памяти нет.</p>
-<p>Есть лишь числа.</p>
-<p>Именно программы знают, как превратить эти числа обратно в текст, изображения, звук или команды.</p>
-<p>Поэтому можно сказать так:</p>
-<blockquote class="blockquote">
-<p>Компьютер хранит не сами данные, а их двоичное представление.</p>
-</blockquote>
-<hr>
-</section>
-<section id="что-дальше" class="level1">
-<h1>Что дальше?</h1>
-<p>Теперь мы понимаем:</p>
-<ul>
-<li>почему всё сводится к битам;</li>
-<li>как появляются байты;</li>
-<li>почему существуют кодировки;</li>
-<li>как текст, изображения и числа становятся последовательностями битов.</li>
-</ul>
-<p>Но остается следующий вопрос.</p>
-<p>Даже если программа уже хранится в памяти как набор битов, <strong>как процессор начинает её выполнять?</strong></p>
-<p>Именно об этом будет следующая глава:</p>
-<p><strong>«Как компьютер выполняет программы».</strong></p>
 
 
 </section>
@@ -1057,13 +790,13 @@ B = 0</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/chapters/02-why-binary.html" class="pagination-link" aria-label="2.2 Почему компьютер понимает только 0 и 1">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2.2 Почему компьютер понимает только 0 и 1</span>
+      <a href="../book/chapters/20-functions.html" class="pagination-link" aria-label="3.13 Функции">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3.13 Функции</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/chapters/04-how-programs-run.html" class="pagination-link" aria-label="2.4 Как компьютер выполняет программы">
-        <span class="nav-page-text">2.4 Как компьютер выполняет программы</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../book/chapters/21-tuples.html" class="pagination-link" aria-label="4.1 Кортежи">
+        <span class="nav-page-text">4.1 Кортежи</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1072,5 +805,5 @@ B = 0</code></pre>
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

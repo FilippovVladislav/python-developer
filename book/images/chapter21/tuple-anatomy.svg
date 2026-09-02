@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Устройство кортежа</title>
+  <desc id="desc">Кортеж coordinates содержит элементы 10, 20 и 30. Под ними показаны положительные индексы 0, 1, 2 и отрицательные индексы -3, -2, -1.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:27px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Кортеж — упорядоченная последовательность элементов</text>
+  <text class="text body muted" x="600" y="92" text-anchor="middle">Порядок сохраняется, поэтому к элементам можно обращаться по индексам</text>
+
+  <rect class="accent" x="135" y="125" width="930" height="86" rx="18"/>
+  <text class="mono blue" x="600" y="178" text-anchor="middle">coordinates = (10, 20, 30)</text>
+  <path class="line" d="M600 214v28" marker-end="url(#arrow)"/>
+
+  <text class="text label ink" x="116" y="280" text-anchor="end">tuple</text>
+  <rect class="card" x="145" y="255" width="910" height="120" rx="18"/>
+  <text class="text body muted" x="600" y="397" text-anchor="middle">одно значение, внутри которого лежат элементы</text>
+
+  <text class="text label ink" x="116" y="330" text-anchor="end">элемент</text>
+  <rect class="soft" x="205" y="280" width="200" height="74" rx="14"/>
+  <text class="bigmono olive" x="305" y="328" text-anchor="middle">10</text>
+  <rect class="soft" x="500" y="280" width="200" height="74" rx="14"/>
+  <text class="bigmono olive" x="600" y="328" text-anchor="middle">20</text>
+  <rect class="soft" x="795" y="280" width="200" height="74" rx="14"/>
+  <text class="bigmono olive" x="895" y="328" text-anchor="middle">30</text>
+
+  <text class="text label ink" x="116" y="475" text-anchor="end">индекс</text>
+  <rect class="card" x="205" y="435" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="305" y="477" text-anchor="middle">0</text>
+  <rect class="card" x="500" y="435" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="600" y="477" text-anchor="middle">1</text>
+  <rect class="card" x="795" y="435" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="895" y="477" text-anchor="middle">2</text>
+
+  <text class="text label ink" x="116" y="568" text-anchor="end">отриц.</text>
+  <rect class="card" x="205" y="528" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="305" y="570" text-anchor="middle">-3</text>
+  <rect class="card" x="500" y="528" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="600" y="570" text-anchor="middle">-2</text>
+  <rect class="card" x="795" y="528" width="200" height="64" rx="12"/>
+  <text class="mono blue" x="895" y="570" text-anchor="middle">-1</text>
+
+  <text class="text label ink" x="600" y="650" text-anchor="middle">Индексы tuple работают так же, как у list и str</text>
+</svg>
