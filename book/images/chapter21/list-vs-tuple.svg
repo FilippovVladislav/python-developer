@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">List и tuple</title>
+  <desc id="desc">Слева показан изменяемый list, где можно заменить, добавить и удалить элемент. Справа показан неизменяемый tuple, где нельзя заменить, добавить или удалить отдельный элемент.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:23px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:30px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Главное различие между list и tuple — изменяемость</text>
+
+  <rect class="card" x="70" y="105" width="500" height="500" rx="18"/>
+  <rect class="accent" x="115" y="135" width="410" height="66" rx="14"/>
+  <text class="bigmono blue" x="320" y="178" text-anchor="middle">list</text>
+  <text class="text label ink" x="320" y="235" text-anchor="middle">изменяемый</text>
+  <rect class="soft" x="105" y="265" width="430" height="70" rx="14"/>
+  <text class="mono olive" x="320" y="308" text-anchor="middle">["Python", "Java", "Go"]</text>
+  <text class="text body ink" x="150" y="380">Можно:</text>
+  <text class="text body muted" x="180" y="420">изменить элемент</text>
+  <text class="text body muted" x="180" y="452">добавить элемент</text>
+  <text class="text body muted" x="180" y="484">удалить элемент</text>
+  <rect class="accent" x="120" y="525" width="400" height="52" rx="12"/>
+  <text class="mono blue" x="320" y="559" text-anchor="middle">items[1] = "Rust"</text>
+
+  <rect class="card" x="630" y="105" width="500" height="500" rx="18"/>
+  <rect class="accent" x="675" y="135" width="410" height="66" rx="14"/>
+  <text class="bigmono blue" x="880" y="178" text-anchor="middle">tuple</text>
+  <text class="text label ink" x="880" y="235" text-anchor="middle">неизменяемый</text>
+  <rect class="soft" x="665" y="265" width="430" height="70" rx="14"/>
+  <text class="mono olive" x="880" y="308" text-anchor="middle">("Python", "Java", "Go")</text>
+  <text class="text body ink" x="710" y="380">Нельзя:</text>
+  <text class="text body muted" x="740" y="420">заменить элемент</text>
+  <text class="text body muted" x="740" y="452">добавить элемент</text>
+  <text class="text body muted" x="740" y="484">удалить элемент</text>
+  <rect class="alt" x="680" y="525" width="400" height="52" rx="12"/>
+  <text class="mono red" x="880" y="559" text-anchor="middle">TypeError</text>
+
+  <rect class="accent" x="185" y="628" width="830" height="48" rx="14"/>
+  <text class="text label ink" x="600" y="660" text-anchor="middle">Это выбор по смыслу данных, а не соревнование структур</text>
+</svg>

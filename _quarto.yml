@@ -44,6 +44,21 @@ book:
         - book/chapters/18-strings.qmd
         - book/chapters/19-lists.qmd
         - book/chapters/20-functions.qmd
+    - part: book/tom-03-data-structures-code-organization.qmd
+      chapters:
+        - book/chapters/21-tuples.qmd
+      #  - book/chapters/22-sets.qmd
+      #  - book/chapters/23-dictionaries.qmd
+      #  - book/chapters/24-working-with-dictionaries.qmd
+      #  - book/chapters/25-nested-data-structures.qmd
+      #  - book/chapters/26-list-comprehensions.qmd
+      #  - book/chapters/27-error-handling.qmd
+      #  - book/chapters/28-modules.qmd
+      #  - book/chapters/29-own-modules.qmd
+      #  - book/chapters/30-packages.qmd
+      #  - book/chapters/31-files.qmd
+      #  - book/chapters/32-json.qmd
+      #  - book/chapters/33-task-manager-project.qmd
 
 format:
   html:
