@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Том III: структуры данных и организация кода"
 description: "Третий том книги «Путь Python-разработчика»: структуры данных, обработка ошибок, модули, пакеты, файлы, JSON и итоговый консольный проект."
+keywords:
+  - структуры данных Python
+  - организация кода Python
+  - словари Python
+  - модули Python
+  - файлы JSON Python
 ---
 
 # Том III. Структуры данных и организация кода {.unnumbered}
@@ -13,9 +20,9 @@ description: "Третий том книги «Путь Python-разработ�
 ## Быстрые ссылки
 
 - [4.1 Кортежи](chapters/21-tuples.qmd)
+- [4.2 Множества](chapters/22-sets.qmd)
 
 <!--
-- [Множества](chapters/22-sets.qmd)
 - [Словари](chapters/23-dictionaries.qmd)
 - [Работа со словарями](chapters/24-working-with-dictionaries.qmd)
 - [Вложенные структуры данных](chapters/25-nested-data-structures.qmd)

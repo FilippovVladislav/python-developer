@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Функции в Python: def, параметры и return"
 description: "Функции в Python для начинающих: def, вызов функции, параметры и аргументы, несколько параметров, return, отличие print() от return, None, локальные переменные, значения по умолчанию и функции со списками."
+keywords:
+  - функции Python
+  - def Python
+  - return Python
+  - параметры функции
+  - аргументы Python
+  - локальные переменные
 number-sections: true
 ---
 

@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "List comprehensions в Python: компактное создание списков"
 description: "List comprehensions в Python: компактное создание новых списков, преобразование элементов и фильтрация."
+keywords:
+  - list comprehensions Python
+  - генераторы списков Python
+  - создание списков
+  - фильтрация списков
+  - преобразование элементов
 ---
 
 # List comprehensions

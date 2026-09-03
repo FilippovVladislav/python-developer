@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Обработка ошибок в Python: try, except, else, finally"
 description: "Обработка ошибок в Python: исключения, try, except, else, finally и повторный ввод числа."
+keywords:
+  - обработка ошибок Python
+  - try except Python
+  - исключения Python
+  - finally Python
+  - ValueError Python
 ---
 
 # Обработка ошибок

@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Условия в Python: if, else и elif"
 description: "Условия в Python для начинающих: if, else, elif, отступы, блоки кода, проверки после input() и выбор действий в программе."
+keywords:
+  - условия Python
+  - if Python
+  - else Python
+  - elif Python
+  - отступы Python
+  - ветвление программы
 number-sections: true
 ---
 

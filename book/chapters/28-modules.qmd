@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Модули Python: import, math, random и datetime"
 description: "Модули Python: import, math, random, datetime, обращение module.name, from import и alias."
+keywords:
+  - модули Python
+  - import Python
+  - math Python
+  - random Python
+  - datetime Python
+  - from import
 ---
 
 # Модули

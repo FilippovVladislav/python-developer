@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Преобразование типов в Python: int(), float(), str(), bool()"
 description: "Преобразование типов в Python: int(), float(), str(), bool(), ввод чисел через input(), ошибки преобразования и практические примеры для новичков."
+keywords:
+  - преобразование типов Python
+  - int Python
+  - float Python
+  - str Python
+  - bool Python
+  - ValueError
 number-sections: true
 ---
 

@@ -159,6 +159,10 @@ strong {
   color: $primary;
 }
 
+#title-block-header .keywords {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   main.content {
     padding-left: 2rem;

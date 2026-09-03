@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Списки в Python: list, индексы и методы"
 description: "Списки в Python для начинающих: создание list, элементы, индексы, отрицательные индексы, len(), изменяемость, append(), insert(), remove(), pop(), clear(), in, for, срезы, методы списков и простая копия через срез."
+keywords:
+  - списки Python
+  - list Python
+  - append Python
+  - remove Python
+  - pop Python
+  - срезы списков
 number-sections: true
 ---
 

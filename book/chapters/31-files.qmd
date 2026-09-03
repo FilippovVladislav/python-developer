@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Файлы в Python: open(), read(), write() и with"
 description: "Файлы в Python: open(), режимы r, w, a, read(), write(), перебор строк, with open() и UTF-8."
+keywords:
+  - файлы Python
+  - open Python
+  - read Python
+  - write Python
+  - with open
+  - UTF-8 Python
 ---
 
 # Файлы

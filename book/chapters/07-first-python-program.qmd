@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Первая программа на Python: hello.py и print()"
 description: "Первая программа на Python для начинающих: как создать файл hello.py, написать print(), запустить код в терминале и понять результат выполнения."
+keywords:
+  - первая программа Python
+  - hello.py
+  - print Python
+  - запуск Python
+  - Python файл
 ---
 
 # 2.7 Первая программа на Python {.unnumbered}

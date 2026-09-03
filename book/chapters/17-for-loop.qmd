@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Цикл for в Python: перебор и range()"
 description: "Цикл for в Python для начинающих: перебор значений, range() со start, stop и step, отрицательный шаг, строки, условия внутри цикла, накопитель и практические примеры."
+keywords:
+  - for Python
+  - цикл for
+  - range Python
+  - перебор строк
+  - итерация Python
 number-sections: true
 ---
 

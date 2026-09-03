@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Пакеты Python: __init__.py и импорты"
 description: "Пакеты Python: каталог с __init__.py, несколько связанных модулей и простые импорты из пакета."
+keywords:
+  - пакеты Python
+  - __init__.py
+  - package Python
+  - импорт из пакета
+  - структура проекта Python
 ---
 
 # Пакеты

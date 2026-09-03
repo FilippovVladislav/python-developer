@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">remove и discard</title>
+  <desc id="desc">Сравнение показывает, что remove и discard оба удаляют существующий элемент, но при отсутствии элемента remove вызывает KeyError, а discard не вызывает ошибку.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:32px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="60" text-anchor="middle">remove() и discard() отличаются при отсутствии элемента</text>
+
+  <rect class="card" x="95" y="120" width="475" height="440" rx="18"/>
+  <rect class="accent" x="180" y="155" width="305" height="70" rx="14"/>
+  <text class="mono blue" x="333" y="202" text-anchor="middle">remove()</text>
+  <rect class="soft" x="145" y="270" width="375" height="90" rx="14"/>
+  <text class="text label ink" x="333" y="307" text-anchor="middle">элемент есть</text>
+  <text class="text body olive" x="333" y="338" text-anchor="middle">удаление</text>
+  <rect class="alt" x="145" y="405" width="375" height="90" rx="14"/>
+  <text class="text label ink" x="333" y="442" text-anchor="middle">элемента нет</text>
+  <text class="text body red" x="333" y="473" text-anchor="middle">KeyError</text>
+
+  <rect class="card" x="630" y="120" width="475" height="440" rx="18"/>
+  <rect class="accent" x="715" y="155" width="305" height="70" rx="14"/>
+  <text class="mono blue" x="868" y="202" text-anchor="middle">discard()</text>
+  <rect class="soft" x="680" y="270" width="375" height="90" rx="14"/>
+  <text class="text label ink" x="868" y="307" text-anchor="middle">элемент есть</text>
+  <text class="text body olive" x="868" y="338" text-anchor="middle">удаление</text>
+  <rect class="soft" x="680" y="405" width="375" height="90" rx="14"/>
+  <text class="text label ink" x="868" y="442" text-anchor="middle">элемента нет</text>
+  <text class="text body olive" x="868" y="473" text-anchor="middle">без ошибки</text>
+
+  <rect class="card" x="240" y="600" width="720" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="635" text-anchor="middle">Оба метода удаляют, но по-разному реагируют на отсутствие</text>
+</svg>

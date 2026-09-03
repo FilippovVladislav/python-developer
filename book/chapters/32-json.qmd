@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "JSON в Python: json.dump(), json.load() и dict"
 description: "JSON в Python: связь dict/list с JSON, json.dump(), json.load(), ensure_ascii, indent и сохранение задач."
+keywords:
+  - JSON Python
+  - json dump Python
+  - json load Python
+  - dict JSON
+  - ensure_ascii
+  - сохранение данных Python
 ---
 
 # JSON

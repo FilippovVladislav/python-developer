@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Логические операции в Python: and, or, not"
 description: "Логические операции в Python: and, or, not, объединение нескольких условий, приоритет операторов и практические проверки доступа."
+keywords:
+  - логические операции Python
+  - and Python
+  - or Python
+  - not Python
+  - булева логика
+  - условия Python
 number-sections: true
 ---
 

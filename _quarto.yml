@@ -47,7 +47,7 @@ book:
     - part: book/tom-03-data-structures-code-organization.qmd
       chapters:
         - book/chapters/21-tuples.qmd
-      #  - book/chapters/22-sets.qmd
+        - book/chapters/22-sets.qmd
       #  - book/chapters/23-dictionaries.qmd
       #  - book/chapters/24-working-with-dictionaries.qmd
       #  - book/chapters/25-nested-data-structures.qmd

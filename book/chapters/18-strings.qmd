@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Строки в Python: индексы, срезы и методы"
 description: "Строки в Python для начинающих: тип str, символы, индексы, отрицательные индексы, len(), срезы, неизменяемость строк, in и not in, перебор через for и основные методы строк."
+keywords:
+  - строки Python
+  - str Python
+  - индексы строк
+  - срезы Python
+  - методы строк
+  - len Python
 number-sections: true
 ---
 

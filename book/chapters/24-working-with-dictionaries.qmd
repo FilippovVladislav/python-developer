@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Работа со словарями в Python: get(), keys(), values(), items()"
 description: "Работа со словарями в Python: get(), keys(), values(), items(), update(), pop(), clear() и безопасное чтение данных."
+keywords:
+  - методы словаря Python
+  - get Python
+  - keys values items
+  - update Python
+  - pop dict Python
+  - безопасное чтение словаря
 ---
 
 # Работа со словарями

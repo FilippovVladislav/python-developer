@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Почему Python: язык для старта в программировании"
 description: "Почему стоит изучать Python: простота синтаксиса, области применения, backend-разработка, автоматизация, анализ данных и первые шаги новичка."
+keywords:
+  - почему Python
+  - Python для начинающих
+  - изучать Python
+  - области применения Python
+  - backend Python
 number-sections: false
 ---
 

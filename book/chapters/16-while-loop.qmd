@@ -1,5 +1,12 @@
----
+﻿---
+pagetitle: "Цикл while в Python для начинающих"
 description: "Цикл while в Python для начинающих: условие цикла, итерации, счётчик, изменение состояния, бесконечный цикл, input() и накопитель."
+keywords:
+  - while Python
+  - цикл while
+  - бесконечный цикл
+  - счетчик Python
+  - цикл с условием
 number-sections: true
 ---
 

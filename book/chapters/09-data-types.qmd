@@ -1,5 +1,13 @@
----
+﻿---
+pagetitle: "Типы данных в Python: str, int, float и bool"
 description: "Типы данных в Python для начинающих: строки, целые и дробные числа, логические значения, type(), ошибки типов и поведение операторов."
+keywords:
+  - типы данных Python
+  - str Python
+  - int Python
+  - float Python
+  - bool Python
+  - type Python
 number-sections: true
 ---
 

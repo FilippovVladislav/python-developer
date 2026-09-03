@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">List tuple set</title>
+  <desc id="desc">Сравнение list, tuple и set показывает, что структура данных выбирается по задаче: порядок, возможность изменения и повторы.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Структуру данных выбирают по задаче</text>
+
+  <rect class="card" x="60" y="115" width="330" height="440" rx="18"/>
+  <rect class="accent" x="105" y="150" width="240" height="64" rx="14"/>
+  <text class="bigmono blue" x="225" y="193" text-anchor="middle">LIST</text>
+  <text class="mono blue" x="225" y="260" text-anchor="middle">["Python",</text>
+  <text class="mono blue" x="225" y="292" text-anchor="middle"> "Python", "Go"]</text>
+  <text class="text body ink" x="105" y="360">порядок: да</text>
+  <text class="text body ink" x="105" y="405">изменение: да</text>
+  <text class="text body ink" x="105" y="450">повторы: да</text>
+
+  <rect class="card" x="435" y="115" width="330" height="440" rx="18"/>
+  <rect class="soft" x="480" y="150" width="240" height="64" rx="14"/>
+  <text class="bigmono olive" x="600" y="193" text-anchor="middle">TUPLE</text>
+  <text class="mono olive" x="600" y="260" text-anchor="middle">("Python",</text>
+  <text class="mono olive" x="600" y="292" text-anchor="middle"> "Python", "Go")</text>
+  <text class="text body ink" x="480" y="360">порядок: да</text>
+  <text class="text body ink" x="480" y="405">изменение: нет</text>
+  <text class="text body ink" x="480" y="450">повторы: да</text>
+
+  <rect class="card" x="810" y="115" width="330" height="440" rx="18"/>
+  <rect class="alt" x="855" y="150" width="240" height="64" rx="14"/>
+  <text class="bigmono red" x="975" y="193" text-anchor="middle">SET</text>
+  <text class="mono red" x="975" y="260" text-anchor="middle">{"Python",</text>
+  <text class="mono red" x="975" y="292" text-anchor="middle"> "Go"}</text>
+  <text class="text body ink" x="855" y="350">позиционный порядок:</text>
+  <text class="text body ink" x="855" y="380">не используем</text>
+  <text class="text body ink" x="855" y="425">изменение: да</text>
+  <text class="text body ink" x="855" y="470">повторы: нет</text>
+
+  <rect class="accent" x="230" y="605" width="740" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="640" text-anchor="middle">Сначала вопрос к данным, потом структура</text>
+</svg>
