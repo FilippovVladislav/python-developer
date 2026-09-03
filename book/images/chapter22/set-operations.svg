@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Операции над множествами</title>
+  <desc id="desc">Схема показывает два пересекающихся множества A и B и четыре операции: объединение, пересечение, разность и симметрическую разность.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:30px;font-weight:800}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Операции отвечают на разные вопросы</text>
+
+  <rect class="card" x="80" y="105" width="430" height="255" rx="18"/>
+  <text class="mono blue" x="295" y="150" text-anchor="middle">A = {1, 2, 3}</text>
+  <text class="mono olive" x="295" y="188" text-anchor="middle">B = {3, 4, 5}</text>
+  <circle cx="250" cy="270" r="78" fill="#eef4f8" stroke="#2f5f8f" stroke-width="4" opacity=".92"/>
+  <circle cx="340" cy="270" r="78" fill="#f0f3df" stroke="#6f7d2d" stroke-width="4" opacity=".92"/>
+  <text class="bigmono blue" x="220" y="278" text-anchor="middle">1 2</text>
+  <text class="bigmono ink" x="295" y="278" text-anchor="middle">3</text>
+  <text class="bigmono olive" x="382" y="278" text-anchor="middle">4 5</text>
+
+  <rect class="accent" x="575" y="100" width="270" height="120" rx="16"/>
+  <text class="text label ink" x="710" y="135" text-anchor="middle">Объединение</text>
+  <text class="mono blue" x="710" y="170" text-anchor="middle">A | B</text>
+  <text class="mono blue" x="710" y="205" text-anchor="middle">{1, 2, 3, 4, 5}</text>
+
+  <rect class="soft" x="875" y="100" width="245" height="120" rx="16"/>
+  <text class="text label ink" x="998" y="135" text-anchor="middle">Пересечение</text>
+  <text class="mono olive" x="998" y="170" text-anchor="middle">A &amp; B</text>
+  <text class="mono olive" x="998" y="205" text-anchor="middle">{3}</text>
+
+  <rect class="alt" x="575" y="270" width="270" height="120" rx="16"/>
+  <text class="text label ink" x="710" y="305" text-anchor="middle">Разность</text>
+  <text class="mono red" x="710" y="340" text-anchor="middle">A - B</text>
+  <text class="mono red" x="710" y="375" text-anchor="middle">{1, 2}</text>
+
+  <rect class="card" x="875" y="270" width="245" height="120" rx="16"/>
+  <text class="text label ink" x="998" y="305" text-anchor="middle">Симметрическая</text>
+  <text class="text label ink" x="998" y="332" text-anchor="middle">разность</text>
+  <text class="mono blue" x="998" y="365" text-anchor="middle">A ^ B</text>
+  <text class="mono blue" x="998" y="397" text-anchor="middle">{1, 2, 4, 5}</text>
+
+  <rect class="card" x="180" y="455" width="840" height="110" rx="18"/>
+  <text class="text label ink" x="600" y="497" text-anchor="middle">Одна пара множеств дает четыре разных результата</text>
+  <text class="text body muted" x="600" y="532" text-anchor="middle">Выбор операции зависит от вопроса к данным</text>
+</svg>

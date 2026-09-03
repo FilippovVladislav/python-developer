@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Пустое множество</title>
+  <desc id="desc">Сравнение показывает, что фигурные скобки без элементов создают dict, а set() создает пустое множество.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:44px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="64" text-anchor="middle">Пустое множество создается через set()</text>
+
+  <rect class="card" x="120" y="150" width="430" height="420" rx="18"/>
+  <text class="text label ink" x="335" y="202" text-anchor="middle">похоже на set, но это dict</text>
+  <rect class="alt" x="210" y="255" width="250" height="110" rx="16"/>
+  <text class="mono red" x="335" y="326" text-anchor="middle">{}</text>
+  <path class="line" d="M335 380v70" marker-end="url(#arrow)"/>
+  <rect class="alt" x="210" y="485" width="250" height="70" rx="14"/>
+  <text class="mono red" x="335" y="535" text-anchor="middle">dict</text>
+
+  <rect class="card" x="650" y="150" width="430" height="420" rx="18"/>
+  <text class="text label ink" x="865" y="202" text-anchor="middle">правильная запись</text>
+  <rect class="accent" x="740" y="255" width="250" height="110" rx="16"/>
+  <text class="mono blue" x="865" y="326" text-anchor="middle">set()</text>
+  <path class="line" d="M865 380v70" marker-end="url(#arrow)"/>
+  <rect class="soft" x="740" y="485" width="250" height="70" rx="14"/>
+  <text class="mono olive" x="865" y="535" text-anchor="middle">set</text>
+
+  <text class="text label ink" x="600" y="642" text-anchor="middle">{} уже занято словарями</text>
+</svg>
