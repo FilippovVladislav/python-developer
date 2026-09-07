@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Устройство словаря</title>
+  <desc id="desc">Словарь user показан как набор пар ключ значение: name ведет к Анна, age ведет к 25, city ведет к Казань.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:27px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Dict хранит пары ключ → значение</text>
+  <text class="text body muted" x="600" y="92" text-anchor="middle">Ключ называет данные, значение хранит сами данные</text>
+
+  <rect class="accent" x="120" y="125" width="960" height="110" rx="18"/>
+  <text class="mono blue" x="600" y="170" text-anchor="middle">user = {"name": "Анна", "age": 25, "city": "Казань"}</text>
+  <text class="text label ink" x="600" y="210" text-anchor="middle">dict</text>
+
+  <rect class="card" x="180" y="285" width="840" height="285" rx="18"/>
+  <text class="text label blue" x="380" y="335" text-anchor="middle">КЛЮЧ</text>
+  <text class="text label olive" x="820" y="335" text-anchor="middle">ЗНАЧЕНИЕ</text>
+
+  <rect class="accent" x="250" y="370" width="260" height="58" rx="12"/>
+  <text class="mono blue" x="380" y="408" text-anchor="middle">"name"</text>
+  <path class="line" d="M535 399h140" marker-end="url(#arrow)"/>
+  <rect class="soft" x="710" y="370" width="220" height="58" rx="12"/>
+  <text class="mono olive" x="820" y="408" text-anchor="middle">"Анна"</text>
+
+  <rect class="accent" x="250" y="445" width="260" height="58" rx="12"/>
+  <text class="mono blue" x="380" y="483" text-anchor="middle">"age"</text>
+  <path class="line" d="M535 474h140" marker-end="url(#arrow)"/>
+  <rect class="soft" x="710" y="445" width="220" height="58" rx="12"/>
+  <text class="mono olive" x="820" y="483" text-anchor="middle">25</text>
+
+  <rect class="accent" x="250" y="520" width="260" height="58" rx="12"/>
+  <text class="mono blue" x="380" y="558" text-anchor="middle">"city"</text>
+  <path class="line" d="M535 549h140" marker-end="url(#arrow)"/>
+  <rect class="soft" x="710" y="520" width="220" height="58" rx="12"/>
+  <text class="mono olive" x="820" y="558" text-anchor="middle">"Казань"</text>
+
+  <rect class="soft" x="260" y="615" width="680" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="650" text-anchor="middle">Словарь хранит пары ключ → значение</text>
+</svg>

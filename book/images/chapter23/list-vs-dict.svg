@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">List и dict</title>
+  <desc id="desc">Сравнение списка и словаря: list получает значения по индексам 0, 1, 2, а dict получает значения по ключам name, age, city.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Индекс отвечает “где?”, ключ — “что это?”</text>
+
+  <rect class="card" x="55" y="105" width="520" height="470" rx="18"/>
+  <rect class="accent" x="190" y="135" width="250" height="60" rx="14"/>
+  <text class="bigmono blue" x="315" y="176" text-anchor="middle">LIST</text>
+  <text class="mono blue" x="315" y="240" text-anchor="middle">user = ["Анна", 25,</text>
+  <text class="mono blue" x="315" y="272" text-anchor="middle">"Казань"]</text>
+  <text class="text body muted" x="315" y="315" text-anchor="middle">доступ по индексу</text>
+  <text class="mono blue" x="190" y="380" text-anchor="middle">0</text>
+  <path class="line" d="M230 372h95" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="430" y="380" text-anchor="middle">"Анна"</text>
+  <text class="mono blue" x="190" y="440" text-anchor="middle">1</text>
+  <path class="line" d="M230 432h95" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="430" y="440" text-anchor="middle">25</text>
+  <text class="mono blue" x="190" y="500" text-anchor="middle">2</text>
+  <path class="line" d="M230 492h95" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="430" y="500" text-anchor="middle">"Казань"</text>
+
+  <rect class="card" x="625" y="105" width="520" height="470" rx="18"/>
+  <rect class="soft" x="760" y="135" width="250" height="60" rx="14"/>
+  <text class="bigmono olive" x="885" y="176" text-anchor="middle">DICT</text>
+  <text class="mono olive" x="885" y="240" text-anchor="middle">user = {"name": "Анна",</text>
+  <text class="mono olive" x="885" y="272" text-anchor="middle">"age": 25, "city": "Казань"}</text>
+  <text class="text body muted" x="885" y="315" text-anchor="middle">доступ по ключу</text>
+  <text class="mono blue" x="755" y="380" text-anchor="middle">"name"</text>
+  <path class="line" d="M835 372h70" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="1010" y="380" text-anchor="middle">"Анна"</text>
+  <text class="mono blue" x="755" y="440" text-anchor="middle">"age"</text>
+  <path class="line" d="M835 432h70" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="1010" y="440" text-anchor="middle">25</text>
+  <text class="mono blue" x="755" y="500" text-anchor="middle">"city"</text>
+  <path class="line" d="M835 492h70" marker-end="url(#arrow)"/>
+  <text class="mono olive" x="1010" y="500" text-anchor="middle">"Казань"</text>
+
+  <rect class="accent" x="230" y="620" width="740" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="655" text-anchor="middle">List — позиция, dict — смысл поля</text>
+</svg>

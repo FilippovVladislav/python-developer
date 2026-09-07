@@ -5377,7 +5377,7 @@
     "href": "book/tom-03-data-structures-code-organization.html#быстрые-ссылки",
     "title": "Том III. Структуры данных и организация кода",
     "section": "",
-    "text": "4.1 Кортежи\n4.2 Множества\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
+    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
     "crumbs": [
       "Том III. Структуры данных и организация кода"
     ]
@@ -6073,6 +6073,248 @@
     "crumbs": [
       "Том III. Структуры данных и организация кода",
       "4.2 Множества"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html",
+    "href": "book/chapters/23-dictionaries.html",
+    "title": "4.3 Словари",
+    "section": "",
+    "text": "Что такое словарь\nВ списках, кортежах и множествах мы работали с отдельными элементами:\nНо данные одного объекта часто состоят из именованных характеристик:\nСписок такую информацию хранить может:\nНо тогда нужно помнить, что означает каждая позиция. Словарь позволяет обратиться к данным по смыслу:\nСловарь хранит данные в виде пар:\nПример:\nЗдесь ключи \"name\", \"age\" и \"city\" указывают, что означает каждое значение.\nТип словаря называется dict. Количество пар возвращает len():\nРезультат:",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#что-такое-словарь",
+    "href": "book/chapters/23-dictionaries.html#что-такое-словарь",
+    "title": "4.3 Словари",
+    "section": "",
+    "text": "ключ → значение\n\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\n\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\nprint(user)\nprint(type(user))\nprint(len(user))\n\n{'name': 'Анна', 'age': 25, 'city': 'Казань'}\n&lt;class 'dict'&gt;\n3",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#ключ-и-значение",
+    "href": "book/chapters/23-dictionaries.html#ключ-и-значение",
+    "title": "4.3 Словари",
+    "section": "Ключ и значение",
+    "text": "Ключ и значение\nКаждая запись словаря состоит из ключа и значения:\n\"name\": \"Анна\"\nСлева находится ключ, справа — значение. Между ними ставится двоеточие, а пары разделяются запятыми:\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\nКлюч позволяет понять, что означает значение, без знания его позиции.\n\n\n\nУстройство словаря",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#создание-словаря",
+    "href": "book/chapters/23-dictionaries.html#создание-словаря",
+    "title": "4.3 Словари",
+    "section": "Создание словаря",
+    "text": "Создание словаря\nНебольшой словарь можно записать в одну строку:\nproduct = {\"name\": \"Ноутбук\", \"price\": 85000}\nЕсли полей несколько, удобнее использовать несколько строк:\nproduct = {\n    \"name\": \"Ноутбук\",\n    \"price\": 85000,\n    \"available\": True\n}\nТак структуру легче читать.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#пустой-словарь",
+    "href": "book/chapters/23-dictionaries.html#пустой-словарь",
+    "title": "4.3 Словари",
+    "section": "Пустой словарь",
+    "text": "Пустой словарь\nПустой словарь создаётся фигурными скобками:\nsettings = {}\nПроверим:\nsettings = {}\n\nprint(settings)\nprint(type(settings))\nРезультат:\n{}\n&lt;class 'dict'&gt;\nСвязь с предыдущей главой:\n{}    → dict\nset() → set\nДля пустого множества по-прежнему используется set().",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#получение-значения-по-ключу",
+    "href": "book/chapters/23-dictionaries.html#получение-значения-по-ключу",
+    "title": "4.3 Словари",
+    "section": "Получение значения по ключу",
+    "text": "Получение значения по ключу\nЧтобы получить значение, после имени словаря указывают ключ в квадратных скобках:\ndictionary[key]\nПример:\nproduct = {\n    \"name\": \"Ноутбук\",\n    \"price\": 85000,\n    \"available\": True\n}\n\nprint(product[\"name\"])\nprint(product[\"price\"])\nprint(product[\"available\"])\nРезультат:\nНоутбук\n85000\nTrue\nГлавная идея: мы обращаемся не к позиции, а к конкретному ключу.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#ключи-не-индексы",
+    "href": "book/chapters/23-dictionaries.html#ключи-не-индексы",
+    "title": "4.3 Словари",
+    "section": "Ключи — не индексы",
+    "text": "Ключи — не индексы\nУ списка значение получают по индексу:\nuser = [\"Анна\", 25, \"Казань\"]\n\nprint(user[0])\nУ словаря значение получают по ключу:\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\nprint(user[\"name\"])\nИндекс отвечает на вопрос «где?». Ключ отвечает на вопрос «что это?».\n\n\n\nList и dict\n\n\nЗапись:\nuser[0]\nне означает «первое значение словаря». Она означает: найти значение с ключом 0. Если такого ключа нет, возникнет ошибка.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#если-ключа-нет",
+    "href": "book/chapters/23-dictionaries.html#если-ключа-нет",
+    "title": "4.3 Словари",
+    "section": "Если ключа нет",
+    "text": "Если ключа нет\nПрямое обращение через квадратные скобки предполагает, что ключ существует:\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25\n}\n\nprint(user[\"email\"])\nКлюча \"email\" нет, поэтому Python сообщит:\nKeyError\n\n\ndict-key-error.py\n\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25\n}\n\nprint(user[\"email\"])\n\n\n\n\n\n\n\nПредупреждениеНесуществующий ключ\n\n\n\nОбращение:\ndata[\"key\"]\nбезопасно только тогда, когда такой ключ действительно есть в словаре.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#добавление-новой-пары",
+    "href": "book/chapters/23-dictionaries.html#добавление-новой-пары",
+    "title": "4.3 Словари",
+    "section": "Добавление новой пары",
+    "text": "Добавление новой пары\nЧтобы добавить новую пару, присвойте значение новому ключу:\nprofile = {\n    \"nickname\": \"Neo\",\n    \"level\": 12\n}\n\nprofile[\"server\"] = \"EU-1\"\n\nprint(profile)\nЕсли ключа ещё нет, создаётся новая пара ключ → значение.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#изменение-значения",
+    "href": "book/chapters/23-dictionaries.html#изменение-значения",
+    "title": "4.3 Словари",
+    "section": "Изменение значения",
+    "text": "Изменение значения\nЕсли ключ уже существует, та же запись изменит значение:\ngame = {\n    \"title\": \"Python Quest\",\n    \"score\": 1200\n}\n\ngame[\"score\"] = 1450\n\nprint(game)\nРезультат:\n{'title': 'Python Quest', 'score': 1450}",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#один-синтаксис-два-результата",
+    "href": "book/chapters/23-dictionaries.html#один-синтаксис-два-результата",
+    "title": "4.3 Словари",
+    "section": "Один синтаксис — два результата",
+    "text": "Один синтаксис — два результата\nЗапись:\ndictionary[key] = value\nработает по-разному в зависимости от ключа:\nключа нет  → добавление новой пары\nключ есть → изменение значения\n\n\n\nДобавление и изменение в dict",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#значения-могут-иметь-разные-типы",
+    "href": "book/chapters/23-dictionaries.html#значения-могут-иметь-разные-типы",
+    "title": "4.3 Словари",
+    "section": "Значения могут иметь разные типы",
+    "text": "Значения могут иметь разные типы\nОдин словарь может описывать объект с разными характеристиками:\ncourse = {\n    \"title\": \"Python\",\n    \"lessons\": 42,\n    \"price\": 19.99,\n    \"available\": True\n}\nЗдесь значения имеют разные типы:\n\"title\"     → str\n\"lessons\"   → int\n\"price\"     → float\n\"available\" → bool",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#ключи-должны-быть-уникальными",
+    "href": "book/chapters/23-dictionaries.html#ключи-должны-быть-уникальными",
+    "title": "4.3 Словари",
+    "section": "Ключи должны быть уникальными",
+    "text": "Ключи должны быть уникальными\nВ одном словаре каждый ключ обозначает одно значение.\nНе следует создавать словарь с повторяющимися ключами:\ndata = {\n    \"name\": \"Анна\",\n    \"name\": \"Мария\"\n}\nОдинаковые ключи не создают две независимые записи. Последнее значение заменяет предыдущее:\ndata = {\n    \"name\": \"Анна\",\n    \"name\": \"Мария\"\n}\n\nprint(data[\"name\"])\nРезультат:\nМария",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#количество-пар",
+    "href": "book/chapters/23-dictionaries.html#количество-пар",
+    "title": "4.3 Словари",
+    "section": "Количество пар",
+    "text": "Количество пар\nДля словаря работает len():\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\nprint(len(user))\nРезультат:\n3\nlen() возвращает количество пар ключ → значение.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#проверка-наличия-ключа",
+    "href": "book/chapters/23-dictionaries.html#проверка-наличия-ключа",
+    "title": "4.3 Словари",
+    "section": "Проверка наличия ключа",
+    "text": "Проверка наличия ключа\nОператор in проверяет наличие ключа:\ndevice = {\n    \"name\": \"Sensor A\",\n    \"status\": \"online\"\n}\n\nif \"temperature\" in device:\n    print(device[\"temperature\"])\nelse:\n    print(\"Температура неизвестна\")\nДля проверки отсутствия используется not in:\nif \"email\" not in user:\n    print(\"Email не указан\")\n\n\n\n\n\n\n\n\n\nУведомлениеin проверяет ключи\n\n\n\nВ выражении:\n\"name\" in user\nPython проверяет наличие ключа \"name\". Значения словаря здесь не проверяются.\n\n\n\n\n\nKeyError и проверка ключа",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#удаление-пары",
+    "href": "book/chapters/23-dictionaries.html#удаление-пары",
+    "title": "4.3 Словари",
+    "section": "Удаление пары",
+    "text": "Удаление пары\nПару можно удалить с помощью del:\nsession = {\n    \"player\": \"Alex\",\n    \"score\": 1250,\n    \"temporary_code\": \"X7F9\"\n}\n\ndel session[\"temporary_code\"]\n\nprint(session)\nПосле удаления ключа \"temporary_code\" в словаре больше нет.\nЕсли попытаться удалить отсутствующий ключ, возникнет KeyError.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#пример-карточка-товара",
+    "href": "book/chapters/23-dictionaries.html#пример-карточка-товара",
+    "title": "4.3 Словари",
+    "section": "Пример: карточка товара",
+    "text": "Пример: карточка товара\nСловарь удобно использовать для описания одного объекта:\nproduct = {\n    \"name\": \"Механическая клавиатура\",\n    \"price\": 7490,\n    \"available\": True\n}\n\nprint(\"Товар:\", product[\"name\"])\nprint(\"Цена:\", product[\"price\"])\n\nproduct[\"price\"] = 6990\nproduct[\"rating\"] = 4.8\n\nprint(product)\nЗдесь мы получили значения по ключам, изменили цену и добавили новое поле.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#итоговый-пример",
+    "href": "book/chapters/23-dictionaries.html#итоговый-пример",
+    "title": "4.3 Словари",
+    "section": "Итоговый пример",
+    "text": "Итоговый пример\nСоберём базовые операции словаря в одном сценарии:\nspaceship = {\n    \"name\": \"Odyssey\",\n    \"fuel\": 80,\n    \"crew\": 4,\n    \"active\": True\n}\n\nspaceship[\"fuel\"] = spaceship[\"fuel\"] - 15\nspaceship[\"destination\"] = \"Mars\"\n\nif \"autopilot\" not in spaceship:\n    spaceship[\"autopilot\"] = False\n\nprint(\"Корабль:\", spaceship[\"name\"])\nprint(\"Топливо:\", spaceship[\"fuel\"])\nprint(\"Характеристик:\", len(spaceship))\nprint(spaceship)",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#список-или-словарь",
+    "href": "book/chapters/23-dictionaries.html#список-или-словарь",
+    "title": "4.3 Словари",
+    "section": "Список или словарь",
+    "text": "Список или словарь\nСписок удобен, когда важна последовательность элементов:\ntemperatures = [18, 20, 19, 22]\nСловарь удобен, когда значения имеют собственные имена:\nweather = {\n    \"city\": \"Казань\",\n    \"temperature\": 20,\n    \"wind\": \"северный\"\n}\nОбщий ориентир:\n\n\n\nСтруктура\nКогда использовать\nПример\n\n\n\n\nlist\nизменяемая последовательность\n[\"Python\", \"Go\"]\n\n\ntuple\nфиксированная последовательность\n(1920, 1080)\n\n\nset\nуникальные значения\n{\"Python\", \"Go\"}\n\n\ndict\nпары ключ → значение\n{\"name\": \"Анна\", \"age\": 25}\n\n\n\n\n\n\nВыбор структуры данных",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#что-важно-запомнить",
+    "href": "book/chapters/23-dictionaries.html#что-важно-запомнить",
+    "title": "4.3 Словари",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nСловарь имеет тип dict и хранит пары:\nключ → значение\nБазовые действия:\nuser = {\"name\": \"Анна\", \"age\": 25}\n\nprint(user[\"name\"])\n\nuser[\"city\"] = \"Казань\"\nuser[\"age\"] = 26\n\nprint(\"name\" in user)\nprint(len(user))\n\ndel user[\"city\"]\nЕсли обратиться к отсутствующему ключу:\nuser[\"email\"]\nвозникнет KeyError.\n\n\nПрактические задания\nЗадание 1. Космический аппарат\nСоздайте словарь с информацией о космическом аппарате:\nname     → Voyager 1\nlaunched → 1977\nactive   → True\nВыведите название аппарата и год запуска.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nspacecraft = {\n    \"name\": \"Voyager 1\",\n    \"launched\": 1977,\n    \"active\": True\n}\n\nprint(spacecraft[\"name\"])\nprint(spacecraft[\"launched\"])\n\n\n\n\nЗадание 2. Игровой персонаж\nДан персонаж:\nplayer = {\n    \"name\": \"Raven\",\n    \"health\": 100,\n    \"level\": 7\n}\nПосле боя здоровье уменьшилось до 65. Измените словарь и выведите новое значение здоровья.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nplayer = {\n    \"name\": \"Raven\",\n    \"health\": 100,\n    \"level\": 7\n}\n\nplayer[\"health\"] = 65\n\nprint(player[\"health\"])\n\n\n\n\nЗадание 3. Фильм\nДан фильм:\nmovie = {\n    \"title\": \"Interstellar\",\n    \"year\": 2014\n}\nДобавьте рейтинг 8.7, а затем выведите весь словарь.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nmovie = {\n    \"title\": \"Interstellar\",\n    \"year\": 2014\n}\n\nmovie[\"rating\"] = 8.7\n\nprint(movie)\n\n\n\n\nЗадание 4. Компьютер\nДано описание компьютера:\ncomputer = {\n    \"cpu\": \"Ryzen 7\",\n    \"ram\": 32,\n    \"ssd\": 1000\n}\nПроверьте, присутствует ли ключ \"gpu\". Если его нет, выведите:\nВидеокарта не указана\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ncomputer = {\n    \"cpu\": \"Ryzen 7\",\n    \"ram\": 32,\n    \"ssd\": 1000\n}\n\nif \"gpu\" not in computer:\n    print(\"Видеокарта не указана\")\n\n\n\n\nЗадание 5. Игровая сессия\nДана игровая сессия:\nsession = {\n    \"player\": \"Alex\",\n    \"score\": 1250,\n    \"temporary_code\": \"X7F9\"\n}\nУдалите \"temporary_code\" и выведите словарь.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nsession = {\n    \"player\": \"Alex\",\n    \"score\": 1250,\n    \"temporary_code\": \"X7F9\"\n}\n\ndel session[\"temporary_code\"]\n\nprint(session)\n\n\n\n\nЗадание 6. Автомобиль\nДан автомобиль:\ncar = {\n    \"brand\": \"Volvo\",\n    \"model\": \"XC60\",\n    \"year\": 2024,\n    \"electric\": False\n}\nОпределите количество характеристик с помощью Python, не считая их вручную.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ncar = {\n    \"brand\": \"Volvo\",\n    \"model\": \"XC60\",\n    \"year\": 2024,\n    \"electric\": False\n}\n\nprint(len(car))\nРезультат:\n4\n\n\n\n\nЗадание 7. Склад\nНа складе хранится информация:\nitem = {\n    \"name\": \"Монитор\",\n    \"price\": 32000,\n    \"quantity\": 4\n}\nПоступило ещё 3 монитора. Не записывайте итоговое количество вручную: измените \"quantity\", используя его текущее значение.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nitem = {\n    \"name\": \"Монитор\",\n    \"price\": 32000,\n    \"quantity\": 4\n}\n\nitem[\"quantity\"] = item[\"quantity\"] + 3\n\nprint(item[\"quantity\"])\nРезультат:\n7\n\n\n\n\nЗадание 8. Профиль игрока\nСоздайте словарь:\nnickname → Neo\nlevel    → 12\ncoins    → 450\npremium  → False\nЗатем выполните последовательно:\n\nувеличьте level на 1;\nдобавьте 150 монет к текущему количеству;\nизмените premium на True;\nдобавьте новое поле \"server\" со значением \"EU-1\";\nвыведите итоговый словарь.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nplayer = {\n    \"nickname\": \"Neo\",\n    \"level\": 12,\n    \"coins\": 450,\n    \"premium\": False\n}\n\nplayer[\"level\"] = player[\"level\"] + 1\nplayer[\"coins\"] = player[\"coins\"] + 150\nplayer[\"premium\"] = True\nplayer[\"server\"] = \"EU-1\"\n\nprint(player)\n\n\n\n\nЗадание 9. Датчик\nДан словарь:\ndevice = {\n    \"name\": \"Sensor A\",\n    \"status\": \"online\"\n}\nНапишите код, который выводит значение \"temperature\" только в том случае, если такой ключ существует. Если ключа нет, вывести:\nТемпература неизвестна\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ndevice = {\n    \"name\": \"Sensor A\",\n    \"status\": \"online\"\n}\n\nif \"temperature\" in device:\n    print(device[\"temperature\"])\nelse:\n    print(\"Температура неизвестна\")\n\n\n\n\nЗадание 10. Книга\nСоздайте словарь, описывающий книгу. В нём должны быть поля:\ntitle\nauthor\nyear\navailable\nПосле создания:\n\nвыведите название и автора;\nизмените available;\nдобавьте поле pages;\nпроверьте наличие поля rating;\nесли его нет — добавьте рейтинг;\nудалите year;\nвыведите количество оставшихся характеристик и итоговый словарь.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nbook = {\n    \"title\": \"1984\",\n    \"author\": \"George Orwell\",\n    \"year\": 1949,\n    \"available\": True\n}\n\nprint(book[\"title\"])\nprint(book[\"author\"])\n\nbook[\"available\"] = False\nbook[\"pages\"] = 328\n\nif \"rating\" not in book:\n    book[\"rating\"] = 4.8\n\ndel book[\"year\"]\n\nprint(\"Характеристик:\", len(book))\nprint(book)",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#что-дальше",
+    "href": "book/chapters/23-dictionaries.html#что-дальше",
+    "title": "4.3 Словари",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nТеперь мы умеем создать словарь, получить значение по ключу, добавить новую пару, изменить значение, проверить наличие ключа и удалить пару.\nСледующий естественный вопрос:\nКак удобнее и безопаснее работать со словарём целиком?\nНа него отвечает следующая глава — «Работа со словарями».",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/23-dictionaries.html#словари-python-краткое-резюме",
+    "href": "book/chapters/23-dictionaries.html#словари-python-краткое-резюме",
+    "title": "4.3 Словари",
+    "section": "Словари Python: краткое резюме",
+    "text": "Словари Python: краткое резюме\nСловарь (dict) в Python хранит данные в формате «ключ → значение». Такой формат удобен, когда отдельным характеристикам нужно дать понятные имена: например, имя пользователя, цену товара, статус заказа или настройки программы.\nСловарь создаётся с помощью фигурных скобок {}. Значение можно получить через dictionary[key], новую пару добавить присваиванием, а существующее значение изменить через тот же ключ. Оператор in позволяет проверить наличие ключа, len() возвращает количество пар, а del удаляет запись.\nЕсли ключ отсутствует, обращение через dictionary[key] приводит к KeyError. Поэтому перед прямым обращением полезно проверять ключ через in, когда отсутствие ключа является нормальной ситуацией.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.3 Словари"
     ]
   }
 ]
