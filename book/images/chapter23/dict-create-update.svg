@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Добавление и изменение в dict</title>
+  <desc id="desc">Один синтаксис profile с квадратными скобками добавляет новую пару, если ключа нет, и изменяет значение, если ключ уже существует.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Один синтаксис — два результата</text>
+  <text class="text body muted" x="600" y="92" text-anchor="middle">Все зависит от того, есть ли такой ключ в словаре</text>
+
+  <rect class="accent" x="275" y="125" width="650" height="95" rx="18"/>
+  <text class="mono blue" x="600" y="165" text-anchor="middle">profile = {"name": "Анна", "age": 25}</text>
+  <text class="text label ink" x="600" y="202" text-anchor="middle">исходный словарь</text>
+
+  <path class="line" d="M470 225c-115 45-180 85-205 130" marker-end="url(#arrow)"/>
+  <path class="line" d="M730 225c115 45 180 85 205 130" marker-end="url(#arrow)"/>
+
+  <rect class="card" x="90" y="360" width="455" height="195" rx="18"/>
+  <text class="mono blue" x="318" y="415" text-anchor="middle">profile["city"] = "Казань"</text>
+  <text class="text body muted" x="318" y="465" text-anchor="middle">ключа "city" еще нет</text>
+  <rect class="soft" x="195" y="500" width="245" height="58" rx="14"/>
+  <text class="bigmono olive" x="318" y="540" text-anchor="middle">ДОБАВЛЕНИЕ</text>
+
+  <rect class="card" x="655" y="360" width="455" height="195" rx="18"/>
+  <text class="mono blue" x="883" y="415" text-anchor="middle">profile["age"] = 26</text>
+  <text class="text body muted" x="883" y="465" text-anchor="middle">ключ "age" уже есть</text>
+  <rect class="alt" x="770" y="500" width="225" height="58" rx="14"/>
+  <text class="bigmono red" x="883" y="540" text-anchor="middle">ИЗМЕНЕНИЕ</text>
+
+  <rect class="accent" x="215" y="620" width="770" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="655" text-anchor="middle">dictionary[key] = value смотрит на наличие ключа</text>
+</svg>

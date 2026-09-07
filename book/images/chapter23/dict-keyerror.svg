@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">KeyError в словаре</title>
+  <desc id="desc">Обращение user name возвращает Анна, обращение user email приводит к KeyError, проверка email in user возвращает False.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.badline{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:24px;font-weight:650}.body{font-size:21px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:26px;font-weight:700}.bigmono{font-family:"Cascadia Code",Consolas,monospace;font-size:34px;font-weight:800}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="badarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Перед прямым обращением можно проверить ключ</text>
+
+  <rect class="accent" x="275" y="115" width="650" height="95" rx="18"/>
+  <text class="mono blue" x="600" y="155" text-anchor="middle">user = {"name": "Анна", "age": 25}</text>
+  <text class="text label ink" x="600" y="192" text-anchor="middle">в словаре есть только "name" и "age"</text>
+
+  <rect class="card" x="85" y="285" width="310" height="210" rx="18"/>
+  <text class="mono blue" x="240" y="345" text-anchor="middle">user["name"]</text>
+  <path class="line" d="M240 365v50" marker-end="url(#arrow)"/>
+  <rect class="soft" x="140" y="430" width="200" height="58" rx="14"/>
+  <text class="bigmono olive" x="240" y="470" text-anchor="middle">"Анна"</text>
+
+  <rect class="card" x="445" y="285" width="310" height="210" rx="18"/>
+  <text class="mono blue" x="600" y="345" text-anchor="middle">user["email"]</text>
+  <path class="badline" d="M600 365v50" marker-end="url(#badarrow)"/>
+  <rect class="alt" x="470" y="430" width="260" height="58" rx="14"/>
+  <text class="bigmono red" x="600" y="470" text-anchor="middle">KeyError</text>
+
+  <rect class="card" x="805" y="285" width="310" height="210" rx="18"/>
+  <text class="mono blue" x="960" y="345" text-anchor="middle">"email" in user</text>
+  <path class="line" d="M960 365v50" marker-end="url(#arrow)"/>
+  <rect class="accent" x="850" y="430" width="220" height="58" rx="14"/>
+  <text class="bigmono blue" x="960" y="470" text-anchor="middle">False</text>
+
+  <rect class="soft" x="240" y="610" width="720" height="54" rx="14"/>
+  <text class="text label ink" x="600" y="645" text-anchor="middle">in проверяет наличие ключа, а не значения</text>
+</svg>
