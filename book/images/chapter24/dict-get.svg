@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">get() безопасно получает значение из словаря</title>
+  <desc id="desc">Сравнение прямого доступа к отсутствующему ключу email и метода get. data email вызывает KeyError, data.get email возвращает None, data.get email со значением по умолчанию возвращает Не указан.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.warnline{fill:none;stroke:#c9553d;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:22px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c9553d"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">get() помогает получать необязательные поля</text>
+  <rect class="accent" x="330" y="92" width="540" height="76" rx="16"/>
+  <text class="mono blue" x="600" y="140" text-anchor="middle">data = {"name": "Анна"}</text>
+
+  <rect class="card" x="70" y="225" width="330" height="290" rx="18"/>
+  <text class="smallmono blue" x="235" y="278" text-anchor="middle">data["email"]</text>
+  <text class="text body muted" x="235" y="325" text-anchor="middle">ключ отсутствует</text>
+  <path class="warnline" d="M235 350v56" marker-end="url(#arrow-red)"/>
+  <rect class="alt" x="135" y="425" width="200" height="66" rx="14"/>
+  <text class="mono red" x="235" y="468" text-anchor="middle">KeyError</text>
+
+  <rect class="card" x="435" y="225" width="330" height="290" rx="18"/>
+  <text class="smallmono blue" x="600" y="278" text-anchor="middle">data.get("email")</text>
+  <text class="text body muted" x="600" y="325" text-anchor="middle">ошибки нет</text>
+  <path class="line" d="M600 350v56" marker-end="url(#arrow)"/>
+  <rect class="soft" x="500" y="425" width="200" height="66" rx="14"/>
+  <text class="mono olive" x="600" y="468" text-anchor="middle">None</text>
+
+  <rect class="card" x="800" y="225" width="330" height="290" rx="18"/>
+  <text class="smallmono blue" x="965" y="268" text-anchor="middle">data.get("email",</text>
+  <text class="smallmono blue" x="965" y="302" text-anchor="middle">"Не указан")</text>
+  <text class="text body muted" x="965" y="348" text-anchor="middle">есть запасное значение</text>
+  <path class="line" d="M965 370v36" marker-end="url(#arrow)"/>
+  <rect class="soft" x="835" y="425" width="260" height="66" rx="14"/>
+  <text class="smallmono olive" x="965" y="468" text-anchor="middle">"Не указан"</text>
+
+  <rect class="soft" x="210" y="585" width="780" height="58" rx="14"/>
+  <text class="text label ink" x="600" y="623" text-anchor="middle">get() безопасен, когда ключ может отсутствовать</text>
+</svg>

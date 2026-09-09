@@ -5377,7 +5377,7 @@
     "href": "book/tom-03-data-structures-code-organization.html#быстрые-ссылки",
     "title": "Том III. Структуры данных и организация кода",
     "section": "",
-    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
+    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
     "crumbs": [
       "Том III. Структуры данных и организация кода"
     ]
@@ -6315,6 +6315,215 @@
     "crumbs": [
       "Том III. Структуры данных и организация кода",
       "4.3 Словари"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html",
+    "href": "book/chapters/24-working-with-dictionaries.html",
+    "title": "4.4 Работа со словарями",
+    "section": "",
+    "text": "Безопасное получение через get()\nВ предыдущей главе мы познакомились со словарём dict: ключами, значениями, созданием словаря, прямым доступом через dictionary[key], добавлением, изменением, len(), проверкой ключа через in и удалением через del.\nТеперь разберём методы и приёмы, которые нужны для работы со словарём целиком.\nПрямой доступ требует, чтобы ключ существовал. Если ключа нет, будет KeyError.\nМетод get() работает мягче: он возвращает значение, если ключ есть, и None, если ключ отсутствует.\nРезультат:\nГлавная идея: get() не вызывает KeyError для отсутствующего ключа.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#безопасное-получение-через-get",
+    "href": "book/chapters/24-working-with-dictionaries.html#безопасное-получение-через-get",
+    "title": "4.4 Работа со словарями",
+    "section": "",
+    "text": "user = {\n    \"name\": \"Анна\",\n    \"age\": 25\n}\n\nprint(user.get(\"name\"))\nprint(user.get(\"email\"))\n\nАнна\nNone\n\n\n\n\n\n\n\nget() и отсутствующий ключ",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#get-со-значением-по-умолчанию",
+    "href": "book/chapters/24-working-with-dictionaries.html#get-со-значением-по-умолчанию",
+    "title": "4.4 Работа со словарями",
+    "section": "get() со значением по умолчанию",
+    "text": "get() со значением по умолчанию\nВторым аргументом get() можно передать значение, которое нужно вернуть при отсутствии ключа:\ndictionary.get(key, default)\nПример:\nconfig = {\n    \"theme\": \"dark\"\n}\n\ntheme = config.get(\"theme\", \"light\")\nfont_size = config.get(\"font_size\", 14)\n\nprint(theme)\nprint(font_size)\nРезультат:\ndark\n14\ndefault используется только тогда, когда ключа нет. Для \"theme\" вернулось настоящее значение \"dark\", а для отсутствующего \"font_size\" — 14.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#ключи-через-keys",
+    "href": "book/chapters/24-working-with-dictionaries.html#ключи-через-keys",
+    "title": "4.4 Работа со словарями",
+    "section": "Ключи через keys()",
+    "text": "Ключи через keys()\nМетод keys() предоставляет ключи словаря.\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\nfor key in user.keys():\n    print(key)\nРезультат:\nname\nage\ncity\nНа текущем этапе достаточно понимать:\nkeys()\n→ ключи словаря",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#значения-через-values",
+    "href": "book/chapters/24-working-with-dictionaries.html#значения-через-values",
+    "title": "4.4 Работа со словарями",
+    "section": "Значения через values()",
+    "text": "Значения через values()\nМетод values() удобен, когда ключи не нужны и нужно обработать только значения.\nscores = {\n    \"Python\": 90,\n    \"SQL\": 82,\n    \"Git\": 95\n}\n\ntotal = 0\n\nfor score in scores.values():\n    total += score\n\nprint(total)\nРезультат:\n267\nЗдесь цикл видит только числа 90, 82 и 95.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#пары-через-items",
+    "href": "book/chapters/24-working-with-dictionaries.html#пары-через-items",
+    "title": "4.4 Работа со словарями",
+    "section": "Пары через items()",
+    "text": "Пары через items()\nМетод items() предоставляет пары ключ → значение.\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\nfor key, value in user.items():\n    print(key, \"→\", value)\nРезультат:\nname → Анна\nage → 25\ncity → Казань\nКаждый элемент items() можно распаковать в две переменные: key и value.\n\n\n\n\n\n\nkeys(), values() и items()",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#перебор-словаря-через-for",
+    "href": "book/chapters/24-working-with-dictionaries.html#перебор-словаря-через-for",
+    "title": "4.4 Работа со словарями",
+    "section": "Перебор словаря через for",
+    "text": "Перебор словаря через for\nЕсли перебирать сам словарь, Python перебирает его ключи:\nsettings = {\n    \"theme\": \"dark\",\n    \"language\": \"ru\",\n    \"notifications\": True\n}\n\nfor key in settings:\n    print(key, \"=\", settings[key])\nРезультат:\ntheme = dark\nlanguage = ru\nnotifications = True\nЗапись for key in settings: означает перебор ключей. Значение можно получить через settings[key].\nВ файле примера есть подсказка: если нужны и ключ, и значение, items() обычно понятнее.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#перебор-ключей-и-значений",
+    "href": "book/chapters/24-working-with-dictionaries.html#перебор-ключей-и-значений",
+    "title": "4.4 Работа со словарями",
+    "section": "Перебор ключей и значений",
+    "text": "Перебор ключей и значений\nКогда в цикле нужны сразу ключ и значение, обычно используют items():\nfor key, value in user.items():\n    print(key, value)\nЭто связано с уже знакомой распаковкой кортежей:\nkey, value = (\"name\", \"Анна\")\nНа каждой итерации новая пара из items() раскладывается по двум переменным.\n\n\n\nitems() и распаковка",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#обновление-через-update",
+    "href": "book/chapters/24-working-with-dictionaries.html#обновление-через-update",
+    "title": "4.4 Работа со словарями",
+    "section": "Обновление через update()",
+    "text": "Обновление через update()\nМетод update() применяет сразу несколько изменений:\nprofile = {\n    \"name\": \"Анна\",\n    \"city\": \"Казань\"\n}\n\nchanges = {\n    \"city\": \"Москва\",\n    \"age\": 25\n}\n\nprofile.update(changes)\n\nprint(profile)\nВ результате \"city\" изменится на \"Москва\", а новый ключ \"age\" добавится.\n\n\n\nПравило такое же, как при присваивании:\nключ уже есть → значение изменится\nключа нет    → пара добавится",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#удаление-через-pop",
+    "href": "book/chapters/24-working-with-dictionaries.html#удаление-через-pop",
+    "title": "4.4 Работа со словарями",
+    "section": "Удаление через pop()",
+    "text": "Удаление через pop()\nВ предыдущей главе было удаление через del. Метод pop() отличается тем, что возвращает удалённое значение.\nuser = {\n    \"name\": \"Анна\",\n    \"age\": 25,\n    \"city\": \"Казань\"\n}\n\ncity = user.pop(\"city\")\n\nprint(city)\nprint(user)\n\nmissing = user.pop(\"email\", \"Не указан\")\n\nprint(missing)\nРезультат:\nКазань\n{'name': 'Анна', 'age': 25}\nНе указан\nЕсли ключ может отсутствовать, передавайте значение по умолчанию:\ndictionary.pop(key, default)\nТогда отсутствующий ключ не приведёт к KeyError.\n\n\n\n\n\n\nupdate() и pop()",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#очистка-через-clear",
+    "href": "book/chapters/24-working-with-dictionaries.html#очистка-через-clear",
+    "title": "4.4 Работа со словарями",
+    "section": "Очистка через clear()",
+    "text": "Очистка через clear()\nМетод clear() удаляет все пары из словаря:\ncache = {\n    \"user\": \"Анна\",\n    \"token\": \"ABC123\"\n}\n\ncache.clear()\n\nprint(cache)\nРезультат:\n{}\nСловарь остаётся существовать, но становится пустым.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#изменение-значений-во-время-перебора",
+    "href": "book/chapters/24-working-with-dictionaries.html#изменение-значений-во-время-перебора",
+    "title": "4.4 Работа со словарями",
+    "section": "Изменение значений во время перебора",
+    "text": "Изменение значений во время перебора\nВо время перебора можно менять значения существующих ключей, если набор ключей не меняется.\nprices = {\n    \"Кофе\": 200,\n    \"Чай\": 150,\n    \"Сок\": 180\n}\n\nfor product in prices:\n    prices[product] += 20\n\nprint(prices)\nРезультат:\n{'Кофе': 220, 'Чай': 170, 'Сок': 200}\nЗдесь мы не добавляем и не удаляем ключи. Меняются только значения.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#не-меняйте-размер-dict-во-время-for",
+    "href": "book/chapters/24-working-with-dictionaries.html#не-меняйте-размер-dict-во-время-for",
+    "title": "4.4 Работа со словарями",
+    "section": "Не меняйте размер dict во время for",
+    "text": "Не меняйте размер dict во время for\nВо время прямого перебора словаря не стоит добавлять или удалять ключи этого же словаря.\nТакой код не используйте как рабочий:\nfor key in data:\n    del data[key]\nИ такой тоже:\nfor key in data:\n    data[\"new\"] = 100\nИзменение количества ключей во время итерации может привести к ошибке:\nRuntimeError: dictionary changed size during iteration\n\n\n\n\n\n\nПредупреждениеГлавное правило\n\n\n\nЗначения существующих ключей менять можно.\nКоличество ключей во время прямого перебора менять не стоит.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#пример-дорогие-товары",
+    "href": "book/chapters/24-working-with-dictionaries.html#пример-дорогие-товары",
+    "title": "4.4 Работа со словарями",
+    "section": "Пример: дорогие товары",
+    "text": "Пример: дорогие товары\nС помощью items() можно фильтровать словарь по значениям.\nprices = {\n    \"Мышь\": 2500,\n    \"Клавиатура\": 7000,\n    \"Монитор\": 32000,\n    \"Кабель\": 800\n}\n\nfor product, price in prices.items():\n    if price &gt;= 5000:\n        print(product, \"→\", price)\nРезультат:\nКлавиатура → 7000\nМонитор → 32000\nЗдесь items() даёт пару, распаковка разделяет её на product и price, а if оставляет только нужные товары.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#итоговый-пример-анализ-склада",
+    "href": "book/chapters/24-working-with-dictionaries.html#итоговый-пример-анализ-склада",
+    "title": "4.4 Работа со словарями",
+    "section": "Итоговый пример: анализ склада",
+    "text": "Итоговый пример: анализ склада\nСоберём get(), items(), update() и pop() в одном сценарии.\nstock = {\n    \"Ноутбук\": 4,\n    \"Монитор\": 0,\n    \"Клавиатура\": 12,\n    \"Мышь\": 0,\n    \"Наушники\": 7\n}\n\ntotal_quantity = 0\n\nfor product, quantity in stock.items():\n    total_quantity += quantity\n\n    if quantity &gt; 0:\n        print(product, \"есть в наличии\")\n\nprint(\"Всего единиц:\", total_quantity)\n\nwebcam = stock.get(\"Веб-камера\", 0)\n\nprint(\"Веб-камер:\", webcam)\n\nstock.update({\n    \"Монитор\": 3,\n    \"Веб-камера\": 5\n})\n\nremoved = stock.pop(\"Мышь\", 0)\n\nprint(\"Удалено мышей:\", removed)\nprint(stock)\nВ этом примере словарь не просто хранит данные: программа считает остатки, проверяет отсутствующий ключ, применяет поставку и удаляет позицию.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#что-использовать",
+    "href": "book/chapters/24-working-with-dictionaries.html#что-использовать",
+    "title": "4.4 Работа со словарями",
+    "section": "Что использовать",
+    "text": "Что использовать\nКраткая памятка:\n\n\n\nОперация\nКогда нужна\n\n\n\n\ndata.get(key)\nполучить необязательное значение\n\n\ndata.get(key, default)\nзаменить None своим значением\n\n\ndata.keys()\nпройти по ключам\n\n\ndata.values()\nпройти по значениям\n\n\ndata.items()\nпройти по парам key, value\n\n\nfor key in data\nперебрать ключи короткой записью\n\n\ndata.update(changes)\nприменить несколько изменений\n\n\ndata.pop(key)\nудалить ключ и получить значение\n\n\ndata.pop(key, default)\nудалить ключ без ошибки при отсутствии\n\n\ndata.clear()\nочистить словарь",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#что-важно-запомнить",
+    "href": "book/chapters/24-working-with-dictionaries.html#что-важно-запомнить",
+    "title": "4.4 Работа со словарями",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nget() безопасно получает значение:\ndata.get(\"email\")\ndata.get(\"email\", \"Не указан\")\nkeys(), values() и items() дают разные взгляды на один словарь:\ndata.keys()\ndata.values()\ndata.items()\nЦикл по самому словарю перебирает ключи:\nfor key in data:\n    ...\nitems() удобно распаковывать в две переменные:\nfor key, value in data.items():\n    ...\nupdate() применяет изменения, pop() удаляет и возвращает значение, clear() очищает словарь.\nВо время перебора можно менять значения существующих ключей, но не стоит добавлять или удалять ключи того же словаря.\n\n\n\nКарта методов dict\n\n\n\n\nПрактические задания\nЗадание 1. Погода\nДан словарь:\nweather = {\n    \"temperature\": 18,\n    \"wind\": 4\n}\nПолучите \"humidity\" через get(). Если поля нет, используйте значение \"неизвестно\".\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nweather = {\n    \"temperature\": 18,\n    \"wind\": 4\n}\n\nhumidity = weather.get(\"humidity\", \"неизвестно\")\n\nprint(\"Влажность:\", humidity)\n\n\n\n\nЗадание 2. Системные параметры\nДан словарь:\nsystem = {\n    \"os\": \"Linux\",\n    \"ram\": 32,\n    \"cores\": 8\n}\nВыведите только названия параметров.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nsystem = {\n    \"os\": \"Linux\",\n    \"ram\": 32,\n    \"cores\": 8\n}\n\nfor key in system.keys():\n    print(key)\n\n\n\n\nЗадание 3. Выручка\nДаны продажи:\nsales = {\n    \"Понедельник\": 12000,\n    \"Вторник\": 15000,\n    \"Среда\": 11000,\n    \"Четверг\": 17000\n}\nВычислите общую выручку, перебирая только значения.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nsales = {\n    \"Понедельник\": 12000,\n    \"Вторник\": 15000,\n    \"Среда\": 11000,\n    \"Четверг\": 17000\n}\n\ntotal = 0\n\nfor value in sales.values():\n    total += value\n\nprint(\"Выручка:\", total)\n\n\n\n\nЗадание 4. Игровой инвентарь\nДан словарь:\ninventory = {\n    \"Зелье\": 5,\n    \"Стрела\": 40,\n    \"Ключ\": 2\n}\nВыведите все позиции в формате предмет : количество, используя items().\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ninventory = {\n    \"Зелье\": 5,\n    \"Стрела\": 40,\n    \"Ключ\": 2\n}\n\nfor item, quantity in inventory.items():\n    print(item, \":\", quantity)\n\n\n\n\nЗадание 5. Конфигурация сервера\nИзначально:\nserver = {\n    \"host\": \"localhost\",\n    \"port\": 8000,\n    \"debug\": True\n}\nНовые настройки:\nchanges = {\n    \"port\": 8080,\n    \"debug\": False,\n    \"workers\": 4\n}\nПримените изменения одной операцией.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nserver = {\n    \"host\": \"localhost\",\n    \"port\": 8000,\n    \"debug\": True\n}\n\nchanges = {\n    \"port\": 8080,\n    \"debug\": False,\n    \"workers\": 4\n}\n\nserver.update(changes)\n\nprint(server)\n\n\n\n\nЗадание 6. Корзина\nДана корзина:\ncart = {\n    \"Ноутбук\": 1,\n    \"Мышь\": 2,\n    \"Кабель\": 3\n}\nУдалите \"Кабель\" через pop() и сохраните его количество в переменную.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ncart = {\n    \"Ноутбук\": 1,\n    \"Мышь\": 2,\n    \"Кабель\": 3\n}\n\nquantity = cart.pop(\"Кабель\")\n\nprint(\"Удалено:\", quantity)\nprint(cart)\n\n\n\n\nЗадание 7. Сессия\nДан словарь:\nsession = {\n    \"user\": \"alex\",\n    \"active\": True\n}\nУдалите \"token\" через pop() так, чтобы отсутствие ключа не вызвало ошибку.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nsession = {\n    \"user\": \"alex\",\n    \"active\": True\n}\n\ntoken = session.pop(\"token\", None)\n\nprint(token)\nprint(session)\n\n\n\n\nЗадание 8. Изменение цен\nДан прайс:\nprices = {\n    \"Кофе\": 200,\n    \"Чай\": 150,\n    \"Какао\": 220\n}\nУвеличьте каждую цену на 10%.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nprices = {\n    \"Кофе\": 200,\n    \"Чай\": 150,\n    \"Какао\": 220\n}\n\nfor product in prices:\n    prices[product] = prices[product] * 1.1\n\nprint(prices)\n\n\n\n\nЗадание 9. Результаты игроков\nДаны результаты:\nscores = {\n    \"Alex\": 1250,\n    \"Maria\": 1840,\n    \"John\": 990,\n    \"Sofia\": 1720\n}\nС помощью items() найдите игрока с максимальным результатом. Не используйте max() как готовое решение.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nscores = {\n    \"Alex\": 1250,\n    \"Maria\": 1840,\n    \"John\": 990,\n    \"Sofia\": 1720\n}\n\nbest_player = None\nbest_score = -1\n\nfor player, score in scores.items():\n    if score &gt; best_score:\n        best_player = player\n        best_score = score\n\nprint(\"Игрок:\", best_player)\nprint(\"Результат:\", best_score)\n\n\n\n\nЗадание 10. Анализ склада\nДан склад:\nstock = {\n    \"Ноутбук\": 4,\n    \"Монитор\": 0,\n    \"Клавиатура\": 12,\n    \"Мышь\": 0,\n    \"Наушники\": 7\n}\nНужно:\n\nподсчитать общее количество единиц товара;\nвывести товары, которые есть в наличии;\nполучить количество \"Веб-камера\" через get() со значением 0;\nприменить обновление для \"Монитор\" и \"Веб-камера\";\nудалить \"Мышь\" через pop() со значением по умолчанию;\nвывести итоговый словарь.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nstock = {\n    \"Ноутбук\": 4,\n    \"Монитор\": 0,\n    \"Клавиатура\": 12,\n    \"Мышь\": 0,\n    \"Наушники\": 7\n}\n\ntotal_quantity = 0\n\nfor product, quantity in stock.items():\n    total_quantity += quantity\n\n    if quantity &gt; 0:\n        print(product, \"есть в наличии\")\n\nprint(\"Всего единиц:\", total_quantity)\n\nwebcam = stock.get(\"Веб-камера\", 0)\n\nprint(\"Веб-камер:\", webcam)\n\nstock.update({\n    \"Монитор\": 3,\n    \"Веб-камера\": 5\n})\n\nremoved = stock.pop(\"Мышь\", 0)\n\nprint(\"Удалено мышей:\", removed)\nprint(stock)",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#что-дальше",
+    "href": "book/chapters/24-working-with-dictionaries.html#что-дальше",
+    "title": "4.4 Работа со словарями",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nТеперь мы умеем обрабатывать один словарь: безопасно получать данные, перебирать ключи и значения, обновлять пары, удалять элементы и очищать структуру.\nСледующий шаг — объединить уже знакомые структуры:\nusers = [\n    {\"name\": \"Анна\", \"age\": 25},\n    {\"name\": \"Максим\", \"age\": 30}\n]\nТакие данные состоят из нескольких уровней. Это тема следующей главы — «Вложенные структуры данных».",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/24-working-with-dictionaries.html#работа-со-словарями-python-краткое-резюме",
+    "href": "book/chapters/24-working-with-dictionaries.html#работа-со-словарями-python-краткое-резюме",
+    "title": "4.4 Работа со словарями",
+    "section": "Работа со словарями Python: краткое резюме",
+    "text": "Работа со словарями Python: краткое резюме\nРабота со словарями в Python строится вокруг нескольких практичных методов. get() помогает безопасно получать необязательные значения, keys() даёт ключи, values() — значения, а items() — пары, которые удобно распаковывать в цикле for.\nМетод update() применяет сразу несколько изменений, pop() удаляет ключ и возвращает его значение, а clear() полностью очищает словарь. При переборе словаря можно менять значения существующих ключей, но не стоит добавлять или удалять ключи в том же прямом цикле.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.4 Работа со словарями"
     ]
   }
 ]

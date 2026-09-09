@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Карта методов dict</title>
+  <desc id="desc">Итоговая карта главы: словарь можно получить через get, посмотреть через keys values items, перебрать через for, обновить update, удалить pop и очистить clear.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:22px;font-weight:650}.body{font-size:19px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Методы dict превращают хранение в обработку данных</text>
+
+  <rect class="accent" x="490" y="95" width="220" height="70" rx="16"/>
+  <text class="mono blue" x="600" y="140" text-anchor="middle">dict</text>
+
+  <path class="line" d="M600 172v42" marker-end="url(#arrow)"/>
+  <rect class="card" x="390" y="225" width="420" height="66" rx="14"/>
+  <text class="text label ink" x="505" y="266" text-anchor="middle">получить</text>
+  <text class="mono blue" x="705" y="266" text-anchor="middle">get()</text>
+
+  <path class="line" d="M600 298v38" marker-end="url(#arrow)"/>
+  <rect class="soft" x="315" y="345" width="570" height="66" rx="14"/>
+  <text class="text label ink" x="470" y="386" text-anchor="middle">посмотреть</text>
+  <text class="mono olive" x="675" y="386" text-anchor="middle">keys / values / items</text>
+
+  <path class="line" d="M600 418v38" marker-end="url(#arrow)"/>
+  <rect class="card" x="390" y="465" width="420" height="66" rx="14"/>
+  <text class="text label ink" x="505" y="506" text-anchor="middle">перебрать</text>
+  <text class="mono blue" x="705" y="506" text-anchor="middle">for</text>
+
+  <path class="line" d="M386 498H220V220h235" marker-end="url(#arrow)"/>
+  <rect class="card" x="65" y="345" width="230" height="112" rx="16"/>
+  <text class="text label ink" x="180" y="388" text-anchor="middle">обновить</text>
+  <text class="mono blue" x="180" y="427" text-anchor="middle">update()</text>
+
+  <path class="line" d="M814 498h166V220H745" marker-end="url(#arrow)"/>
+  <rect class="card" x="905" y="345" width="230" height="112" rx="16"/>
+  <text class="text label ink" x="1020" y="388" text-anchor="middle">удалить</text>
+  <text class="mono blue" x="1020" y="427" text-anchor="middle">pop()</text>
+
+  <path class="line" d="M600 538v38" marker-end="url(#arrow)"/>
+  <rect class="alt" x="490" y="585" width="220" height="66" rx="14"/>
+  <text class="mono red" x="600" y="627" text-anchor="middle">clear()</text>
+</svg>
