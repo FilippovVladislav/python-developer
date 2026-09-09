@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">keys values items у словаря</title>
+  <desc id="desc">Один словарь user можно рассматривать как ключи через keys, значения через values или пары через items.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.alt{fill:#fff4f1;stroke:#c9553d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.red{fill:#c9553d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:25px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:21px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Один dict можно смотреть с разных сторон</text>
+
+  <rect class="accent" x="430" y="265" width="340" height="150" rx="18"/>
+  <text class="mono blue" x="600" y="325" text-anchor="middle">user</text>
+  <text class="smallmono blue" x="600" y="370" text-anchor="middle">{"name": "Анна", ...}</text>
+
+  <path class="line" d="M515 255C445 205 365 175 285 160" marker-end="url(#arrow)"/>
+  <path class="line" d="M600 252V155" marker-end="url(#arrow)"/>
+  <path class="line" d="M685 255C755 205 835 175 915 160" marker-end="url(#arrow)"/>
+
+  <rect class="card" x="70" y="115" width="315" height="190" rx="18"/>
+  <text class="mono blue" x="228" y="160" text-anchor="middle">keys()</text>
+  <rect class="accent" x="110" y="190" width="235" height="42" rx="10"/>
+  <text class="smallmono blue" x="228" y="218" text-anchor="middle">name, age, city</text>
+  <text class="text body muted" x="228" y="270" text-anchor="middle">ключи</text>
+
+  <rect class="card" x="442" y="95" width="315" height="190" rx="18"/>
+  <text class="mono olive" x="600" y="140" text-anchor="middle">values()</text>
+  <rect class="soft" x="482" y="170" width="235" height="42" rx="10"/>
+  <text class="smallmono olive" x="600" y="198" text-anchor="middle">Анна, 25, Казань</text>
+  <text class="text body muted" x="600" y="250" text-anchor="middle">значения</text>
+
+  <rect class="card" x="815" y="115" width="315" height="240" rx="18"/>
+  <text class="mono red" x="972" y="160" text-anchor="middle">items()</text>
+  <rect class="alt" x="850" y="190" width="245" height="112" rx="12"/>
+  <text class="smallmono red" x="972" y="222" text-anchor="middle">("name", "Анна")</text>
+  <text class="smallmono red" x="972" y="255" text-anchor="middle">("age", 25)</text>
+  <text class="smallmono red" x="972" y="288" text-anchor="middle">("city", "Казань")</text>
+  <text class="text body muted" x="972" y="332" text-anchor="middle">пары</text>
+
+  <rect class="soft" x="215" y="565" width="770" height="58" rx="14"/>
+  <text class="text label ink" x="600" y="603" text-anchor="middle">keys(), values() и items() выбирают нужный слой данных</text>
+</svg>
