@@ -5377,7 +5377,7 @@
     "href": "book/tom-03-data-structures-code-organization.html#быстрые-ссылки",
     "title": "Том III. Структуры данных и организация кода",
     "section": "",
-    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
+    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n4.5 Вложенные структуры данных\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
     "crumbs": [
       "Том III. Структуры данных и организация кода"
     ]
@@ -6524,6 +6524,347 @@
     "crumbs": [
       "Том III. Структуры данных и организация кода",
       "4.4 Работа со словарями"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html",
+    "href": "book/chapters/25-nested-data-structures.html",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "",
+    "text": "Что такое вложенная структура\nДо сих пор мы работали с отдельными структурами.\nСписок:\nСловарь:\nНо реальные данные часто состоят из нескольких объектов.\nНапример, нужно хранить нескольких пользователей:\nОдин словарь описывает одного пользователя.\nНесколько пользователей удобно хранить в списке:\nТак появляются вложенные структуры данных.\nВложенная структура — это структура данных, внутри которой находятся другие структуры.\nНапример:\nЗдесь:\nПолучается:",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#что-такое-вложенная-структура",
+    "href": "book/chapters/25-nested-data-structures.html#что-такое-вложенная-структура",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "",
+    "text": "users = [\n    {\"name\": \"Анна\", \"age\": 25},\n    {\"name\": \"Максим\", \"age\": 30}\n]\n\nusers\n↓\nlist\n↓\nкаждый элемент\n↓\ndict\n\nlist\n├── dict\n└── dict",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#список-словарей",
+    "href": "book/chapters/25-nested-data-structures.html#список-словарей",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Список словарей",
+    "text": "Список словарей\nОдна из самых распространённых моделей:\nproducts = [\n    {\n        \"name\": \"Ноутбук\",\n        \"price\": 85000\n    },\n    {\n        \"name\": \"Монитор\",\n        \"price\": 32000\n    },\n    {\n        \"name\": \"Мышь\",\n        \"price\": 2500\n    }\n]\nЗдесь:\nproducts\n→ список товаров\n\nкаждый элемент списка\n→ словарь одного товара\nСписок хранит коллекцию объектов, а словарь описывает свойства каждого объекта.\n\n\nlist-of-dicts.py\n\nproducts = [\n    {\n        \"name\": \"Ноутбук\",\n        \"price\": 85000\n    },\n    {\n        \"name\": \"Монитор\",\n        \"price\": 32000\n    },\n    {\n        \"name\": \"Мышь\",\n        \"price\": 2500\n    }\n]\n\nprint(products)\n\nprint(type(products))\nprint(type(products[0]))\n\n\n\n\nСписок словарей",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#доступ-к-одному-объекту",
+    "href": "book/chapters/25-nested-data-structures.html#доступ-к-одному-объекту",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Доступ к одному объекту",
+    "text": "Доступ к одному объекту\nПолучим первый элемент списка:\nproducts[0]\nРезультат:\n{\n    \"name\": \"Ноутбук\",\n    \"price\": 85000\n}\nТеперь можно получить поле этого словаря:\nproducts[0][\"name\"]\nРезультат:\nНоутбук\nПолная цепочка:\nproducts\n↓\n[0]\n↓\nпервый словарь\n↓\n[\"name\"]\n↓\n\"Ноутбук\"",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#читаем-выражение-слева-направо",
+    "href": "book/chapters/25-nested-data-structures.html#читаем-выражение-слева-направо",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Читаем выражение слева направо",
+    "text": "Читаем выражение слева направо\nРассмотрим:\nproducts[1][\"price\"]\nЧитаем по шагам:\nproducts\n↓\nэлемент с индексом 1\n↓\nсловарь товара\n↓\nключ \"price\"\n↓\n32000\nТакой способ чтения помогает разбирать вложенные выражения без угадывания.\nЕсли написать индекс, которого нет, например products[10], Python получит несуществующий элемент списка и выдаст IndexError.\nЕсли элемент есть, но внутри словаря нет нужного ключа, например products[0][\"missing\"], будет KeyError.\n\n\n\n\n\n\nСоветРазбирайте доступ по шагам\n\n\n\nЕсли выражение кажется сложным:\nproducts[1][\"price\"]\nмысленно разбейте его:\nproduct = products[1]\nprice = product[\"price\"]\nРезультат тот же, но структура становится понятнее.\n\n\n\n\n\n\n\n\nВложенный доступ",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#изменение-вложенного-значения",
+    "href": "book/chapters/25-nested-data-structures.html#изменение-вложенного-значения",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Изменение вложенного значения",
+    "text": "Изменение вложенного значения\nЭлемент внутри вложенного словаря можно изменить:\nproducts = [\n    {\n        \"name\": \"Ноутбук\",\n        \"price\": 85000\n    },\n    {\n        \"name\": \"Монитор\",\n        \"price\": 32000\n    }\n]\n\nproducts[1][\"price\"] = 30000\n\nprint(products[1])\nТеперь второй товар содержит:\nprice → 30000\nМы:\nнашли элемент списка\n↓\nполучили словарь\n↓\nизменили значение по ключу",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#добавление-поля-во-вложенный-словарь",
+    "href": "book/chapters/25-nested-data-structures.html#добавление-поля-во-вложенный-словарь",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Добавление поля во вложенный словарь",
+    "text": "Добавление поля во вложенный словарь\nМожно добавить новое поле:\nproducts[0][\"available\"] = True\nТеперь первый товар содержит:\n{\n    \"name\": \"Ноутбук\",\n    \"price\": 85000,\n    \"available\": True\n}\nЭто обычное изменение словаря, только сам словарь находится внутри списка.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#перебор-списка-словарей",
+    "href": "book/chapters/25-nested-data-structures.html#перебор-списка-словарей",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Перебор списка словарей",
+    "text": "Перебор списка словарей\nЧаще всего все объекты обрабатываются циклом:\nproducts = [\n    {\"name\": \"Ноутбук\", \"price\": 85000},\n    {\"name\": \"Монитор\", \"price\": 32000},\n    {\"name\": \"Мышь\", \"price\": 2500}\n]\n\nfor product in products:\n    print(product[\"name\"], \"→\", product[\"price\"])\nРезультат:\nНоутбук → 85000\nМонитор → 32000\nМышь → 2500\nНа каждой итерации:\nproduct\nсодержит один словарь.\n\n\n\n\n\n\nПеребор списка словарей",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#фильтрация-объектов",
+    "href": "book/chapters/25-nested-data-structures.html#фильтрация-объектов",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Фильтрация объектов",
+    "text": "Фильтрация объектов\nМожно использовать условие внутри цикла:\nproducts = [\n    {\"name\": \"Ноутбук\", \"price\": 85000},\n    {\"name\": \"Монитор\", \"price\": 32000},\n    {\"name\": \"Мышь\", \"price\": 2500}\n]\n\nfor product in products:\n    if product[\"price\"] &gt;= 30000:\n        print(product[\"name\"])\nРезультат:\nНоутбук\nМонитор\nТеперь условие применяется к каждому объекту отдельно.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#безопасное-получение-поля",
+    "href": "book/chapters/25-nested-data-structures.html#безопасное-получение-поля",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Безопасное получение поля",
+    "text": "Безопасное получение поля\nНе все словари обязательно содержат одинаковые поля.\nНапример:\nusers = [\n    {\n        \"name\": \"Анна\",\n        \"city\": \"Казань\"\n    },\n    {\n        \"name\": \"Максим\"\n    }\n]\nУ второго пользователя нет \"city\".\nПоэтому:\nuser[\"city\"]\nможет вызвать KeyError.\nИспользуем уже знакомый get():\nfor user in users:\n    city = user.get(\"city\", \"Не указан\")\n\n    print(user[\"name\"], \"→\", city)\nРезультат:\nАнна → Казань\nМаксим → Не указан",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#добавление-нового-объекта",
+    "href": "book/chapters/25-nested-data-structures.html#добавление-нового-объекта",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Добавление нового объекта",
+    "text": "Добавление нового объекта\nСписок остаётся обычным изменяемым списком.\nПоэтому можно использовать append():\nusers = [\n    {\"name\": \"Анна\", \"age\": 25}\n]\n\nusers.append({\n    \"name\": \"Максим\",\n    \"age\": 30\n})\n\nprint(users)\nТеперь список содержит два словаря.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#создание-объекта-перед-append",
+    "href": "book/chapters/25-nested-data-structures.html#создание-объекта-перед-append",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Создание объекта перед append()",
+    "text": "Создание объекта перед append()\nИногда удобнее сначала создать словарь:\nnew_user = {\n    \"name\": \"Олег\",\n    \"age\": 27\n}\nа затем:\nusers.append(new_user)\nЭто особенно полезно, когда данные собираются постепенно.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#создание-объекта-из-input",
+    "href": "book/chapters/25-nested-data-structures.html#создание-объекта-из-input",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Создание объекта из input()",
+    "text": "Создание объекта из input()\nНапример:\nusers = []\n\nname = input(\"Имя: \")\nage = int(input(\"Возраст: \"))\n\nuser = {\n    \"name\": name,\n    \"age\": age\n}\n\nusers.append(user)\n\nprint(users)\nПолучается цепочка:\ninput()\n↓\nпеременные\n↓\ndict\n↓\nappend()\n↓\nlist",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#словарь-со-списком",
+    "href": "book/chapters/25-nested-data-structures.html#словарь-со-списком",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Словарь со списком",
+    "text": "Словарь со списком\nВложенность может работать и наоборот.\nНапример:\ncourse = {\n    \"title\": \"Python\",\n    \"topics\": [\n        \"Переменные\",\n        \"Условия\",\n        \"Циклы\"\n    ]\n}\nЗдесь:\ncourse\n↓\ndict\n↓\nключ \"topics\"\n↓\nlist\n\n\n\nСловарь со списком",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#доступ-к-элементу-списка-внутри-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#доступ-к-элементу-списка-внутри-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Доступ к элементу списка внутри словаря",
+    "text": "Доступ к элементу списка внутри словаря\nПолучим список тем:\ncourse[\"topics\"]\nПолучим первую тему:\ncourse[\"topics\"][0]\nРезультат:\nПеременные\nЧитаем:\ncourse\n↓\nключ \"topics\"\n↓\nсписок\n↓\nиндекс 0\n↓\n\"Переменные\"",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#изменение-списка-внутри-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#изменение-списка-внутри-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Изменение списка внутри словаря",
+    "text": "Изменение списка внутри словаря\nПоскольку \"topics\" содержит обычный список:\ncourse[\"topics\"].append(\"Функции\")\nТеперь:\nprint(course[\"topics\"])\nполучим:\n['Переменные', 'Условия', 'Циклы', 'Функции']\nМетоды списка работают как обычно.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#перебор-списка-внутри-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#перебор-списка-внутри-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Перебор списка внутри словаря",
+    "text": "Перебор списка внутри словаря\nНапример:\ncourse = {\n    \"title\": \"Python\",\n    \"topics\": [\n        \"Переменные\",\n        \"Условия\",\n        \"Циклы\"\n    ]\n}\n\nfor topic in course[\"topics\"]:\n    print(topic)\nЦикл получает элементы вложенного списка.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#несколько-списков-внутри-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#несколько-списков-внутри-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Несколько списков внутри словаря",
+    "text": "Несколько списков внутри словаря\nСловарь может хранить несколько списков:\nproject = {\n    \"name\": \"Website\",\n    \"developers\": [\"Анна\", \"Максим\"],\n    \"technologies\": [\"Python\", \"HTML\", \"CSS\"]\n}\nПолучить второго разработчика:\nproject[\"developers\"][1]\nПолучить первую технологию:\nproject[\"technologies\"][0]\nГлавное — каждый раз понимать, какой тип находится на текущем уровне.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#проверяйте-тип-структуры-на-каждом-уровне",
+    "href": "book/chapters/25-nested-data-structures.html#проверяйте-тип-структуры-на-каждом-уровне",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Проверяйте тип структуры на каждом уровне",
+    "text": "Проверяйте тип структуры на каждом уровне\nРассмотрим:\nproject[\"developers\"][1]\nПо шагам:\nproject\n→ dict\n\nproject[\"developers\"]\n→ list\n\nproject[\"developers\"][1]\n→ str\nА:\nusers[0][\"name\"]\nразбирается иначе:\nusers\n→ list\n\nusers[0]\n→ dict\n\nusers[0][\"name\"]\n→ str\nЭто один из самых полезных навыков при работе с вложенными данными.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#словарь-внутри-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#словарь-внутри-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Словарь внутри словаря",
+    "text": "Словарь внутри словаря\nМожно вложить словарь в другой словарь:\nuser = {\n    \"name\": \"Анна\",\n    \"contact\": {\n        \"email\": \"anna@example.com\",\n        \"city\": \"Казань\"\n    }\n}\nПолучить email:\nuser[\"contact\"][\"email\"]\nРезультат:\nanna@example.com\nВ этой главе ограничимся простыми структурами глубиной 2–3 уровня.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#изменение-вложенного-словаря",
+    "href": "book/chapters/25-nested-data-structures.html#изменение-вложенного-словаря",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Изменение вложенного словаря",
+    "text": "Изменение вложенного словаря\nНапример:\nuser[\"contact\"][\"city\"] = \"Москва\"\nПолучаем:\ncontact\n└── city → Москва\nЛогика та же:\nполучить внешний словарь\n↓\nполучить внутренний словарь\n↓\nизменить поле",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#пример-заказы",
+    "href": "book/chapters/25-nested-data-structures.html#пример-заказы",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Пример: заказы",
+    "text": "Пример: заказы\norders = [\n    {\n        \"id\": 101,\n        \"customer\": \"Анна\",\n        \"total\": 4500,\n        \"paid\": True\n    },\n    {\n        \"id\": 102,\n        \"customer\": \"Максим\",\n        \"total\": 7300,\n        \"paid\": False\n    }\n]\nВыведем неоплаченные заказы:\nfor order in orders:\n    if not order[\"paid\"]:\n        print(\n            \"Заказ\",\n            order[\"id\"],\n            \"→\",\n            order[\"customer\"]\n        )\nЗдесь список словарей уже напоминает данные реального приложения.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#пример-сумма-заказов",
+    "href": "book/chapters/25-nested-data-structures.html#пример-сумма-заказов",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Пример: сумма заказов",
+    "text": "Пример: сумма заказов\nМожно обработать числовое поле всех объектов:\norders = [\n    {\"id\": 101, \"total\": 4500},\n    {\"id\": 102, \"total\": 7300},\n    {\"id\": 103, \"total\": 2100}\n]\n\ntotal = 0\n\nfor order in orders:\n    total += order[\"total\"]\n\nprint(\"Общая сумма:\", total)\nРезультат:\nОбщая сумма: 13900",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#поиск-объекта",
+    "href": "book/chapters/25-nested-data-structures.html#поиск-объекта",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Поиск объекта",
+    "text": "Поиск объекта\nНапример, найдём пользователя по имени:\nusers = [\n    {\"name\": \"Анна\", \"age\": 25},\n    {\"name\": \"Максим\", \"age\": 30},\n    {\"name\": \"Олег\", \"age\": 27}\n]\n\nsearch_name = \"Максим\"\n\nfor user in users:\n    if user[\"name\"] == search_name:\n        print(user)\nМы пока не усложняем логику досрочным выходом из цикла.\nГлавная идея — поиск нужного словаря по его полю.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#добавление-данных-в-найденный-объект",
+    "href": "book/chapters/25-nested-data-structures.html#добавление-данных-в-найденный-объект",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Добавление данных в найденный объект",
+    "text": "Добавление данных в найденный объект\nНапример:\nusers = [\n    {\"name\": \"Анна\", \"active\": True},\n    {\"name\": \"Максим\", \"active\": False}\n]\n\nfor user in users:\n    if user[\"name\"] == \"Максим\":\n        user[\"active\"] = True\n\nprint(users)\nИзменяется конкретный словарь внутри списка.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#итоговый-пример-команда",
+    "href": "book/chapters/25-nested-data-structures.html#итоговый-пример-команда",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Итоговый пример: команда",
+    "text": "Итоговый пример: команда\nТеперь объединим несколько операций в одной модели:\nteam = {\n    \"name\": \"Backend\",\n    \"members\": [\n        {\"name\": \"Анна\", \"experience\": 3},\n        {\"name\": \"Максим\", \"experience\": 5},\n        {\"name\": \"Олег\", \"experience\": 2}\n    ]\n}\nЗдесь внешний словарь описывает команду, а список \"members\" хранит словари участников.\nПрограмма может посчитать средний опыт, выбрать участников по условию и изменить вложенное значение.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#не-делайте-вложенность-глубже-без-необходимости",
+    "href": "book/chapters/25-nested-data-structures.html#не-делайте-вложенность-глубже-без-необходимости",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Не делайте вложенность глубже без необходимости",
+    "text": "Не делайте вложенность глубже без необходимости\nТехнически можно добавлять новые уровни почти бесконечно, но такой код быстро становится трудно читать.\nteam[\"members\"][0][\"name\"]\nТакую цепочку ещё можно спокойно разобрать: словарь, список, словарь, поле.\nА если выражение становится заметно длиннее, структуру стоит внимательно пересмотреть.\nНа текущем этапе хороший ориентир:\n\nЕсли доступ превращается в длинную цепочку из множества [], структуру стоит внимательно пересмотреть.\n\n\n\n\n\n\n\nПредупреждениеСложнее — не значит лучше\n\n\n\nВложенные структуры полезны, но чрезмерная вложенность усложняет:\n\nчтение;\nизменение;\nпоиск ошибок;\nобработку данных.\n\nПока используйте 2–3 понятных уровня.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#как-выбрать-структуру",
+    "href": "book/chapters/25-nested-data-structures.html#как-выбрать-структуру",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Как выбрать структуру",
+    "text": "Как выбрать структуру\nРассмотрим несколько моделей.\nНесколько товаров:\n[\n    {\"name\": \"Ноутбук\", \"price\": 85000},\n    {\"name\": \"Монитор\", \"price\": 32000}\n]\nПодходит:\nlist\n↓\ndict\nОдин курс с несколькими темами:\n{\n    \"title\": \"Python\",\n    \"topics\": [\"Циклы\", \"Строки\", \"Списки\"]\n}\nПодходит:\ndict\n↓\nlist\nПользователь с контактными данными:\n{\n    \"name\": \"Анна\",\n    \"contact\": {\n        \"email\": \"anna@example.com\"\n    }\n}\nПодходит:\ndict\n↓\ndict\nСтруктуру выбирают исходя из смысла данных.\n\n\n\nКарта вложенных структур",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#что-важно-запомнить",
+    "href": "book/chapters/25-nested-data-structures.html#что-важно-запомнить",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nСписок словарей:\nusers = [\n    {\"name\": \"Анна\"},\n    {\"name\": \"Максим\"}\n]\nДоступ:\nusers[0][\"name\"]\nПеребор:\nfor user in users:\n    print(user[\"name\"])\nСловарь со списком:\ncourse = {\n    \"topics\": [\"Условия\", \"Циклы\"]\n}\nДоступ:\ncourse[\"topics\"][0]\nСловарь внутри словаря:\nuser = {\n    \"contact\": {\n        \"email\": \"anna@example.com\"\n    }\n}\nДоступ:\nuser[\"contact\"][\"email\"]\nДля необязательных полей словаря полезен:\nget()\nГлавное правило:\n\nНа каждом уровне понимайте, с каким типом данных вы сейчас работаете.\n\n\n\nПрактические задания\nЗадание 1. Фильмотека\nДан список:\nmovies = [\n    {\"title\": \"Interstellar\", \"year\": 2014},\n    {\"title\": \"Dune\", \"year\": 2021},\n    {\"title\": \"Arrival\", \"year\": 2016}\n]\nВыведите названия всех фильмов.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nmovies = [\n    {\"title\": \"Interstellar\", \"year\": 2014},\n    {\"title\": \"Dune\", \"year\": 2021},\n    {\"title\": \"Arrival\", \"year\": 2016}\n]\n\nfor movie in movies:\n    print(movie[\"title\"])\n\n\n\n\nЗадание 2. Изменение статуса сервера\nДаны серверы:\nservers = [\n    {\"name\": \"api-1\", \"online\": True},\n    {\"name\": \"api-2\", \"online\": False},\n    {\"name\": \"api-3\", \"online\": True}\n]\nИзмените статус api-2 на True.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nservers = [\n    {\"name\": \"api-1\", \"online\": True},\n    {\"name\": \"api-2\", \"online\": False},\n    {\"name\": \"api-3\", \"online\": True}\n]\n\nfor server in servers:\n    if server[\"name\"] == \"api-2\":\n        server[\"online\"] = True\n\nprint(servers)\n\n\n\n\nЗадание 3. Студент и предметы\nДан словарь:\nstudent = {\n    \"name\": \"Мария\",\n    \"subjects\": [\"Python\", \"SQL\", \"Git\"]\n}\nВыведите каждый предмет на отдельной строке.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nstudent = {\n    \"name\": \"Мария\",\n    \"subjects\": [\"Python\", \"SQL\", \"Git\"]\n}\n\nfor subject in student[\"subjects\"]:\n    print(subject)\n\n\n\n\nЗадание 4. Новый навык\nДан профиль:\ndeveloper = {\n    \"name\": \"Alex\",\n    \"skills\": [\"Python\", \"Git\"]\n}\nДобавьте навык \"Docker\".\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ndeveloper = {\n    \"name\": \"Alex\",\n    \"skills\": [\"Python\", \"Git\"]\n}\n\ndeveloper[\"skills\"].append(\"Docker\")\n\nprint(developer)\n\n\n\n\nЗадание 5. Контактные данные\nДан:\nemployee = {\n    \"name\": \"Анна\",\n    \"contact\": {\n        \"email\": \"anna@example.com\",\n        \"phone\": \"+123456789\"\n    }\n}\nВыведите email сотрудника.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nemployee = {\n    \"name\": \"Анна\",\n    \"contact\": {\n        \"email\": \"anna@example.com\",\n        \"phone\": \"+123456789\"\n    }\n}\n\nprint(employee[\"contact\"][\"email\"])\n\n\n\n\nЗадание 6. Средняя температура\nДаны измерения:\nmeasurements = [\n    {\"city\": \"Москва\", \"temperature\": 18},\n    {\"city\": \"Казань\", \"temperature\": 22},\n    {\"city\": \"Самара\", \"temperature\": 20},\n    {\"city\": \"Омск\", \"temperature\": 16}\n]\nВычислите среднюю температуру.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nmeasurements = [\n    {\"city\": \"Москва\", \"temperature\": 18},\n    {\"city\": \"Казань\", \"temperature\": 22},\n    {\"city\": \"Самара\", \"temperature\": 20},\n    {\"city\": \"Омск\", \"temperature\": 16}\n]\n\ntotal = 0\n\nfor measurement in measurements:\n    total += measurement[\"temperature\"]\n\naverage = total / len(measurements)\n\nprint(\"Средняя температура:\", average)\n\n\n\n\nЗадание 7. Только доступные билеты\nДаны:\ntickets = [\n    {\"event\": \"Python Meetup\", \"available\": True},\n    {\"event\": \"Data Conference\", \"available\": False},\n    {\"event\": \"Open Source Day\", \"available\": True}\n]\nВыведите только мероприятия, на которые ещё есть билеты.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ntickets = [\n    {\"event\": \"Python Meetup\", \"available\": True},\n    {\"event\": \"Data Conference\", \"available\": False},\n    {\"event\": \"Open Source Day\", \"available\": True}\n]\n\nfor ticket in tickets:\n    if ticket[\"available\"]:\n        print(ticket[\"event\"])\n\n\n\n\nЗадание 8. Необязательное поле\nДаны пользователи:\nusers = [\n    {\"name\": \"Анна\", \"country\": \"Россия\"},\n    {\"name\": \"John\"},\n    {\"name\": \"Maria\", \"country\": \"Испания\"}\n]\nВыведите:\nАнна → Россия\nJohn → Не указана\nMaria → Испания\nИспользуйте get().\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nusers = [\n    {\"name\": \"Анна\", \"country\": \"Россия\"},\n    {\"name\": \"John\"},\n    {\"name\": \"Maria\", \"country\": \"Испания\"}\n]\n\nfor user in users:\n    country = user.get(\"country\", \"Не указана\")\n\n    print(user[\"name\"], \"→\", country)\n\n\n\n\nЗадание 9. Добавление заказа\nЕсть список:\norders = [\n    {\"id\": 101, \"total\": 1500},\n    {\"id\": 102, \"total\": 2700}\n]\nСоздайте новый заказ:\nid    → 103\ntotal → 4200\nи добавьте его в список.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\norders = [\n    {\"id\": 101, \"total\": 1500},\n    {\"id\": 102, \"total\": 2700}\n]\n\nnew_order = {\n    \"id\": 103,\n    \"total\": 4200\n}\n\norders.append(new_order)\n\nprint(orders)\n\n\n\n\nЗадание 10. Анализ команды\nДана команда:\nteam = {\n    \"name\": \"Backend\",\n    \"members\": [\n        {\"name\": \"Анна\", \"experience\": 3},\n        {\"name\": \"Максим\", \"experience\": 5},\n        {\"name\": \"Олег\", \"experience\": 2}\n    ]\n}\nНужно:\n\nвывести название команды;\nвывести всех участников;\nнайти суммарный опыт;\nвычислить средний опыт;\nвывести участников с опытом не меньше 3 лет;\nувеличить опыт Олега на 1.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nteam = {\n    \"name\": \"Backend\",\n    \"members\": [\n        {\"name\": \"Анна\", \"experience\": 3},\n        {\"name\": \"Максим\", \"experience\": 5},\n        {\"name\": \"Олег\", \"experience\": 2}\n    ]\n}\n\nprint(\"Команда:\", team[\"name\"])\n\ntotal_experience = 0\n\nfor member in team[\"members\"]:\n    print(member[\"name\"])\n\n    total_experience += member[\"experience\"]\n\naverage = total_experience / len(team[\"members\"])\n\nprint(\"Общий опыт:\", total_experience)\nprint(\"Средний опыт:\", average)\n\nprint(\"Опыт от 3 лет:\")\n\nfor member in team[\"members\"]:\n    if member[\"experience\"] &gt;= 3:\n        print(member[\"name\"])\n\nfor member in team[\"members\"]:\n    if member[\"name\"] == \"Олег\":\n        member[\"experience\"] += 1\n\nprint(team)",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#что-дальше",
+    "href": "book/chapters/25-nested-data-structures.html#что-дальше",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nТеперь мы умеем хранить данные в более реалистичном виде:\nlist\n↓\ndict\nили:\ndict\n↓\nlist\nМы можем:\nполучать вложенные значения\n↓\nперебирать объекты\n↓\nизменять поля\n↓\nфильтровать данные\n↓\nдобавлять новые объекты\nНо при обработке данных часто возникает повторяющийся шаблон.\nНапример:\nsquares = []\n\nfor number in numbers:\n    squares.append(number ** 2)\nТакой код встречается очень часто.\nPython позволяет записывать некоторые подобные преобразования короче.\nСледующая глава — «List comprehensions».",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/25-nested-data-structures.html#вложенные-структуры-данных-python-краткое-резюме",
+    "href": "book/chapters/25-nested-data-structures.html#вложенные-структуры-данных-python-краткое-резюме",
+    "title": "4.5 Вложенные структуры данных",
+    "section": "Вложенные структуры данных Python: краткое резюме",
+    "text": "Вложенные структуры данных Python: краткое резюме\nВложенные структуры данных в Python позволяют объединять list и dict для описания более сложных объектов. Распространённый вариант — список словарей, где каждый словарь представляет отдельный объект: пользователя, товар, заказ или задачу.\nДоступ к вложенным данным выполняется последовательно: например, users[0][\"name\"] сначала получает элемент списка, а затем значение словаря. Аналогично course[\"topics\"][0] сначала получает список по ключу, а затем его элемент.\nПри работе с вложенными структурами важно понимать тип данных на каждом уровне и избегать лишней глубины. Следующая глава посвящена теме «List comprehensions».",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.5 Вложенные структуры данных"
     ]
   }
 ]

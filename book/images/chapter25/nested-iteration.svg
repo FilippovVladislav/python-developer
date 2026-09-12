@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Перебор списка словарей</title>
+  <desc id="desc">Цикл for product in products получает один словарь за раз, затем читает поля name и price.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfaf7}.card{fill:#fff;stroke:#d8dee8;stroke-width:3}.accent{fill:#eef4f8;stroke:#2f5f8f;stroke-width:4}.soft{fill:#f0f3df;stroke:#6f7d2d;stroke-width:4}.ink{fill:#17212b}.muted{fill:#5f6b78}.blue{fill:#2f5f8f}.olive{fill:#6f7d2d}.line{fill:none;stroke:#2f5f8f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.text{font-family:"Segoe UI",Arial,sans-serif}.title{font-size:36px;font-weight:700}.label{font-size:23px;font-weight:650}.body{font-size:20px}.mono{font-family:"Cascadia Code",Consolas,monospace;font-size:24px;font-weight:700}.smallmono{font-family:"Cascadia Code",Consolas,monospace;font-size:20px;font-weight:700}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2f5f8f"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="700"/>
+  <text class="text title ink" x="600" y="58" text-anchor="middle">Цикл получает один объект за раз</text>
+
+  <rect class="accent" x="130" y="105" width="260" height="70" rx="16"/>
+  <text class="mono blue" x="260" y="149" text-anchor="middle">products</text>
+  <path class="line" d="M390 140h130" marker-end="url(#arrow)"/>
+  <rect class="soft" x="545" y="105" width="360" height="70" rx="16"/>
+  <text class="mono olive" x="725" y="149" text-anchor="middle">for product in products</text>
+
+  <path class="line" d="M725 184v58" marker-end="url(#arrow)"/>
+  <rect class="card" x="250" y="255" width="700" height="110" rx="18"/>
+  <text class="mono blue" x="600" y="300" text-anchor="middle">product = {"name": "Ноутбук", "price": 85000}</text>
+  <text class="text body muted" x="600" y="337" text-anchor="middle">первая итерация: product — dict</text>
+
+  <path class="line" d="M600 372v38" marker-end="url(#arrow)"/>
+  <rect class="soft" x="290" y="425" width="270" height="70" rx="16"/>
+  <text class="smallmono olive" x="425" y="468" text-anchor="middle">product["name"]</text>
+  <rect class="soft" x="640" y="425" width="270" height="70" rx="16"/>
+  <text class="smallmono olive" x="775" y="468" text-anchor="middle">product["price"]</text>
+
+  <rect class="card" x="250" y="535" width="700" height="88" rx="18"/>
+  <text class="mono blue" x="600" y="572" text-anchor="middle">product = {"name": "Монитор", "price": 32000}</text>
+  <text class="text body muted" x="600" y="606" text-anchor="middle">следующая итерация: другой словарь, тот же код</text>
+</svg>
