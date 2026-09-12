@@ -9,7 +9,7 @@ keywords:
   - преобразование элементов
 ---
 
-# List comprehensions
+# List comprehensions {.unnumbered}
 
 ::: {.callout-important}
 Главный вопрос главы:

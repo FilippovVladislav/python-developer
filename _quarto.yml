@@ -50,8 +50,8 @@ book:
         - book/chapters/22-sets.qmd
         - book/chapters/23-dictionaries.qmd
         - book/chapters/24-working-with-dictionaries.qmd
-      #  - book/chapters/25-nested-data-structures.qmd
-      #  - book/chapters/26-list-comprehensions.qmd
+        - book/chapters/25-nested-data-structures.qmd
+      # - book/chapters/26-list-comprehensions.qmd
       #  - book/chapters/27-error-handling.qmd
       #  - book/chapters/28-modules.qmd
       #  - book/chapters/29-own-modules.qmd
