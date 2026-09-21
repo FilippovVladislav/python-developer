@@ -5377,7 +5377,7 @@
     "href": "book/tom-03-data-structures-code-organization.html#быстрые-ссылки",
     "title": "Том III. Структуры данных и организация кода",
     "section": "",
-    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n4.5 Вложенные структуры данных\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
+    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n4.5 Вложенные структуры данных\n4.6 List comprehensions\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
     "crumbs": [
       "Том III. Структуры данных и организация кода"
     ]
@@ -6865,6 +6865,292 @@
     "crumbs": [
       "Том III. Структуры данных и организация кода",
       "4.5 Вложенные структуры данных"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html",
+    "href": "book/chapters/26-list-comprehensions.html",
+    "title": "4.6 List comprehensions",
+    "section": "",
+    "text": "Первый list comprehension\nВ предыдущих главах мы часто создавали новый список так:\nРезультат:\nЭтот код понятен:\nВ Python такой шаблон можно записать компактнее:\nЭто list comprehension.\nРассмотрим полный пример:\nРезультат:\nОбщий синтаксис:\nНапример:\nЗдесь:",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#первый-list-comprehension",
+    "href": "book/chapters/26-list-comprehensions.html#первый-list-comprehension",
+    "title": "4.6 List comprehensions",
+    "section": "",
+    "text": "numbers = [1, 2, 3, 4, 5]\n\nsquares = [number ** 2 for number in numbers]\n\nprint(squares)\n\n[1, 4, 9, 16, 25]\n\n[expression for item in iterable]\n\n[number ** 2 for number in numbers]\n\nnumber ** 2\n→ что добавить в новый список\n\nfor number in numbers\n→ откуда брать элементы\n\n\n\n\n\n\nСтроение list comprehension",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#обычный-цикл-и-list-comprehension",
+    "href": "book/chapters/26-list-comprehensions.html#обычный-цикл-и-list-comprehension",
+    "title": "4.6 List comprehensions",
+    "section": "Обычный цикл и list comprehension",
+    "text": "Обычный цикл и list comprehension\nЭти два варианта решают одну задачу.\nОбычный цикл:\nsquares = []\n\nfor number in numbers:\n    squares.append(number ** 2)\nList comprehension:\nsquares = [number ** 2 for number in numbers]\nВо втором варианте исчезают:\nsquares = []\nи:\nsquares.append(...)\nPython сразу создаёт новый список.\n\n\n\nОбычный for и list comprehension",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#как-читать-list-comprehension",
+    "href": "book/chapters/26-list-comprehensions.html#как-читать-list-comprehension",
+    "title": "4.6 List comprehensions",
+    "section": "Как читать list comprehension",
+    "text": "Как читать list comprehension\nРассмотрим:\n[length * 2 for length in lengths]\nУдобно читать начиная с for:\nдля каждого length из lengths\n↓\nвычислить length * 2\n↓\nдобавить результат в новый список\nНапример:\nlengths = [2, 5, 8]\n\ndoubled = [length * 2 for length in lengths]\n\nprint(doubled)\nРезультат:\n[4, 10, 16]\n\n\n\n\n\n\nСоветСначала найдите for\n\n\n\nЕсли запись:\n[value * 2 for value in values]\nпока выглядит непривычно, сначала прочитайте:\nfor value in values\nа затем посмотрите, какое выражение стоит слева:\nvalue * 2\nТак конструкцию проще разобрать.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#новый-список-создаётся-отдельно",
+    "href": "book/chapters/26-list-comprehensions.html#новый-список-создаётся-отдельно",
+    "title": "4.6 List comprehensions",
+    "section": "Новый список создаётся отдельно",
+    "text": "Новый список создаётся отдельно\nList comprehension не изменяет исходный список:\nnumbers = [1, 2, 3]\n\ndoubled = [number * 2 for number in numbers]\n\nprint(numbers)\nprint(doubled)\nРезультат:\n[1, 2, 3]\n[2, 4, 6]\nnumbers остаётся прежним.\nСоздаётся новый список:\ndoubled",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#преобразование-чисел",
+    "href": "book/chapters/26-list-comprehensions.html#преобразование-чисел",
+    "title": "4.6 List comprehensions",
+    "section": "Преобразование чисел",
+    "text": "Преобразование чисел\nList comprehension особенно удобен для однотипных преобразований.\nНапример, перевод температур из градусов Цельсия в Фаренгейты:\n\n\nnumber-transform.py\n\ncelsius = [0, 10, 20, 30]\n\nfahrenheit = [\n    temperature * 9 / 5 + 32\n    for temperature in celsius\n]\n\nprint(fahrenheit)\n\nРезультат:\n[32.0, 50.0, 68.0, 86.0]\nКаждый элемент проходит через одно выражение:\ntemperature * 9 / 5 + 32",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#преобразование-строк",
+    "href": "book/chapters/26-list-comprehensions.html#преобразование-строк",
+    "title": "4.6 List comprehensions",
+    "section": "Преобразование строк",
+    "text": "Преобразование строк\nList comprehension работает не только с числами.\nНапример:\nnames = [\"anna\", \"max\", \"olga\"]\n\nupper_names = [name.upper() for name in names]\n\nprint(upper_names)\nРезультат:\n['ANNA', 'MAX', 'OLGA']\nДля каждого элемента вызывается:\nname.upper()",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#получение-длины-строк",
+    "href": "book/chapters/26-list-comprehensions.html#получение-длины-строк",
+    "title": "4.6 List comprehensions",
+    "section": "Получение длины строк",
+    "text": "Получение длины строк\nМожно получить новое значение из каждого элемента:\n\n\nstring-transform.py\n\nlanguages = [\n    \"Python\",\n    \"Go\",\n    \"JavaScript\"\n]\n\nlengths = [\n    len(language)\n    for language in languages\n]\n\nprint(lengths)\n\nРезультат:\n[6, 2, 10]\nИсходный список содержит строки:\nPython\nGo\nJavaScript\nНовый — числа:\n6\n2\n10\nТип элементов нового списка не обязан совпадать с исходным.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#фильтрация-с-if",
+    "href": "book/chapters/26-list-comprehensions.html#фильтрация-с-if",
+    "title": "4.6 List comprehensions",
+    "section": "Фильтрация с if",
+    "text": "Фильтрация с if\nИногда нужно добавить не все элементы.\nОбычный вариант:\nnumbers = [3, 8, 12, 5, 20, 7]\n\nlarge_numbers = []\n\nfor number in numbers:\n    if number &gt;= 10:\n        large_numbers.append(number)\n\nprint(large_numbers)\nРезультат:\n[12, 20]\nС list comprehension:\nlarge_numbers = [\n    number\n    for number in numbers\n    if number &gt;= 10\n]\nСинтаксис:\n[expression for item in iterable if condition]",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#как-работает-условие",
+    "href": "book/chapters/26-list-comprehensions.html#как-работает-условие",
+    "title": "4.6 List comprehensions",
+    "section": "Как работает условие",
+    "text": "Как работает условие\nРассмотрим:\n[number for number in numbers if number &gt;= 10]\nЛогика:\nвзять очередной number\n↓\nпроверить number &gt;= 10\n↓\nTrue?\n├── да → добавить number\n└── нет → пропустить\nif здесь отвечает за то, попадёт ли элемент в новый список.\n\n\n\nФильтрация с if",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#чётные-числа",
+    "href": "book/chapters/26-list-comprehensions.html#чётные-числа",
+    "title": "4.6 List comprehensions",
+    "section": "Чётные числа",
+    "text": "Чётные числа\nНапример:\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8]\n\neven_numbers = [\n    number\n    for number in numbers\n    if number % 2 == 0\n]\n\nprint(even_numbers)\nРезультат:\n[2, 4, 6, 8]\nИсходный список не изменяется.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#фильтрация-строк",
+    "href": "book/chapters/26-list-comprehensions.html#фильтрация-строк",
+    "title": "4.6 List comprehensions",
+    "section": "Фильтрация строк",
+    "text": "Фильтрация строк\nУсловия могут работать и со строками:\nwords = [\n    \"Python\",\n    \"Go\",\n    \"JavaScript\",\n    \"SQL\",\n    \"TypeScript\"\n]\n\nlong_words = [\n    word\n    for word in words\n    if len(word) &gt;= 6\n]\n\nprint(long_words)\nРезультат:\n['Python', 'JavaScript', 'TypeScript']",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#преобразование-и-фильтрация-вместе",
+    "href": "book/chapters/26-list-comprehensions.html#преобразование-и-фильтрация-вместе",
+    "title": "4.6 List comprehensions",
+    "section": "Преобразование и фильтрация вместе",
+    "text": "Преобразование и фильтрация вместе\nList comprehension может одновременно:\n\nвыбрать подходящие элементы;\nпреобразовать их.\n\nНапример:\nnumbers = [1, 2, 3, 4, 5, 6]\n\nsquares = [\n    number ** 2\n    for number in numbers\n    if number % 2 == 0\n]\n\nprint(squares)\nРезультат:\n[4, 16, 36]\nСначала условие оставляет:\n2\n4\n6\nЗатем выражение:\nnumber ** 2\nпреобразует их:\n4\n16\n36\n\n\n\n\n\n\nПреобразование и фильтрация",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#list-comprehension-со-списком-словарей",
+    "href": "book/chapters/26-list-comprehensions.html#list-comprehension-со-списком-словарей",
+    "title": "4.6 List comprehensions",
+    "section": "List comprehension со списком словарей",
+    "text": "List comprehension со списком словарей\nТеперь соединим тему с предыдущей главой.\nЕсть товары:\nproducts = [\n    {\"name\": \"Ноутбук\", \"price\": 85000},\n    {\"name\": \"Монитор\", \"price\": 32000},\n    {\"name\": \"Мышь\", \"price\": 2500}\n]\nПолучим список названий:\nnames = [\n    product[\"name\"]\n    for product in products\n]\n\nprint(names)\nРезультат:\n['Ноутбук', 'Монитор', 'Мышь']\nКаждый:\nproduct\nпо-прежнему является словарём.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#фильтрация-списка-словарей",
+    "href": "book/chapters/26-list-comprehensions.html#фильтрация-списка-словарей",
+    "title": "4.6 List comprehensions",
+    "section": "Фильтрация списка словарей",
+    "text": "Фильтрация списка словарей\nНапример, нужны товары дороже 10000:\nproducts = [\n    {\"name\": \"Ноутбук\", \"price\": 85000},\n    {\"name\": \"Монитор\", \"price\": 32000},\n    {\"name\": \"Мышь\", \"price\": 2500}\n]\n\nexpensive = [\n    product\n    for product in products\n    if product[\"price\"] &gt; 10000\n]\n\nprint(expensive)\nВ новый список попадут словари ноутбука и монитора.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#получение-одного-поля-после-фильтрации",
+    "href": "book/chapters/26-list-comprehensions.html#получение-одного-поля-после-фильтрации",
+    "title": "4.6 List comprehensions",
+    "section": "Получение одного поля после фильтрации",
+    "text": "Получение одного поля после фильтрации\nЕсли нужны только названия:\nexpensive_names = [\n    product[\"name\"]\n    for product in products\n    if product[\"price\"] &gt; 10000\n]\n\nprint(expensive_names)\nРезультат:\n['Ноутбук', 'Монитор']\nЗдесь одновременно используются:\nфильтрация\n+\nполучение поля\n+\nсоздание нового списка\n\n\n\n\n\n\nList comprehension для списка словарей",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#можно-использовать-range",
+    "href": "book/chapters/26-list-comprehensions.html#можно-использовать-range",
+    "title": "4.6 List comprehensions",
+    "section": "Можно использовать range()",
+    "text": "Можно использовать range()\nList comprehension может работать с range():\n\n\nrange-comprehension.py\n\nsquares = [\n    number ** 2\n    for number in range(1, 6)\n]\n\nprint(squares)\n\nРезультат:\n[1, 4, 9, 16, 25]\nПромежуточный список чисел создавать не требуется.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#несколько-простых-выборок-из-заказов",
+    "href": "book/chapters/26-list-comprehensions.html#несколько-простых-выборок-из-заказов",
+    "title": "4.6 List comprehensions",
+    "section": "Несколько простых выборок из заказов",
+    "text": "Несколько простых выборок из заказов\nНе обязательно объединять все условия в одну конструкцию. Для одного набора заказов можно создать несколько понятных списков: оплаченные id, суммы больше 5000 и оплаченные заказы больше 5000.\n\n\n\nКаждый список отвечает на один вопрос о заказах. Это проще читать и изменять, чем одну длинную строку.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#когда-list-comprehension-удобен",
+    "href": "book/chapters/26-list-comprehensions.html#когда-list-comprehension-удобен",
+    "title": "4.6 List comprehensions",
+    "section": "Когда list comprehension удобен",
+    "text": "Когда list comprehension удобен\nОн хорошо подходит для простых операций:\nпреобразовать каждый элемент\nотфильтровать элементы\nотфильтровать + преобразовать\nНапример:\nprices_with_tax = [\n    price * 1.2\n    for price in prices\n]\nили:\nactive_users = [\n    user\n    for user in users\n    if user[\"active\"]\n]",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#когда-обычный-for-лучше",
+    "href": "book/chapters/26-list-comprehensions.html#когда-обычный-for-лучше",
+    "title": "4.6 List comprehensions",
+    "section": "Когда обычный for лучше",
+    "text": "Когда обычный for лучше\nList comprehension не обязан заменять каждый цикл.\nРассмотрим:\nresult = []\n\nfor number in numbers:\n    if number &gt; 0:\n        print(\"Обрабатываем:\", number)\n\n        value = number ** 2\n        result.append(value)\nЗдесь есть несколько действий.\nПереписывание такого кода в одну сложную конструкцию сделает его менее понятным.\n\n\n\n\n\n\nПредупреждениеКороткий код не всегда лучше\n\n\n\nИспользуйте list comprehension, когда преобразование или фильтрация остаются понятными с первого взгляда.\nЕсли внутри появляется сложная логика, несколько условий или побочные действия — обычный for часто читается лучше.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#однострочная-или-многострочная-запись",
+    "href": "book/chapters/26-list-comprehensions.html#однострочная-или-многострочная-запись",
+    "title": "4.6 List comprehensions",
+    "section": "Однострочная или многострочная запись",
+    "text": "Однострочная или многострочная запись\nКороткий вариант:\nsquares = [number ** 2 for number in numbers]\nЕсли выражение становится длиннее, его можно оформить:\nexpensive_names = [\n    product[\"name\"]\n    for product in products\n    if product[\"price\"] &gt; 10000\n]\nЭто всё тот же list comprehension.\nМногострочная запись часто легче читается.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#типичные-ошибки",
+    "href": "book/chapters/26-list-comprehensions.html#типичные-ошибки",
+    "title": "4.6 List comprehensions",
+    "section": "Типичные ошибки",
+    "text": "Типичные ошибки\n\nЗабыли квадратные скобки\nНам нужен список:\n[number * 2 for number in numbers]\nКвадратные скобки здесь являются частью синтаксиса list comprehension.\n\n\nПерепутали порядок\nПравильно:\n[number * 2 for number in numbers]\nа не:\n[for number in numbers number * 2]\nУдобная схема:\nчто добавить\n↓\nfor\n↓\nоткуда брать\n↓\nнеобязательный if\n\n\nСлишком много логики\nЕсли конструкция перестала быстро читаться, лучше вернуться к обычному циклу.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#что-выбрать-for-или-list-comprehension",
+    "href": "book/chapters/26-list-comprehensions.html#что-выбрать-for-или-list-comprehension",
+    "title": "4.6 List comprehensions",
+    "section": "Что выбрать: for или list comprehension",
+    "text": "Что выбрать: for или list comprehension\nОбычный for:\nresult = []\n\nfor item in items:\n    result.append(...)\nудобен, когда:\n\nдействий несколько;\nнужна сложная логика;\nважны промежуточные шаги;\nкомпактная запись ухудшает понимание.\n\nList comprehension:\nresult = [\n    expression\n    for item in items\n]\nудобен, когда задача сводится к понятному созданию нового списка.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#что-важно-запомнить",
+    "href": "book/chapters/26-list-comprehensions.html#что-важно-запомнить",
+    "title": "4.6 List comprehensions",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nБазовая форма:\n[expression for item in iterable]\nНапример:\n[number ** 2 for number in numbers]\nС условием:\n[expression for item in iterable if condition]\nНапример:\n[number for number in numbers if number &gt; 0]\nПреобразование и фильтрация:\n[number ** 2 for number in numbers if number % 2 == 0]\nСо словарями:\n[user[\"name\"] for user in users]\nФильтрация словарей:\n[\n    user\n    for user in users\n    if user[\"active\"]\n]\nList comprehension создаёт новый список.\nИспользуйте его тогда, когда результат остаётся легко читаемым.\n\n\nПрактические задания\nЗадание 1. Километры в метры\nДан список:\nkilometers = [1, 3, 5, 10]\nСоздайте новый список со значениями в метрах.\nИспользуйте list comprehension.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nkilometers = [1, 3, 5, 10]\n\nmeters = [\n    kilometer * 1000\n    for kilometer in kilometers\n]\n\nprint(meters)\nРезультат:\n[1000, 3000, 5000, 10000]\n\n\n\n\nЗадание 2. Длины файлов\nДаны имена:\nfiles = [\n    \"main.py\",\n    \"config.yaml\",\n    \"README.md\",\n    \"app.py\"\n]\nСоздайте список, содержащий длину каждого имени.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfiles = [\n    \"main.py\",\n    \"config.yaml\",\n    \"README.md\",\n    \"app.py\"\n]\n\nlengths = [\n    len(filename)\n    for filename in files\n]\n\nprint(lengths)\n\n\n\n\nЗадание 3. Положительные значения\nДаны изменения баланса:\nchanges = [-150, 300, -50, 700, -20, 100]\nСоздайте новый список только с положительными значениями.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nchanges = [-150, 300, -50, 700, -20, 100]\n\nincome = [\n    value\n    for value in changes\n    if value &gt; 0\n]\n\nprint(income)\nРезультат:\n[300, 700, 100]\n\n\n\n\nЗадание 4. Нечётные числа\nИспользуя:\nrange(1, 21)\nсоздайте список нечётных чисел от 1 до 20.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nodd_numbers = [\n    number\n    for number in range(1, 21)\n    if number % 2 != 0\n]\n\nprint(odd_numbers)\n\n\n\n\nЗадание 5. Активные серверы\nДаны:\nservers = [\n    {\"name\": \"api-1\", \"online\": True},\n    {\"name\": \"api-2\", \"online\": False},\n    {\"name\": \"api-3\", \"online\": True},\n    {\"name\": \"api-4\", \"online\": False}\n]\nСоздайте список словарей только с работающими серверами.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nservers = [\n    {\"name\": \"api-1\", \"online\": True},\n    {\"name\": \"api-2\", \"online\": False},\n    {\"name\": \"api-3\", \"online\": True},\n    {\"name\": \"api-4\", \"online\": False}\n]\n\nonline_servers = [\n    server\n    for server in servers\n    if server[\"online\"]\n]\n\nprint(online_servers)\n\n\n\n\nЗадание 6. Имена активных серверов\nИспользуйте те же данные, но создайте список только с именами работающих серверов:\n['api-1', 'api-3']\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nservers = [\n    {\"name\": \"api-1\", \"online\": True},\n    {\"name\": \"api-2\", \"online\": False},\n    {\"name\": \"api-3\", \"online\": True},\n    {\"name\": \"api-4\", \"online\": False}\n]\n\nonline_names = [\n    server[\"name\"]\n    for server in servers\n    if server[\"online\"]\n]\n\nprint(online_names)\n\n\n\n\nЗадание 7. Цены со скидкой\nДаны цены:\nprices = [1200, 3500, 8000, 15000]\nДля товаров стоимостью от 5000 создайте новый список цен со скидкой 10%.\nВ новый список должны попасть только товары, которые подходят под условие.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nprices = [1200, 3500, 8000, 15000]\n\ndiscounted = [\n    price * 0.9\n    for price in prices\n    if price &gt;= 5000\n]\n\nprint(discounted)\nРезультат:\n[7200.0, 13500.0]\n\n\n\n\nЗадание 8. Пользователи старше 18 лет\nДаны:\nusers = [\n    {\"name\": \"Анна\", \"age\": 17},\n    {\"name\": \"Максим\", \"age\": 25},\n    {\"name\": \"Мария\", \"age\": 19},\n    {\"name\": \"Олег\", \"age\": 16}\n]\nСоздайте список имён пользователей, которым не меньше 18 лет.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nusers = [\n    {\"name\": \"Анна\", \"age\": 17},\n    {\"name\": \"Максим\", \"age\": 25},\n    {\"name\": \"Мария\", \"age\": 19},\n    {\"name\": \"Олег\", \"age\": 16}\n]\n\nadult_names = [\n    user[\"name\"]\n    for user in users\n    if user[\"age\"] &gt;= 18\n]\n\nprint(adult_names)\nРезультат:\n['Максим', 'Мария']\n\n\n\n\nЗадание 9. Расширения Python-файлов\nДаны:\nfiles = [\n    \"main.py\",\n    \"index.html\",\n    \"app.py\",\n    \"styles.css\",\n    \"test.py\"\n]\nСоздайте новый список только с Python-файлами.\nИспользуйте метод строки endswith().\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nfiles = [\n    \"main.py\",\n    \"index.html\",\n    \"app.py\",\n    \"styles.css\",\n    \"test.py\"\n]\n\npython_files = [\n    filename\n    for filename in files\n    if filename.endswith(\".py\")\n]\n\nprint(python_files)\nРезультат:\n['main.py', 'app.py', 'test.py']\n\n\n\n\nЗадание 10. Анализ заказов\nДаны:\norders = [\n    {\"id\": 101, \"total\": 4500, \"paid\": True},\n    {\"id\": 102, \"total\": 7300, \"paid\": False},\n    {\"id\": 103, \"total\": 12000, \"paid\": True},\n    {\"id\": 104, \"total\": 2800, \"paid\": True},\n    {\"id\": 105, \"total\": 9500, \"paid\": False}\n]\nС помощью отдельных list comprehensions создайте:\n\nсписок оплаченных заказов;\nсписок id оплаченных заказов;\nсписок сумм заказов дороже 5000;\nсписок id оплаченных заказов дороже 5000.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\norders = [\n    {\"id\": 101, \"total\": 4500, \"paid\": True},\n    {\"id\": 102, \"total\": 7300, \"paid\": False},\n    {\"id\": 103, \"total\": 12000, \"paid\": True},\n    {\"id\": 104, \"total\": 2800, \"paid\": True},\n    {\"id\": 105, \"total\": 9500, \"paid\": False}\n]\n\npaid_orders = [\n    order\n    for order in orders\n    if order[\"paid\"]\n]\n\npaid_ids = [\n    order[\"id\"]\n    for order in orders\n    if order[\"paid\"]\n]\n\nlarge_totals = [\n    order[\"total\"]\n    for order in orders\n    if order[\"total\"] &gt; 5000\n]\n\nlarge_paid_ids = [\n    order[\"id\"]\n    for order in orders\n    if order[\"paid\"] and order[\"total\"] &gt; 5000\n]\n\nprint(\"Оплаченные:\", paid_orders)\nprint(\"ID оплаченных:\", paid_ids)\nprint(\"Суммы &gt; 5000:\", large_totals)\nprint(\"Оплаченные &gt; 5000:\", large_paid_ids)",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#что-дальше",
+    "href": "book/chapters/26-list-comprehensions.html#что-дальше",
+    "title": "4.6 List comprehensions",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nList comprehensions позволяют компактно создавать новые списки:\nsquares = [\n    number ** 2\n    for number in numbers\n]\nПохожий синтаксис существует и для других структур данных, но это отдельные темы.\nВ текущем опубликованном плане после этой главы нет подключённой следующей страницы. Следующая запланированная глава в структуре проекта — «Обработка ошибок».",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
+    ]
+  },
+  {
+    "objectID": "book/chapters/26-list-comprehensions.html#list-comprehensions-в-python-краткое-резюме",
+    "href": "book/chapters/26-list-comprehensions.html#list-comprehensions-в-python-краткое-резюме",
+    "title": "4.6 List comprehensions",
+    "section": "List comprehensions в Python: краткое резюме",
+    "text": "List comprehensions в Python: краткое резюме\nList comprehension — компактный синтаксис Python для создания нового списка на основе существующей последовательности. Базовая форма записывается как [expression for item in iterable], а необязательный if позволяет сразу отфильтровать элементы.\nList comprehensions подходят для простых преобразований и фильтрации: вычисления новых значений, обработки строк, выбора элементов по условию и извлечения полей из списка словарей. При этом исходный список не изменяется — создаётся новый.\nЕсли логика становится сложной или требует нескольких последовательных действий, обычный цикл for обычно остаётся более читаемым решением.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.6 List comprehensions"
     ]
   }
 ]
