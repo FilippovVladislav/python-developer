@@ -24,9 +24,9 @@ keywords:
 - [4.3 Словари](chapters/23-dictionaries.qmd)
 - [4.4 Работа со словарями](chapters/24-working-with-dictionaries.qmd)
 - [4.5 Вложенные структуры данных](chapters/25-nested-data-structures.qmd)
+- [4.6 List comprehensions](chapters/26-list-comprehensions.qmd)
 
 <!--
-- [4.6 List comprehensions](chapters/26-list-comprehensions.qmd)
 - [Обработка ошибок](chapters/27-error-handling.qmd)
 - [Модули](chapters/28-modules.qmd)
 - [Собственные модули](chapters/29-own-modules.qmd)
