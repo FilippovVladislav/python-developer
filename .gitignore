@@ -20,3 +20,5 @@ __pycache__/
 .vscode/
 /.quarto/
 **/*.quarto_ipynb
+
+AGENTS.md
