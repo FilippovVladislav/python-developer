@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Модули стандартной библиотеки Python</title>
+  <desc id="desc">Модули math, random, statistics, datetime и pathlib помогают с вычислениями, случайными значениями, статистикой, датами и путями.</desc>
+  <defs><style>.bg{fill:#101827}.card{fill:#182538;stroke:#35d6c5;stroke-width:2}.title{font:700 34px Arial,sans-serif;fill:#f1f5f9}.name{font:700 25px Consolas,monospace;fill:#65e6d4}.label{font:21px Arial,sans-serif;fill:#bac7d8}.center{fill:#142c3a;stroke:#65e6d4;stroke-width:3}.line{stroke:#35d6c5;stroke-width:3}</style></defs>
+  <rect class="bg" width="1200" height="700"/><text class="title" x="600" y="58" text-anchor="middle">В Python уже есть готовые инструменты</text>
+  <path class="line" d="M600 345 315 205M600 345 885 205M600 345 315 485M600 345 885 485M600 345v225"/>
+  <g transform="translate(80 120)"><rect class="card" width="430" height="115" rx="16"/><text class="name" x="30" y="48">math</text><text class="label" x="30" y="83">вычисления</text></g>
+  <g transform="translate(690 120)"><rect class="card" width="430" height="115" rx="16"/><text class="name" x="30" y="48">random</text><text class="label" x="30" y="83">случайные значения</text></g>
+  <g transform="translate(80 430)"><rect class="card" width="430" height="115" rx="16"/><text class="name" x="30" y="48">statistics</text><text class="label" x="30" y="83">статистика</text></g>
+  <g transform="translate(690 430)"><rect class="card" width="430" height="115" rx="16"/><text class="name" x="30" y="48">datetime</text><text class="label" x="30" y="83">даты и время</text></g>
+  <g transform="translate(385 570)"><rect class="card" width="430" height="95" rx="16"/><text class="name" x="30" y="43">pathlib</text><text class="label" x="30" y="73">пути к файлам</text></g>
+  <circle class="center" cx="600" cy="345" r="85"/><text class="label" x="600" y="338" text-anchor="middle">стандартная</text><text class="label" x="600" y="369" text-anchor="middle">библиотека</text>
+</svg>

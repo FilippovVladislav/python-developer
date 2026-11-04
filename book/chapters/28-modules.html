@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="keywords" content="модули Python, импорт модулей Python, import Python, from import Python, стандартная библиотека Python, math Python, random Python, datetime Python">
+<meta name="description" content="Модули Python для начинающих: import, from import, as, math, random, statistics, datetime, pathlib и практические примеры использования стандартной библиотеки.">
+
+<title>Модули и импорты в Python: import, from и стандартная библиотека – Путь Python-разработчика</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../book/chapters/27-error-handling.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-69b973adb3fa463d9d3305452ca8a886.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-18e7ff937da5b1e292b19e9e2701a853.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../book/assets/css/python-playground.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" aria-label="Панель инструментов">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Путь"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-03-data-structures-code-organization.html">Том III. Структуры данных и организация кода</a></li><li class="breadcrumb-item"><a href="../../book/chapters/28-modules.html">4.8 Модули и импорты</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Поиск" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Сайт">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Путь Python-разработчика</a> 
+        <div class="sidebar-tools-main">
+    <a href="../../Путь-Python-разработчика.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Путь Python-разработчика: книга по Python для начинающих</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-01-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">2 Том I. Основы программирования</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Переключить раздел: 2 Том I. Основы программирования">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/01-thinking-like-computer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.1 Как думает компьютер</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/02-why-binary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.2 Почему компьютер понимает только 0 и 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/03-how-computers-store-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.3 Как компьютер хранит данные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/04-how-programs-run.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.4 Как компьютер выполняет программы</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/05-why-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.5 Почему Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/06-python-workspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.6 Рабочее пространство Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/07-first-python-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2.7 Первая программа на Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-02-python-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">3 Том II. Базовые конструкции Python</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Переключить раздел: 3 Том II. Базовые конструкции Python">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/08-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.1 Переменные</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/09-data-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.2 Типы данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/10-user-input.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.3 Ввод данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/11-type-conversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.4 Преобразование типов</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/12-arithmetic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.5 Арифметические операции</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/13-comparisons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.6 Сравнение значений</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/14-conditions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.7 Условия</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/15-boolean-logic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.8 Логические операции</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/16-while-loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.9 Цикл while</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/17-for-loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.10 Цикл for</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/18-strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.11 Строки</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/19-lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.12 Списки</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/20-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3.13 Функции</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../book/tom-03-data-structures-code-organization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Том III. Структуры данных и организация кода</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Переключить раздел: Том III. Структуры данных и организация кода">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/21-tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.1 Кортежи</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/22-sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.2 Множества</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/23-dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.3 Словари</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/24-working-with-dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.4 Работа со словарями</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/25-nested-data-structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.5 Вложенные структуры данных</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/26-list-comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.6 List comprehensions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/27-error-handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4.7 Обработка ошибок</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/chapters/28-modules.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">4.8 Модули и импорты</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#что-такое-модуль" id="toc-что-такое-модуль" class="nav-link active" data-scroll-target="#что-такое-модуль">Что такое модуль</a></li>
+  <li><a href="#первый-импорт" id="toc-первый-импорт" class="nav-link" data-scroll-target="#первый-импорт">Первый импорт</a></li>
+  <li><a href="#импорт-конкретных-объектов" id="toc-импорт-конкретных-объектов" class="nav-link" data-scroll-target="#импорт-конкретных-объектов">Импорт конкретных объектов</a></li>
+  <li><a href="#псевдонимы-через-as" id="toc-псевдонимы-через-as" class="nav-link" data-scroll-target="#псевдонимы-через-as">Псевдонимы через as</a></li>
+  <li><a href="#какой-способ-импорта-выбрать" id="toc-какой-способ-импорта-выбрать" class="nav-link" data-scroll-target="#какой-способ-импорта-выбрать">Какой способ импорта выбрать</a></li>
+  <li><a href="#стандартная-библиотека-python" id="toc-стандартная-библиотека-python" class="nav-link" data-scroll-target="#стандартная-библиотека-python">Стандартная библиотека Python</a></li>
+  <li><a href="#математические-вычисления" id="toc-математические-вычисления" class="nav-link" data-scroll-target="#математические-вычисления">Математические вычисления</a></li>
+  <li><a href="#случайные-значения" id="toc-случайные-значения" class="nav-link" data-scroll-target="#случайные-значения">Случайные значения</a></li>
+  <li><a href="#статистические-вычисления" id="toc-статистические-вычисления" class="nav-link" data-scroll-target="#статистические-вычисления">Статистические вычисления</a></li>
+  <li><a href="#даты-и-время" id="toc-даты-и-время" class="nav-link" data-scroll-target="#даты-и-время">Даты и время</a></li>
+  <li><a href="#работа-с-путями" id="toc-работа-с-путями" class="nav-link" data-scroll-target="#работа-с-путями">Работа с путями</a></li>
+  <li><a href="#ошибки-при-импорте" id="toc-ошибки-при-импорте" class="nav-link" data-scroll-target="#ошибки-при-импорте">Ошибки при импорте</a></li>
+  <li><a href="#что-важно-запомнить" id="toc-что-важно-запомнить" class="nav-link" data-scroll-target="#что-важно-запомнить">Что важно запомнить</a>
+  <ul class="collapse">
+  <li><a href="#практические-задания" id="toc-практические-задания" class="nav-link" data-scroll-target="#практические-задания">Практические задания</a></li>
+  </ul></li>
+  <li><a href="#что-дальше" id="toc-что-дальше" class="nav-link" data-scroll-target="#что-дальше">Что дальше?</a></li>
+  <li><a href="#модули-и-импорты-в-python-краткое-резюме" id="toc-модули-и-импорты-в-python-краткое-резюме" class="nav-link" data-scroll-target="#модули-и-импорты-в-python-краткое-резюме">Модули и импорты в Python: краткое резюме</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Путь"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../book/tom-03-data-structures-code-organization.html">Том III. Структуры данных и организация кода</a></li><li class="breadcrumb-item"><a href="../../book/chapters/28-modules.html">4.8 Модули и импорты</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">4.8 Модули и импорты</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Ключевые слова</div>
+    <p>модули Python, импорт модулей Python, import Python, from import Python, стандартная библиотека Python, math Python, random Python, datetime Python</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="что-такое-модуль" class="level2">
+<h2 class="anchored" data-anchor-id="что-такое-модуль">Что такое модуль</h2>
+<p>Модуль — это готовый набор кода Python, который можно подключить командой <code>import</code>. В этой главе мы используем модули стандартной библиотеки: они уже поставляются вместе с Python и не требуют отдельной установки.</p>
+<p>Модули помогают не писать заново типовые инструменты. Например, <code>math</code> умеет вычислять квадратный корень, а <code>statistics</code> — среднее значение набора чисел.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter28/module-concept.svg" class="img-fluid figure-img"></p>
+<figcaption>Готовый модуль помогает использовать уже написанный код Python.</figcaption>
+</figure>
+</div>
+</section>
+<section id="первый-импорт" class="level2">
+<h2 class="anchored" data-anchor-id="первый-импорт">Первый импорт</h2>
+<p>Команда <code>import math</code> подключает модуль <code>math</code>. К его объектам обращаются через точку: сначала указывают имя модуля, затем имя функции или константы.</p>
+<div class="python-playground" data-source="../examples/chapter28/import-math.py" data-title="Импорт модуля math">
+
+</div>
+<p>Здесь <code>math.sqrt()</code> вычисляет квадратный корень, <code>math.ceil()</code> округляет вверх, а <code>math.floor()</code> — вниз.</p>
+</section>
+<section id="импорт-конкретных-объектов" class="level2">
+<h2 class="anchored" data-anchor-id="импорт-конкретных-объектов">Импорт конкретных объектов</h2>
+<p>Если нужны только отдельные объекты, их можно перечислить после <code>from ... import</code>. После этого к ним обращаются по имени, без префикса модуля.</p>
+<div class="python-playground" data-source="../examples/chapter28/from-import.py" data-title="Импорт отдельных функций">
+
+</div>
+<p>Можно импортировать несколько имён через запятую, как в примере выше. <code>from math import sqrt, ceil</code> подключает обе функции.</p>
+</section>
+<section id="псевдонимы-через-as" class="level2">
+<h2 class="anchored" data-anchor-id="псевдонимы-через-as">Псевдонимы через as</h2>
+<p>Слово <code>as</code> задаёт другое имя для обращения к модулю или импортированному объекту. Выбирайте короткий, но понятный псевдоним.</p>
+<div class="python-playground" data-source="../examples/chapter28/import-alias.py" data-title="Псевдоним модуля">
+
+</div>
+<p>Имя <code>m</code> в этом примере — псевдоним <code>math</code>, а <code>m.sqrt(49)</code> вызывает ту же функцию, что и <code>math.sqrt(49)</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter28/import-syntax.svg" class="img-fluid figure-img"></p>
+<figcaption>Три формы импорта обращаются к одной функции.</figcaption>
+</figure>
+</div>
+</section>
+<section id="какой-способ-импорта-выбрать" class="level2">
+<h2 class="anchored" data-anchor-id="какой-способ-импорта-выбрать">Какой способ импорта выбрать</h2>
+<p>Три формы дают доступ к одному объекту, но выглядят по-разному:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Запись</th>
+<th>Обращение к функции</th>
+<th>Когда удобно</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>import math</code></td>
+<td><code>math.sqrt(25)</code></td>
+<td>Видно, откуда взято имя; удобно использовать несколько объектов модуля</td>
+</tr>
+<tr class="even">
+<td><code>from math import sqrt</code></td>
+<td><code>sqrt(25)</code></td>
+<td>Нужна одна или несколько конкретных функций</td>
+</tr>
+<tr class="odd">
+<td><code>import math as m</code></td>
+<td><code>m.sqrt(25)</code></td>
+<td>Псевдоним делает длинное имя удобнее</td>
+</tr>
+</tbody>
+</table>
+<p>Для начинающего хороший выбор по умолчанию — <code>import math</code>: происхождение каждого имени остаётся видимым. <code>from ... import ...</code> подходит, когда список нужных объектов небольшой и понятный. Не используйте <code>from math import *</code>: в коде не видно, откуда пришли имена, и они могут случайно совпасть с другими именами.</p>
+</section>
+<section id="стандартная-библиотека-python" class="level2">
+<h2 class="anchored" data-anchor-id="стандартная-библиотека-python">Стандартная библиотека Python</h2>
+<p>Стандартная библиотека — набор модулей, который поставляется с Python. В этой главе мы познакомимся с несколькими практичными инструментами.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter28/standard-library.svg" class="img-fluid figure-img"></p>
+<figcaption>Готовые инструменты стандартной библиотеки Python.</figcaption>
+</figure>
+</div>
+</section>
+<section id="математические-вычисления" class="level2">
+<h2 class="anchored" data-anchor-id="математические-вычисления">Математические вычисления</h2>
+<p>В модуле <code>math</code> есть математические функции и константы. Например, <code>math.pi</code> хранит приближённое значение числа π. Площадь круга вычисляется по формуле <code>πr²</code>.</p>
+<div class="python-playground" data-source="../examples/chapter28/math-calculations.py" data-title="Площадь круга с math.pi">
+
+</div>
+</section>
+<section id="случайные-значения" class="level2">
+<h2 class="anchored" data-anchor-id="случайные-значения">Случайные значения</h2>
+<p>Модуль <code>random</code> позволяет выбрать случайный элемент или получить случайное число. При каждом запуске результат может меняться.</p>
+<div class="python-playground" data-source="../examples/chapter28/random-choice.py" data-title="Случайный выбор участника">
+
+</div>
+<p><code>random.randint(1, 6)</code> возвращает целое число от 1 до 6. Обе границы включены.</p>
+<div class="python-playground" data-source="../examples/chapter28/random-numbers.py" data-title="Случайное число от 1 до 6">
+
+</div>
+</section>
+<section id="статистические-вычисления" class="level2">
+<h2 class="anchored" data-anchor-id="статистические-вычисления">Статистические вычисления</h2>
+<p>Модуль <code>statistics</code> помогает находить основные показатели набора чисел. <code>mean()</code> вычисляет среднее арифметическое, а <code>median()</code> — медиану.</p>
+<div class="python-playground" data-source="../examples/chapter28/statistics-example.py" data-title="Среднее и медиана">
+
+</div>
+</section>
+<section id="даты-и-время" class="level2">
+<h2 class="anchored" data-anchor-id="даты-и-время">Даты и время</h2>
+<p>Из модуля <code>datetime</code> можно импортировать нужный класс. Например, <code>date</code> представляет календарную дату с годом, месяцем и днём.</p>
+<div class="python-playground" data-source="../examples/chapter28/datetime-example.py" data-title="Работа с календарной датой">
+
+</div>
+</section>
+<section id="работа-с-путями" class="level2">
+<h2 class="anchored" data-anchor-id="работа-с-путями">Работа с путями</h2>
+<p><code>pathlib</code> предоставляет объект <code>Path</code> для представления путей. С его помощью удобно соединять части пути и получать имя или расширение. Для этого примера файл на диске не нужен.</p>
+<div class="python-playground" data-source="../examples/chapter28/pathlib-example.py" data-title="Части пути к файлу">
+
+</div>
+</section>
+<section id="ошибки-при-импорте" class="level2">
+<h2 class="anchored" data-anchor-id="ошибки-при-импорте">Ошибки при импорте</h2>
+<p>Если Python не находит запрошенный модуль, возникает <code>ModuleNotFoundError</code>. Если модуль существует, но в нём нет указанного имени, возникает <code>ImportError</code>.</p>
+<div class="python-playground" data-source="../examples/chapter28/import-errors.py" data-title="Два сценария ошибки импорта">
+
+</div>
+<p>Имена файлов могут конфликтовать с именами стандартной библиотеки. Например, собственный файл <code>random.py</code> способен помешать импорту стандартного модуля <code>random</code>. Не называйте свои файлы именами используемых стандартных модулей.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chapter28/import-errors.svg" class="img-fluid figure-img"></p>
+<figcaption>Причины ошибок импорта и возможный конфликт имён.</figcaption>
+</figure>
+</div>
+</section>
+<section id="что-важно-запомнить" class="level2">
+<h2 class="anchored" data-anchor-id="что-важно-запомнить">Что важно запомнить</h2>
+<ul>
+<li>Готовые модули Python дают полезные инструменты без необходимости писать их заново.</li>
+<li><code>import module</code> подключает модуль, а точка отделяет его имя от функции или константы.</li>
+<li><code>from module import name</code> подключает перечисленные объекты, а <code>as</code> задаёт псевдоним.</li>
+<li>Используйте явные импорты; <code>from module import *</code> затрудняет чтение кода.</li>
+<li><code>math</code>, <code>random</code>, <code>statistics</code>, <code>datetime</code> и <code>pathlib</code> входят в стандартную библиотеку.</li>
+<li><code>ModuleNotFoundError</code> означает, что модуль не найден; <code>ImportError</code> может означать, что в модуле нет запрошенного имени.</li>
+</ul>
+<section id="практические-задания" class="level3">
+<h3 class="anchored" data-anchor-id="практические-задания">Практические задания</h3>
+<p><strong>Задание 1. Геометрия</strong></p>
+<p><strong>Условие.</strong> Длина окружности равна <code>2πr</code>. Вычислите её для радиуса 3.5, используя <code>math.pi</code>, и выведите результат с округлением до двух знаков.</p>
+<p><strong>Исходные данные:</strong> <code>radius = 3.5</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> программа выводит одну длину окружности; результат приблизительно равен <code>21.99</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="fl">3.5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>circumference <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> math.pi <span class="op">*</span> radius</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(circumference, <span class="dv">2</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 2. Округление стоимости</strong></p>
+<p><strong>Условие.</strong> Для каждой цены определите минимальную целую сумму, которой хватит на покупку, используя <code>math.ceil</code>.</p>
+<p><strong>Исходные данные:</strong> <code>prices = [12.3, 7.0, 19.8]</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести <code>13</code>, <code>7</code> и <code>20</code> — по одному результату на строку.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> [<span class="fl">12.3</span>, <span class="fl">7.0</span>, <span class="fl">19.8</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> price <span class="kw">in</span> prices:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(math.ceil(price))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 3. Случайный промокод</strong></p>
+<p><strong>Условие.</strong> Выберите один промокод из списка с помощью <code>random.choice</code>.</p>
+<p><strong>Исходные данные:</strong> <code>codes = ["START10", "PYTHON15", "WELCOME"]</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> программа выводит один из трёх промокодов; выбор может меняться при каждом запуске.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> [<span class="st">"START10"</span>, <span class="st">"PYTHON15"</span>, <span class="st">"WELCOME"</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>code <span class="op">=</span> random.choice(codes)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Промокод:"</span>, code)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 4. Броски кубика</strong></p>
+<p><strong>Условие.</strong> Сгенерируйте 10 бросков кубика значениями от 1 до 6 включительно и посчитайте количество шестёрок.</p>
+<p><strong>Исходные данные:</strong> число бросков — 10.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести список из 10 чисел и количество шестёрок от 0 до 10.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rolls <span class="op">=</span> []</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    rolls.append(random.randint(<span class="dv">1</span>, <span class="dv">6</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>sixes <span class="op">=</span> rolls.count(<span class="dv">6</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Броски:"</span>, rolls)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Шестёрок:"</span>, sixes)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 5. Анализ температур</strong></p>
+<p><strong>Условие.</strong> Найдите среднее значение и медиану измеренных температур с помощью <code>statistics</code>.</p>
+<p><strong>Исходные данные:</strong> <code>temperatures = [18, 21, 19, 24, 20, 17]</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести среднее <code>19.833333333333332</code> и медиану <code>19.5</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> [<span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">17</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Среднее:"</span>, statistics.mean(temperatures))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Медиана:"</span>, statistics.median(temperatures))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 6. Срок выполнения задачи</strong></p>
+<p><strong>Условие.</strong> Рассчитайте дату завершения задачи через 14 дней после даты начала, используя <code>datetime.date</code> и <code>datetime.timedelta</code>.</p>
+<p><strong>Исходные данные:</strong> задача началась <code>2026-03-10</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести дату завершения <code>2026-03-24</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date, timedelta</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> date(<span class="dv">2026</span>, <span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>deadline <span class="op">=</span> start_date <span class="op">+</span> timedelta(days<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(deadline)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 7. Анализ имён файлов</strong></p>
+<p><strong>Условие.</strong> Для каждого заданного пути выведите имя файла и расширение с помощью <code>pathlib.Path</code>. Не открывайте файлы.</p>
+<p><strong>Исходные данные:</strong> <code>paths = ["reports/january.csv", "images/logo.svg", "notes/readme.txt"]</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести пары <code>january.csv / .csv</code>, <code>logo.svg / .svg</code>, <code>readme.txt / .txt</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>paths <span class="op">=</span> [<span class="st">"reports/january.csv"</span>, <span class="st">"images/logo.svg"</span>, <span class="st">"notes/readme.txt"</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> paths:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> Path(value)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(path.name, <span class="st">"/"</span>, path.suffix)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>Задание 8. Мини-проект: анализ результатов тестирования</strong></p>
+<p><strong>Условие.</strong> Подготовьте отчёт об оценках: найдите среднее и медиану, округлите среднее вверх до целого с помощью <code>math.ceil</code> и случайно выберите участника из отдельного списка.</p>
+<p><strong>Исходные данные:</strong> оценки <code>[68, 92, 81, 75, 84]</code>; участники <code>["Лена", "Игорь", "Саша"]</code>.</p>
+<p><strong>Ожидаемое поведение:</strong> вывести среднее <code>80</code>, округлённое вверх среднее <code>80</code>, медиану <code>81</code> и имя одного участника из списка. Имя может меняться.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Уведомление</span>Ответ
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">68</span>, <span class="dv">92</span>, <span class="dv">81</span>, <span class="dv">75</span>, <span class="dv">84</span>]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>participants <span class="op">=</span> [<span class="st">"Лена"</span>, <span class="st">"Игорь"</span>, <span class="st">"Саша"</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>average <span class="op">=</span> statistics.mean(scores)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>median <span class="op">=</span> statistics.median(scores)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>selected_participant <span class="op">=</span> random.choice(participants)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Среднее:"</span>, average)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Среднее вверх:"</span>, math.ceil(average))</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Медиана:"</span>, median)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Участник для разбора:"</span>, selected_participant)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="что-дальше" class="level2">
+<h2 class="anchored" data-anchor-id="что-дальше">Что дальше?</h2>
+<p>Мы научились использовать готовые модули Python. Теперь научимся создавать собственные файлы с функциями и подключать их в других частях программы.</p>
+<p>Следующая тема — <a href="29-own-modules.qmd">«Собственные модули»</a>.</p>
+</section>
+<section id="модули-и-импорты-в-python-краткое-резюме" class="level2">
+<h2 class="anchored" data-anchor-id="модули-и-импорты-в-python-краткое-резюме">Модули и импорты в Python: краткое резюме</h2>
+<p>Модуль предоставляет готовые возможности Python. Команда <code>import</code> подключает модуль целиком, <code>from ... import ...</code> выбирает конкретные объекты, а <code>as</code> задаёт псевдоним. Стандартная библиотека включает <code>math</code>, <code>random</code>, <code>statistics</code>, <code>datetime</code> и <code>pathlib</code>. Явные импорты помогают понять, откуда взяты используемые имена.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(function () {
+  var cssLink = Array.prototype.find.call(
+    document.querySelectorAll('link[rel="stylesheet"]'),
+    function (link) {
+      return link.href.indexOf('python-playground.css') !== -1;
+    }
+  );
+
+  var script = document.createElement('script');
+  script.defer = true;
+  script.src = cssLink
+    ? cssLink.href.replace('/css/python-playground.css', '/js/python-playground.js')
+    : new URL('book/assets/js/python-playground.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Прокручиваемый код","output":"Прокручиваемый вывод"};
+  </script>
+<nav class="page-navigation" aria-label="Страница">
+  <div class="nav-page nav-page-previous">
+      <a href="../../book/chapters/27-error-handling.html" class="pagination-link" aria-label="4.7 Обработка ошибок">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4.7 Обработка ошибок</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
