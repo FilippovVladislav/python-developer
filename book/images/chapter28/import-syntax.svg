@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Способы импорта одного объекта</title>
+  <desc id="desc">Три формы импорта функции sqrt из math приводят к результату 5.0.</desc>
+  <defs><style>.bg{fill:#101827}.card{fill:#182538;stroke:#35d6c5;stroke-width:2}.title{font:700 32px Arial,sans-serif;fill:#f1f5f9}.code{font:23px Consolas,monospace;fill:#65e6d4}.result{font:700 26px Consolas,monospace;fill:#f1f5f9}.note{font:17px Arial,sans-serif;fill:#bac7d8}</style></defs>
+  <rect class="bg" width="1200" height="650"/><text class="title" x="600" y="62" text-anchor="middle">Разные способы обращения к одному объекту</text>
+  <g transform="translate(90 110)"><rect class="card" width="1020" height="130" rx="16"/><text class="code" x="40" y="47">import math</text><text class="code" x="40" y="88">math.sqrt(25)</text><text class="result" x="960" y="75" text-anchor="end">5.0</text></g>
+  <g transform="translate(90 270)"><rect class="card" width="1020" height="130" rx="16"/><text class="code" x="40" y="47">from math import sqrt</text><text class="code" x="40" y="88">sqrt(25)</text><text class="result" x="960" y="75" text-anchor="end">5.0</text></g>
+  <g transform="translate(90 430)"><rect class="card" width="1020" height="130" rx="16"/><text class="code" x="40" y="47">import math as m</text><text class="code" x="40" y="88">m.sqrt(25)</text><text class="result" x="960" y="75" text-anchor="end">5.0</text></g>
+  <text class="note" x="600" y="610" text-anchor="middle">Меняется форма записи, функция и результат остаются теми же.</text>
+</svg>

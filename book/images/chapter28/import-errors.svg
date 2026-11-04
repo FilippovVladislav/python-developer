@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+  <title id="title">Ошибки импорта Python</title>
+  <desc id="desc">Отсутствующий модуль вызывает ModuleNotFoundError, отсутствующее имя — ImportError. Файл random.py может конфликтовать со стандартным модулем random.</desc>
+  <defs><style>.bg{fill:#101827}.card{fill:#182538;stroke:#35d6c5;stroke-width:2}.warn{fill:#2b2530;stroke:#ffb454;stroke-width:2}.title{font:700 32px Arial,sans-serif;fill:#f1f5f9}.code{font:21px Consolas,monospace;fill:#65e6d4}.err{font:700 23px Consolas,monospace;fill:#ff8b9b}.note{font:19px Arial,sans-serif;fill:#bac7d8}.alert{font:700 21px Arial,sans-serif;fill:#ffd08a}</style></defs>
+  <rect class="bg" width="1200" height="660"/><text class="title" x="600" y="60" text-anchor="middle">Два разных случая ошибки импорта</text>
+  <g transform="translate(75 115)"><rect class="card" width="1050" height="140" rx="16"/><text class="code" x="32" y="52">import nonexistent_training_module</text><text class="err" x="32" y="105">ModuleNotFoundError</text><text class="note" x="1015" y="105" text-anchor="end">модуль не найден</text></g>
+  <g transform="translate(75 285)"><rect class="card" width="1050" height="140" rx="16"/><text class="code" x="32" y="52">from math import unknown_function</text><text class="err" x="32" y="105">ImportError</text><text class="note" x="1015" y="105" text-anchor="end">имя отсутствует в модуле</text></g>
+  <g transform="translate(75 465)"><rect class="warn" width="1050" height="145" rx="16"/><text class="alert" x="32" y="51">Проверьте имена собственных файлов</text><text class="code" x="32" y="91">random.py</text><text class="note" x="205" y="91">может конфликтовать со стандартным модулем random</text><text class="note" x="32" y="123">Не называйте свои файлы именами используемых модулей библиотеки.</text></g>
+</svg>
