@@ -54,8 +54,8 @@ book:
         - book/chapters/26-list-comprehensions.qmd
         - book/chapters/27-error-handling.qmd
         - book/chapters/28-modules.qmd
-      #  - book/chapters/29-own-modules.qmd
-      #  - book/chapters/30-packages.qmd
+        - book/chapters/29-own-modules.qmd
+      # - book/chapters/30-packages.qmd
       #  - book/chapters/31-files.qmd
       #  - book/chapters/32-json.qmd
       #  - book/chapters/33-task-manager-project.qmd

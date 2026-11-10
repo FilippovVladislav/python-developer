@@ -1,0 +1,3 @@
+APP_NAME = "Task Manager"
+MAX_TASKS = 100
+DEFAULT_LANGUAGE = "ru"

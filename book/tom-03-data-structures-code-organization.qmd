@@ -27,9 +27,11 @@ keywords:
 - [4.6 List comprehensions](chapters/26-list-comprehensions.qmd)
 - [4.7 Обработка ошибок](chapters/27-error-handling.qmd)
 - [4.8 Модули и импорты](chapters/28-modules.qmd)
-  
+- [4.9 Собственные модули](chapters/29-own-modules.qmd)
+
+
 <!--
-- [Собственные модули](chapters/29-own-modules.qmd)
+- [4.10 Пакеты](chapters/30-packages.qmd)
 - [Пакеты](chapters/30-packages.qmd)
 - [Файлы](chapters/31-files.qmd)
 - [JSON](chapters/32-json.qmd)
