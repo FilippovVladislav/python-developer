@@ -5377,7 +5377,7 @@
     "href": "book/tom-03-data-structures-code-organization.html#быстрые-ссылки",
     "title": "Том III. Структуры данных и организация кода",
     "section": "",
-    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n4.5 Вложенные структуры данных\n4.6 List comprehensions\n4.7 Обработка ошибок\n4.8 Модули и импорты\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
+    "text": "4.1 Кортежи\n4.2 Множества\n4.3 Словари\n4.4 Работа со словарями\n4.5 Вложенные структуры данных\n4.6 List comprehensions\n4.7 Обработка ошибок\n4.8 Модули и импорты\n4.9 Собственные модули\n\n\n\n\n\n\n\n\nУведомлениеЛогика тома\n\n\n\nИдите по главам последовательно: от неизменяемых наборов значений к уникальным элементам, словарям, вложенным структурам, компактному созданию списков, обработке ошибок, модулям, пакетам, файлам и JSON.",
     "crumbs": [
       "Том III. Структуры данных и организация кода"
     ]
@@ -7580,6 +7580,171 @@
     "crumbs": [
       "Том III. Структуры данных и организация кода",
       "4.8 Модули и импорты"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html",
+    "href": "book/chapters/29-own-modules.html",
+    "title": "4.9 Собственные модули",
+    "section": "",
+    "text": "Создание первого модуля\nВ предыдущей главе мы познакомились с синтаксисом импорта. Теперь применим его к своим файлам: функцию, вынесенную в модуль, можно использовать из разных частей программы без копирования.\nПредставим небольшую программу для расчёта бонусных баллов.\nСоздадим два файла:\nВ файле bonuses.py разместим функцию:\nТеперь в main.py импортируем модуль:\nРезультат:\nЗдесь bonuses.py — наш собственный модуль.\nPython находит его по имени bonuses, а затем предоставляет доступ к функции через точку.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#создание-первого-модуля",
+    "href": "book/chapters/29-own-modules.html#создание-первого-модуля",
+    "title": "4.9 Собственные модули",
+    "section": "",
+    "text": "bonus_project/\n├── main.py\n└── bonuses.py\n\n\n\nФайл main.py использует функцию из модуля bonuses.py.\n\n\n\ndef calculate_bonus(amount):\n    return int(amount * 0.05)\n\nimport bonuses\n\npoints = bonuses.calculate_bonus(2400)\n\nprint(\"Бонусные баллы:\", points)\n\nБонусные баллы: 120\n\n\n\n\n\n\n\n\nУведомлениеКак запустить пример\n\n\n\nСохраните оба файла в одном каталоге и запустите:\npython main.py\nДля этой главы важно работать именно с несколькими файлами, а не только с отдельными фрагментами кода.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#импорт-функций-из-собственного-модуля",
+    "href": "book/chapters/29-own-modules.html#импорт-функций-из-собственного-модуля",
+    "title": "4.9 Собственные модули",
+    "section": "Импорт функций из собственного модуля",
+    "text": "Импорт функций из собственного модуля\nМы уже знакомы с конструкцией from ... import.\nОна работает и с собственными модулями.\nСоздадим файл formatters.py:\ndef format_price(price):\n    return f\"{price:.2f} ₽\"\n\n\ndef format_username(name):\n    return name.strip().title()\nВ main.py:\nfrom formatters import format_price, format_username\n\nprint(format_price(1499.5))\nprint(format_username(\"  анна  \"))\nРезультат:\n1499.50 ₽\nАнна\nТеперь функции форматирования можно использовать в разных частях проекта.\nПри этом основная программа не содержит их реализацию.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#разделение-ответственности",
+    "href": "book/chapters/29-own-modules.html#разделение-ответственности",
+    "title": "4.9 Собственные модули",
+    "section": "Разделение ответственности",
+    "text": "Разделение ответственности\n\n\n\nГлавный файл управляет сценарием, а отдельные модули отвечают за расчёты и проверку.\n\n\nКогда программа растёт, удобно группировать функции по назначению.\nНапример:\nshop/\n├── main.py\n├── pricing.py\n└── validation.py\nВ pricing.py:\ndef calculate_total(price, quantity):\n    return price * quantity\nВ validation.py:\ndef validate_quantity(quantity):\n    if quantity &lt;= 0:\n        raise ValueError(\n            \"Количество должно быть положительным\"\n        )\nВ main.py:\nfrom pricing import calculate_total\nfrom validation import validate_quantity\n\ntry:\n    quantity = 3\n\n    validate_quantity(quantity)\n\n    total = calculate_total(1200, quantity)\n\nexcept ValueError as error:\n    print(\"Ошибка:\", error)\n\nelse:\n    print(\"Стоимость заказа:\", total)\nРезультат:\nСтоимость заказа: 3600\nКаждый файл решает свою задачу:\n\nmain.py управляет выполнением программы;\npricing.py содержит расчёты;\nvalidation.py проверяет данные.\n\nТакой подход помогает изменять одну часть программы, не смешивая её с остальными.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#что-происходит-при-импорте-модуля",
+    "href": "book/chapters/29-own-modules.html#что-происходит-при-импорте-модуля",
+    "title": "4.9 Собственные модули",
+    "section": "Что происходит при импорте модуля",
+    "text": "Что происходит при импорте модуля\nРассмотрим файл messages.py:\nprint(\"Модуль messages загружен\")\n\n\ndef show_message(text):\n    print(\"Сообщение:\", text)\nТеперь main.py:\nimport messages\n\nmessages.show_message(\"Добро пожаловать\")\nРезультат:\nМодуль messages загружен\nСообщение: Добро пожаловать\nПочему появилась первая строка?\nПри первом обычном импорте Python выполняет код верхнего уровня модуля.\nА тело функции выполняется только при её вызове.\nЭто означает, что инструкции вне функций могут запускаться даже тогда, когда мы хотели просто импортировать готовую функцию.\n\n\n\n\n\n\nПредупреждениеИзбегайте неожиданных действий при импорте\n\n\n\nНе размещайте без необходимости input(), тестовые запуски или изменение данных на верхнем уровне переиспользуемого модуля.\nТакие действия могут неожиданно выполняться при его импорте.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#повторный-импорт",
+    "href": "book/chapters/29-own-modules.html#повторный-импорт",
+    "title": "4.9 Собственные модули",
+    "section": "Повторный импорт",
+    "text": "Повторный импорт\n\n\n\nПервый импорт загружает модуль и сохраняет его, повторный использует кеш.\n\n\nВ рамках одного процесса Python обычно сохраняет уже загруженный модуль.\nНапример:\nimport messages\nimport messages\nПри обычном повторном импорте код верхнего уровня не выполняется заново.\nPython использует уже загруженный модуль из своего кеша.\nЭто поведение важно учитывать, если в модуле есть инструкции, которые выполняются при загрузке.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#конструкция-name-main",
+    "href": "book/chapters/29-own-modules.html#конструкция-name-main",
+    "title": "4.9 Собственные модули",
+    "section": "Конструкция name == “main”",
+    "text": "Конструкция name == “main”\n\n\n\nПри прямом запуске и импорте значение name различается.\n\n\nИногда нужно, чтобы один и тот же файл можно было:\n\nзапускать как самостоятельную программу;\nимпортировать без запуска демонстрационного кода.\n\nДля этого используется:\nif __name__ == \"__main__\":\nСоздадим converters.py:\ndef celsius_to_fahrenheit(celsius):\n    return celsius * 9 / 5 + 32\n\n\nif __name__ == \"__main__\":\n    print(celsius_to_fahrenheit(20))\nПри прямом запуске:\npython converters.py\nРезультат:\n68.0\nНо если создать main.py:\nfrom converters import celsius_to_fahrenheit\n\nprint(celsius_to_fahrenheit(30))\nРезультат будет:\n86.0\nДемонстрационный вызов с числом 20 при импорте не выполнится.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#как-работает-name",
+    "href": "book/chapters/29-own-modules.html#как-работает-name",
+    "title": "4.9 Собственные модули",
+    "section": "Как работает name",
+    "text": "Как работает name\nPython автоматически определяет специальную переменную __name__.\nЕё значение зависит от способа запуска файла.\n\n\n\nСценарий\nЗначение __name__\n\n\n\n\nПрямой запуск файла\n\"__main__\"\n\n\nОбычный импорт converters\n\"converters\"\n\n\n\nПоэтому проверка:\nif __name__ == \"__main__\":\nпозволяет отделить код самостоятельного запуска от функций, предназначенных для импорта.\n\n\n\n\n\n\nСоветПрактическое правило\n\n\n\nФункции размещайте отдельно, а демонстрационный запуск — внутри блока:\nif __name__ == \"__main__\":\n    ...\nТак модуль удобно использовать и самостоятельно, и в других программах.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#импорт-между-файлами-проекта",
+    "href": "book/chapters/29-own-modules.html#импорт-между-файлами-проекта",
+    "title": "4.9 Собственные модули",
+    "section": "Импорт между файлами проекта",
+    "text": "Импорт между файлами проекта\n\n\n\nmain.py использует receipts.py, который зависит от discounts.py.\n\n\nРассмотрим программу обработки заказов:\norders_project/\n├── main.py\n├── discounts.py\n└── receipts.py\nФайл discounts.py:\ndef apply_discount(price, percent):\n    return price * (1 - percent / 100)\nФайл receipts.py:\nfrom discounts import apply_discount\n\n\ndef create_receipt(product, price, discount):\n    final_price = apply_discount(price, discount)\n\n    return {\n        \"product\": product,\n        \"total\": final_price\n    }\nФайл main.py:\nfrom receipts import create_receipt\n\nreceipt = create_receipt(\n    \"Клавиатура\",\n    2500,\n    10\n)\n\nprint(receipt)\nРезультат:\n{'product': 'Клавиатура', 'total': 2250.0}\nОбратите внимание: модуль receipts.py сам импортирует функцию из discounts.py.\nТаким образом, модули могут использовать друг друга.\nНо не стоит создавать запутанные цепочки зависимостей без необходимости.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#общие-данные-в-модуле",
+    "href": "book/chapters/29-own-modules.html#общие-данные-в-модуле",
+    "title": "4.9 Собственные модули",
+    "section": "Общие данные в модуле",
+    "text": "Общие данные в модуле\nМодуль может содержать не только функции, но и константы.\nНапример, settings.py:\nAPP_NAME = \"Task Manager\"\nMAX_TASKS = 100\nDEFAULT_LANGUAGE = \"ru\"\nВ main.py:\nimport settings\n\nprint(settings.APP_NAME)\nprint(settings.MAX_TASKS)\nРезультат:\nTask Manager\n100\nИмена констант обычно записывают заглавными буквами.\nЭто соглашение показывает, что значение не предполагается изменять во время работы программы.\nПри этом Python технически не запрещает присвоить такой переменной новое значение.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#как-выбирать-имена-модулей",
+    "href": "book/chapters/29-own-modules.html#как-выбирать-имена-модулей",
+    "title": "4.9 Собственные модули",
+    "section": "Как выбирать имена модулей",
+    "text": "Как выбирать имена модулей\nИмя файла должно объяснять его назначение.\nХорошие примеры:\npricing.py\nvalidation.py\nformatters.py\nnotifications.py\nМенее удачные:\nutils2.py\neverything.py\nmy_code.py\nДля имён модулей обычно используют строчные буквы и при необходимости подчёркивания.\nНе стоит называть собственные файлы именами стандартных модулей:\nrandom.py\nmath.py\ndatetime.py\nЭто может привести к конфликтам при импорте.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#типичные-ошибки",
+    "href": "book/chapters/29-own-modules.html#типичные-ошибки",
+    "title": "4.9 Собственные модули",
+    "section": "Типичные ошибки",
+    "text": "Типичные ошибки\n\nModuleNotFoundError\nЕсли файл отсутствует в доступных путях импорта:\nimport missing_module\nPython может сообщить:\nModuleNotFoundError\nПроверьте имя файла и расположение модулей.\n\n\nImportError\nЕсли модуль существует, но нужного имени в нём нет:\nfrom bonuses import unknown_function\nВозникнет ImportError.\n\n\nКод запускается при импорте\nЕсли в модуле находятся инструкции верхнего уровня:\nprint(\"Тестовый запуск\")\nони выполняются при первой загрузке модуля.\nДля демонстрационного кода используйте защитную конструкцию с __name__.\n\n\nЦиклические импорты\nПредставим:\na.py импортирует b.py\nb.py импортирует a.py\nТакая зависимость может привести к ошибкам из-за частично инициализированных модулей.\nВ небольших проектах лучше разделять общую логику так, чтобы файлы не зависели друг от друга по кругу.\nПодробную организацию зависимостей изучим позже.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#что-важно-запомнить",
+    "href": "book/chapters/29-own-modules.html#что-важно-запомнить",
+    "title": "4.9 Собственные модули",
+    "section": "Что важно запомнить",
+    "text": "Что важно запомнить\nСобственный модуль — обычный .py-файл, код которого можно использовать в другом файле.\nНапример:\nimport bonuses\nили:\nfrom bonuses import calculate_bonus\nПри первом обычном импорте Python выполняет код верхнего уровня модуля.\nКонструкция:\nif __name__ == \"__main__\":\n    ...\nпомогает отделить самостоятельный запуск от импорта.\nГлавная идея:\nРазделяйте программу на модули по назначению, а не просто ради увеличения количества файлов.\n\n\nПрактические задания\nЗадание 1. Модуль приветствий\nСложность: начальная\nСоздайте два файла:\ngreetings_project/\n├── main.py\n└── greetings.py\nВ greetings.py напишите функцию greet(name), которая возвращает строку приветствия.\nВ main.py импортируйте функцию и выведите приветствие для пользователя \"Мария\".\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ngreetings.py:\ndef greet(name):\n    return f\"Привет, {name}!\"\nmain.py:\nfrom greetings import greet\n\nprint(greet(\"Мария\"))\nРезультат:\nПривет, Мария!\n\n\n\nЗадание 2. Модуль конвертации времени\nСложность: начальная\nСоздайте модуль time_utils.py с двумя функциями:\n\nhours_to_minutes(hours);\ndays_to_hours(days).\n\nВ main.py используйте обе функции для преобразования 3 часов и 2 дней.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ntime_utils.py:\ndef hours_to_minutes(hours):\n    return hours * 60\n\n\ndef days_to_hours(days):\n    return days * 24\nmain.py:\nimport time_utils\n\nprint(time_utils.hours_to_minutes(3))\nprint(time_utils.days_to_hours(2))\nРезультат:\n180\n48\n\n\n\nЗадание 3. Настройки приложения\nСложность: начальная\nСоздайте модуль config.py, содержащий:\nAPP_NAME = \"Study Planner\"\nVERSION = \"1.0\"\nMAX_USERS = 50\nВ main.py импортируйте модуль и выведите информацию о приложении.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nconfig.py:\nAPP_NAME = \"Study Planner\"\nVERSION = \"1.0\"\nMAX_USERS = 50\nmain.py:\nimport config\n\nprint(\"Приложение:\", config.APP_NAME)\nprint(\"Версия:\", config.VERSION)\nprint(\"Лимит пользователей:\", config.MAX_USERS)\n\n\n\nЗадание 4. Модуль проверки оценок\nСложность: средняя\nСоздайте модуль grades.py.\nВ нём должна быть функция validate_grade(grade).\nОна проверяет, что оценка находится в диапазоне от 1 до 5.\nЕсли значение некорректно, функция создаёт ValueError.\nВ main.py проверьте несколько оценок и обработайте исключения.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ngrades.py:\ndef validate_grade(grade):\n    if grade &lt; 1 or grade &gt; 5:\n        raise ValueError(\"Оценка должна быть от 1 до 5\")\n\n    return grade\nmain.py:\nfrom grades import validate_grade\n\ngrades = [5, 3, 8, 2]\n\nfor grade in grades:\n    try:\n        print(\"Оценка:\", validate_grade(grade))\n\n    except ValueError as error:\n        print(\"Ошибка:\", error)\n\n\n\nЗадание 5. Самостоятельный запуск модуля\nСложность: средняя\nСоздайте модуль temperature.py.\nВ нём реализуйте функцию:\nfahrenheit_to_celsius(fahrenheit)\nДобавьте проверку __name__ == \"__main__\" для демонстрационного расчёта.\nВ отдельном main.py импортируйте функцию и вызовите её с другим значением.\nУбедитесь, что демонстрационный код не запускается при импорте.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\ntemperature.py:\ndef fahrenheit_to_celsius(fahrenheit):\n    return (fahrenheit - 32) * 5 / 9\n\n\nif __name__ == \"__main__\":\n    print(fahrenheit_to_celsius(68))\nmain.py:\nfrom temperature import fahrenheit_to_celsius\n\nprint(fahrenheit_to_celsius(86))\nПри прямом запуске temperature.py:\n20.0\nПри запуске main.py:\n30.0\n\n\n\nЗадание 6. Обработка результатов соревнования\nСложность: средняя\nСоздайте проект:\ncompetition/\n├── main.py\n├── scoring.py\n└── formatting.py\nВ scoring.py напишите функцию для расчёта общего количества очков участника.\nВ formatting.py — функцию формирования строки результата.\nВ main.py используйте обе функции для вывода результатов нескольких участников.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nscoring.py:\ndef total_score(scores):\n    return sum(scores)\nformatting.py:\ndef format_result(name, score):\n    return f\"{name}: {score} очков\"\nmain.py:\nfrom scoring import total_score\nfrom formatting import format_result\n\nparticipants = {\n    \"Анна\": [8, 9, 10],\n    \"Игорь\": [7, 8, 9],\n    \"Мария\": [10, 10, 9]\n}\n\nfor name, scores in participants.items():\n    total = total_score(scores)\n    print(format_result(name, total))\n\n\n\nЗадание 7. Система складского учёта\nСложность: повышенная\nСоздайте проект:\nwarehouse/\n├── main.py\n├── inventory.py\n└── validation.py\nВ inventory.py реализуйте функцию remove_stock(stock, product, quantity).\nВ validation.py — проверку положительного количества товара.\nПрограмма должна:\n\nПроверять корректность количества.\nПроверять наличие товара.\nПроверять достаточный остаток.\nУменьшать остаток только после успешных проверок.\nОбрабатывать ожидаемые ошибки в main.py.\n\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nvalidation.py:\ndef validate_quantity(quantity):\n    if type(quantity) is not int or quantity &lt;= 0:\n        raise ValueError(\"Количество должно быть положительным целым числом\")\ninventory.py:\nfrom validation import validate_quantity\n\n\ndef remove_stock(stock, product, quantity):\n    validate_quantity(quantity)\n\n    if product not in stock:\n        raise ValueError(\"Товар не найден\")\n\n    if stock[product] &lt; quantity:\n        raise ValueError(\"Недостаточный остаток\")\n\n    stock[product] -= quantity\nmain.py:\nfrom inventory import remove_stock\n\nstock = {\n    \"Ноутбук\": 5,\n    \"Мышь\": 12\n}\n\ntry:\n    remove_stock(stock, \"Ноутбук\", 2)\n\nexcept ValueError as error:\n    print(\"Ошибка:\", error)\n\nelse:\n    print(\"Остатки:\", stock)\n\n\n\nЗадание 8. Мини-проект: управление задачами\nСложность: повышенная\nСоздайте приложение:\ntask_manager/\n├── main.py\n├── tasks.py\n├── validation.py\n└── reports.py\nТребования:\n\nvalidation.py проверяет название задачи;\ntasks.py добавляет задачи в список;\nreports.py формирует текстовый отчёт;\nmain.py управляет выполнением программы.\n\nДобавьте несколько задач, обработайте некорректные названия и выведите итоговый отчёт.\n\n\n\n\n\n\nУведомлениеОтвет\n\n\n\n\n\nvalidation.py:\ndef validate_title(title):\n    if not isinstance(title, str) or not title.strip():\n        raise ValueError(\"Название задачи не может быть пустым\")\ntasks.py:\nfrom validation import validate_title\n\n\ndef add_task(tasks, title):\n    validate_title(title)\n\n    tasks.append({\n        \"title\": title.strip(),\n        \"completed\": False\n    })\nreports.py:\ndef create_report(tasks):\n    lines = []\n\n    for task in tasks:\n        status = \"Готово\" if task[\"completed\"] else \"В работе\"\n\n        lines.append(f\"{task['title']} — {status}\")\n\n    return \"\\n\".join(lines)\nmain.py:\nfrom tasks import add_task\nfrom reports import create_report\n\ntasks = []\n\ntitles = [\n    \"Изучить модули\",\n    \"\",\n    \"Написать программу\",\n    \"Проверить код\"\n]\n\nfor title in titles:\n    try:\n        add_task(tasks, title)\n\n    except ValueError as error:\n        print(\"Ошибка:\", error)\n\nprint(\"\\nОтчёт:\")\nprint(create_report(tasks))",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#что-дальше",
+    "href": "book/chapters/29-own-modules.html#что-дальше",
+    "title": "4.9 Собственные модули",
+    "section": "Что дальше?",
+    "text": "Что дальше?\nТеперь мы умеем создавать собственные модули и объединять несколько Python-файлов в одну программу.\nНо что произойдёт, когда количество модулей вырастет до нескольких десятков?\nХранить все файлы в одном каталоге станет неудобно.\nВ следующей главе — «Пакеты» — разберём, как объединять связанные модули в более крупные структуры проекта.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
+    ]
+  },
+  {
+    "objectID": "book/chapters/29-own-modules.html#собственные-модули-python-краткое-резюме",
+    "href": "book/chapters/29-own-modules.html#собственные-модули-python-краткое-резюме",
+    "title": "4.9 Собственные модули",
+    "section": "Собственные модули Python: краткое резюме",
+    "text": "Собственные модули Python: краткое резюме\nСобственный модуль Python — это файл .py, содержащий функции, константы и другие объекты, которые можно импортировать в другие части программы.\nДля подключения собственных модулей используются знакомые конструкции import и from ... import. При первой обычной загрузке модуля Python выполняет его код верхнего уровня, поэтому демонстрационные действия удобно помещать под проверку if __name__ == \"__main__\":.\nРазделение программы на несколько модулей позволяет организовать код по назначению, уменьшить дублирование и упростить повторное использование функций. Это важный шаг от отдельных учебных скриптов к полноценным Python-проектам.",
+    "crumbs": [
+      "Том III. Структуры данных и организация кода",
+      "4.9 Собственные модули"
     ]
   }
 ]

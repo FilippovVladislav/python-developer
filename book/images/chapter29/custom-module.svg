@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" aria-labelledby="t d">
+<title id="t">Функция из собственного модуля</title><desc id="d">main.py импортирует calculate_bonus из bonuses.py и вызывает её.</desc>
+<defs><style>.bg{fill:#101827}.c{fill:#182538;stroke:#35d6c5;stroke-width:2}.h{font:700 27px Arial,sans-serif;fill:#f1f5f9}.code{font:22px Consolas,monospace;fill:#65e6d4}.lbl{font:19px Arial,sans-serif;fill:#bac7d8}.a{stroke:#65e6d4;stroke-width:4;fill:none;marker-end:url(#m)}</style><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path fill="#65e6d4" d="M0 0 10 5 0 10z"/></marker></defs>
+<rect class="bg" width="1000" height="420"/><text class="h" x="500" y="48" text-anchor="middle">Собственный модуль</text>
+<rect class="c" x="70" y="100" width="360" height="230" rx="16"/><text class="h" x="250" y="142" text-anchor="middle">main.py</text><text class="code" x="95" y="195">from bonuses import</text><text class="code" x="95" y="228">    calculate_bonus</text><text class="code" x="95" y="280">calculate_bonus(2400)</text>
+<path class="a" d="M445 210h105"/><text class="lbl" x="500" y="190" text-anchor="middle">импорт</text><rect class="c" x="570" y="100" width="360" height="230" rx="16"/><text class="h" x="750" y="142" text-anchor="middle">bonuses.py</text><text class="code" x="610" y="210">def calculate_bonus(...):</text><text class="code" x="610" y="250">    return int(amount * .05)</text>
+</svg>
